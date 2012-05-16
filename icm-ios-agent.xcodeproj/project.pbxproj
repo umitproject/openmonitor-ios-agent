@@ -851,8 +851,8 @@
 			children = (
 				B3EF61421552B4A300D24661 /* icm-ios-agent */,
 				B3EF616E1552B4A300D24661 /* icm-ios-agentTests */,
-				B30EF5671563E742003A51F9 /* lib */,
 				B379FAE31563556B00EB9F1C /* libcage */,
+				B30EF5671563E742003A51F9 /* lib */,
 				B3EF613B1552B4A300D24661 /* Frameworks */,
 				B3EF61391552B4A300D24661 /* Products */,
 			);
