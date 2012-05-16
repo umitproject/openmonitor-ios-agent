@@ -849,10 +849,10 @@
 		B3EF612D1552B4A200D24661 = {
 			isa = PBXGroup;
 			children = (
-				B30EF5671563E742003A51F9 /* lib */,
-				B379FAE31563556B00EB9F1C /* libcage */,
 				B3EF61421552B4A300D24661 /* icm-ios-agent */,
 				B3EF616E1552B4A300D24661 /* icm-ios-agentTests */,
+				B30EF5671563E742003A51F9 /* lib */,
+				B379FAE31563556B00EB9F1C /* libcage */,
 				B3EF613B1552B4A300D24661 /* Frameworks */,
 				B3EF61391552B4A300D24661 /* Products */,
 			);
