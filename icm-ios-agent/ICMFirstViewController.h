@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <dispatch/dispatch.h>
 
 @interface ICMFirstViewController : UIViewController {
     __weak IBOutlet UIButton *startBtn;
     __weak IBOutlet UISwitch *firstNodeSwitch;
     __weak IBOutlet UILabel *statusLabel;
+    
+    dispatch_queue_t backgroundQueue;
+    
+    int first_port;
+    int cur_port;
 }
 
 - (IBAction)startBtnTapped:(id)sender;

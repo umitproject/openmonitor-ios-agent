@@ -43,6 +43,7 @@
 		B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF6691563E742003A51F9 /* libevent_pthreads.pc */; };
 		B30EF68E1563E743003A51F9 /* libssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66A1563E742003A51F9 /* libssl.pc */; };
 		B30EF68F1563E743003A51F9 /* openssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66B1563E742003A51F9 /* openssl.pc */; };
+		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
 		B379FB061563556B00EB9F1C /* advertise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE41563556B00EB9F1C /* advertise.cpp */; };
 		B379FB071563556B00EB9F1C /* cage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE71563556B00EB9F1C /* cage.cpp */; };
 		B379FB081563556B00EB9F1C /* cagetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE91563556B00EB9F1C /* cagetime.cpp */; };
@@ -68,7 +69,7 @@
 		B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */; };
 		B3EF61501552B4A300D24661 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */; };
 		B3EF61531552B4A300D24661 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */; };
-		B3EF61561552B4A300D24661 /* ICMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMFirstViewController.m */; };
+		B3EF61561552B4A300D24661 /* ICMFirstViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */; };
 		B3EF61581552B4A300D24661 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61571552B4A300D24661 /* first.png */; };
 		B3EF615A1552B4A300D24661 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61591552B4A300D24661 /* first@2x.png */; };
 		B3EF615D1552B4A300D24661 /* ICMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */; };
@@ -338,6 +339,7 @@
 		B30EF6691563E742003A51F9 /* libevent_pthreads.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libevent_pthreads.pc; sourceTree = "<group>"; };
 		B30EF66A1563E742003A51F9 /* libssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libssl.pc; sourceTree = "<group>"; };
 		B30EF66B1563E742003A51F9 /* openssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openssl.pc; sourceTree = "<group>"; };
+		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
 		B379FAE41563556B00EB9F1C /* advertise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advertise.cpp; sourceTree = "<group>"; };
 		B379FAE51563556B00EB9F1C /* advertise.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = advertise.hpp; sourceTree = "<group>"; };
 		B379FAE61563556B00EB9F1C /* bn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bn.hpp; sourceTree = "<group>"; };
@@ -386,7 +388,7 @@
 		B3EF614F1552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B3EF61521552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B3EF61541552B4A300D24661 /* ICMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMFirstViewController.h; sourceTree = "<group>"; };
-		B3EF61551552B4A300D24661 /* ICMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICMFirstViewController.m; sourceTree = "<group>"; };
+		B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMFirstViewController.mm; sourceTree = "<group>"; };
 		B3EF61571552B4A300D24661 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		B3EF61591552B4A300D24661 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMSecondViewController.h; sourceTree = "<group>"; };
@@ -887,7 +889,8 @@
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
 				B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */,
 				B3EF61541552B4A300D24661 /* ICMFirstViewController.h */,
-				B3EF61551552B4A300D24661 /* ICMFirstViewController.m */,
+				B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */,
+				B3356CA2156673D800AF8796 /* StartNode.cpp */,
 				B3EF61571552B4A300D24661 /* first.png */,
 				B3EF61591552B4A300D24661 /* first@2x.png */,
 				B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */,
@@ -1066,7 +1069,7 @@
 			files = (
 				B3EF61491552B4A300D24661 /* main.m in Sources */,
 				B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */,
-				B3EF61561552B4A300D24661 /* ICMFirstViewController.m in Sources */,
+				B3EF61561552B4A300D24661 /* ICMFirstViewController.mm in Sources */,
 				B3EF615D1552B4A300D24661 /* ICMSecondViewController.m in Sources */,
 				B379FB061563556B00EB9F1C /* advertise.cpp in Sources */,
 				B379FB071563556B00EB9F1C /* cage.cpp in Sources */,
@@ -1083,6 +1086,7 @@
 				B379FB131563556B00EB9F1C /* rttable.cpp in Sources */,
 				B379FB141563556B00EB9F1C /* timer.cpp in Sources */,
 				B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */,
+				B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
