@@ -8,7 +8,6 @@
 
 #import "ICMFirstViewController.h"
 
-
 #include <stdlib.h>
 #include <iostream>
 
@@ -18,48 +17,105 @@
 // include libcage's header
 #include "cage.hpp"
 
+const int max_node = 100;
+const int port     = 10000;
 libcage::cage *cage;
 
-// initialize libevent
-struct event_base * eb = event_base_new();
-
-void join_callback(bool result)
+class join_callback
 {
-    if (result)
-        std::cout << "join: succeeded" << std::endl;
-    else
-        std::cout << "join: failed" << std::endl;
+public:
+    int n;
     
-    cage->print_state();
+    void operator() (bool result)
+    {
+        // print state
+        if (result)
+            std::cout << "join: succeeded, n = "
+            << n
+            << std::endl;
+        else
+            std::cout << "join: failed, n = "
+            << n
+            << std::endl;
+        
+        cage[n].print_state();
+        n++;
+        
+        if (n < max_node) {
+            // start nodes recursively
+            if (! cage[n].open(PF_INET, port + n)) {
+                std::cerr << "cannot open port: Port = "
+                << port + n
+                << std::endl;
+                return;
+            }
+            
+            cage[n].set_global();
+            cage[n].join("localhost", 10000, *this);
+        }
+    }
+};
+
+
+void
+timer_callback(int fd, short ev, void *arg)
+{
+    timeval tval;
+    
+    tval.tv_sec  = 60;
+    tval.tv_usec = 0;
+    
+    evtimer_add((event*)arg, &tval);
+    
+    for (int i = 0; i < max_node; i++) {
+        cage[i].print_state();
+    }
 }
 
-
-int start_node(int port, int join_port)
+int start_node()
 {
-    std::cout << "starting node at port: " << port << std::endl;
+    // initialize libevent
+    event_init();
     
+    cage = new libcage::cage[max_node];
     
-    // create cage instance after initialize
-    cage = new libcage::cage;
-    
-    // open UDP
-    if (! cage->open(PF_INET, port)) {
+    // start bootstrap node
+    if (! cage[0].open(PF_INET, port)) {
         std::cerr << "cannot open port: Port = "
         << port
         << std::endl;
         return -1;
     }
+    cage[0].set_global();
     
-    // set as global node
-    cage->set_global();
     
-    if (join_port > 0) {
-        // join to the network
-        cage->join("localhost", join_port, &join_callback);
+    // start other nodes
+    join_callback func;
+    func.n = 1;
+    
+    if (! cage[1].open(PF_INET, port + func.n)) {
+        std::cerr << "cannot open port: Port = "
+        << port + func.n
+        << std::endl;
+        return -1;
     }
+    cage[1].set_global();
+    cage[1].join("localhost", 10000, func);
+    
+    
+    // start timer
+    timeval tval;
+    event  *ev = new event;
+    
+    tval.tv_sec  = 60;
+    tval.tv_usec = 0;
+    
+    evtimer_set(ev, timer_callback, ev);
+    evtimer_add(ev, &tval);
+    
     
     // handle event loop
-    event_base_dispatch(eb);
+    event_dispatch();
     
     return 0;
 }
@@ -99,16 +155,8 @@ int start_node(int port, int join_port)
 }
 
 - (IBAction)startBtnTapped:(id)sender {
-    if ([firstNodeSwitch isOn]) {
-        [firstNodeSwitch setOn:false];
-        dispatch_async(backgroundQueue, ^(void) {
-            start_node(first_port, 0);
-        });
-    } else {
-        dispatch_async(backgroundQueue, ^(void) {
-            start_node(cur_port, first_port);
-        });
-    }
-    cur_port++;
+    dispatch_async(backgroundQueue, ^(void) {
+        start_node();
+    });
 }
 @end
