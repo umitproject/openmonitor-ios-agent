@@ -10,12 +10,14 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 
 // include libevent's header
 #include <event.h>
 
 // include libcage's header
 #include "cage.hpp"
+#include "addressbook.pb.h"
 
 const int max_node = 10;
 const int port     = 10000;
@@ -158,5 +160,32 @@ int start_node()
     dispatch_async(backgroundQueue, ^(void) {
         start_node();
     });
+    
+    GOOGLE_PROTOBUF_VERIFY_VERSION;   
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *filename = [NSString stringWithFormat:@"%@/addressbook.dat", documentDirectory];   
+    
+    std::ifstream input([filename UTF8String], std::ios::in | std::ios::binary);   
+    
+    tutorial::AddressBook address_book;  
+    address_book.ParseFromIstream(&input);
+    int count = address_book.person_size();  
+    tutorial::Person *person = address_book.add_person();
+    person->set_id(42);
+    person->set_name("raymond");
+    person->set_email("raymond@gmail.com");   
+    
+    tutorial::Person_PhoneNumber *pn = person->add_phone();
+    
+    pn->set_type(tutorial::Person_PhoneType_WORK);
+    pn->set_number("12345678");   
+    
+    std::fstream output([filename UTF8String], std::ios::out | std::ios::trunc | std::ios::binary);
+    person->SerializeToOstream(&output);   
+    
+    NSHomeDirectory();
+    
 }
 @end

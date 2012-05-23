@@ -61,6 +61,9 @@
 		B379FB141563556B00EB9F1C /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB021563556B00EB9F1C /* timer.cpp */; };
 		B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB041563556B00EB9F1C /* udphandler.cpp */; };
 		B379FB191563560E00EB9F1C /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B379FB181563560E00EB9F1C /* boost.framework */; };
+		B3D00E1C156BDAB70045A25E /* addressbook.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B3D00E19156BDAB70045A25E /* addressbook.pb.cc */; };
+		B3D00E1D156BDAB70045A25E /* addressbook.proto in Resources */ = {isa = PBXBuildFile; fileRef = B3D00E1B156BDAB70045A25E /* addressbook.proto */; };
+		B3D00E2A156BDD630045A25E /* libprotobuf-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D00E27156BDD5B0045A25E /* libprotobuf-ios.a */; };
 		B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613C1552B4A300D24661 /* UIKit.framework */; };
 		B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613E1552B4A300D24661 /* Foundation.framework */; };
 		B3EF61411552B4A300D24661 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF61401552B4A300D24661 /* CoreGraphics.framework */; };
@@ -83,6 +86,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B3D00E26156BDD5B0045A25E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B3D00935156BD0580045A25E;
+			remoteInfo = "protobuf-ios";
+		};
+		B3D00E28156BDD5B0045A25E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B3D00945156BD0580045A25E;
+			remoteInfo = "protobuf-iosTests";
+		};
 		B3EF616C1552B4A300D24661 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B3EF612F1552B4A300D24661 /* Project object */;
@@ -375,6 +392,10 @@
 		B379FB041563556B00EB9F1C /* udphandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = udphandler.cpp; sourceTree = "<group>"; };
 		B379FB051563556B00EB9F1C /* udphandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = udphandler.hpp; sourceTree = "<group>"; };
 		B379FB181563560E00EB9F1C /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../boostoniphone/framework/boost.framework; sourceTree = "<group>"; };
+		B3D00E19156BDAB70045A25E /* addressbook.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addressbook.pb.cc; sourceTree = "<group>"; };
+		B3D00E1A156BDAB70045A25E /* addressbook.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressbook.pb.h; sourceTree = "<group>"; };
+		B3D00E1B156BDAB70045A25E /* addressbook.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addressbook.proto; sourceTree = "<group>"; };
+		B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "protobuf-ios.xcodeproj"; path = "../protobuf-ios/protobuf-ios.xcodeproj"; sourceTree = "<group>"; };
 		B3EF61381552B4A300D24661 /* icm-ios-agent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "icm-ios-agent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EF613C1552B4A300D24661 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3EF613E1552B4A300D24661 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -412,6 +433,7 @@
 				B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */,
 				B3EF61411552B4A300D24661 /* CoreGraphics.framework in Frameworks */,
 				B379FB191563560E00EB9F1C /* boost.framework in Frameworks */,
+				B3D00E2A156BDD630045A25E /* libprotobuf-ios.a in Frameworks */,
 				B30EF66C1563E742003A51F9 /* libcrypto.a in Frameworks */,
 				B30EF66D1563E742003A51F9 /* libevent.a in Frameworks */,
 				B30EF66F1563E742003A51F9 /* libevent_core.a in Frameworks */,
@@ -848,9 +870,19 @@
 			path = libcage;
 			sourceTree = "<group>";
 		};
+		B3D00E1F156BDD5B0045A25E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3D00E27156BDD5B0045A25E /* libprotobuf-ios.a */,
+				B3D00E29156BDD5B0045A25E /* protobuf-iosTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B3EF612D1552B4A200D24661 = {
 			isa = PBXGroup;
 			children = (
+				B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */,
 				B3EF61421552B4A300D24661 /* icm-ios-agent */,
 				B3EF616E1552B4A300D24661 /* icm-ios-agentTests */,
 				B379FAE31563556B00EB9F1C /* libcage */,
@@ -884,6 +916,9 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
+				B3D00E19156BDAB70045A25E /* addressbook.pb.cc */,
+				B3D00E1A156BDAB70045A25E /* addressbook.pb.h */,
+				B3D00E1B156BDAB70045A25E /* addressbook.proto */,
 				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
@@ -990,6 +1025,12 @@
 			mainGroup = B3EF612D1552B4A200D24661;
 			productRefGroup = B3EF61391552B4A300D24661 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B3D00E1F156BDD5B0045A25E /* Products */;
+					ProjectRef = B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B3EF61371552B4A300D24661 /* icm-ios-agent */,
@@ -997,6 +1038,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B3D00E27156BDD5B0045A25E /* libprotobuf-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libprotobuf-ios.a";
+			remoteRef = B3D00E26156BDD5B0045A25E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B3D00E29156BDD5B0045A25E /* protobuf-iosTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "protobuf-iosTests.octest";
+			remoteRef = B3D00E28156BDD5B0045A25E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B3EF61361552B4A300D24661 /* Resources */ = {
@@ -1033,6 +1091,7 @@
 				B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */,
 				B30EF68E1563E743003A51F9 /* libssl.pc in Resources */,
 				B30EF68F1563E743003A51F9 /* openssl.pc in Resources */,
+				B3D00E1D156BDAB70045A25E /* addressbook.proto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1146,7 @@
 				B379FB141563556B00EB9F1C /* timer.cpp in Sources */,
 				B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */,
 				B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */,
+				B3D00E1C156BDAB70045A25E /* addressbook.pb.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1203,7 +1263,10 @@
 				FRAMEWORK_SEARCH_PATHS = /Users/shinysky/Develop/boostoniphone/framework;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/lib/**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/lib/**",
+					"$(SRCROOT)/../protobuf-ios/**",
+				);
 				INFOPLIST_FILE = "icm-ios-agent/icm-ios-agent-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/lib/i386/lib\"",
@@ -1220,7 +1283,10 @@
 				FRAMEWORK_SEARCH_PATHS = /Users/shinysky/Develop/boostoniphone/framework;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/lib/**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/lib/**",
+					"$(SRCROOT)/../protobuf-ios/**",
+				);
 				INFOPLIST_FILE = "icm-ios-agent/icm-ios-agent-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/lib/i386/lib\"",
