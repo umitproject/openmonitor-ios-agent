@@ -43,6 +43,22 @@
 		B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF6691563E742003A51F9 /* libevent_pthreads.pc */; };
 		B30EF68E1563E743003A51F9 /* libssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66A1563E742003A51F9 /* libssl.pc */; };
 		B30EF68F1563E743003A51F9 /* openssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66B1563E742003A51F9 /* openssl.pc */; };
+		B314F9E7156E54410066DDBB /* ICMAggregatorEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */; };
+		B314F9EB156E5A680066DDBB /* messages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B314F9E9156E5A680066DDBB /* messages.pb.cc */; };
+		B314F9F3156E5F680066DDBB /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = B314F9ED156E5F680066DDBB /* Base64Transcoder.c */; };
+		B314F9F4156E5F680066DDBB /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = B314F9EF156E5F680066DDBB /* hmac.c */; };
+		B314F9F5156E5F680066DDBB /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = B314F9F1156E5F680066DDBB /* sha1.c */; };
+		B314FA12156E73770066DDBB /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA00156E73770066DDBB /* NSData+Base64.m */; };
+		B314FA13156E73770066DDBB /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA02156E73770066DDBB /* NSDate+RFC1123.m */; };
+		B314FA14156E73770066DDBB /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA04156E73770066DDBB /* NSDictionary+RequestEncoding.m */; };
+		B314FA15156E73770066DDBB /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA06156E73770066DDBB /* NSString+MKNetworkKitAdditions.m */; };
+		B314FA16156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA08156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.m */; };
+		B314FA17156E73770066DDBB /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA0A156E73770066DDBB /* MKNetworkEngine.m */; };
+		B314FA18156E73770066DDBB /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA0D156E73770066DDBB /* MKNetworkOperation.m */; };
+		B314FA19156E73770066DDBB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B314FA10156E73770066DDBB /* Reachability.m */; };
+		B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1A156E750D0066DDBB /* CFNetwork.framework */; };
+		B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */; };
+		B314FA1F156E75290066DDBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1E156E75280066DDBB /* Security.framework */; };
 		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
 		B379FB061563556B00EB9F1C /* advertise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE41563556B00EB9F1C /* advertise.cpp */; };
 		B379FB071563556B00EB9F1C /* cage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE71563556B00EB9F1C /* cage.cpp */; };
@@ -356,6 +372,36 @@
 		B30EF6691563E742003A51F9 /* libevent_pthreads.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libevent_pthreads.pc; sourceTree = "<group>"; };
 		B30EF66A1563E742003A51F9 /* libssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libssl.pc; sourceTree = "<group>"; };
 		B30EF66B1563E742003A51F9 /* openssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openssl.pc; sourceTree = "<group>"; };
+		B314F9E5156E54410066DDBB /* ICMAggregatorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAggregatorEngine.h; sourceTree = "<group>"; };
+		B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMAggregatorEngine.mm; sourceTree = "<group>"; };
+		B314F9E9156E5A680066DDBB /* messages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = messages.pb.cc; sourceTree = "<group>"; };
+		B314F9EA156E5A680066DDBB /* messages.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messages.pb.h; sourceTree = "<group>"; };
+		B314F9ED156E5F680066DDBB /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		B314F9EE156E5F680066DDBB /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		B314F9EF156E5F680066DDBB /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		B314F9F0156E5F680066DDBB /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		B314F9F1156E5F680066DDBB /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		B314F9F2156E5F680066DDBB /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		B314F9FF156E73770066DDBB /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		B314FA00156E73770066DDBB /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		B314FA01156E73770066DDBB /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
+		B314FA02156E73770066DDBB /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
+		B314FA03156E73770066DDBB /* NSDictionary+RequestEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RequestEncoding.h"; sourceTree = "<group>"; };
+		B314FA04156E73770066DDBB /* NSDictionary+RequestEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RequestEncoding.m"; sourceTree = "<group>"; };
+		B314FA05156E73770066DDBB /* NSString+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		B314FA06156E73770066DDBB /* NSString+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		B314FA07156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		B314FA08156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		B314FA09156E73770066DDBB /* MKNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
+		B314FA0A156E73770066DDBB /* MKNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkEngine.m; sourceTree = "<group>"; };
+		B314FA0B156E73770066DDBB /* MKNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
+		B314FA0C156E73770066DDBB /* MKNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
+		B314FA0D156E73770066DDBB /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
+		B314FA0F156E73770066DDBB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		B314FA10156E73770066DDBB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		B314FA1A156E750D0066DDBB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B314FA1E156E75280066DDBB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
 		B379FAE41563556B00EB9F1C /* advertise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advertise.cpp; sourceTree = "<group>"; };
 		B379FAE51563556B00EB9F1C /* advertise.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = advertise.hpp; sourceTree = "<group>"; };
@@ -429,6 +475,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B314FA1F156E75290066DDBB /* Security.framework in Frameworks */,
+				B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */,
+				B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */,
 				B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */,
 				B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */,
 				B3EF61411552B4A300D24661 /* CoreGraphics.framework in Frameworks */,
@@ -829,6 +878,77 @@
 			path = pkgconfig;
 			sourceTree = "<group>";
 		};
+		B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */ = {
+			isa = PBXGroup;
+			children = (
+				B314F9E5156E54410066DDBB /* ICMAggregatorEngine.h */,
+				B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */,
+			);
+			name = ICMAggregatorEngine;
+			sourceTree = "<group>";
+		};
+		B314F9E8156E5A680066DDBB /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				B314F9EA156E5A680066DDBB /* messages.pb.h */,
+				B314F9E9156E5A680066DDBB /* messages.pb.cc */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
+		B314F9EC156E5F680066DDBB /* Crytpo */ = {
+			isa = PBXGroup;
+			children = (
+				B314F9EE156E5F680066DDBB /* Base64Transcoder.h */,
+				B314F9ED156E5F680066DDBB /* Base64Transcoder.c */,
+				B314F9F0156E5F680066DDBB /* hmac.h */,
+				B314F9EF156E5F680066DDBB /* hmac.c */,
+				B314F9F2156E5F680066DDBB /* sha1.h */,
+				B314F9F1156E5F680066DDBB /* sha1.c */,
+			);
+			path = Crytpo;
+			sourceTree = "<group>";
+		};
+		B314F9FB156E73770066DDBB /* MKNetworkKit */ = {
+			isa = PBXGroup;
+			children = (
+				B314F9FC156E73770066DDBB /* Categories */,
+				B314FA09156E73770066DDBB /* MKNetworkEngine.h */,
+				B314FA0A156E73770066DDBB /* MKNetworkEngine.m */,
+				B314FA0B156E73770066DDBB /* MKNetworkKit.h */,
+				B314FA0C156E73770066DDBB /* MKNetworkOperation.h */,
+				B314FA0D156E73770066DDBB /* MKNetworkOperation.m */,
+				B314FA0E156E73770066DDBB /* Reachability */,
+			);
+			path = MKNetworkKit;
+			sourceTree = "<group>";
+		};
+		B314F9FC156E73770066DDBB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B314F9FF156E73770066DDBB /* NSData+Base64.h */,
+				B314FA00156E73770066DDBB /* NSData+Base64.m */,
+				B314FA01156E73770066DDBB /* NSDate+RFC1123.h */,
+				B314FA02156E73770066DDBB /* NSDate+RFC1123.m */,
+				B314FA03156E73770066DDBB /* NSDictionary+RequestEncoding.h */,
+				B314FA04156E73770066DDBB /* NSDictionary+RequestEncoding.m */,
+				B314FA05156E73770066DDBB /* NSString+MKNetworkKitAdditions.h */,
+				B314FA06156E73770066DDBB /* NSString+MKNetworkKitAdditions.m */,
+				B314FA07156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.h */,
+				B314FA08156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		B314FA0E156E73770066DDBB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				B314FA0F156E73770066DDBB /* Reachability.h */,
+				B314FA10156E73770066DDBB /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		B379FAE31563556B00EB9F1C /* libcage */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,6 +1005,7 @@
 				B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */,
 				B3EF61421552B4A300D24661 /* icm-ios-agent */,
 				B3EF616E1552B4A300D24661 /* icm-ios-agentTests */,
+				B314F9FB156E73770066DDBB /* MKNetworkKit */,
 				B379FAE31563556B00EB9F1C /* libcage */,
 				B30EF5671563E742003A51F9 /* lib */,
 				B3EF613B1552B4A300D24661 /* Frameworks */,
@@ -904,6 +1025,9 @@
 		B3EF613B1552B4A300D24661 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B314FA1E156E75280066DDBB /* Security.framework */,
+				B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */,
+				B314FA1A156E750D0066DDBB /* CFNetwork.framework */,
 				B379FB181563560E00EB9F1C /* boost.framework */,
 				B3EF613C1552B4A300D24661 /* UIKit.framework */,
 				B3EF613E1552B4A300D24661 /* Foundation.framework */,
@@ -916,8 +1040,11 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
-				B3D00E19156BDAB70045A25E /* addressbook.pb.cc */,
+				B314F9EC156E5F680066DDBB /* Crytpo */,
+				B314F9E8156E5A680066DDBB /* protobuf */,
+				B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */,
 				B3D00E1A156BDAB70045A25E /* addressbook.pb.h */,
+				B3D00E19156BDAB70045A25E /* addressbook.pb.cc */,
 				B3D00E1B156BDAB70045A25E /* addressbook.proto */,
 				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
@@ -1147,6 +1274,19 @@
 				B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */,
 				B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */,
 				B3D00E1C156BDAB70045A25E /* addressbook.pb.cc in Sources */,
+				B314F9E7156E54410066DDBB /* ICMAggregatorEngine.mm in Sources */,
+				B314F9EB156E5A680066DDBB /* messages.pb.cc in Sources */,
+				B314F9F3156E5F680066DDBB /* Base64Transcoder.c in Sources */,
+				B314F9F4156E5F680066DDBB /* hmac.c in Sources */,
+				B314F9F5156E5F680066DDBB /* sha1.c in Sources */,
+				B314FA12156E73770066DDBB /* NSData+Base64.m in Sources */,
+				B314FA13156E73770066DDBB /* NSDate+RFC1123.m in Sources */,
+				B314FA14156E73770066DDBB /* NSDictionary+RequestEncoding.m in Sources */,
+				B314FA15156E73770066DDBB /* NSString+MKNetworkKitAdditions.m in Sources */,
+				B314FA16156E73770066DDBB /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				B314FA17156E73770066DDBB /* MKNetworkEngine.m in Sources */,
+				B314FA18156E73770066DDBB /* MKNetworkOperation.m in Sources */,
+				B314FA19156E73770066DDBB /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

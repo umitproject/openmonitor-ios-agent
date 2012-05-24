@@ -7,6 +7,7 @@
 //
 
 #import "ICMFirstViewController.h"
+#import "ICMAggregatorEngine.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -18,6 +19,11 @@
 // include libcage's header
 #include "cage.hpp"
 #include "addressbook.pb.h"
+
+extern "C" {
+#include "Base64Transcoder.h"
+}
+
 
 const int max_node = 10;
 const int port     = 10000;
@@ -157,6 +163,7 @@ int start_node()
 }
 
 - (IBAction)startBtnTapped:(id)sender {
+    /*
     dispatch_async(backgroundQueue, ^(void) {
         start_node();
     });
@@ -186,6 +193,11 @@ int start_node()
     person->SerializeToOstream(&output);   
     
     NSHomeDirectory();
+     */
+    ICMAggregatorEngine* engine = [[ICMAggregatorEngine alloc] initWithHostName:AGGREGATOR_URL
+                                                             customHeaderFields:nil];
+    
+    [engine registerAgent];
     
 }
 @end
