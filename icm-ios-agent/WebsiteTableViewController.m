@@ -22,8 +22,6 @@
 		self.titleKey = @"name";
 		self.subtitleKey = nil;
 		//self.searchKey = nil;//@"text";
-        
-        [self performFetchAndReload];
     }
     
     return self;
@@ -34,6 +32,7 @@
     [super viewDidLoad];
     
     self.title = @"Website";
+    [self performFetchAndReload];
 }
 
 - (void)viewDidUnload {
@@ -74,7 +73,7 @@
     NSArray* websites = [self.fetchedResultsController fetchedObjects];
     if ([websites count] <= 0) {
         // init database
-        /*
+        
         Website* site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
                                                       inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.google.com" name:@"Google" enabled:true uid:1001];
@@ -109,7 +108,7 @@
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.hotmail.com" name:@"Hotmail" enabled:true uid:1011];
         
-        [ICMAppDelegate SaveContext];*/
+        [ICMAppDelegate SaveContext];
     }
 }
 
