@@ -18,7 +18,6 @@
 
 // include libcage's header
 #include "cage.hpp"
-#include "addressbook.pb.h"
 
 extern "C" {
 #include "Base64Transcoder.h"

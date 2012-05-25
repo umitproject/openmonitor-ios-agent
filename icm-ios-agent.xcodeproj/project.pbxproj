@@ -77,8 +77,10 @@
 		B379FB141563556B00EB9F1C /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB021563556B00EB9F1C /* timer.cpp */; };
 		B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB041563556B00EB9F1C /* udphandler.cpp */; };
 		B379FB191563560E00EB9F1C /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B379FB181563560E00EB9F1C /* boost.framework */; };
-		B3D00E1C156BDAB70045A25E /* addressbook.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B3D00E19156BDAB70045A25E /* addressbook.pb.cc */; };
-		B3D00E1D156BDAB70045A25E /* addressbook.proto in Resources */ = {isa = PBXBuildFile; fileRef = B3D00E1B156BDAB70045A25E /* addressbook.proto */; };
+		B3B0FA9F156F6A59005FD285 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FA9D156F6A59005FD285 /* Model.xcdatamodeld */; };
+		B3B0FAA2156F6FC1005FD285 /* Website.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA1156F6FC1005FD285 /* Website.m */; };
+		B3B0FAA5156F6FC1005FD285 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA4156F6FC1005FD285 /* Service.m */; };
+		B3B0FAA8156F706B005FD285 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B0FAA7156F706B005FD285 /* CoreData.framework */; };
 		B3D00E2A156BDD630045A25E /* libprotobuf-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D00E27156BDD5B0045A25E /* libprotobuf-ios.a */; };
 		B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613C1552B4A300D24661 /* UIKit.framework */; };
 		B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613E1552B4A300D24661 /* Foundation.framework */; };
@@ -438,9 +440,12 @@
 		B379FB041563556B00EB9F1C /* udphandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = udphandler.cpp; sourceTree = "<group>"; };
 		B379FB051563556B00EB9F1C /* udphandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = udphandler.hpp; sourceTree = "<group>"; };
 		B379FB181563560E00EB9F1C /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../boostoniphone/framework/boost.framework; sourceTree = "<group>"; };
-		B3D00E19156BDAB70045A25E /* addressbook.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addressbook.pb.cc; sourceTree = "<group>"; };
-		B3D00E1A156BDAB70045A25E /* addressbook.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressbook.pb.h; sourceTree = "<group>"; };
-		B3D00E1B156BDAB70045A25E /* addressbook.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addressbook.proto; sourceTree = "<group>"; };
+		B3B0FA9E156F6A59005FD285 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B3B0FAA0156F6FC1005FD285 /* Website.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Website.h; sourceTree = "<group>"; };
+		B3B0FAA1156F6FC1005FD285 /* Website.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Website.m; sourceTree = "<group>"; };
+		B3B0FAA3156F6FC1005FD285 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		B3B0FAA4156F6FC1005FD285 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
+		B3B0FAA7156F706B005FD285 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B3D00E1E156BDD5B0045A25E /* protobuf-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "protobuf-ios.xcodeproj"; path = "../protobuf-ios/protobuf-ios.xcodeproj"; sourceTree = "<group>"; };
 		B3EF61381552B4A300D24661 /* icm-ios-agent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "icm-ios-agent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EF613C1552B4A300D24661 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -475,6 +480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B0FAA8156F706B005FD285 /* CoreData.framework in Frameworks */,
 				B314FA1F156E75290066DDBB /* Security.framework in Frameworks */,
 				B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */,
 				B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */,
@@ -990,6 +996,18 @@
 			path = libcage;
 			sourceTree = "<group>";
 		};
+		B3B0FAA6156F6FC7005FD285 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B3B0FAA3156F6FC1005FD285 /* Service.h */,
+				B3B0FAA4156F6FC1005FD285 /* Service.m */,
+				B3B0FAA0156F6FC1005FD285 /* Website.h */,
+				B3B0FAA1156F6FC1005FD285 /* Website.m */,
+				B3B0FA9D156F6A59005FD285 /* Model.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B3D00E1F156BDD5B0045A25E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1025,6 +1043,7 @@
 		B3EF613B1552B4A300D24661 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3B0FAA7156F706B005FD285 /* CoreData.framework */,
 				B314FA1E156E75280066DDBB /* Security.framework */,
 				B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */,
 				B314FA1A156E750D0066DDBB /* CFNetwork.framework */,
@@ -1040,12 +1059,10 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
+				B3B0FAA6156F6FC7005FD285 /* Model */,
 				B314F9EC156E5F680066DDBB /* Crytpo */,
 				B314F9E8156E5A680066DDBB /* protobuf */,
 				B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */,
-				B3D00E1A156BDAB70045A25E /* addressbook.pb.h */,
-				B3D00E19156BDAB70045A25E /* addressbook.pb.cc */,
-				B3D00E1B156BDAB70045A25E /* addressbook.proto */,
 				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
@@ -1218,7 +1235,6 @@
 				B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */,
 				B30EF68E1563E743003A51F9 /* libssl.pc in Resources */,
 				B30EF68F1563E743003A51F9 /* openssl.pc in Resources */,
-				B3D00E1D156BDAB70045A25E /* addressbook.proto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,7 +1289,6 @@
 				B379FB141563556B00EB9F1C /* timer.cpp in Sources */,
 				B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */,
 				B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */,
-				B3D00E1C156BDAB70045A25E /* addressbook.pb.cc in Sources */,
 				B314F9E7156E54410066DDBB /* ICMAggregatorEngine.mm in Sources */,
 				B314F9EB156E5A680066DDBB /* messages.pb.cc in Sources */,
 				B314F9F3156E5F680066DDBB /* Base64Transcoder.c in Sources */,
@@ -1287,6 +1302,9 @@
 				B314FA17156E73770066DDBB /* MKNetworkEngine.m in Sources */,
 				B314FA18156E73770066DDBB /* MKNetworkOperation.m in Sources */,
 				B314FA19156E73770066DDBB /* Reachability.m in Sources */,
+				B3B0FA9F156F6A59005FD285 /* Model.xcdatamodeld in Sources */,
+				B3B0FAA2156F6FC1005FD285 /* Website.m in Sources */,
+				B3B0FAA5156F6FC1005FD285 /* Service.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1502,6 +1520,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3B0FA9D156F6A59005FD285 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3B0FA9E156F6A59005FD285 /* Model.xcdatamodel */,
+			);
+			currentVersion = B3B0FA9E156F6A59005FD285 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B3EF612F1552B4A300D24661 /* Project object */;
 }

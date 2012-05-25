@@ -44,6 +44,7 @@
     char base64Str[1000];
     size_t base64StrSize = 1000;
     Base64EncodeData(raStr.c_str(), raStr.length(), base64Str, &base64StrSize);
+    base64Str[base64StrSize] = 0;
 
     NSLog(@"origin: %@", [NSString stringWithCString:raStr.c_str() encoding:NSUTF8StringEncoding]);
     NSString* base64NSStr = [NSString stringWithCString:base64Str encoding:NSASCIIStringEncoding];
