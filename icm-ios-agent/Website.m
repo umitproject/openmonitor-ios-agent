@@ -18,4 +18,15 @@
 @dynamic status;
 @dynamic uid;
 
+-(void) initWithUrl:(NSString*)u name:(NSString*)n enabled:(BOOL)e uid:(int)i
+{
+    self.url = u;
+    self.name = n;
+    self.enabled = [NSNumber numberWithBool:e];
+    self.uid = [NSNumber numberWithInt:i];
+    
+    self.lastcheck = nil;
+    self.status = [NSNumber numberWithInt:-1];
+}
+
 @end

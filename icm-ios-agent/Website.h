@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSNumber * status;
 @property (nonatomic, retain) NSNumber * uid;
 
+-(void) initWithUrl:(NSString*)u name:(NSString*)n enabled:(BOOL)e uid:(int)i;
+
 @end
