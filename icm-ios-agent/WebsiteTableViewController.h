@@ -15,6 +15,8 @@
 
 @private
     NSManagedObjectContext *managedObjectContext;
+    //This is the index of the cell which will be expanded
+    NSInteger selectedIndex;
 }
 
 - (void)performFetchAndReload;

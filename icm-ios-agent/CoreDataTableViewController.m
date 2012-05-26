@@ -56,7 +56,6 @@
 	fetchedResultsController = controller;
 	fetchedResultsController.delegate = self;
 	
-    UITableView* v = self.tableView;
 	if (self.view.window) [self performFetchForTableView:self.tableView];
 }
 

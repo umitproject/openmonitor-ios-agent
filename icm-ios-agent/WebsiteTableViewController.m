@@ -22,6 +22,7 @@
 		self.titleKey = @"name";
 		self.subtitleKey = nil;
 		//self.searchKey = nil;//@"text";
+        selectedIndex = -1;
     }
     
     return self;
@@ -103,7 +104,7 @@
         [site initWithUrl:@"http://www.umitproject.org" name:@"Umit Project" enabled:true uid:1009];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.flickr.com" name:@"flickr" enabled:true uid:1010];
+        [site initWithUrl:@"http://www.flickr.com" name:@"Flickr" enabled:true uid:1010];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.hotmail.com" name:@"Hotmail" enabled:true uid:1011];
@@ -112,17 +113,76 @@
     }
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject atIndex:(NSIndexPath *)indexPath
+{
+    //do customizing here
+    static NSString *ReuseIdentifier = @"CoreDataTableViewCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier];
+    if (cell == nil) {
+        //cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:ReuseIdentifier] autorelease];
+        
+        UITableViewCellStyle cellStyle = UITableViewCellStyleSubtitle;//self.subtitleKey ? UITableViewCellStyleSubtitle : UITableViewCellStyleDefault;
+        cell = [[UITableViewCell alloc] initWithStyle:cellStyle reuseIdentifier:ReuseIdentifier];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+		//cell.textLabel.textColor = [UIColor lightGrayColor];
+        
+        //cell.contentView.backgroundColor = [UIColor blackColor];
+    }
+    if (self.titleKey) cell.textLabel.text = [managedObject valueForKey:self.titleKey];
+    if (selectedIndex == indexPath.row) {
+        cell.detailTextLabel.textColor = [UIColor darkTextColor];
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.numberOfLines = 4;
+        Website* site = (Website*)managedObject;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nTesting Date: %@", site.url, site.status, site.lastcheck];
+    } else {
+        cell.detailTextLabel.text = nil;
+    }
+
+    UIImage *statusImage = [self statusImageForManagedObject:managedObject];
+    if (statusImage) cell.imageView.image = statusImage;//?
+    
+	return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//[self managedObjectSelected:[[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath]];
     Website *site = (Website *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"selected site with url %@", site.url);
+    
+    //The user is selecting the cell which is currently expanded
+    //we want to minimize it back
+    if(selectedIndex == indexPath.row)
+    {
+        selectedIndex = -1;
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        return;
+    }
+
+    //First we check if a cell is already expanded.
+    //If it is we want to minimize make sure it is reloaded to minimize it back
+    if(selectedIndex >= 0)
+    {
+        NSIndexPath *previousPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        selectedIndex = indexPath.row;
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:previousPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    //Finally set the selected index to the new selection and reload it to expand
+    selectedIndex = indexPath.row;
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
-/*
-- (void)managedObjectSelected:(NSManagedObject *)managedObject
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	Website *site = (Website *)managedObject;
-}*/
+    if(selectedIndex == indexPath.row) {
+        return 120;
+    } else {
+        return 40;
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
