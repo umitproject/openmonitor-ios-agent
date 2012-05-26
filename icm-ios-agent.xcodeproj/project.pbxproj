@@ -77,6 +77,10 @@
 		B379FB141563556B00EB9F1C /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB021563556B00EB9F1C /* timer.cpp */; };
 		B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB041563556B00EB9F1C /* udphandler.cpp */; };
 		B379FB191563560E00EB9F1C /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B379FB181563560E00EB9F1C /* boost.framework */; };
+		B381E6FA157121C10034BD46 /* pinhead-green.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F6157121C10034BD46 /* pinhead-green.png */; };
+		B381E6FB157121C10034BD46 /* pinhead-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F7157121C10034BD46 /* pinhead-green@2x.png */; };
+		B381E6FC157121C10034BD46 /* pinhead-red.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F8157121C10034BD46 /* pinhead-red.png */; };
+		B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F9157121C10034BD46 /* pinhead-red@2x.png */; };
 		B3B0FA9F156F6A59005FD285 /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FA9D156F6A59005FD285 /* model.xcdatamodeld */; };
 		B3B0FAA2156F6FC1005FD285 /* Website.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA1156F6FC1005FD285 /* Website.m */; };
 		B3B0FAA5156F6FC1005FD285 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA4156F6FC1005FD285 /* Service.m */; };
@@ -443,6 +447,10 @@
 		B379FB041563556B00EB9F1C /* udphandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = udphandler.cpp; sourceTree = "<group>"; };
 		B379FB051563556B00EB9F1C /* udphandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = udphandler.hpp; sourceTree = "<group>"; };
 		B379FB181563560E00EB9F1C /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../boostoniphone/framework/boost.framework; sourceTree = "<group>"; };
+		B381E6F6157121C10034BD46 /* pinhead-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-green.png"; sourceTree = "<group>"; };
+		B381E6F7157121C10034BD46 /* pinhead-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-green@2x.png"; sourceTree = "<group>"; };
+		B381E6F8157121C10034BD46 /* pinhead-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red.png"; sourceTree = "<group>"; };
+		B381E6F9157121C10034BD46 /* pinhead-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red@2x.png"; sourceTree = "<group>"; };
 		B3B0FA9E156F6A59005FD285 /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
 		B3B0FAA0156F6FC1005FD285 /* Website.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Website.h; sourceTree = "<group>"; };
 		B3B0FAA1156F6FC1005FD285 /* Website.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Website.m; sourceTree = "<group>"; };
@@ -1005,6 +1013,21 @@
 			path = libcage;
 			sourceTree = "<group>";
 		};
+		B381E6F5157121920034BD46 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				B381E6F6157121C10034BD46 /* pinhead-green.png */,
+				B381E6F7157121C10034BD46 /* pinhead-green@2x.png */,
+				B381E6F8157121C10034BD46 /* pinhead-red.png */,
+				B381E6F9157121C10034BD46 /* pinhead-red@2x.png */,
+				B3EF61571552B4A300D24661 /* first.png */,
+				B3EF61591552B4A300D24661 /* first@2x.png */,
+				B3EF615E1552B4A300D24661 /* second.png */,
+				B3EF61601552B4A300D24661 /* second@2x.png */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		B3B0FAA6156F6FC7005FD285 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1085,12 +1108,9 @@
 				B3EF61541552B4A300D24661 /* ICMFirstViewController.h */,
 				B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */,
 				B3356CA2156673D800AF8796 /* StartNode.cpp */,
-				B3EF61571552B4A300D24661 /* first.png */,
-				B3EF61591552B4A300D24661 /* first@2x.png */,
 				B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */,
 				B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */,
-				B3EF615E1552B4A300D24661 /* second.png */,
-				B3EF61601552B4A300D24661 /* second@2x.png */,
+				B381E6F5157121920034BD46 /* resources */,
 				B3EF61431552B4A300D24661 /* Supporting Files */,
 			);
 			path = "icm-ios-agent";
@@ -1250,6 +1270,10 @@
 				B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */,
 				B30EF68E1563E743003A51F9 /* libssl.pc in Resources */,
 				B30EF68F1563E743003A51F9 /* openssl.pc in Resources */,
+				B381E6FA157121C10034BD46 /* pinhead-green.png in Resources */,
+				B381E6FB157121C10034BD46 /* pinhead-green@2x.png in Resources */,
+				B381E6FC157121C10034BD46 /* pinhead-red.png in Resources */,
+				B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
