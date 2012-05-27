@@ -137,7 +137,7 @@
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
         Website* site = (Website*)managedObject;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nTesting Date: %@", site.url, site.status, [site.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nDate: %@", site.url, site.status, [site.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
     }

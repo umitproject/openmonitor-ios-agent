@@ -277,7 +277,7 @@
     [super viewDidLoad];
     
     //[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:.65 green:.65 blue:.65 alpha:1]];
+    //[self.tableView setSeparatorColor:[UIColor colorWithRed:.65 green:.65 blue:.65 alpha:1]];
     //[self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:0.360784 green:0.388235 blue:0.403922 alpha:1]];
 }
