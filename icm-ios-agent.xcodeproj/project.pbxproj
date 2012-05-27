@@ -60,6 +60,7 @@
 		B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */; };
 		B314FA1F156E75290066DDBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1E156E75280066DDBB /* Security.framework */; };
 		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
+		B3718EC21571DE4D00E6B2AE /* ICMConnectivityTester.m in Sources */ = {isa = PBXBuildFile; fileRef = B3718EC11571DE4D00E6B2AE /* ICMConnectivityTester.m */; };
 		B379FB061563556B00EB9F1C /* advertise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE41563556B00EB9F1C /* advertise.cpp */; };
 		B379FB071563556B00EB9F1C /* cage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE71563556B00EB9F1C /* cage.cpp */; };
 		B379FB081563556B00EB9F1C /* cagetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FAE91563556B00EB9F1C /* cagetime.cpp */; };
@@ -412,6 +413,8 @@
 		B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B314FA1E156E75280066DDBB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
+		B3718EC01571DE4D00E6B2AE /* ICMConnectivityTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMConnectivityTester.h; sourceTree = "<group>"; };
+		B3718EC11571DE4D00E6B2AE /* ICMConnectivityTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMConnectivityTester.m; sourceTree = "<group>"; };
 		B379FAE41563556B00EB9F1C /* advertise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advertise.cpp; sourceTree = "<group>"; };
 		B379FAE51563556B00EB9F1C /* advertise.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = advertise.hpp; sourceTree = "<group>"; };
 		B379FAE61563556B00EB9F1C /* bn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bn.hpp; sourceTree = "<group>"; };
@@ -1097,6 +1100,8 @@
 				B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */,
 				B3B0FAAB156F848E005FD285 /* WebsiteTableViewController.h */,
 				B3B0FAAC156F848F005FD285 /* WebsiteTableViewController.m */,
+				B3718EC01571DE4D00E6B2AE /* ICMConnectivityTester.h */,
+				B3718EC11571DE4D00E6B2AE /* ICMConnectivityTester.m */,
 				B3B0FAA6156F6FC7005FD285 /* Model */,
 				B314F9EC156E5F680066DDBB /* Crytpo */,
 				B314F9E8156E5A680066DDBB /* protobuf */,
@@ -1347,6 +1352,7 @@
 				B3B0FAAD156F848F005FD285 /* CoreDataTableViewController.m in Sources */,
 				B3B0FAAE156F848F005FD285 /* WebsiteTableViewController.m in Sources */,
 				B3B0FAB4156F8922005FD285 /* NSStringHelper.m in Sources */,
+				B3718EC21571DE4D00E6B2AE /* ICMConnectivityTester.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

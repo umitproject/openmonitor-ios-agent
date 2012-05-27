@@ -37,7 +37,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rI5-tR-IQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="kSe-4G-NUy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Service" id="yQR-HY-nM6"/>
+                    <tabBarItem key="tabBarItem" title="Service" image="second" id="yQR-HY-nM6"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="UFT-ZW-2A0">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -147,7 +147,16 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ha4-8e-Ic7"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="ha4-8e-Ic7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="dPM-G5-NK5">
+                            <connections>
+                                <action selector="refreshBtnTapped:" destination="GTV-9t-21Y" id="Xwb-cC-HaB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="refreshBtn" destination="dPM-G5-NK5" id="6Rh-QP-KZq"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1126" y="-1284"/>
@@ -165,12 +174,6 @@
                         <segue destination="GTV-9t-21Y" kind="relationship" relationship="rootViewController" id="msh-LG-xut"/>
                     </connections>
                 </navigationController>
-                <navigationItem title="Title" id="UQ4-wA-DUv"/>
-                <searchBar contentMode="redraw" id="UeM-sI-VgT">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
             </objects>
             <point key="canvasLocation" x="653" y="-1284"/>
         </scene>
@@ -316,37 +319,6 @@
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="ICMFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startBtnTapped:"/>
-                <relationship kind="outlet" name="firstNodeSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="startBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ICMSecondViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMSecondViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="getKVBtnTapped:"/>
-                <relationship kind="action" name="putKVBtnTapped:"/>
-                <relationship kind="outlet" name="getKVBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="getKeyTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="getValueTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="putKVBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="putKeyTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="putResultLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="putValueTF" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="WebsiteTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebsiteTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

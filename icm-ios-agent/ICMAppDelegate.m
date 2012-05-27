@@ -176,4 +176,11 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark dealloc
+
+- (void)dealloc
+{
+	[self saveContext];
+}
+
 @end

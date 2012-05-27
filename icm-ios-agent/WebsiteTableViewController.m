@@ -9,6 +9,7 @@
 #import "WebsiteTableViewController.h"
 #import "Website.h"
 #import "ICMAppDelegate.h"
+#import "ICMConnectivityTester.h"
 
 @implementation WebsiteTableViewController
 
@@ -37,6 +38,7 @@
 }
 
 - (void)viewDidUnload {
+    refreshBtn = nil;
 
 }
 
@@ -44,6 +46,7 @@
 
     self.managedObjectContext = nil;
 }
+
 
 - (void)performFetchAndReload
 {
@@ -135,7 +138,7 @@
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
         Website* site = (Website*)managedObject;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nTesting Date: %@", site.url, site.status, site.lastcheck];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nTesting Date: %@", site.url, site.status, [site.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
     }
@@ -187,5 +190,17 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
+
+#pragma -
+#pragma events handler
+
+- (IBAction)refreshBtnTapped:(UIBarButtonItem *)sender {
+    
+    ICMConnectivityTester* connectivityTester = [ICMConnectivityTester GetInstance];
+    for (Website* site in [self.fetchedResultsController fetchedObjects]) {
+        [connectivityTester performTestOnWebsite:site];
+    }
+}
+
 
 @end
