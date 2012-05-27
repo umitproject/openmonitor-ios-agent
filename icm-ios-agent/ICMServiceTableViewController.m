@@ -1,20 +1,19 @@
 //
-//  WebsiteTableViewController.m
-//  MageReader
+//  ICMServiceTableViewController.m
+//  icm-ios-agent
 //
 //  Created by shinysky on 11-2-5.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 #import "QuartzCore/QuartzCore.h"
-#import "WebsiteTableViewController.h"
-#import "Website.h"
+#import "ICMServiceTableViewController.h"
+#import "Service.h"
 #import "ICMAppDelegate.h"
 #import "ICMConnectivityTester.h"
 
-@implementation WebsiteTableViewController
+@implementation ICMServiceTableViewController
 
 @synthesize managedObjectContext;
-
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     
@@ -33,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Website";
+    self.title = @"Service";
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     [self performFetchAndReload];
 }
@@ -43,18 +42,18 @@
 }
 
 - (void)dealloc {
-
+    
     self.managedObjectContext = nil;
 }
 
 - (void)performFetchAndReload
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    request.entity = [NSEntityDescription entityForName:@"Website" inManagedObjectContext:self.managedObjectContext];
+    request.entity = [NSEntityDescription entityForName:@"Service" inManagedObjectContext:self.managedObjectContext];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                                      ascending:YES
                                                                                       selector:nil]];
-
+    
     //request.predicate = [NSPredicate predicateWithFormat:@"(tags CONTAINS %@)", tag];
     request.fetchBatchSize = 20;
     
@@ -63,7 +62,7 @@
                                        initWithFetchRequest:request
                                        managedObjectContext:self.managedObjectContext
                                        sectionNameKeyPath:nil
-                                       cacheName:@"WebsiteCache"];
+                                       cacheName:@"ServiceCache"];
     
     request = nil;
     
@@ -73,43 +72,37 @@
     // fetch and reload
     [self performFetchForTableView:self.tableView];
     
-    NSArray* websites = [self.fetchedResultsController fetchedObjects];
-    if ([websites count] <= 0) {
+    NSArray* services = [self.fetchedResultsController fetchedObjects];
+    if ([services count] <= 0) {
         // init database
         
-        Website* site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        Service* service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                                       inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.google.com" name:@"Google" enabled:true uid:1001];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        [service initWithHost:@"203.135.62.113" port:443 name:@"HTTPS" enabled:YES uid:2001];
+        
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.facebook.com" name:@"Facebook" enabled:true uid:1002];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        [service initWithHost:@"www.google.com" port:80 name:@"HTTP" enabled:YES uid:2002];
+        
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.youtube.com" name:@"YouTube" enabled:true uid:1003];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        [service initWithHost:@"ftp.secureftp-test.com" port:21 name:@"FTP" enabled:YES uid:2003];
+        
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.twitter.com" name:@"Twitter" enabled:true uid:1004];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        [service initWithHost:@"pop.gmail.com" port:995 name:@"POP3" enabled:YES uid:2004];
+        
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.yahoo.com" name:@"Yahoo" enabled:true uid:1005];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        [service initWithHost:@"imap.gmail.com" port:993 name:@"IMAP" enabled:YES uid:2005];
+        
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.cnn.com" name:@"CNN" enabled:true uid:1006];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        [service initWithHost:@"messenger.hotmail.com" port:1863 name:@"MSN" enabled:YES uid:2006];
+        
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.bbc.com" name:@"BBC" enabled:true uid:1007];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
-                                             inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.gmail.com" name:@"GMail" enabled:true uid:1008];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
-                                             inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.umitproject.org" name:@"Umit Project" enabled:true uid:1009];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
-                                             inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.flickr.com" name:@"Flickr" enabled:true uid:1010];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
-                                             inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.hotmail.com" name:@"Hotmail" enabled:true uid:1011];
+        [service initWithHost:@"talk.google.com" port:5222 name:@"GTalk" enabled:YES uid:2007];
         
         [ICMAppDelegate SaveContext];
     }
@@ -136,12 +129,12 @@
         cell.detailTextLabel.textColor = [UIColor darkTextColor];
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
-        Website* site = (Website*)managedObject;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nTesting Date: %@", site.url, site.status, [site.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
+        Service* service = (Service*)managedObject;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Host: %@\nPort: %d\nStatus: %@\nTesting Date: %@", service.host, [service.port intValue], service.status, [service.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
     }
-
+    
     UIImage *statusImage = [self statusImageForManagedObject:managedObject];
     if (statusImage) cell.imageView.image = statusImage;//?
     
@@ -150,8 +143,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Website *site = (Website *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"selected site with url %@", site.url);
+    Service *service = (Service *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"selected site with host: %@", service.host);
     
     //The user is selecting the cell which is currently expanded
     //we want to minimize it back
@@ -162,7 +155,7 @@
         
         return;
     }
-
+    
     //First we check if a cell is already expanded.
     //If it is we want to minimize make sure it is reloaded to minimize it back
     if(selectedIndex >= 0)
@@ -196,8 +189,8 @@
 - (IBAction)refreshBtnTapped:(UIBarButtonItem *)sender {
     
     ICMConnectivityTester* connectivityTester = [ICMConnectivityTester GetInstance];
-    for (Website* site in [self.fetchedResultsController fetchedObjects]) {
-        [connectivityTester performTestOnWebsite:site];
+    for (Service* service in [self.fetchedResultsController fetchedObjects]) {
+        [connectivityTester performTestOnService:service];
     }
 }
 

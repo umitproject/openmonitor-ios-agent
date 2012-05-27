@@ -6,11 +6,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - Root View Controller-->
+        <!--Service Table View Controller - Root View Controller-->
         <scene sceneID="TdX-jX-YN1">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7X-Ls-HYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="P2B-9T-72O" sceneMemberID="viewController">
+                <tableViewController id="P2B-9T-72O" customClass="ICMServiceTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gcf-Fn-iMq">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,16 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Byc-9Z-ya3"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Byc-9Z-ya3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="I9o-B2-492">
+                            <connections>
+                                <action selector="refreshBtnTapped:" destination="P2B-9T-72O" id="Mba-Jx-HoJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="refreshBtn" destination="I9o-B2-492" id="qwQ-aZ-t5P"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1126" y="-686"/>
@@ -130,7 +139,7 @@
         <scene sceneID="HQv-Us-Fcw">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFH-Lc-l1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="GTV-9t-21Y" customClass="WebsiteTableViewController" sceneMemberID="viewController">
+                <tableViewController id="GTV-9t-21Y" customClass="ICMWebsiteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="w46-sj-mcV">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,8 +177,13 @@
                 <navigationController definesPresentationContext="YES" id="XpY-IU-5Mo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Website" image="first" id="J1P-FZ-tCO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="U5Z-bt-UNG">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" barStyle="blackTranslucent" id="gH5-9H-yn2">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="GTV-9t-21Y" kind="relationship" relationship="rootViewController" id="msh-LG-xut"/>
                     </connections>
@@ -319,41 +333,6 @@
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="ICMFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startBtnTapped:"/>
-                <relationship kind="outlet" name="firstNodeSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="startBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ICMSecondViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMSecondViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="getKVBtnTapped:"/>
-                <relationship kind="action" name="putKVBtnTapped:"/>
-                <relationship kind="outlet" name="getKVBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="getKeyTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="getValueTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="putKVBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="putKeyTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="putResultLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="putValueTF" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="WebsiteTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebsiteTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshBtnTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="refreshBtn" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

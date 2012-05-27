@@ -19,4 +19,12 @@
 @dynamic uid;
 @dynamic lastcheck;
 
+-(void) initWithHost:(NSString*)h port:(int)port name:(NSString*)n enabled:(BOOL)e uid:(int)i
+{
+    self.host = h;
+    self.port = [NSNumber numberWithInt:port];
+    self.name = n;
+    self.enabled = [NSNumber numberWithBool:e];
+    self.uid = [NSNumber numberWithInt:i];
+}
 @end

@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Website.h"
+#import "Service.h"
+#import "GCDAsyncSocket.h"
 
-@interface ICMConnectivityTester : MKNetworkEngine
+@interface ICMConnectivityTester : MKNetworkEngine <GCDAsyncSocketDelegate>
 
 + (ICMConnectivityTester *)GetInstance;
 
 - (void)performTestOnWebsite:(Website*) site;
+- (void)performTestOnService:(Service*) service;
 
 @end

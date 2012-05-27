@@ -20,4 +20,6 @@
 @property (nonatomic, retain) NSNumber * uid;
 @property (nonatomic, retain) NSDate * lastcheck;
 
+-(void) initWithHost:(NSString*)h port:(int)port name:(NSString*)n enabled:(BOOL)e uid:(int)i;
+
 @end
