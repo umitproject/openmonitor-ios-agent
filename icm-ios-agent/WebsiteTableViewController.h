@@ -14,7 +14,7 @@
 @interface WebsiteTableViewController : CoreDataTableViewController {
 
     __weak IBOutlet UIBarButtonItem *refreshBtn;
-    
+
 @private
     NSManagedObjectContext *managedObjectContext;
     //This is the index of the cell which will be expanded

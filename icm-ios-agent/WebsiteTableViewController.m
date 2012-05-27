@@ -34,19 +34,18 @@
     [super viewDidLoad];
     
     self.title = @"Website";
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     [self performFetchAndReload];
 }
 
 - (void)viewDidUnload {
     refreshBtn = nil;
-
 }
 
 - (void)dealloc {
 
     self.managedObjectContext = nil;
 }
-
 
 - (void)performFetchAndReload
 {
