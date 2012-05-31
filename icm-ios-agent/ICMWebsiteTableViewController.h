@@ -19,9 +19,15 @@
     NSManagedObjectContext *managedObjectContext;
     //This is the index of the cell which will be expanded
     NSInteger selectedIndex;
+    
+    MKNetworkEngine *networkEngine;
+    NSMutableDictionary *imageDownloadsInProgress;  // the set of IconDownloader objects for each app
+    NSMutableDictionary *imageCache;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;
+@property (nonatomic, retain) NSMutableDictionary *imageCache;
 
 - (void)performFetchAndReload;
 - (IBAction)refreshBtnTapped:(UIBarButtonItem *)sender;

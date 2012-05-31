@@ -66,4 +66,5 @@ static ICMConnectivityTester * connectivityTester = nil;
     service.lastcheck = [NSDate date];
     [ICMAppDelegate SaveContext];
 }
+
 @end

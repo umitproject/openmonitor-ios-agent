@@ -11,9 +11,13 @@
 #import "ICMAppDelegate.h"
 #import "ICMConnectivityTester.h"
 
+#define kAppIconWidth  32
+#define kAppIconHeight 32
+
 @implementation ICMWebsiteTableViewController
 
 @synthesize managedObjectContext;
+@synthesize imageDownloadsInProgress, imageCache;
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -24,6 +28,10 @@
 		self.subtitleKey = nil;
 		//self.searchKey = nil;//@"text";
         selectedIndex = -1;
+        networkEngine = [[MKNetworkEngine alloc] initWithHostName:nil];
+        [networkEngine useCache];
+        self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
+        self.imageCache = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -43,8 +51,9 @@
 }
 
 - (void)dealloc {
-
     self.managedObjectContext = nil;
+    self.imageDownloadsInProgress = nil;
+    self.imageCache = nil;
 }
 
 - (void)performFetchAndReload
@@ -100,7 +109,7 @@
         [site initWithUrl:@"http://www.bbc.com" name:@"BBC" enabled:true uid:1007];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.gmail.com" name:@"GMail" enabled:true uid:1008];
+        [site initWithUrl:@"http://mail.google.com" name:@"GMail" enabled:true uid:1008];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.umitproject.org" name:@"Umit Project" enabled:true uid:1009];
@@ -113,6 +122,26 @@
         
         [ICMAppDelegate SaveContext];
     }
+}
+
+- (UIImage *)thumbnailImageForManagedObject:(NSManagedObject *)managedObject withIndexPath:(NSIndexPath*)indexPath
+{
+    Website* site = (Website*)managedObject;
+    NSString * imageUrlString = [NSString stringWithFormat:@"%@/favicon.ico", site.url];
+    if (imageUrlString && [imageUrlString length] > 0) {
+        UIImage *image = [self.imageCache objectForKey:imageUrlString];
+        if (image)
+        {
+            return image;
+        }
+        //FIXME if last time failed, do we need to download it again?
+        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
+        {
+            [self startIconDownload:imageUrlString withIndexPath:indexPath];
+        }
+    }
+    //TODO return a place holder if image url string is not empty.
+    return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject atIndex:(NSIndexPath *)indexPath
@@ -145,6 +174,26 @@
     UIImage *statusImage = [self statusImageForManagedObject:managedObject];
     if (statusImage) cell.imageView.image = statusImage;//?
     
+    cell.accessoryType = [self accessoryTypeForManagedObject:managedObject];
+    UIImage *thumbnailImage = [self thumbnailImageForManagedObject:managedObject withIndexPath:indexPath];
+    if(thumbnailImage) {
+        UIImageView* thumbnailImageView =  [[UIImageView alloc] initWithImage:thumbnailImage];
+
+        // Following code add shadow, can't work with the round-corner code.
+        thumbnailImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+        thumbnailImageView.layer.shadowOpacity = 1.0;
+        thumbnailImageView.layer.shadowRadius = 3.0;
+        thumbnailImageView.layer.shadowOffset = CGSizeMake(0, 0);
+        thumbnailImageView.clipsToBounds = NO;
+        
+        thumbnailImageView.layer.shouldRasterize = YES; // it's said to be good for performance.
+        thumbnailImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        
+        cell.accessoryView = thumbnailImageView;
+    } else {
+        cell.accessoryView = nil;
+    }
+
 	return cell;
 }
 
@@ -201,5 +250,112 @@
     }
 }
 
+#pragma -
+#pragma icon downloader method
+
+- (void)startIconDownload:(NSString *)thumbUrl withIndexPath:(NSIndexPath*)indexPath
+{
+    UIImage *image = [self.imageCache objectForKey:thumbUrl];
+    if (image)
+        return;
+    
+    if ([imageDownloadsInProgress objectForKey:thumbUrl]) {
+        return;
+    }
+    
+    MKNetworkOperation *op = [networkEngine operationWithURLString:thumbUrl
+                                                   params:nil
+                                               httpMethod:@"GET"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        DLog(@"[%d]%@", [operation HTTPStatusCode], operation);
+        // Use when fetching binary data
+        NSData *responseData = [operation responseData];
+        // Set appIcon and clear temporary data/image
+        UIImage *image = [[UIImage alloc] initWithData:responseData];
+        if (image) {
+            image = [ICMWebsiteTableViewController scaleImage:image toSize:CGSizeMake(kAppIconWidth, kAppIconHeight)];
+            [imageCache setObject:image forKey:thumbUrl];
+            [self.tableView reloadData];
+        }
+        [imageDownloadsInProgress removeObjectForKey:thumbUrl];
+    } onError:^(NSError *error) {
+        DLog(@"[%d]%@", [op HTTPStatusCode], error);
+    }];
+    
+    [imageDownloadsInProgress setObject:op forKey:thumbUrl];
+    [networkEngine enqueueOperation:op];
+}
+
+// this method is used in case the user scrolled into a set of cells that don't have their app icons yet
+- (void)loadImagesForOnscreenRows
+{
+    if ([[self.fetchedResultsController fetchedObjects] count] > 0)
+    {
+        NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+        for (NSIndexPath *indexPath in visiblePaths)
+        {
+            NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            UITableViewCell * cell = [self tableView:self.tableView cellForManagedObject:managedObject atIndex:indexPath];
+            if (!cell.accessoryView) // avoid the app icon download if the app already has an icon
+            {
+                Website* site = (Website*)managedObject;
+                NSString * imageUrlString = [NSString stringWithFormat:@"%@/favicon.ico", site.url];
+                //NSLog(@"thumb url: %@", imageUrlString);
+                if (imageUrlString && [imageUrlString length] > 0) {
+                    [self startIconDownload:imageUrlString withIndexPath:indexPath];
+                }
+            }
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark Image Resizing and Cropping
+
++ (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)targetSize {
+    //If scaleFactor is not touched, no scaling will occur      
+    CGFloat scaleFactor = 1.0;
+    
+    //Deciding which factor to use to scale the image (factor = targetSize / imageSize)
+    if (!((scaleFactor = (targetSize.width / image.size.width)) > (targetSize.height / image.size.height))) //scale to fit width, or
+        scaleFactor = targetSize.height / image.size.height; // scale to fit heigth.
+    
+    UIGraphicsBeginImageContext(targetSize); 
+    
+    //Creating the rect where the scaled image is drawn in
+    CGRect rect = CGRectMake((targetSize.width - image.size.width * scaleFactor) / 2,
+                             (targetSize.height -  image.size.height * scaleFactor) / 2,
+                             image.size.width * scaleFactor, image.size.height * scaleFactor);
+    
+    //Draw the image into the rect
+    [image drawInRect:rect];
+    
+    //Saving the image, ending image context
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
+#pragma mark -
+#pragma mark Deferred image loading (UIScrollViewDelegate)
+
+// Load images for all onscreen rows when scrolling is finished
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    //NSLog(@"dragging end");
+    if (!decelerate)
+	{
+        //NSLog(@"dragging end && not decelerate");
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    //NSLog(@"decelerating end");
+    [self loadImagesForOnscreenRows];
+}
 
 @end

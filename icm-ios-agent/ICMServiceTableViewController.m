@@ -144,7 +144,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Service *service = (Service *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"selected site with host: %@", service.host);
+    NSLog(@"selected service with host: %@", service.host);
     
     //The user is selecting the cell which is currently expanded
     //we want to minimize it back
