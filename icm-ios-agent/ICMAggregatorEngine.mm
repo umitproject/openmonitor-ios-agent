@@ -7,10 +7,11 @@
 //
 
 #import "ICMAggregatorEngine.h"
+#import "SecKeyWrapper.h"
+#import "CryptoCommon.h"
 
 #include "messages.pb.h"
 #include "Base64Transcoder.h"
-
 
 @implementation ICMAggregatorEngine
 
@@ -49,6 +50,9 @@
     NSLog(@"origin: %@", [NSString stringWithCString:raStr.c_str() encoding:NSUTF8StringEncoding]);
     NSString* base64NSStr = [NSString stringWithCString:base64Str encoding:NSASCIIStringEncoding];
     NSLog(@"base64: %@", base64NSStr);
+    
+    [[SecKeyWrapper sharedWrapper] generateKeyPair:kAsymmetricSecKeyPairModulusSize];
+    [[SecKeyWrapper sharedWrapper] generateSymmetricKey];
     
     MKNetworkOperation *op = [self operationWithPath:AGGR_REGISTER_AGENT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:                                                      base64NSStr, AGGR_MSG_KEY, nil]

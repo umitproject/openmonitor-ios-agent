@@ -353,10 +353,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="puw-jg-HlP" kind="relationship" relationship="viewControllers" id="2hk-Jd-JRS"/>
                         <segue destination="XpY-IU-5Mo" kind="relationship" relationship="viewControllers" id="XOY-7X-5Be"/>
                         <segue destination="kSe-4G-NUy" kind="relationship" relationship="viewControllers" id="fjL-4N-A9b"/>
-                        <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                     </connections>
                 </tabBarController>

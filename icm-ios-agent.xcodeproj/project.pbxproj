@@ -59,6 +59,7 @@
 		B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1A156E750D0066DDBB /* CFNetwork.framework */; };
 		B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */; };
 		B314FA1F156E75290066DDBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1E156E75280066DDBB /* Security.framework */; };
+		B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */; };
 		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
 		B33DFD561579DB89005CF9EE /* ICMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DFD551579DB89005CF9EE /* ICMAnnotation.m */; };
 		B3718EC21571DE4D00E6B2AE /* ICMConnectivityTester.m in Sources */ = {isa = PBXBuildFile; fileRef = B3718EC11571DE4D00E6B2AE /* ICMConnectivityTester.m */; };
@@ -419,6 +420,9 @@
 		B314FA1A156E750D0066DDBB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B314FA1E156E75280066DDBB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B3240770157CB99A0080CFF0 /* CryptoCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoCommon.h; sourceTree = "<group>"; };
+		B3240771157CB99A0080CFF0 /* SecKeyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecKeyWrapper.h; sourceTree = "<group>"; };
+		B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecKeyWrapper.m; sourceTree = "<group>"; };
 		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
 		B33DFD541579DB89005CF9EE /* ICMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAnnotation.h; sourceTree = "<group>"; };
 		B33DFD551579DB89005CF9EE /* ICMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMAnnotation.m; sourceTree = "<group>"; };
@@ -946,6 +950,9 @@
 		B314F9EC156E5F680066DDBB /* Crytpo */ = {
 			isa = PBXGroup;
 			children = (
+				B3240770157CB99A0080CFF0 /* CryptoCommon.h */,
+				B3240771157CB99A0080CFF0 /* SecKeyWrapper.h */,
+				B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */,
 				B314F9EE156E5F680066DDBB /* Base64Transcoder.h */,
 				B314F9ED156E5F680066DDBB /* Base64Transcoder.c */,
 				B314F9F0156E5F680066DDBB /* hmac.h */,
@@ -1399,6 +1406,7 @@
 				B3718ECE157258E200E6B2AE /* GCDAsyncUdpSocket.m in Sources */,
 				B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */,
 				B33DFD561579DB89005CF9EE /* ICMAnnotation.m in Sources */,
+				B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
