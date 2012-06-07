@@ -51,11 +51,41 @@
     NSString* base64NSStr = [NSString stringWithCString:base64Str encoding:NSASCIIStringEncoding];
     NSLog(@"base64: %@", base64NSStr);
     
-    [[SecKeyWrapper sharedWrapper] generateKeyPair:kAsymmetricSecKeyPairModulusSize];
-    [[SecKeyWrapper sharedWrapper] generateSymmetricKey];
+    SecKeyWrapper * crypto = [SecKeyWrapper sharedWrapper];
+    [crypto prepareKeys];
+    
+    NSData* aeskey = [crypto getSymmetricKeyBytes];
+    
+    NSString* t = [NSString stringWithUTF8String:(const char *)[aeskey bytes]];
+    NSLog(@"aes key: %@", aeskey);
+    NSLog(@"aes key str: %@", t);
+
+    NSString* aeskeyb64 = [aeskey base64EncodedString];
+    NSLog(@"aes key b64 str: %@", aeskeyb64);
+    NSData* aeskyb64data = [aeskeyb64 dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* encryptedkey = [crypto wrapSymmetricKey:aeskyb64data
+                                             keyRef:crypto.aggregatorPublicKeyRef];
+    NSString* finalKeyb64 = [encryptedkey base64EncodedString];
+    
+    // Get the padding PKCS#7 flag.
+    CCOptions pad = 0;
+    NSData * encrypted = [crypto doCipher:[base64NSStr dataUsingEncoding:NSUTF8StringEncoding]
+                                      key:crypto.symmetricKeyRef
+                                  context:kCCEncrypt
+                                  padding:&pad];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    /*
+    NSData * decrypted = [crypto doCipher:encrypted
+                                     key:crypto.symmetricKeyRef
+                                 context:kCCDecrypt
+                                 padding:&pad];
+    NSString* decryptedStr = [NSString stringWithUTF8String:(const char*)[decrypted bytes]];
+    NSLog(@"decrypted: %@", decryptedStr);*/
+
     
     MKNetworkOperation *op = [self operationWithPath:AGGR_REGISTER_AGENT
-                                              params:[NSDictionary dictionaryWithObjectsAndKeys:                                                      base64NSStr, AGGR_MSG_KEY, nil]
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:                                     finalMsgb64, AGGR_MSG_KEY,                                           finalKeyb64, AGGR_KEY_KEY, nil]
                                           httpMethod:@"POST"];
     
     [op onCompletion:^(MKNetworkOperation *operation) {

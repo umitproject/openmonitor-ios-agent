@@ -74,35 +74,59 @@
 #define kPublicKeyTag			@"org.umit.icm.ios.agent.publickey"
 #define kPrivateKeyTag			@"org.umit.icm.ios.agent.privatekey"
 #define kSymmetricKeyTag		@"org.umit.icm.ios.agent.symmetrickey"
+#define kAggregatorPublicKeyTag	@"org.umit.icm.aggregator.publickey"
 
 @interface SecKeyWrapper : NSObject {
+	NSData * publicTag;
+	NSData * privateTag;
+	NSData * symmetricTag;
+    NSData * aggregatorPublicTag;
+    
 	CCOptions typeOfSymmetricOpts;
 	SecKeyRef publicKeyRef;
 	SecKeyRef privateKeyRef;
 	NSData * symmetricKeyRef;
+    SecKeyRef aggregatorPublicKeyRef;
 }
 
+@property (nonatomic, retain) NSData * publicTag;
+@property (nonatomic, retain) NSData * privateTag;
+@property (nonatomic, retain) NSData * symmetricTag;
 @property (nonatomic, retain) NSData * symmetricKeyRef;
+@property (nonatomic, assign) SecKeyRef aggregatorPublicKeyRef;
+@property (nonatomic, retain) NSData * aggregatorPublicTag;
 
 + (SecKeyWrapper *)sharedWrapper;
 
+// prepare aggregator's public key and our own  AES key
+- (void)prepareKeys;
+
+//import RSA public key
+- (void)importAggregatorPublicKey;
+- (void)importPublicKey:(NSString *)pemPublicKeyString tag:(NSString *)tag;
+
+//AES
+- (void)generateSymmetricKey;
+- (void)deleteSymmetricKey;
+- (NSData *)getSymmetricKeyBytes;
+- (NSData *)doCipher:(NSData *)plainText key:(NSData *)symmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7;
+
+//RSA
 - (void)generateKeyPair:(NSUInteger)keySize;
 - (void)deleteAsymmetricKeys;
-- (void)deleteSymmetricKey;
-- (void)generateSymmetricKey;
 - (SecKeyRef)addPeerPublicKey:(NSString *)peerName keyBits:(NSData *)publicKey;
 - (void)removePeerPublicKey:(NSString *)peerName;
-- (NSData *)getSymmetricKeyBytes;
-- (NSData *)wrapSymmetricKey:(NSData *)symmetricKey keyRef:(SecKeyRef)publicKey;
-- (NSData *)unwrapSymmetricKey:(NSData *)wrappedSymmetricKey;
-- (NSData *)getSignatureBytes:(NSData *)plainText;
-- (NSData *)getHashBytes:(NSData *)plainText;
-- (BOOL)verifySignature:(NSData *)plainText secKeyRef:(SecKeyRef)publicKey signature:(NSData *)sig;
-- (NSData *)doCipher:(NSData *)plainText key:(NSData *)symmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7;
 - (SecKeyRef)getPublicKeyRef;
 - (NSData *)getPublicKeyBits;
 - (SecKeyRef)getPrivateKeyRef;
 - (CFTypeRef)getPersistentKeyRefWithKeyRef:(SecKeyRef)keyRef;
 - (SecKeyRef)getKeyRefWithPersistentKeyRef:(CFTypeRef)persistentRef;
+
+- (NSData *)wrapSymmetricKey:(NSData *)symmetricKey keyRef:(SecKeyRef)publicKey;
+- (NSData *)unwrapSymmetricKey:(NSData *)wrappedSymmetricKey;
+
+- (NSData *)getSignatureBytes:(NSData *)plainText;
+- (NSData *)getHashBytes:(NSData *)plainText;
+- (BOOL)verifySignature:(NSData *)plainText secKeyRef:(SecKeyRef)publicKey signature:(NSData *)sig;
 
 @end

@@ -59,9 +59,14 @@
 		B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1A156E750D0066DDBB /* CFNetwork.framework */; };
 		B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */; };
 		B314FA1F156E75290066DDBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1E156E75280066DDBB /* Security.framework */; };
-		B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */; };
+		B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
 		B33DFD561579DB89005CF9EE /* ICMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DFD551579DB89005CF9EE /* ICMAnnotation.m */; };
+		B35C4886157F418300F5045C /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C4883157F418300F5045C /* Crypto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B35C488D157F421D00F5045C /* Exception.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C488A157F421D00F5045C /* Exception.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B35C488E157F421D00F5045C /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C488C157F421D00F5045C /* Global.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B35C4891157F456400F5045C /* privateKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = B35C488F157F456400F5045C /* privateKey.pem */; };
+		B35C4892157F456400F5045C /* publicKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = B35C4890157F456400F5045C /* publicKey.pem */; };
 		B3718EC21571DE4D00E6B2AE /* ICMConnectivityTester.m in Sources */ = {isa = PBXBuildFile; fileRef = B3718EC11571DE4D00E6B2AE /* ICMConnectivityTester.m */; };
 		B3718EC51572424B00E6B2AE /* ICMServiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3718EC41572424B00E6B2AE /* ICMServiceTableViewController.m */; };
 		B3718ECD157258E200E6B2AE /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B3718ECA157258E200E6B2AE /* GCDAsyncSocket.m */; };
@@ -426,6 +431,14 @@
 		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
 		B33DFD541579DB89005CF9EE /* ICMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAnnotation.h; sourceTree = "<group>"; };
 		B33DFD551579DB89005CF9EE /* ICMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMAnnotation.m; sourceTree = "<group>"; };
+		B35C4882157F418300F5045C /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
+		B35C4883157F418300F5045C /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
+		B35C4889157F421D00F5045C /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		B35C488A157F421D00F5045C /* Exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exception.m; sourceTree = "<group>"; };
+		B35C488B157F421D00F5045C /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		B35C488C157F421D00F5045C /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		B35C488F157F456400F5045C /* privateKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privateKey.pem; sourceTree = "<group>"; };
+		B35C4890157F456400F5045C /* publicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = publicKey.pem; sourceTree = "<group>"; };
 		B3718EC01571DE4D00E6B2AE /* ICMConnectivityTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMConnectivityTester.h; sourceTree = "<group>"; };
 		B3718EC11571DE4D00E6B2AE /* ICMConnectivityTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMConnectivityTester.m; sourceTree = "<group>"; };
 		B3718EC31572424A00E6B2AE /* ICMServiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMServiceTableViewController.h; sourceTree = "<group>"; };
@@ -950,6 +963,8 @@
 		B314F9EC156E5F680066DDBB /* Crytpo */ = {
 			isa = PBXGroup;
 			children = (
+				B35C4882157F418300F5045C /* Crypto.h */,
+				B35C4883157F418300F5045C /* Crypto.m */,
 				B3240770157CB99A0080CFF0 /* CryptoCommon.h */,
 				B3240771157CB99A0080CFF0 /* SecKeyWrapper.h */,
 				B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */,
@@ -1001,6 +1016,19 @@
 				B314FA10156E73770066DDBB /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		B35C4888157F41D200F5045C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B35C4889157F421D00F5045C /* Exception.h */,
+				B35C488A157F421D00F5045C /* Exception.m */,
+				B35C488B157F421D00F5045C /* Global.h */,
+				B35C488C157F421D00F5045C /* Global.m */,
+				B3B0FAB2156F8921005FD285 /* NSStringHelper.h */,
+				B3B0FAB3156F8921005FD285 /* NSStringHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		B3718EC8157258E100E6B2AE /* CocoaAsyncSocket */ = {
@@ -1058,6 +1086,8 @@
 		B381E6F5157121920034BD46 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				B35C488F157F456400F5045C /* privateKey.pem */,
+				B35C4890157F456400F5045C /* publicKey.pem */,
 				B381E6F6157121C10034BD46 /* pinhead-green.png */,
 				B381E6F7157121C10034BD46 /* pinhead-green@2x.png */,
 				B381E6F8157121C10034BD46 /* pinhead-red.png */,
@@ -1136,8 +1166,6 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
-				B3B0FAB2156F8921005FD285 /* NSStringHelper.h */,
-				B3B0FAB3156F8921005FD285 /* NSStringHelper.m */,
 				B3B0FAA9156F848E005FD285 /* CoreDataTableViewController.h */,
 				B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */,
 				B3718EC6157242E900E6B2AE /* ICMWebsiteTableViewController.h */,
@@ -1150,6 +1178,7 @@
 				B3CF44301579043200B954FA /* ICMMapViewController.m */,
 				B33DFD541579DB89005CF9EE /* ICMAnnotation.h */,
 				B33DFD551579DB89005CF9EE /* ICMAnnotation.m */,
+				B35C4888157F41D200F5045C /* Helpers */,
 				B3B0FAA6156F6FC7005FD285 /* Model */,
 				B314F9EC156E5F680066DDBB /* Crytpo */,
 				B314F9E8156E5A680066DDBB /* protobuf */,
@@ -1327,6 +1356,8 @@
 				B381E6FB157121C10034BD46 /* pinhead-green@2x.png in Resources */,
 				B381E6FC157121C10034BD46 /* pinhead-red.png in Resources */,
 				B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */,
+				B35C4891157F456400F5045C /* privateKey.pem in Resources */,
+				B35C4892157F456400F5045C /* publicKey.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,6 +1438,9 @@
 				B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */,
 				B33DFD561579DB89005CF9EE /* ICMAnnotation.m in Sources */,
 				B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */,
+				B35C4886157F418300F5045C /* Crypto.m in Sources */,
+				B35C488D157F421D00F5045C /* Exception.m in Sources */,
+				B35C488E157F421D00F5045C /* Global.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

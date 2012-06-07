@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-//#define AGGREGATOR_URL @"http://icm-dev.appspot.com";
+//#define AGGREGATOR_URL @"icm-dev.appspot.com"
 #define AGGREGATOR_URL @"aggregator:8000"
 #define AGGR_REGISTER_AGENT @"api/registeragent/"
 #define AGGR_GET_PEER_LIST @"api/getpeerlist/"
@@ -27,6 +27,7 @@
 #define AGGR_GENERATE_SECRET_KEY @"api/generatesecretkey/"
 #define AGGR_GET_TOKEN_ASYMMETRIC_KEYS @"api/gettokenandasymmetrickeys/"
 #define AGGR_MSG_KEY @"msg"
+#define AGGR_KEY_KEY @"key"
 #define RSAKEY_MOD @"109916896023924130410814755146"
 #define RSAKEY_EXP @"65537"
 

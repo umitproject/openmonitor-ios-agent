@@ -83,7 +83,7 @@ sunt in culpa qui officia deserunt mollit."
 #define kPadTag "crypto7"
 #define kMaxMessageLength 1024*1024*5
 // Valid sizes are currently 512, 1024, and 2048.
-#define kAsymmetricSecKeyPairModulusSize 512
+#define kAsymmetricSecKeyPairModulusSize 1024
 
 // Uncomment line below to allow connection to self.
 //
