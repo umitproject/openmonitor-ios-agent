@@ -68,7 +68,8 @@
     
     // prepare msg
     // FIXME
-    base64NSStr = [[@"test msg" dataUsingEncoding:NSASCIIStringEncoding] base64EncodedString];
+    //base64NSStr = [[@"test msg" dataUsingEncoding:NSASCIIStringEncoding] base64EncodedString];
+    base64NSStr = [NSString stringWithCString:raStr.c_str() encoding:NSUTF8StringEncoding];
     NSLog(@"msg b64: %@", base64NSStr);
     // Get the padding PKCS#7 flag.
     CCOptions pad = 0;
