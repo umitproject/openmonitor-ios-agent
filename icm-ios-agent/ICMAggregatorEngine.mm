@@ -54,12 +54,11 @@
     SecKeyWrapper * crypto = [SecKeyWrapper sharedWrapper];
     [crypto prepareKeys];
     
+    // prepare key
     NSData* aeskey = [crypto getSymmetricKeyBytes];
-    
     NSString* t = [NSString stringWithUTF8String:(const char *)[aeskey bytes]];
     NSLog(@"aes key: %@", aeskey);
     NSLog(@"aes key str: %@", t);
-
     NSString* aeskeyb64 = [aeskey base64EncodedString];
     NSLog(@"aes key b64 str: %@", aeskeyb64);
     NSData* aeskyb64data = [aeskeyb64 dataUsingEncoding:NSUTF8StringEncoding];
@@ -67,6 +66,10 @@
                                              keyRef:crypto.aggregatorPublicKeyRef];
     NSString* finalKeyb64 = [encryptedkey base64EncodedString];
     
+    // prepare msg
+    // FIXME
+    base64NSStr = [[@"test msg" dataUsingEncoding:NSASCIIStringEncoding] base64EncodedString];
+    NSLog(@"msg b64: %@", base64NSStr);
     // Get the padding PKCS#7 flag.
     CCOptions pad = 0;
     NSData * encrypted = [crypto doCipher:[base64NSStr dataUsingEncoding:NSUTF8StringEncoding]

@@ -43,6 +43,7 @@
 		B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF6691563E742003A51F9 /* libevent_pthreads.pc */; };
 		B30EF68E1563E743003A51F9 /* libssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66A1563E742003A51F9 /* libssl.pc */; };
 		B30EF68F1563E743003A51F9 /* openssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66B1563E742003A51F9 /* openssl.pc */; };
+		B310D4AD1580AA6D008F01BE /* messages.proto in Resources */ = {isa = PBXBuildFile; fileRef = B310D4AC1580AA6D008F01BE /* messages.proto */; };
 		B314F9E7156E54410066DDBB /* ICMAggregatorEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */; };
 		B314F9EB156E5A680066DDBB /* messages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B314F9E9156E5A680066DDBB /* messages.pb.cc */; };
 		B314F9F3156E5F680066DDBB /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = B314F9ED156E5F680066DDBB /* Base64Transcoder.c */; };
@@ -395,6 +396,7 @@
 		B30EF6691563E742003A51F9 /* libevent_pthreads.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libevent_pthreads.pc; sourceTree = "<group>"; };
 		B30EF66A1563E742003A51F9 /* libssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libssl.pc; sourceTree = "<group>"; };
 		B30EF66B1563E742003A51F9 /* openssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openssl.pc; sourceTree = "<group>"; };
+		B310D4AC1580AA6D008F01BE /* messages.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = messages.proto; sourceTree = "<group>"; };
 		B314F9E5156E54410066DDBB /* ICMAggregatorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAggregatorEngine.h; sourceTree = "<group>"; };
 		B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMAggregatorEngine.mm; sourceTree = "<group>"; };
 		B314F9E9156E5A680066DDBB /* messages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = messages.pb.cc; sourceTree = "<group>"; };
@@ -1086,6 +1088,7 @@
 		B381E6F5157121920034BD46 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				B310D4AC1580AA6D008F01BE /* messages.proto */,
 				B35C488F157F456400F5045C /* privateKey.pem */,
 				B35C4890157F456400F5045C /* publicKey.pem */,
 				B381E6F6157121C10034BD46 /* pinhead-green.png */,
@@ -1358,6 +1361,7 @@
 				B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */,
 				B35C4891157F456400F5045C /* privateKey.pem in Resources */,
 				B35C4892157F456400F5045C /* publicKey.pem in Resources */,
+				B310D4AD1580AA6D008F01BE /* messages.proto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

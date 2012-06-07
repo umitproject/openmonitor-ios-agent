@@ -1,0 +1,423 @@
+/**
+ * Copyright (C) 2011 Adriano Monteiro Marques
+ *
+ * Author: ICM Team
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ * USA
+ */
+
+
+package org.umit.icm.mobile.proto;
+option java_outer_classname = "MessageProtos";
+
+//package org.umit.icm.proto.java;
+
+message Trace {
+	required int32 hop = 1;
+	required string ip = 2;
+	repeated int32 packetsTiming = 3; // The timing for each packet sent to that node
+}
+
+message TraceRoute {
+	required string target = 1; // The target may have multiple IP addresses. This field holds the IP of the one used for the trace
+	required int32 hops = 2;
+	required int32 packetSize = 3;
+	repeated Trace traces = 4;
+}
+
+message ICMReport {
+	required string reportID = 1;
+	required int64 agentID = 2;
+	required int32 testID = 3;
+	required int32 timeZone = 4;
+	required int64 timeUTC = 5;
+	repeated string passedNode = 6;
+	optional TraceRoute traceroute = 7;
+}
+
+message WebsiteReportDetail {
+	required string websiteURL = 1;
+	required int32 statusCode = 2;
+	optional int32 responseTime = 3;
+	optional int32 bandwidth = 4;
+	optional string redirectLink = 5;
+	optional string htmlResponse = 6;
+	optional bytes htmlMedia = 7; // If not in mobile agent, then grab the media files and pack them with gzip and store it in this field.
+}
+
+message WebsiteReport {
+	required ICMReport header = 1;
+	required WebsiteReportDetail report = 2;
+}
+
+message ServiceReportDetail {
+	required string serviceName = 1;
+	required int32 statusCode = 2;
+	required int32 port = 3;
+	optional double responseTime = 4;
+	optional double bandwidth = 5;
+}
+
+message ServiceReport {
+	required ICMReport header = 1;
+	required ServiceReportDetail report = 2;
+}
+
+// Webservice Response Messages
+
+// Request Header
+message RequestHeader {
+	required int64 agentID = 1;
+}
+
+// Response Header
+message ResponseHeader {
+	required int32 currentVersionNo = 1;
+	required int32 currentTestVersionNo = 2; // The version of the current set of tests
+}
+
+
+// Register with the aggregator when the agent launches for the first time
+
+// must be encrypted with aggregator publicKey
+message RegisterAgent {
+	required int32 versionNo = 1;
+	required string agentType = 2; // Right now can be MOBILE or DESKTOP
+	required LoginCredentials credentials = 3;
+	required RSAKey agentPublicKey = 4;
+	optional string ip = 5;
+}
+
+// must be encrypted with agent publicKey
+message RegisterAgentResponse {
+	required ResponseHeader header = 1;
+	required int64 agentID = 2;
+	required string publicKeyHash = 3;
+}
+
+message RSAKey {
+    required string mod = 1;
+    required string exp = 2;
+}
+
+message CheckAggregator {
+    required string agentType = 1;
+}
+
+message CheckAggregatorResponse {
+    required ResponseHeader header = 1;
+    required string status = 2;
+}
+
+// login/logout
+
+message Login {
+    required int64 agentID = 1;
+    required string challenge = 2;
+    required int64 port = 3;
+    optional string ip = 4;
+}
+
+message LoginStep1 {
+    required int64 processID = 1;
+    required string cipheredChallenge = 2;
+    required string challenge = 3;
+}
+
+message LoginStep2 {
+    required int64 processID = 1;
+    required string cipheredChallenge = 2;
+}
+
+message LoginResponse {
+    required ResponseHeader header = 1;
+}
+
+message Logout {
+    required int64 agentID = 1;
+}
+
+message LogoutResponse {
+    required string status = 1;
+}
+
+// get_peers_list
+
+message GetPeerList {
+	optional int32 count = 1;
+}
+
+message AgentData {
+	required int64 agentID = 1;
+	required string agentIP = 2;
+	required int32 agentPort = 3;
+	required string token = 4;
+	required RSAKey publicKey = 5;
+	required string peerStatus = 6; // Can be ON, OFF or UNKNOWN
+}
+
+message GetPeerListResponse {
+	required ResponseHeader header = 1;
+	repeated AgentData knownPeers = 2;
+}
+
+// get_super_peers_list
+
+message GetSuperPeerList {
+	optional int32 count = 1;
+}
+
+message GetSuperPeerListResponse {
+	required ResponseHeader header = 1;
+	repeated AgentData knownSuperPeers = 2;
+}
+
+// get_events
+
+message Location {
+	required double longitude = 1;
+	required double latitude = 2;
+}
+
+message GetEvents {
+	repeated Location locations = 1; // A list of geo areas that we might be covering with reports.
+	optional Location agentLocation = 2;
+}
+
+message Event {
+	required string testType = 1; // Identifier for the type of test taken (WEB or SERVICE for now)
+	required string eventType = 2; // The sort of event: CENSOR, THROTTLING, OFF_LINE
+	required int64 timeUTC = 3; // Actual time
+	required int64 sinceTimeUTC = 4; // Time since when this event was first noticed
+	repeated Location locations = 5; // A list of geo areas that we might be covering with reports.
+	optional WebsiteReportDetail websiteReport = 6;
+	optional ServiceReportDetail serviceReport = 7;
+}
+
+message GetEventsResponse {
+	required ResponseHeader header = 1;
+	repeated Event events = 2;
+}
+
+// send_report
+message SendWebsiteReport {
+	required WebsiteReport report = 1;
+}
+
+message SendServiceReport {
+	required ServiceReport report = 1;
+}
+
+message SendReportResponse {
+	required ResponseHeader header = 1;
+}
+
+// new_version_available
+
+message NewVersion {
+	required int32 agentVersionNo = 1;
+	required string agentType = 2; // Right now can be MOBILE or DESKTOP
+}
+
+message NewVersionResponse {
+	required ResponseHeader header = 1;
+	optional string downloadURL = 2;
+	optional bytes update = 3; // The binary update in bzip2 format. Patch should be fine.
+	required int32 versionNo = 4; // The new version number.
+}
+
+// new_tests_available
+
+message NewTests {
+	required int32 currentTestVersionNo = 1;
+}
+
+message Website {
+	required string url = 1;
+}
+
+message Service {
+	required string name = 1;
+	required int32 port = 2;
+	required string ip = 3;
+}
+
+message Test {
+	required int64 testID = 1;
+	optional Website website = 2;
+	optional Service service = 3;
+	optional int64 executeAtTimeUTC = 4;
+	required string testType = 5; // Identifier for the type of test taken (WEB or SERVICE for now)
+}
+
+message NewTestsResponse {
+	required ResponseHeader header = 1;
+	repeated Test tests = 2; // tests will only contain anything if the version of the NewTests message is lower than current version
+	required int32 testVersionNo = 3; // The new test version number.
+}
+
+// assign_tasks_to_peer
+
+message AssignTask {
+	required RequestHeader header = 1;
+}
+
+message AssignTaskResponse {
+	required ResponseHeader header = 1;
+	repeated Test tests = 2;
+}
+
+// upgrade_peer_to_be_super
+
+message UpgradeToSuper {
+	required RequestHeader header = 1;
+}
+
+message UpgradeToSuperResponse {
+	required ResponseHeader header = 1;
+	required string newToken = 2;
+	required RSAKey newPrivateKey = 3;
+	required RSAKey newPublicKey = 4;
+}
+
+message WebsiteSuggestion {
+	required string websiteURL = 1;
+}
+
+message ServiceSuggestion {
+	required string serviceName = 1;
+	required string hostName = 2;
+	required string ip = 3;
+	required int64 port = 4;
+}
+
+message TestSuggestionResponse {
+	required ResponseHeader header = 1;
+}
+
+
+// Peer Authentication will have 2 steps:
+// 1. AuthenticatePeer
+// 2. GenerateSecretKey
+
+message AuthenticatePeer {
+	required int32 agentType = 1;	
+	required int64 agentID = 2;	
+	required RSAKey cipheredPublicKey = 3;
+	optional int32 agentPort = 4;
+}
+
+message AuthenticatePeerResponse {
+	required RSAKey cipheredPublicKey = 1;
+	required string token = 2;
+}
+
+message P2PGetSuperPeerList {
+	required int32 count = 1;
+}
+
+message P2PGetSuperPeerListResponse {
+	repeated AgentData peers = 1;
+}
+
+message P2PGetPeerList {
+	required int32 count = 1;
+}
+
+message P2PGetPeerListResponse {
+	repeated AgentData peers = 1;
+}
+
+message AgentUpdate {
+	required string version = 1;
+	required string downloadURL = 2;
+	optional int32 checkCode = 3;
+}
+
+message AgentUpdateResponse {
+	required string version = 1;
+	required string result = 2;
+}
+
+message TestModuleUpdate {
+	required string version = 1;
+	required string downloadURL = 2;
+	optional int32 checkCode = 3;
+}
+
+message TestModuleUpdateResponse {
+	required string version = 1;
+	required string result = 2;
+}
+
+message ForwardingMessage {
+	required int64 destination = 1;  // 0 stands for aggregator, other for agent id
+	required string identifier = 2;  // used to match the response with request
+	required string encodedMessage = 3;  // base64(msg_id_int32|serialized_msg)
+}
+
+message ForwardingMessageResponse {
+	required string identifier = 1;  // same as the field in request message
+	required string encodedMessage = 2;
+}
+
+message LoginCredentials {
+	required string username = 1;
+	required string password = 2;
+}
+
+message GetNetlist {
+    required int32 list = 1;
+}
+
+message NetworkData {
+    required int32 start_ip = 1;
+    required int32 end_ip = 2;
+    optional int32 nodes_count_network = 3;
+    repeated AgentData nodes = 4;
+}
+
+message BannedNetworkData {
+    required int32 start_ip = 1;
+    required int32 end_ip = 2;
+    optional int32 nodes_count = 3; // Infringing nodes in the network
+    required int32 flags = 4; // Ban flags
+}
+
+message GetNetlistResponse {
+    required ResponseHeader header = 1;
+    repeated NetworkData networks = 2;
+}
+
+message GetBanlist {
+    required int32 count = 1;
+}
+
+message GetBanlistResponse {
+    required ResponseHeader header = 1;
+    required int32 nodes_count = 2;
+    repeated int32 agent_ids = 3;
+}
+
+message GetBannets {
+    required int32 count = 1;
+}
+
+message GetBannetsResponse {
+    required ResponseHeader header = 1;
+    repeated BannedNetworkData networks = 2;
+}
+
