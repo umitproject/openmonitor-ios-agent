@@ -15,6 +15,25 @@
 
 @implementation ICMAggregatorEngine
 
+@synthesize agentId = _agentId;
+
+static ICMAggregatorEngine * __sharedEngine = nil;
+
++ (ICMAggregatorEngine *)sharedEngine {
+    @synchronized(self) {
+        if (__sharedEngine == nil) {
+            __sharedEngine = [[ICMAggregatorEngine alloc] initWithHostName:AGGREGATOR_URL customHeaderFields:nil];
+            NSNumber * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
+            if (agentid != nil) {
+                __sharedEngine.agentId = [agentid intValue];
+            } else {
+                __sharedEngine.agentId = -1;
+            }
+        }
+    }
+    return __sharedEngine;
+}
+
 #pragma mark -
 #pragma mark REST API methods
 #pragma mark -
@@ -86,6 +105,7 @@
         NSLog(@"register succeeded! got agent id: %d", aid);
         
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:aid] forKey:AGENT_ID_KEY];
+        self.agentId = aid;
         
     } onError:^(NSError *error) {
         

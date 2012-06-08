@@ -35,8 +35,12 @@
 
 @interface ICMAggregatorEngine : MKNetworkEngine
 {
-    ;
+    int _agentId;
 }
+
+@property (nonatomic, assign) int agentId;
+
++ (ICMAggregatorEngine *)sharedEngine;
 
 #pragma mark REST API methods
 

@@ -193,11 +193,8 @@ int start_node()
     
     NSHomeDirectory();
      */
-    ICMAggregatorEngine* engine = [[ICMAggregatorEngine alloc] initWithHostName:AGGREGATOR_URL
-                                                             customHeaderFields:nil];
-    
-    NSNumber * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
-    if (agentid == nil)
+    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    if (engine.agentId < 0)
         [engine registerAgent];
     
 }
