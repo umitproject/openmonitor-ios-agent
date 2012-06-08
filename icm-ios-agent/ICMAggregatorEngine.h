@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SecKeyWrapper.h"
+
 //#define AGGREGATOR_URL @"icm-dev.appspot.com"
 #define AGGREGATOR_URL @"aggregator:8000"
 #define AGGR_REGISTER_AGENT @"api/registeragent/"
@@ -36,6 +38,7 @@
 
 @interface ICMAggregatorEngine : MKNetworkEngine
 {
+    SecKeyWrapper * crypto;
     int _agentId;
 }
 

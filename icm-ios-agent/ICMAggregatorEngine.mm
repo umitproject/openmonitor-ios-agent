@@ -22,16 +22,25 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 + (ICMAggregatorEngine *)sharedEngine {
     @synchronized(self) {
         if (__sharedEngine == nil) {
-            __sharedEngine = [[ICMAggregatorEngine alloc] initWithHostName:AGGREGATOR_URL customHeaderFields:nil];
-            NSNumber * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
-            if (agentid != nil) {
-                __sharedEngine.agentId = [agentid intValue];
-            } else {
-                __sharedEngine.agentId = -1;
-            }
+            __sharedEngine = [[ICMAggregatorEngine alloc] init];
         }
     }
     return __sharedEngine;
+}
+
+- (ICMAggregatorEngine*)init
+{
+    if (self = [super initWithHostName:AGGREGATOR_URL customHeaderFields:nil]) {
+        NSNumber * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
+        if (agentid != nil) {
+            self.agentId = [agentid intValue];
+        } else {
+            self.agentId = -1;
+        }
+        crypto = [SecKeyWrapper sharedWrapper];
+        [crypto prepareKeys];
+    }
+    return self;
 }
 
 #pragma mark -
@@ -45,9 +54,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 	//return [self _sendRequestWithMethod:nil path:AGGR_REGISTER_AGENT queryParameters:nil body:nil 
     //                        requestType:MGTwitterPublicTimelineRequest 
     //                       responseType:MGTwitterStatuses];
-    
-    SecKeyWrapper * crypto = [SecKeyWrapper sharedWrapper];
-    [crypto prepareKeys];
     
     // prepare key
     NSData* aeskey = [crypto getSymmetricKeyBytes];
@@ -87,11 +93,12 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     NSString* decryptedStr = [NSString stringWithUTF8String:(const char*)[decrypted bytes]];
     NSLog(@"decrypted: %d %@ %@\n\n", [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSASCIIStringEncoding] description]);
     
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    NSLog(@"finalKeyb64:%@", finalKeyb64);
+    
     MKNetworkOperation *op = [self operationWithPath:AGGR_REGISTER_AGENT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:                                     finalMsgb64, AGGR_MSG_KEY,                                           finalKeyb64, AGGR_KEY_KEY, nil]
                                           httpMethod:@"POST"];
-    NSLog(@"finalMsgb64:%@", finalMsgb64);
-    NSLog(@"finalKeyb64:%@", finalKeyb64);
     
     [op onCompletion:^(MKNetworkOperation *operation) {
         
@@ -125,15 +132,17 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     std::string geStr = ge.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
-    NSString* finalMsgb64 = [geData base64EncodedString];
-
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
     MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
                                                       [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
-    NSLog(@"finalMsgb64:%@", finalMsgb64);
     
     [op onCompletion:^(MKNetworkOperation *operation) {
         
@@ -156,7 +165,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
             
             NSLog(@"got event: %d %d %@ %@", t, st, ttNSStr, etNSStr);
         }
-
         
     } onError:^(NSError *error) {
         

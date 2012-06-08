@@ -195,7 +195,10 @@ int start_node()
      */
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId < 0)
-        [engine registerAgent];
+    //    [engine registerAgent];
+    //fuck yeah!
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:16] forKey:AGENT_ID_KEY];
+    engine.agentId= 16;
     [engine getEvents];
 }
 @end
