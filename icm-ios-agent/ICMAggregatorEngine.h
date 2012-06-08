@@ -28,6 +28,7 @@
 #define AGGR_GET_TOKEN_ASYMMETRIC_KEYS @"api/gettokenandasymmetrickeys/"
 #define AGGR_MSG_KEY @"msg"
 #define AGGR_KEY_KEY @"key"
+#define AGGR_AGENT_ID_KEY @"agentID"
 #define RSAKEY_MOD @"109916896023924130410814755146"
 #define RSAKEY_EXP @"65537"
 #define AGENT_ID_KEY @"AgentID"
@@ -49,6 +50,8 @@
 // All methods below return a unique connection identifier.
 // ======================================================================================================
 
-- (NSString *)registerAgent; // registeragent
+- (void)registerAgent; // registeragent
+- (void)getEvents;
+- (void)sendwebsitereport;
 
 @end

@@ -194,8 +194,8 @@ int start_node()
     NSHomeDirectory();
      */
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
-    if (engine.agentId < 0)
+    //if (engine.agentId < 0)
         [engine registerAgent];
-    
+    [engine getEvents];
 }
 @end

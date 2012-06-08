@@ -40,7 +40,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 
 #pragma mark Login methods
 
-- (NSString *)registerAgent
+- (void)registerAgent
 {
 	//return [self _sendRequestWithMethod:nil path:AGGR_REGISTER_AGENT queryParameters:nil body:nil 
     //                        requestType:MGTwitterPublicTimelineRequest 
@@ -113,8 +113,63 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     }];
     
     [self enqueueOperation:op];
-    
-    return @"";
 }
+
+- (void)getEvents
+{
+    // prepare msg
+    org::umit::icm::mobile::proto::GetEvents ge;
+    org::umit::icm::mobile::proto::Location* loc = ge.add_locations();
+    loc->set_latitude(34);
+    loc->set_longitude(108);
+    
+    std::string geStr = ge.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSString* finalMsgb64 = [geData base64EncodedString];
+
+    MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::GetEventsResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        int es = rar.events_size();
+        for (int i = 0; i < es; i++) {
+            org::umit::icm::mobile::proto::Event e = rar.events(i);
+            std::string ttStr = e.testtype();
+            std::string etStr = e.eventtype();
+            int t = e.timeutc();
+            int st = e.sincetimeutc();
+            
+            NSString* ttNSStr = [NSString stringWithCString:ttStr.c_str() encoding:ttStr.size()];
+            NSString* etNSStr = [NSString stringWithCString:etStr.c_str() encoding:etStr.size()];
+            
+            NSLog(@"got event: %d %d %@ %@", t, st, ttNSStr, etNSStr);
+        }
+
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
+- (void)sendwebsitereport
+{
+    
+}
+
 
 @end
