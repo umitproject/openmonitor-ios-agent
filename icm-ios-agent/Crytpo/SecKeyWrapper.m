@@ -650,6 +650,37 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	return (sanityCheck == noErr) ? YES : NO;
 }
 
+- (NSData*) _cryptData: (NSData*)data operation: (CCOperation)op options: (CCOptions)options
+{
+    NSData *keyData = self.symmetricKeyRef;
+    NSMutableData *output = [NSMutableData dataWithLength: data.length + 256];
+    size_t bytesWritten = 0;
+    CCCryptorStatus status = CCCrypt(op,
+                                     kCCAlgorithmAES128,
+                                     options,
+                                     keyData.bytes,
+                                     kChosenCipherKeySize,
+                                     NULL,
+                                     data.bytes,
+                                     data.length,
+                                     output.mutableBytes,
+                                     output.length,
+                                     &bytesWritten);
+    if (status) {
+        return nil;
+    }
+    output.length = bytesWritten;
+    return output;
+}
+
+- (NSData*) encryptData: (NSData*)data {
+    return [self _cryptData: data operation: kCCEncrypt options: kCCOptionECBMode | kCCOptionPKCS7Padding];
+}
+
+- (NSData*) decryptData: (NSData*)data {
+    return [self _cryptData: data operation: kCCDecrypt options: kCCOptionECBMode | kCCOptionPKCS7Padding];
+}
+
 - (NSData *)doCipher:(NSData *)plainText key:(NSData *)symmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7 {
 	CCCryptorStatus ccStatus = kCCSuccess;
 	// Symmetric crypto reference.
@@ -684,18 +715,10 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	
 	LOGGING_FACILITY(plainTextBufferSize > 0, @"Empty plaintext passed in." );
 	
-	// We don't want to toss padding on if we don't need to
-	if (encryptOrDecrypt == kCCEncrypt) {
-		if (*pkcs7 != kCCOptionECBMode) {
-			if ((plainTextBufferSize % kChosenCipherBlockSize) == 0) {
-				*pkcs7 = 0x0000;
-			} else {
-				*pkcs7 = kCCOptionPKCS7Padding;
-			}
-		}
-	} else if (encryptOrDecrypt != kCCDecrypt) {
-		LOGGING_FACILITY1( 0, @"Invalid CCOperation parameter [%d] for cipher context.", *pkcs7 );
-	} 
+	// check for valid context parameter
+    if (encryptOrDecrypt != kCCEncrypt && encryptOrDecrypt != kCCDecrypt) {
+        LOGGING_FACILITY1( 0, @"Invalid CCOperation parameter [%d] for cipher context.", encryptOrDecrypt );
+    }
 	
 	// Create and Initialize the crypto reference.
 	ccStatus = CCCryptorCreate(	encryptOrDecrypt, 
@@ -726,7 +749,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	remainingBytes = bufferPtrSize;
 	
 	// Actually perform the encryption or decryption.
-	ccStatus = CCCryptorUpdate( thisEncipher,
+	ccStatus = CCCryptorUpdate(thisEncipher,
                                (const void *) [plainText bytes],
                                plainTextBufferSize,
                                ptr,
@@ -742,7 +765,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	totalBytesWritten += movedBytes;
 	
 	// Finalize everything to the output buffer.
-	ccStatus = CCCryptorFinal(	thisEncipher,
+	ccStatus = CCCryptorFinal(thisEncipher,
                               ptr,
                               remainingBytes,
                               &movedBytes

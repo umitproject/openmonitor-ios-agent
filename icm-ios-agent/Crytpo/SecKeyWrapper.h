@@ -110,6 +110,8 @@
 - (void)deleteSymmetricKey;
 - (NSData *)getSymmetricKeyBytes;
 - (NSData *)doCipher:(NSData *)plainText key:(NSData *)symmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7;
+- (NSData*) encryptData: (NSData*)data;
+- (NSData*) decryptData: (NSData*)data;
 
 //RSA
 - (void)generateKeyPair:(NSUInteger)keySize;

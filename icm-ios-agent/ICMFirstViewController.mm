@@ -196,7 +196,9 @@ int start_node()
     ICMAggregatorEngine* engine = [[ICMAggregatorEngine alloc] initWithHostName:AGGREGATOR_URL
                                                              customHeaderFields:nil];
     
-    [engine registerAgent];
+    NSNumber * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
+    if (agentid == nil)
+        [engine registerAgent];
     
 }
 @end

@@ -30,6 +30,7 @@
 #define AGGR_KEY_KEY @"key"
 #define RSAKEY_MOD @"109916896023924130410814755146"
 #define RSAKEY_EXP @"65537"
+#define AGENT_ID_KEY @"AgentID"
 
 
 @interface ICMAggregatorEngine : MKNetworkEngine
