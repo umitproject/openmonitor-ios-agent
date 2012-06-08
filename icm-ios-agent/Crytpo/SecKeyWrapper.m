@@ -555,7 +555,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	memset((void *)keyBuffer, 0x0, keyBufferSize);
 	
 	// Decrypt using the private key.
-	sanityCheck = SecKeyDecrypt(	privateKey,
+	sanityCheck = SecKeyDecrypt(privateKey,
                                 kTypeOfWrapPadding,
                                 (const uint8_t *) [wrappedSymmetricKey bytes],
                                 cipherBufferSize,

@@ -67,7 +67,7 @@
 
 // Global constants for padding schemes.
 #define	kPKCS1					11
-#define kTypeOfWrapPadding		kSecPaddingPKCS1
+#define kTypeOfWrapPadding		kSecPaddingNone
 #define kTypeOfSigPadding		kSecPaddingPKCS1SHA1
 
 // constants used to find public, private, and symmetric keys.
