@@ -35,6 +35,7 @@
 #define RSAKEY_EXP @"65537"
 #define AGENT_ID_KEY @"AgentID"
 
+@protocol ICMAggregatorEngineDelegate;
 
 @interface ICMAggregatorEngine : MKNetworkEngine
 {
@@ -55,6 +56,12 @@
 
 - (void)registerAgent; // registeragent
 - (void)getEvents;
-- (void)sendwebsitereport;
+- (void)sendWebsiteReport;
+
+@end
+
+@protocol ICMAggregatorEngineDelegate
+
+- (void)agentRegistered:(NSString*)response withError:(NSError*)error;
 
 @end
