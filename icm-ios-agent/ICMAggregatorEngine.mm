@@ -86,7 +86,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     NSLog(@"origin msg: %lu %d %@\n\n", raStr.length(), [raNSStr length], [[raNSStr dataUsingEncoding:NSASCIIStringEncoding] description]);
     
     NSData * encrypted = [crypto encryptData:[raNSStr dataUsingEncoding:NSASCIIStringEncoding]];
-    NSLog(@"encrypted: %@", encrypted);
+    NSLog(@"encrypted: %d %@", [encrypted length], encrypted);
     NSString* finalMsgb64 = [encrypted base64EncodedString];
     
     NSData * decrypted = [crypto decryptData:encrypted];

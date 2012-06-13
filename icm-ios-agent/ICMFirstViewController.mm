@@ -138,7 +138,7 @@ int start_node()
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     first_port = cur_port = 10000;
-    backgroundQueue = dispatch_queue_create("com.razeware.imagegrabber.bgqueue", NULL); 
+    backgroundQueue = dispatch_queue_create("org.umitproject.icm.bgqueue", NULL); 
 }
 
 - (void)viewDidUnload
@@ -171,12 +171,12 @@ int start_node()
      */
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId < 0)
-    //    [engine registerAgent];
+        [engine registerAgent];
     //fuck yeah!
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:223] forKey:AGENT_ID_KEY];
-    engine.agentId= 223;
+    //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:223] forKey:AGENT_ID_KEY];
+    //engine.agentId= 223;
     //[engine getEvents];
-    [engine sendWebsiteReport];
+    //[engine sendWebsiteReport];
 }
 
 @end
