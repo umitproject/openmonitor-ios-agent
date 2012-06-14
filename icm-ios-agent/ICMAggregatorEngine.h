@@ -57,6 +57,7 @@
 - (void)registerAgent; // registeragent
 - (void)getEvents;
 - (void)sendWebsiteReport;
+- (void)sendServiceReport;
 
 @end
 

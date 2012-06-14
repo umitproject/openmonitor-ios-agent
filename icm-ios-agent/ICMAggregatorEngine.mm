@@ -221,5 +221,52 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
+- (void)sendServiceReport
+{
+    org::umit::icm::mobile::proto::SendServiceReport sendReport;
+    org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
+    org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
+    header->set_testid(1);
+    header->set_agentid(223);
+    header->set_timezone(8);
+    header->set_reportid("what?");
+    header->set_timeutc([[NSDate date] timeIntervalSince1970]);
+    org::umit::icm::mobile::proto::ServiceReportDetail* detail = report->mutable_report();
+    detail->set_servicename("HTTP");
+    detail->set_port(80);
+    detail->set_statuscode(200);
+    
+    std::string geStr = sendReport.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::SendReportResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
+        NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
 
 @end

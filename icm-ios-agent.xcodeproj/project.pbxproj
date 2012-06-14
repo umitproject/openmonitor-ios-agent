@@ -1558,7 +1558,7 @@
 		B3EF617A1552B4A300D24661 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = /Users/shinysky/Develop/boostoniphone/framework;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../boostoniphone/framework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1578,7 +1578,7 @@
 		B3EF617B1552B4A300D24661 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = /Users/shinysky/Develop/boostoniphone/framework;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../boostoniphone/framework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
