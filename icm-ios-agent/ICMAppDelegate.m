@@ -11,6 +11,7 @@
 @implementation ICMAppDelegate
 
 @synthesize window = _window;
+@synthesize updater;
 
 +(NSManagedObjectContext*)GetContext
 {
@@ -51,9 +52,21 @@
     NSLog(@"Context saved");
 }
 
+-(ICMUpdater *)updater
+{
+    if (!updater) {
+        //updater = [[Updater alloc] initWithTimeInterval:60*10];
+        updater = [ICMUpdater sharedUpdater];
+        updater.managedObjectContext = self.managedObjectContext;
+    }
+    return updater;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[self updater] startTimers];
+    
     return YES;
 }
 							

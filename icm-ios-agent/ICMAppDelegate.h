@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "ICMUpdater.h"
 
 @interface ICMAppDelegate : UIResponder <UIApplicationDelegate>
 {
@@ -15,12 +16,14 @@
     NSManagedObjectContext *managedObjectContext_;
     NSManagedObjectModel *managedObjectModel_;
     NSPersistentStoreCoordinator *persistentStoreCoordinator_;
+    ICMUpdater *updater;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, retain) ICMUpdater *updater;
 
 +(NSManagedObjectContext*)GetContext;
 +(void)SaveContext;

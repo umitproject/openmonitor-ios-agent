@@ -94,6 +94,7 @@
 		B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
 		B33DFD561579DB89005CF9EE /* ICMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DFD551579DB89005CF9EE /* ICMAnnotation.m */; };
+		B3457410158C7CB000D70E6B /* ICMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = B345740F158C7CB000D70E6B /* ICMUpdater.m */; };
 		B35C4886157F418300F5045C /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C4883157F418300F5045C /* Crypto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B35C488D157F421D00F5045C /* Exception.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C488A157F421D00F5045C /* Exception.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B35C488E157F421D00F5045C /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C488C157F421D00F5045C /* Global.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -515,6 +516,8 @@
 		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
 		B33DFD541579DB89005CF9EE /* ICMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAnnotation.h; sourceTree = "<group>"; };
 		B33DFD551579DB89005CF9EE /* ICMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMAnnotation.m; sourceTree = "<group>"; };
+		B345740E158C7CB000D70E6B /* ICMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMUpdater.h; sourceTree = "<group>"; };
+		B345740F158C7CB000D70E6B /* ICMUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMUpdater.m; sourceTree = "<group>"; };
 		B35C4882157F418300F5045C /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
 		B35C4883157F418300F5045C /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
 		B35C4889157F421D00F5045C /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
@@ -1346,6 +1349,15 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
+				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
+				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
+				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
+				B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */,
+				B3EF61541552B4A300D24661 /* ICMFirstViewController.h */,
+				B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */,
+				B3356CA2156673D800AF8796 /* StartNode.cpp */,
+				B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */,
+				B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */,
 				B3B0FAA9156F848E005FD285 /* CoreDataTableViewController.h */,
 				B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */,
 				B3718EC6157242E900E6B2AE /* ICMWebsiteTableViewController.h */,
@@ -1358,20 +1370,13 @@
 				B3CF44301579043200B954FA /* ICMMapViewController.m */,
 				B33DFD541579DB89005CF9EE /* ICMAnnotation.h */,
 				B33DFD551579DB89005CF9EE /* ICMAnnotation.m */,
+				B345740E158C7CB000D70E6B /* ICMUpdater.h */,
+				B345740F158C7CB000D70E6B /* ICMUpdater.m */,
+				B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */,
 				B35C4888157F41D200F5045C /* Helpers */,
 				B3B0FAA6156F6FC7005FD285 /* Model */,
 				B314F9EC156E5F680066DDBB /* Crytpo */,
 				B314F9E8156E5A680066DDBB /* protobuf */,
-				B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */,
-				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
-				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
-				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
-				B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */,
-				B3EF61541552B4A300D24661 /* ICMFirstViewController.h */,
-				B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */,
-				B3356CA2156673D800AF8796 /* StartNode.cpp */,
-				B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */,
-				B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */,
 				B381E6F5157121920034BD46 /* resources */,
 				B3EF61431552B4A300D24661 /* Supporting Files */,
 			);
@@ -1629,6 +1634,7 @@
 				B32211D515898C4E0054A059 /* unknown_field_set.cc in Sources */,
 				B32211D615898C4E0054A059 /* wire_format.cc in Sources */,
 				B32211D715898C4E0054A059 /* wire_format_lite.cc in Sources */,
+				B3457410158C7CB000D70E6B /* ICMUpdater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1742,6 +1748,7 @@
 		B3EF617A1552B4A300D24661 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../boostoniphone/framework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
@@ -1762,6 +1769,7 @@
 		B3EF617B1552B4A300D24661 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../boostoniphone/framework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";

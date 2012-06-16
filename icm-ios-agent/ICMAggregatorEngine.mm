@@ -111,8 +111,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         int aid = rar.agentid();
         NSLog(@"register succeeded! got agent id: %d", aid);
         
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:aid] forKey:AGENT_ID_KEY];
-        self.agentId = aid;
+        //DOFIXME! uncomment me!
+        //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:aid] forKey:AGENT_ID_KEY];
+        //self.agentId = aid;
         
     } onError:^(NSError *error) {
         
@@ -179,14 +180,14 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendWebsiteReport sendReport;
     org::umit::icm::mobile::proto::WebsiteReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(1);
-    header->set_agentid(223);
+    header->set_testid(1); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_agentid(self.agentId);
     header->set_timezone(8);
-    header->set_reportid("what?");
+    header->set_reportid([self generateUuidCString]);
     header->set_timeutc([[NSDate date] timeIntervalSince1970]);
     org::umit::icm::mobile::proto::WebsiteReportDetail* detail = report->mutable_report();
-    detail->set_websiteurl("http://google.com");
-    detail->set_statuscode(200);
+    detail->set_websiteurl("http://www.google.com");
+    detail->set_statuscode(1); //1 - Normal, 2 - Down, 3 - Content changed
     
     std::string geStr = sendReport.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
@@ -226,15 +227,15 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(1);
-    header->set_agentid(223);
+    header->set_testid(2); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_agentid(self.agentId);
     header->set_timezone(8);
-    header->set_reportid("what?");
+    header->set_reportid([self generateUuidCString]);
     header->set_timeutc([[NSDate date] timeIntervalSince1970]);
     org::umit::icm::mobile::proto::ServiceReportDetail* detail = report->mutable_report();
     detail->set_servicename("HTTP");
     detail->set_port(80);
-    detail->set_statuscode(200);
+    detail->set_statuscode(1); //1 - Normal, 2 - Down
     
     std::string geStr = sendReport.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
@@ -267,6 +268,31 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     }];
     
     [self enqueueOperation:op];
+}
+
+#pragma mark -
+#pragma mark Utils
+
+- (const char *)generateUuidCString
+{
+    NSString* uuidString = [self generateUuidString];
+    return [uuidString cStringUsingEncoding:NSUTF8StringEncoding];
+}
+
+// return a new autoreleased UUID string
+- (NSString *)generateUuidString
+{
+    // create a new UUID which you own
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    
+    // create a new CFStringRef (toll-free bridged to NSString)
+    // that you own
+    NSString *uuidString = (__bridge NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+    
+    // release the UUID
+    CFRelease(uuid);
+    
+    return uuidString;
 }
 
 @end
