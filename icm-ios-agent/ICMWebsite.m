@@ -6,10 +6,10 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "Website.h"
+#import "ICMWebsite.h"
 
 
-@implementation Website
+@implementation ICMWebsite
 
 @dynamic url;
 @dynamic enabled;

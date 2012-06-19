@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "SecKeyWrapper.h"
+#import "ICMWebsite.h"
+#import "ICMService.h"
 
 //#define AGGREGATOR_URL @"icm-dev.appspot.com"
 #define AGGREGATOR_URL @"aggregator:8000"
@@ -56,8 +58,8 @@
 
 - (void)registerAgent; // registeragent
 - (void)getEvents;
-- (void)sendWebsiteReport;
-- (void)sendServiceReport;
+- (void)sendWebsiteReport:(ICMWebsite*)site;
+- (void)sendServiceReport:(ICMService*)service;
 
 @end
 

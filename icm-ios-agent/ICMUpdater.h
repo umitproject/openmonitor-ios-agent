@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "Reachability.h"
+#import "GCDAsyncSocket.h"
 #import "ICMAggregatorEngine.h"
-#import "Website.h"
-#import "Service.h"
+#import "ICMWebsite.h"
+#import "ICMService.h"
 
-@interface ICMUpdater : NSObject
+@interface ICMUpdater : MKNetworkEngine <GCDAsyncSocketDelegate>
 {
-    NSTimer *updateTimer;
+    NSTimer *updateWebsiteTimer;
+    NSTimer *updateServiceTimer;
     NSTimeInterval updateInterval;
     
     ICMAggregatorEngine *aggregatorEngine;
@@ -35,11 +37,13 @@
 //@property (nonatomic, retain) NSOperationQueue *nsqueue;
 
 + (ICMUpdater *)sharedUpdater;
-+ (void)fireUpdater;
++ (void)fireWebsiteTester;
++ (void)fireServiceTester;
 + (BOOL)connected;
 
 - (ICMUpdater *) initWithTimeInterval:(NSTimeInterval)interval;
 - (void)startTimers;
-- (void)fireTimers;
+- (void)fireWebsiteTimer;
+- (void)fireServiceTimer;
 
 @end

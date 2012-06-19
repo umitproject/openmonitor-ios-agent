@@ -7,9 +7,9 @@
 //
 #import "QuartzCore/QuartzCore.h"
 #import "ICMWebsiteTableViewController.h"
-#import "Website.h"
+#import "ICMWebsite.h"
 #import "ICMAppDelegate.h"
-#import "ICMConnectivityTester.h"
+#import "ICMUpdater.h"
 
 #define kAppIconWidth  32
 #define kAppIconHeight 32
@@ -59,7 +59,7 @@
 - (void)performFetchAndReload
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    request.entity = [NSEntityDescription entityForName:@"Website" inManagedObjectContext:self.managedObjectContext];
+    request.entity = [NSEntityDescription entityForName:@"ICMWebsite" inManagedObjectContext:self.managedObjectContext];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                                      ascending:YES
                                                                                       selector:nil]];
@@ -86,39 +86,42 @@
     if ([websites count] <= 0) {
         // init database
         
-        Website* site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        ICMWebsite* site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                                       inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.google.com" name:@"Google" enabled:true uid:1001];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.facebook.com" name:@"Facebook" enabled:true uid:1002];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.youtube.com" name:@"YouTube" enabled:true uid:1003];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.twitter.com" name:@"Twitter" enabled:true uid:1004];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.yahoo.com" name:@"Yahoo" enabled:true uid:1005];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.cnn.com" name:@"CNN" enabled:true uid:1006];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.bbc.com" name:@"BBC" enabled:true uid:1007];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://mail.google.com" name:@"GMail" enabled:true uid:1008];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.umitproject.org" name:@"Umit Project" enabled:true uid:1009];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.flickr.com" name:@"Flickr" enabled:true uid:1010];
-        site = [NSEntityDescription insertNewObjectForEntityForName:@"Website"
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
         [site initWithUrl:@"http://www.hotmail.com" name:@"Hotmail" enabled:true uid:1011];
+        site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
+                                             inManagedObjectContext:managedObjectContext];
+        [site initWithUrl:@"http://www.awebsitenotexist.com/" name:@"Shadow" enabled:true uid:1012];
         
         [ICMAppDelegate SaveContext];
     }
@@ -126,7 +129,7 @@
 
 - (UIImage *)thumbnailImageForManagedObject:(NSManagedObject *)managedObject withIndexPath:(NSIndexPath*)indexPath
 {
-    Website* site = (Website*)managedObject;
+    ICMWebsite* site = (ICMWebsite*)managedObject;
     NSString * imageUrlString = [NSString stringWithFormat:@"%@/favicon.ico", site.url];
     if (imageUrlString && [imageUrlString length] > 0) {
         UIImage *image = [self.imageCache objectForKey:imageUrlString];
@@ -165,7 +168,7 @@
         cell.detailTextLabel.textColor = [UIColor darkTextColor];
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
-        Website* site = (Website*)managedObject;
+        ICMWebsite* site = (ICMWebsite*)managedObject;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nDate: %@", site.url, site.status, [site.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
@@ -199,7 +202,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Website *site = (Website *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    ICMWebsite *site = (ICMWebsite *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"selected site with url %@", site.url);
     
     //The user is selecting the cell which is currently expanded
@@ -244,10 +247,7 @@
 
 - (IBAction)refreshBtnTapped:(UIBarButtonItem *)sender {
     
-    ICMConnectivityTester* connectivityTester = [ICMConnectivityTester GetInstance];
-    for (Website* site in [self.fetchedResultsController fetchedObjects]) {
-        [connectivityTester performTestOnWebsite:site];
-    }
+    [ICMUpdater fireWebsiteTester];
 }
 
 #pragma -
@@ -299,7 +299,7 @@
             UITableViewCell * cell = [self tableView:self.tableView cellForManagedObject:managedObject atIndex:indexPath];
             if (!cell.accessoryView) // avoid the app icon download if the app already has an icon
             {
-                Website* site = (Website*)managedObject;
+                ICMWebsite* site = (ICMWebsite*)managedObject;
                 NSString * imageUrlString = [NSString stringWithFormat:@"%@/favicon.ico", site.url];
                 //NSLog(@"thumb url: %@", imageUrlString);
                 if (imageUrlString && [imageUrlString length] > 0) {

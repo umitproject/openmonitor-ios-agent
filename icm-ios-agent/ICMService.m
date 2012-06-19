@@ -6,10 +6,10 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "Service.h"
+#import "ICMService.h"
 
 
-@implementation Service
+@implementation ICMService
 
 @dynamic name;
 @dynamic port;

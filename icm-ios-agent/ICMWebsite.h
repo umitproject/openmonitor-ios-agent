@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Website : NSManagedObject
+@interface ICMWebsite : NSManagedObject
 
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSNumber * enabled;

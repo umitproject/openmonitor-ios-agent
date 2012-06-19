@@ -7,9 +7,9 @@
 //
 #import "QuartzCore/QuartzCore.h"
 #import "ICMServiceTableViewController.h"
-#import "Service.h"
+#import "ICMService.h"
 #import "ICMAppDelegate.h"
-#import "ICMConnectivityTester.h"
+#import "ICMUpdater.h"
 
 @implementation ICMServiceTableViewController
 
@@ -49,7 +49,7 @@
 - (void)performFetchAndReload
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    request.entity = [NSEntityDescription entityForName:@"Service" inManagedObjectContext:self.managedObjectContext];
+    request.entity = [NSEntityDescription entityForName:@"ICMService" inManagedObjectContext:self.managedObjectContext];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                                      ascending:YES
                                                                                       selector:nil]];
@@ -76,33 +76,36 @@
     if ([services count] <= 0) {
         // init database
         
-        Service* service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        ICMService* service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                                       inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"203.135.62.113" port:443 name:@"HTTPS" enabled:YES uid:2001];
         
-        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"www.google.com" port:80 name:@"HTTP" enabled:YES uid:2002];
         
-        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"ftp.secureftp-test.com" port:21 name:@"FTP" enabled:YES uid:2003];
         
-        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"pop.gmail.com" port:995 name:@"POP3" enabled:YES uid:2004];
         
-        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"imap.gmail.com" port:993 name:@"IMAP" enabled:YES uid:2005];
         
-        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"messenger.hotmail.com" port:1863 name:@"MSN" enabled:YES uid:2006];
         
-        service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
         [service initWithHost:@"talk.google.com" port:5222 name:@"GTalk" enabled:YES uid:2007];
+        service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
+                                                inManagedObjectContext:managedObjectContext];
+        [service initWithHost:@"localhost" port:5222 name:@"Localhost" enabled:YES uid:2008];
         
         [ICMAppDelegate SaveContext];
     }
@@ -129,7 +132,7 @@
         cell.detailTextLabel.textColor = [UIColor darkTextColor];
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
-        Service* service = (Service*)managedObject;
+        ICMService* service = (ICMService*)managedObject;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Host: %@\nPort: %d\nStatus: %@\nDate: %@", service.host, [service.port intValue], service.status, [service.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
@@ -143,7 +146,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Service *service = (Service *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    ICMService *service = (ICMService *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"selected service with host: %@", service.host);
     
     //The user is selecting the cell which is currently expanded
@@ -188,10 +191,7 @@
 
 - (IBAction)refreshBtnTapped:(UIBarButtonItem *)sender {
     
-    ICMConnectivityTester* connectivityTester = [ICMConnectivityTester GetInstance];
-    for (Service* service in [self.fetchedResultsController fetchedObjects]) {
-        [connectivityTester performTestOnService:service];
-    }
+    [ICMUpdater fireServiceTester];
 }
 
 

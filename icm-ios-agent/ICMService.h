@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Service : NSManagedObject
+@interface ICMService : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * port;

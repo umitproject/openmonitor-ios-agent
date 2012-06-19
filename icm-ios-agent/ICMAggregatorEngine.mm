@@ -175,7 +175,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
-- (void)sendWebsiteReport
+- (void)sendWebsiteReport:(ICMWebsite*)site
 {
     org::umit::icm::mobile::proto::SendWebsiteReport sendReport;
     org::umit::icm::mobile::proto::WebsiteReport* report = sendReport.mutable_report();
@@ -184,11 +184,14 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     header->set_agentid(self.agentId);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
-    header->set_timeutc([[NSDate date] timeIntervalSince1970]);
+    header->set_timeutc([site.lastcheck timeIntervalSince1970]);
     org::umit::icm::mobile::proto::WebsiteReportDetail* detail = report->mutable_report();
-    detail->set_websiteurl("http://www.google.com");
-    detail->set_statuscode(1); //1 - Normal, 2 - Down, 3 - Content changed
-    
+    detail->set_websiteurl([site.url cStringUsingEncoding:NSASCIIStringEncoding]);
+    if ([site.status intValue] == 200) {
+        detail->set_statuscode(1); //1 - Normal, 2 - Down, 3 - Content changed
+    } else {
+        detail->set_statuscode(2); //1 - Normal, 2 - Down, 3 - Content changed
+    }
     std::string geStr = sendReport.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
     NSData * encrypted = [crypto encryptData:geData];
@@ -222,7 +225,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
-- (void)sendServiceReport
+- (void)sendServiceReport:(ICMService*)service
 {
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
@@ -231,11 +234,11 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     header->set_agentid(self.agentId);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
-    header->set_timeutc([[NSDate date] timeIntervalSince1970]);
+    header->set_timeutc([service.lastcheck timeIntervalSince1970]);
     org::umit::icm::mobile::proto::ServiceReportDetail* detail = report->mutable_report();
-    detail->set_servicename("HTTP");
-    detail->set_port(80);
-    detail->set_statuscode(1); //1 - Normal, 2 - Down
+    detail->set_servicename([service.name cStringUsingEncoding:NSASCIIStringEncoding]);
+    detail->set_port([service.port intValue]);
+    detail->set_statuscode([service.status intValue]); //1 - Normal, 2 - Down
     
     std::string geStr = sendReport.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];

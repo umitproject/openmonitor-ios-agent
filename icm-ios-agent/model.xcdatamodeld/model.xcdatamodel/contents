@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Service" representedClassName="Service" syncable="YES">
+    <entity name="ICMService" representedClassName="ICMService" syncable="YES">
         <attribute name="enabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="host" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastcheck" optional="YES" attributeType="Date" syncable="YES"/>
@@ -9,7 +9,7 @@
         <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Website" representedClassName="Website" syncable="YES">
+    <entity name="ICMWebsite" representedClassName="ICMWebsite" syncable="YES">
         <attribute name="enabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastcheck" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +18,7 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Service" positionX="160" positionY="192" width="128" height="150"/>
-        <element name="Website" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="ICMService" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="ICMWebsite" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

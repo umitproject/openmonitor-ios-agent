@@ -8,6 +8,7 @@
 
 #import "ICMUpdater.h"
 
+
 @implementation ICMUpdater
 
 @synthesize updateInterval, aggregatorEngine;
@@ -26,9 +27,14 @@ static ICMUpdater * sharedUpdater = nil;
     return (sharedUpdater);
 }
 
-+ (void)fireUpdater
++ (void)fireWebsiteTester
 {
-    [sharedUpdater fireTimers];
+    [sharedUpdater fireWebsiteTimer];
+}
+
++ (void)fireServiceTester
+{
+    [sharedUpdater fireServiceTimer];
 }
 
 + (BOOL)connected 
@@ -50,7 +56,7 @@ static ICMUpdater * sharedUpdater = nil;
 
 -(ICMUpdater*)initWithTimeInterval:(NSTimeInterval)interval
 {
-    if (self = [super init])
+    if (self = [super initWithHostName:nil])
 	{
         self.updateInterval = interval;
 	}
@@ -80,21 +86,32 @@ static ICMUpdater * sharedUpdater = nil;
 {
     [self refetchData];
     
-    updateTimer = [NSTimer scheduledTimerWithTimeInterval:self.updateInterval
+    updateWebsiteTimer = [NSTimer scheduledTimerWithTimeInterval:self.updateInterval
                                                    target:self
-                                                 selector:@selector(onUpdateTimer)
+                                                 selector:@selector(onUpdateWebsiteTimer)
                                                  userInfo:nil
                                                   repeats:YES];
+    updateServiceTimer = [NSTimer scheduledTimerWithTimeInterval:self.updateInterval
+                                                          target:self
+                                                        selector:@selector(onUpdateServiceTimer)
+                                                        userInfo:nil
+                                                         repeats:YES];
 }
 
-- (void)fireTimers
+- (void)fireWebsiteTimer
 {
-    [updateTimer fire];
+    [updateWebsiteTimer fire];
+}
+
+- (void)fireServiceTimer
+{
+    [updateServiceTimer fire];
 }
 
 - (void)dealloc
 {
-    [updateTimer invalidate];
+    [updateWebsiteTimer invalidate];
+    [updateServiceTimer invalidate];
     self.aggregatorEngine = nil;
     self.websiteFetchedResultsController = nil;
     self.serviceFetchedResultsController = nil;
@@ -103,40 +120,88 @@ static ICMUpdater * sharedUpdater = nil;
 #pragma mark -
 #pragma mark Timer Methods
 
-- (void)onUpdateTimer
+- (void)onUpdateWebsiteTimer
 {
-    NSLog(@"onUpdateTimer triggered, update timeline now...");
+    NSLog(@"onUpdateTimer triggered, update Website now...");
     
     if (![ICMUpdater connected]) {
         NSLog(@"Not connected, canceling...");
         return;
     }
     
-    for (Website* site in [self.websiteFetchedResultsController fetchedObjects]) {
+    for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
         NSLog(@"website: %@", site.name);
         [self dispatchRefreshingRequestForWebsite:site];
     }
+}
+
+- (void)onUpdateServiceTimer
+{
+    NSLog(@"onUpdateTimer triggered, update Service now...");
     
-    for (Service* service in [self.serviceFetchedResultsController fetchedObjects]) {
+    if (![ICMUpdater connected]) {
+        NSLog(@"Not connected, canceling...");
+        return;
+    }
+    
+    for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
         NSLog(@"service: %@", service.name);
         [self dispatchRefreshingRequestForService:service];
     }
 }
 
-- (void)dispatchRefreshingRequestForWebsite:(Website*)site
+- (void)dispatchRefreshingRequestForWebsite:(ICMWebsite*)site
 {
     @synchronized(self.aggregatorEngine)
     {
-        [self.aggregatorEngine sendWebsiteReport];
+        MKNetworkOperation *op = [self operationWithURLString:site.url
+                                                       params:nil
+                                                   httpMethod:@"GET"];
+        
+        [op onCompletion:^(MKNetworkOperation *operation) {
+            DLog(@"[%d]%@", [operation HTTPStatusCode], operation);
+            site.status = [NSNumber numberWithInt:[operation HTTPStatusCode]];
+            site.lastcheck = [NSDate date];
+            [ICMAppDelegate SaveContext];
+            [self.aggregatorEngine sendWebsiteReport:site];
+        } onError:^(NSError *error) {
+            DLog(@"[%d]%@", [op HTTPStatusCode], error);
+            site.status = [NSNumber numberWithInt:[op HTTPStatusCode]];
+            site.lastcheck = [NSDate date];
+            [ICMAppDelegate SaveContext];
+            [self.aggregatorEngine sendWebsiteReport:site];
+        }];
+        
+        [self enqueueOperation:op];
     }
 }
 
-- (void)dispatchRefreshingRequestForService:(Service*)service
+- (void)dispatchRefreshingRequestForService:(ICMService*)service
 {
     @synchronized(self.aggregatorEngine)
     {
-        [self.aggregatorEngine sendServiceReport];
+        GCDAsyncSocket* socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+        socket.userData = service;
+        NSError *err = nil;
+        [socket connectToHost:service.host onPort:[service.port intValue] withTimeout:20.0 error:&err];
     }
+}
+
+#pragma -
+#pragma GCDAsyncSocketDelegate methods
+
+/**
+ * Called when a socket connects and is ready for reading and writing.
+ * The host parameter will be an IP address, not a DNS name.
+ **/
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
+{
+    NSLog(@"Cool, I'm connected! That was easy.");
+    ICMService* service = (ICMService*)sock.userData;
+    service.status = [NSNumber numberWithInt:1];//TODO status enum
+    service.lastcheck = [NSDate date];
+    [ICMAppDelegate SaveContext];
+    [self.aggregatorEngine sendServiceReport:service];
 }
 
 #pragma mark -
@@ -148,7 +213,7 @@ static ICMUpdater * sharedUpdater = nil;
         // Create the fetch request for the entity.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Website" inManagedObjectContext:managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ICMWebsite" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.
@@ -182,7 +247,7 @@ static ICMUpdater * sharedUpdater = nil;
         // Create the fetch request for the entity.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Service" inManagedObjectContext:managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ICMService" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.
