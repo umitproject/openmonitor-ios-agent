@@ -131,7 +131,7 @@ static ICMUpdater * sharedUpdater = nil;
     
     for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
         NSLog(@"website: %@", site.name);
-        //[self dispatchRefreshingRequestForWebsite:site];
+        [self dispatchRefreshingRequestForWebsite:site];
     }
 }
 
@@ -146,9 +146,7 @@ static ICMUpdater * sharedUpdater = nil;
     
     for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
         NSLog(@"service: %@", service.name);
-        if ([service.name isEqualToString:@"Localhost"]) {
-            [self dispatchRefreshingRequestForService:service];
-        }
+        [self dispatchRefreshingRequestForService:service];
     }
 }
 
