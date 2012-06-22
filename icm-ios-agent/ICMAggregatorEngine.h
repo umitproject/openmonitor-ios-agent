@@ -74,6 +74,7 @@ typedef enum {
 - (void)getEvents;
 - (void)sendWebsiteReport:(ICMWebsite*)site;
 - (void)sendServiceReport:(ICMService*)service;
+- (void)checkNewTests;
 
 @end
 

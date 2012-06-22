@@ -65,7 +65,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[self updater] startTimers];
+    //[[self updater] startTimers];//FIXME
     
     return YES;
 }

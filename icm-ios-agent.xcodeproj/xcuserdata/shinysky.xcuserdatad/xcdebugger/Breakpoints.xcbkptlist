@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "361891878.037315"
+         timestampString = "362063146.090108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "163"
-         endingLineNumber = "163"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
          landmarkName = "-dispatchRefreshingRequestForWebsite:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "361891878.037315"
+         timestampString = "362063146.090108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
          landmarkName = "-dispatchRefreshingRequestForWebsite:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "361891872.442637"
+         timestampString = "362063146.090108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
+         startingLineNumber = "183"
+         endingLineNumber = "183"
          landmarkName = "-dispatchRefreshingRequestForService:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -95,28 +95,15 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "361892110.780012"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "150"
-         endingLineNumber = "150"
-         landmarkName = "-onUpdateServiceTimer"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "361892595.788533"
+         timestampString = "362063146.090108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "209"
+         endingLineNumber = "209"
          landmarkName = "-socketDidDisconnect:withError:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -273,6 +273,43 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
+- (void)checkNewTests
+{
+    org::umit::icm::mobile::proto::NewTests newTests;
+    newTests.set_currenttestversionno(1);//TODO
+    
+    std::string geStr = newTests.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_TESTS
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::NewTestsResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        NSLog(@"Got NewTestsResponse: curtestversiono=%d", rar.testversionno());
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
 #pragma mark -
 #pragma mark Utils
 

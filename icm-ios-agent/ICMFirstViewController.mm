@@ -176,10 +176,11 @@ int start_node()
         [engine registerAgent];
     //fuck yeah!
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:226] forKey:AGENT_ID_KEY];
-    engine.agentId= 228;
+    engine.agentId= 226;
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
+    [engine checkNewTests];
 }
 
 @end
