@@ -14,6 +14,7 @@
 
 //#define AGGREGATOR_URL @"icm-dev.appspot.com"
 #define AGGREGATOR_URL @"aggregator:8000"
+//#define AGGREGATOR_URL @"east1.openmonitor.org"
 #define AGGR_REGISTER_AGENT @"api/registeragent/"
 #define AGGR_GET_PEER_LIST @"api/getpeerlist/"
 #define AGGR_CHECK_AGGREGATOR @"api/checkaggregator/"
@@ -36,6 +37,19 @@
 #define RSAKEY_MOD @"109916896023924130410814755146"
 #define RSAKEY_EXP @"65537"
 #define AGENT_ID_KEY @"AgentID"
+
+typedef enum {
+    kStatusNormal=1,
+    kStatusDown,
+    kStatusContentChanged
+} ICMTestStatus;
+
+typedef enum {
+    kWebsiteTest=1,
+    kServiceTest,
+    kThrottlingTest
+} ICMTestType;
+
 
 @protocol ICMAggregatorEngineDelegate;
 

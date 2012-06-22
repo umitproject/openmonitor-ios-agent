@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface ICMWebsite : NSManagedObject
 
 @property (nonatomic, retain) NSString * url;

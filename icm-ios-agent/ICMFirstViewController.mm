@@ -8,6 +8,8 @@
 
 #import "ICMFirstViewController.h"
 #import "ICMAggregatorEngine.h"
+#import "ICMUpdater.h"
+#import "ICMService.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -174,7 +176,7 @@ int start_node()
         [engine registerAgent];
     //fuck yeah!
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:226] forKey:AGENT_ID_KEY];
-    engine.agentId= 226;
+    engine.agentId= 228;
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];

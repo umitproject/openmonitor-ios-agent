@@ -180,7 +180,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendWebsiteReport sendReport;
     org::umit::icm::mobile::proto::WebsiteReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(1); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_testid(kWebsiteTest); // 1 for Website test, 2 for Service test, 3 for Throttling test
     header->set_agentid(self.agentId);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
@@ -188,9 +188,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::WebsiteReportDetail* detail = report->mutable_report();
     detail->set_websiteurl([site.url cStringUsingEncoding:NSASCIIStringEncoding]);
     if ([site.status intValue] == 200) {
-        detail->set_statuscode(1); //1 - Normal, 2 - Down, 3 - Content changed
+        detail->set_statuscode(kStatusNormal); //1 - Normal, 2 - Down, 3 - Content changed
     } else {
-        detail->set_statuscode(2); //1 - Normal, 2 - Down, 3 - Content changed
+        detail->set_statuscode(kStatusDown); //1 - Normal, 2 - Down, 3 - Content changed
     }
     std::string geStr = sendReport.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
@@ -230,7 +230,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(2); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_testid(kServiceTest); // 1 for Website test, 2 for Service test, 3 for Throttling test
     header->set_agentid(self.agentId);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);

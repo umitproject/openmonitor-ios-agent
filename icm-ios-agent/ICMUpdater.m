@@ -131,7 +131,7 @@ static ICMUpdater * sharedUpdater = nil;
     
     for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
         NSLog(@"website: %@", site.name);
-        [self dispatchRefreshingRequestForWebsite:site];
+        //[self dispatchRefreshingRequestForWebsite:site];
     }
 }
 
@@ -146,7 +146,9 @@ static ICMUpdater * sharedUpdater = nil;
     
     for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
         NSLog(@"service: %@", service.name);
-        [self dispatchRefreshingRequestForService:service];
+        if ([service.name isEqualToString:@"Localhost"]) {
+            [self dispatchRefreshingRequestForService:service];
+        }
     }
 }
 
@@ -198,7 +200,17 @@ static ICMUpdater * sharedUpdater = nil;
 {
     NSLog(@"Cool, I'm connected! That was easy.");
     ICMService* service = (ICMService*)sock.userData;
-    service.status = [NSNumber numberWithInt:1];//TODO status enum
+    service.status = [NSNumber numberWithInt:kStatusNormal];
+    service.lastcheck = [NSDate date];
+    [ICMAppDelegate SaveContext];
+    [self.aggregatorEngine sendServiceReport:service];
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
+{
+    NSLog(@"Geez, not connected");
+    ICMService* service = (ICMService*)sock.userData;
+    service.status = [NSNumber numberWithInt:kStatusDown];
     service.lastcheck = [NSDate date];
     [ICMAppDelegate SaveContext];
     [self.aggregatorEngine sendServiceReport:service];

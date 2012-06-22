@@ -408,6 +408,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	sanityCheck = SecRandomCopyBytes(kSecRandomDefault, kChosenCipherKeySize, symmetricKey);
 	LOGGING_FACILITY1( sanityCheck == noErr, @"Problem generating the symmetric key, OSStatus == %d.", sanityCheck );
 	
+    self.symmetricKeyRef = nil;
 	self.symmetricKeyRef = [[NSData alloc] initWithBytes:(const void *)symmetricKey length:kChosenCipherKeySize];
 	
 	// Add the wrapped key data to the container dictionary.
