@@ -123,6 +123,91 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
+- (void)loginStep1
+{
+    // prepare msg
+    org::umit::icm::mobile::proto::Login msg;
+    msg.set_agentid(self.agentId);
+    msg.set_port(5555);//TODO port
+    msg.set_challenge("iOS agent challenge");
+    
+    
+    std::string msgStr = msg.SerializeAsString();
+    NSData* msgData = [NSData dataWithBytes:msgStr.c_str() length:msgStr.size()];
+    NSData * encrypted = [crypto encryptData:msgData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *respStr = [operation responseString];
+        [self loginStep2:respStr];
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
+- (void)loginStep2:(NSString*)prevRespStr
+{
+    NSData* prevRespdata = [NSData dataFromBase64String: prevRespStr];
+    NSLog(@"decoded data: %@", prevRespdata);
+    org::umit::icm::mobile::proto::LoginStep1 prevResp;
+    prevResp.ParseFromArray((const void*)[prevRespdata bytes], [prevRespdata length]);
+    //TODO resp.cipheredchallenge() should be equal to the string we set in step 1
+    std::string challenge = prevResp.challenge();
+    int64_t processID = prevResp.processid();
+    
+    // prepare msg
+    org::umit::icm::mobile::proto::LoginStep2 msg;
+    msg.set_processid(processID);
+    msg.set_cipheredchallenge("cipheredchallenge");//TODO cipheredchallenge
+    
+    std::string msgStr = msg.SerializeAsString();
+    NSData* msgData = [NSData dataWithBytes:msgStr.c_str() length:msgStr.size()];
+    NSData * encrypted = [crypto encryptData:msgData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN2
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *respStr = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: respStr];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::LoginResponse resp;
+        resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        org::umit::icm::mobile::proto::ResponseHeader header = resp.header();
+        NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
 - (void)getEvents
 {
     // prepare msg

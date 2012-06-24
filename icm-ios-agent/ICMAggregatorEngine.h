@@ -15,9 +15,12 @@
 //#define AGGREGATOR_URL @"icm-dev.appspot.com"
 #define AGGREGATOR_URL @"aggregator:8000"
 //#define AGGREGATOR_URL @"east1.openmonitor.org"
+
 #define AGGR_REGISTER_AGENT @"api/registeragent/"
+#define AGGR_LOGIN @"api/loginagent/"
+#define AGGR_LOGIN2 @"api/loginagent2/"
+#define AGGR_LOGOUT @"api/logoutagent/"
 #define AGGR_GET_PEER_LIST @"api/getpeerlist/"
-#define AGGR_CHECK_AGGREGATOR @"api/checkaggregator/"
 #define AGGR_GET_PEER_SUPER_LIST @"api/getsuperpeerlist/"
 #define AGGR_GET_EVENTS @"api/getevents/"
 #define AGGR_SEND_WEBSITE_REPORT @"api/sendwebsitereport/"
@@ -27,10 +30,11 @@
 #define AGGR_WEBSITE_SUGGESTION @"api/websitesuggestion/"
 #define AGGR_SERVICE_SUGGESTION @"api/servicesuggestion/"
 #define AGGR_TESTS @"api/tests/"
-#define AGGR_LOGIN @"api/loginagent/"
-#define AGGR_LOGOUT @"api/logoutagent/"
-#define AGGR_GENERATE_SECRET_KEY @"api/generatesecretkey/"
-#define AGGR_GET_TOKEN_ASYMMETRIC_KEYS @"api/gettokenandasymmetrickeys/"
+#define AGGR_CHECK_AGGREGATOR @"api/checkaggregator/"
+#define AGGR_GET_NETLIST @"api/get_netlist/"
+#define AGGR_GET_BANLIST @"api/get_banlist/"
+#define AGGR_GET_BANNETS @"api/get_bannets/"
+
 #define AGGR_MSG_KEY @"msg"
 #define AGGR_KEY_KEY @"key"
 #define AGGR_AGENT_ID_KEY @"agentID"
@@ -71,6 +75,8 @@ typedef enum {
 // ======================================================================================================
 
 - (void)registerAgent; // registeragent
+- (void)loginStep1;
+//- (void)loginStep2; // called by loginStep1(), should not be publicly visible
 - (void)getEvents;
 - (void)sendWebsiteReport:(ICMWebsite*)site;
 - (void)sendServiceReport:(ICMService*)service;
