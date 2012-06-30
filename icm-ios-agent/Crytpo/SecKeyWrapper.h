@@ -64,6 +64,7 @@
 #define kChosenCipherBlockSize	kCCBlockSizeAES128
 #define kChosenCipherKeySize	kCCKeySizeAES128
 #define kChosenDigestLength		CC_SHA1_DIGEST_LENGTH
+#define kChosenRSAKeySize       1024
 
 // Global constants for padding schemes.
 #define	kPKCS1					11
@@ -130,5 +131,9 @@
 - (NSData *)getSignatureBytes:(NSData *)plainText;
 - (NSData *)getHashBytes:(NSData *)plainText;
 - (BOOL)verifySignature:(NSData *)plainText secKeyRef:(SecKeyRef)publicKey signature:(NSData *)sig;
+
+- (NSData *)getPublicKeyExp;
+- (NSData *)getPublicKeyMod;
+- (int)derEncodingGetSizeFrom:(NSData*)buf at:(int*)iterator;
 
 @end

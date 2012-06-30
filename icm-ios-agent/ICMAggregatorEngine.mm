@@ -9,6 +9,7 @@
 #import "ICMAggregatorEngine.h"
 #import "SecKeyWrapper.h"
 #import "CryptoCommon.h"
+#import "NSData+Conversion.h"
 
 #include "messages.pb.h"
 #include "Base64Transcoder.h"
@@ -77,8 +78,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     cred->set_username([@"test" UTF8String]);
     cred->set_password([@"pass" UTF8String]);
     
+    NSString* pubKeyString = [[crypto getPublicKeyMod] hexadecimalString];
+    NSLog(@"pubKeyString=%@", pubKeyString);
     org::umit::icm::mobile::proto::RSAKey* rsaKey = ra.mutable_agentpublickey();
-    rsaKey->set_mod([RSAKEY_MOD UTF8String]);
+    rsaKey->set_mod("1231231");//[pubKeyString UTF8String]);
     rsaKey->set_exp([RSAKEY_EXP UTF8String]);
     
     std::string raStr = ra.SerializeAsString();
@@ -131,12 +134,11 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     msg.set_port(5555);//TODO port
     msg.set_challenge("iOS agent challenge");
     
-    
     std::string msgStr = msg.SerializeAsString();
     NSData* msgData = [NSData dataWithBytes:msgStr.c_str() length:msgStr.size()];
-    NSData * encrypted = [crypto encryptData:msgData];
-    NSLog(@"encrypted: %@", encrypted);
-    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    //NSData * encrypted = [crypto encryptData:msgData];
+    //NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [msgData base64EncodedString];
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN
@@ -173,13 +175,16 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     // prepare msg
     org::umit::icm::mobile::proto::LoginStep2 msg;
     msg.set_processid(processID);
-    msg.set_cipheredchallenge("cipheredchallenge");//TODO cipheredchallenge
+    // cipheredchallenge
+    NSData* ccData = [crypto getSignatureBytes:[NSData dataWithBytes:challenge.c_str() length:challenge.size()]];
+    NSString* ccStr = [ccData base64EncodedString];
+    msg.set_cipheredchallenge([ccStr cStringUsingEncoding:NSASCIIStringEncoding]);
     
     std::string msgStr = msg.SerializeAsString();
     NSData* msgData = [NSData dataWithBytes:msgStr.c_str() length:msgStr.size()];
-    NSData * encrypted = [crypto encryptData:msgData];
-    NSLog(@"encrypted: %@", encrypted);
-    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    //NSData * encrypted = [crypto encryptData:msgData];
+    //NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [msgData base64EncodedString];
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN2

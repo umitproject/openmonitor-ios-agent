@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3071BA7159DEC9700E70E3C /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = B3071BA6159DEC9700E70E3C /* NSData+Conversion.m */; };
 		B30EF66C1563E742003A51F9 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B30EF5D71563E742003A51F9 /* libcrypto.a */; };
 		B30EF66D1563E742003A51F9 /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B30EF5D81563E742003A51F9 /* libevent.a */; };
 		B30EF66E1563E742003A51F9 /* libevent.la in Resources */ = {isa = PBXBuildFile; fileRef = B30EF5D91563E742003A51F9 /* libevent.la */; };
@@ -166,6 +167,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3071BA5159DEC9700E70E3C /* NSData+Conversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Conversion.h"; sourceTree = "<group>"; };
+		B3071BA6159DEC9700E70E3C /* NSData+Conversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Conversion.m"; sourceTree = "<group>"; };
 		B30EF56A1563E742003A51F9 /* evdns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evdns.h; sourceTree = "<group>"; };
 		B30EF56B1563E742003A51F9 /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event.h; sourceTree = "<group>"; };
 		B30EF56D1563E742003A51F9 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
@@ -1214,6 +1217,8 @@
 				B35C488C157F421D00F5045C /* Global.m */,
 				B3B0FAB2156F8921005FD285 /* NSStringHelper.h */,
 				B3B0FAB3156F8921005FD285 /* NSStringHelper.m */,
+				B3071BA5159DEC9700E70E3C /* NSData+Conversion.h */,
+				B3071BA6159DEC9700E70E3C /* NSData+Conversion.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1629,6 +1634,7 @@
 				B32211D615898C4E0054A059 /* wire_format.cc in Sources */,
 				B32211D715898C4E0054A059 /* wire_format_lite.cc in Sources */,
 				B3457410158C7CB000D70E6B /* ICMUpdater.m in Sources */,
+				B3071BA7159DEC9700E70E3C /* NSData+Conversion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,6 +1761,7 @@
 					"\"$(SRCROOT)/lib/i386/lib\"",
 					"\"$(SRCROOT)/lib/armv7/lib\"",
 				);
+				OTHER_LDFLAGS = "-v";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1776,6 +1783,7 @@
 					"\"$(SRCROOT)/lib/i386/lib\"",
 					"\"$(SRCROOT)/lib/armv7/lib\"",
 				);
+				OTHER_LDFLAGS = "-v";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

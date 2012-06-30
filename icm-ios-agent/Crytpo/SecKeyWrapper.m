@@ -135,8 +135,8 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
     if (self = [super init])
     {
         // Tag data to search for keys.
+        publicTag = [kPublicKeyTag dataUsingEncoding:NSUTF8StringEncoding];
         privateTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
-        publicTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
         symmetricTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
         aggregatorPublicTag = [kAggregatorPublicKeyTag dataUsingEncoding:NSUTF8StringEncoding];
     }
@@ -153,6 +153,9 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
     NSData* data = [self getSymmetricKeyBytes];
     if (data == nil) {
         [self generateSymmetricKey];
+    }
+    if ([self getPrivateKeyRef] == NULL) {
+        [self generateKeyPair:kChosenRSAKeySize];
     }
 }
 
@@ -825,7 +828,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 		{
 			publicKeyReference = NULL;
 		}
-		
+		publicKeyRef = publicKeyReference;
 		[queryPublicKey release];
 	} else {
 		publicKeyReference = publicKeyRef;
@@ -879,7 +882,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 		{
 			privateKeyReference = NULL;
 		}
-		
+		privateKeyRef = privateKeyReference;
 		[queryPrivateKey release];
 	} else {
 		privateKeyReference = privateKeyRef;
@@ -956,13 +959,70 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	return keyRef;
 }
 
+- (NSData *)getPublicKeyExp
+{
+    NSData* pk = [self getPublicKeyBits];
+    if (pk == NULL) return NULL;
+    
+    int iterator = 0;
+    
+    iterator++; // TYPE - bit stream - mod + exp
+    [self derEncodingGetSizeFrom:pk at:&iterator]; // Total size
+    
+    iterator++; // TYPE - bit stream mod
+    int mod_size = [self derEncodingGetSizeFrom:pk at:&iterator];
+    iterator += mod_size;
+    
+    iterator++; // TYPE - bit stream exp
+    int exp_size = [self derEncodingGetSizeFrom:pk at:&iterator];
+    
+    return [pk subdataWithRange:NSMakeRange(iterator, exp_size)];
+}
+
+- (NSData *)getPublicKeyMod
+{
+    NSData* pk = [self getPublicKeyBits];
+    if (pk == NULL) return NULL;
+    
+    int iterator = 0;
+    
+    iterator++; // TYPE - bit stream - mod + exp
+    [self derEncodingGetSizeFrom:pk at:&iterator]; // Total size
+    
+    iterator++; // TYPE - bit stream mod
+    int mod_size = [self derEncodingGetSizeFrom:pk at:&iterator];
+    
+    return [pk subdataWithRange:NSMakeRange(iterator, mod_size)];
+}
+
+- (int)derEncodingGetSizeFrom:(NSData*)buf at:(int*)iterator
+{
+    const uint8_t* data = [buf bytes];
+    int itr = *iterator;
+    int num_bytes = 1;
+    int ret = 0;
+    
+    if (data[itr] > 0x80) {
+        num_bytes = data[itr] - 0x80;
+        itr++;
+    }
+    
+    for (int i = 0 ; i < num_bytes; i++) ret = (ret * 0x100) + data[itr + i];
+    
+    *iterator = itr + num_bytes;
+    return ret;
+}
+
+
 - (void)dealloc {
-    [privateTag release];
     [publicTag release];
+    //[privateTag release];
+    [aggregatorPublicTag release];
 	[symmetricTag release];
 	[symmetricKeyRef release];
 	if (publicKeyRef) CFRelease(publicKeyRef);
 	if (privateKeyRef) CFRelease(privateKeyRef);
+    if (aggregatorPublicKeyRef) CFRelease(aggregatorPublicKeyRef);
     [super dealloc];
 }
 
