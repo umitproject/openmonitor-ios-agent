@@ -58,9 +58,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     // prepare key
     NSData* aeskey = [crypto getSymmetricKeyBytes];
-    NSString* t = [NSString stringWithUTF8String:(const char *)[aeskey bytes]];
+    //NSString* t = [NSString stringWithUTF8String:(const char *)[aeskey bytes]];
     NSLog(@"aes key: %@", aeskey);
-    NSLog(@"aes key str: %@", t);
+    //NSLog(@"aes key str: %@", t);
     NSString* aeskeyb64 = [aeskey base64EncodedString];
     NSLog(@"aes key b64 str: %@", aeskeyb64);
     NSData* aeskyb64data = [aeskeyb64 dataUsingEncoding:NSUTF8StringEncoding];
@@ -81,20 +81,23 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     NSString* pubKeyString = [[crypto getPublicKeyMod] hexadecimalString];
     NSLog(@"pubKeyString=%@", pubKeyString);
     org::umit::icm::mobile::proto::RSAKey* rsaKey = ra.mutable_agentpublickey();
-    rsaKey->set_mod("1231231");//[pubKeyString UTF8String]);
+    const char* pkcs = [pubKeyString UTF8String];
+    rsaKey->set_mod(pkcs);
     rsaKey->set_exp([RSAKEY_EXP UTF8String]);
     
     std::string raStr = ra.SerializeAsString();
-    NSString* raNSStr = [NSString stringWithCString:raStr.c_str() encoding:NSASCIIStringEncoding];
-    NSLog(@"origin msg: %lu %d %@\n\n", raStr.length(), [raNSStr length], [[raNSStr dataUsingEncoding:NSASCIIStringEncoding] description]);
+    //NSString* raNSStr = [NSString stringWithCString:raStr.c_str() encoding:NSASCIIStringEncoding];
+    //NSString* raNSStr = [NSString stringWithUTF8String:raStr.c_str()];
     
-    NSData * encrypted = [crypto encryptData:[raNSStr dataUsingEncoding:NSASCIIStringEncoding]];
+    //NSLog(@"origin msg: %lu %d %@\n\n", raStr.length(), [raNSStr length], [[raNSStr dataUsingEncoding:NSUTF8StringEncoding] description]);
+    
+    NSData * encrypted = [crypto encryptData:[NSData dataWithBytes:raStr.c_str() length:raStr.size()]];
     NSLog(@"encrypted: %d %@", [encrypted length], encrypted);
     NSString* finalMsgb64 = [encrypted base64EncodedString];
     
     NSData * decrypted = [crypto decryptData:encrypted];
     NSString* decryptedStr = [NSString stringWithUTF8String:(const char*)[decrypted bytes]];
-    NSLog(@"decrypted: %d %@ %@\n\n", [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSASCIIStringEncoding] description]);
+    NSLog(@"decrypted: %d %@ %@\n\n", [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSUTF8StringEncoding] description]);
     
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     NSLog(@"finalKeyb64:%@", finalKeyb64);

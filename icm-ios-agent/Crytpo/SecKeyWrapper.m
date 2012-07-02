@@ -135,10 +135,10 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
     if (self = [super init])
     {
         // Tag data to search for keys.
-        publicTag = [kPublicKeyTag dataUsingEncoding:NSUTF8StringEncoding];
-        privateTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
-        symmetricTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
-        aggregatorPublicTag = [kAggregatorPublicKeyTag dataUsingEncoding:NSUTF8StringEncoding];
+        self.publicTag = [kPublicKeyTag dataUsingEncoding:NSUTF8StringEncoding];
+        self.privateTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
+        self.symmetricTag = [kPrivateKeyTag dataUsingEncoding:NSUTF8StringEncoding];
+        self.aggregatorPublicTag = [kAggregatorPublicKeyTag dataUsingEncoding:NSUTF8StringEncoding];
     }
 	
 	return self;
@@ -857,7 +857,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 		publicKeyBits = nil;
 	}
     
-	[queryPublicKey release];
+	[queryPublicKey release];//FIXME release or not?
 	
 	return publicKeyBits;
 }

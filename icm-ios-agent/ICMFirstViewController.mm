@@ -173,15 +173,15 @@ int start_node()
      */
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId < 0)
-        [engine registerAgent];
+    //    [engine registerAgent];
     //fuck yeah!
-    //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:226] forKey:AGENT_ID_KEY];
-    //engine.agentId= 226;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:226] forKey:AGENT_ID_KEY];
+    engine.agentId= 226;
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
     //[engine checkNewTests];
-    //[engine loginStep1];
+    [engine loginStep1];
 }
 
 @end
