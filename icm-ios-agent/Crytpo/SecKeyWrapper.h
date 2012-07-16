@@ -70,6 +70,7 @@
 #define	kPKCS1					11
 #define kTypeOfWrapPadding		kSecPaddingNone
 #define kTypeOfSigPadding		kSecPaddingPKCS1SHA1
+//#define kTypeOfSigPadding		kSecPaddingPKCS1MD5
 
 // constants used to find public, private, and symmetric keys.
 #define kPublicKeyTag			@"org.umit.icm.ios.agent.publickey"

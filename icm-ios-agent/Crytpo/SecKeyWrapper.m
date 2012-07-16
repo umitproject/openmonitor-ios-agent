@@ -618,7 +618,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	memset((void *)signedHashBytes, 0x0, signedHashBytesSize);
 	
 	// Sign the SHA1 hash.
-	sanityCheck = SecKeyRawSign(	privateKey, 
+	sanityCheck = SecKeyRawSign(privateKey, 
                                 kTypeOfSigPadding, 
                                 (const uint8_t *)[[self getHashBytes:plainText] bytes], 
                                 kChosenDigestLength, 
@@ -643,7 +643,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 	// Get the size of the assymetric block.
 	signedHashBytesSize = SecKeyGetBlockSize(publicKey);
 	
-	sanityCheck = SecKeyRawVerify(	publicKey, 
+	sanityCheck = SecKeyRawVerify(publicKey, 
                                   kTypeOfSigPadding, 
                                   (const uint8_t *)[[self getHashBytes:plainText] bytes],
                                   kChosenDigestLength, 

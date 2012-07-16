@@ -175,13 +175,14 @@ int start_node()
     //if (engine.agentId < 0)
     //    [engine registerAgent];
     //fuck yeah!
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:226] forKey:AGENT_ID_KEY];
-    engine.agentId= 226;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:267] forKey:AGENT_ID_KEY];
+    engine.agentId= 267;
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
     //[engine checkNewTests];
-    [engine loginStep1];
+    //[engine loginStep1];
+    [engine logoutAgent];
 }
 
 @end

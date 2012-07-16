@@ -76,6 +76,7 @@ typedef enum {
 
 - (void)registerAgent; // registeragent
 - (void)loginStep1;
+- (void)logoutAgent;
 //- (void)loginStep2; // called by loginStep1(), should not be publicly visible
 - (void)getEvents;
 - (void)sendWebsiteReport:(ICMWebsite*)site;

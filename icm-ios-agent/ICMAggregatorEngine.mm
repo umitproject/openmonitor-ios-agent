@@ -173,14 +173,23 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     prevResp.ParseFromArray((const void*)[prevRespdata bytes], [prevRespdata length]);
     //TODO resp.cipheredchallenge() should be equal to the string we set in step 1
     std::string challenge = prevResp.challenge();
+    NSString* challengeNSStr = [NSString stringWithCString:challenge.c_str() encoding:NSUTF8StringEncoding];
+    NSLog(@"challenge base64: %@", challengeNSStr);
+    //NSData* challengeData = [NSData dataFromBase64String:challengeNSStr];
+    //challengeNSStr = [NSString stringWithUTF8String:(const char*)[challengeData bytes]];
+    //NSLog(@"challenge: %@", challengeNSStr);
     int64_t processID = prevResp.processid();
     
     // prepare msg
     org::umit::icm::mobile::proto::LoginStep2 msg;
     msg.set_processid(processID);
     // cipheredchallenge
+    //NSData* ccData = [crypto getSignatureBytes:challengeData];
     NSData* ccData = [crypto getSignatureBytes:[NSData dataWithBytes:challenge.c_str() length:challenge.size()]];
+    //NSData* ccData = [crypto encryptData:[NSData dataWithBytes:challenge.c_str() length:challenge.size()]];
     NSString* ccStr = [ccData base64EncodedString];
+    NSLog(@"challenge signed b64: %@", ccStr);
+    
     msg.set_cipheredchallenge([ccStr cStringUsingEncoding:NSASCIIStringEncoding]);
     
     std::string msgStr = msg.SerializeAsString();
@@ -208,6 +217,44 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::ResponseHeader header = resp.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
+- (void)logoutAgent
+{
+    // prepare msg
+    org::umit::icm::mobile::proto::Logout msg;
+    msg.set_agentid(self.agentId);
+    
+    std::string msgStr = msg.SerializeAsString();
+    NSData * encrypted = [crypto encryptData:[NSData dataWithBytes:msgStr.c_str() length:msgStr.size()]];
+    NSLog(@"encrypted: %d %@", [encrypted length], encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_LOGOUT
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *respStr = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: respStr];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::LogoutResponse resp;
+        resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        std::string status = resp.status();
+        NSString* statusStr = [NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding];
+        NSLog(@"Logout Status: %@", statusStr);
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
@@ -254,8 +301,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
             int t = e.timeutc();
             int st = e.sincetimeutc();
             
-            NSString* ttNSStr = [NSString stringWithCString:ttStr.c_str() encoding:ttStr.size()];
-            NSString* etNSStr = [NSString stringWithCString:etStr.c_str() encoding:etStr.size()];
+            NSString* ttNSStr = [NSString stringWithCString:ttStr.c_str() encoding:NSUTF8StringEncoding];
+            NSString* etNSStr = [NSString stringWithCString:etStr.c_str() encoding:NSUTF8StringEncoding];
             
             NSLog(@"got event: %d %d %@ %@", t, st, ttNSStr, etNSStr);
         }
