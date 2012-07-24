@@ -226,11 +226,11 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 }  // namespace
 
 
-void protobuf_AssignDesc_messages_2eproto() {
-  protobuf_AddDesc_messages_2eproto();
+void protobuf_AssignDesc_proto_2fmessages_2eproto() {
+  protobuf_AddDesc_proto_2fmessages_2eproto();
   const ::google::protobuf::FileDescriptor* file =
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
-      "messages.proto");
+      "proto/messages.proto");
   GOOGLE_CHECK(file != NULL);
   Trace_descriptor_ = file->message_type(0);
   static const int Trace_offsets_[3] = {
@@ -1341,7 +1341,7 @@ namespace {
 GOOGLE_PROTOBUF_DECLARE_ONCE(protobuf_AssignDescriptors_once_);
 inline void protobuf_AssignDescriptorsOnce() {
   ::google::protobuf::GoogleOnceInit(&protobuf_AssignDescriptors_once_,
-                 &protobuf_AssignDesc_messages_2eproto);
+                 &protobuf_AssignDesc_proto_2fmessages_2eproto);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) {
@@ -1484,7 +1484,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
 
 }  // namespace
 
-void protobuf_ShutdownFile_messages_2eproto() {
+void protobuf_ShutdownFile_proto_2fmessages_2eproto() {
   delete Trace::default_instance_;
   delete Trace_reflection_;
   delete TraceRoute::default_instance_;
@@ -1621,173 +1621,173 @@ void protobuf_ShutdownFile_messages_2eproto() {
   delete GetBannetsResponse_reflection_;
 }
 
-void protobuf_AddDesc_messages_2eproto() {
+void protobuf_AddDesc_proto_2fmessages_2eproto() {
   static bool already_here = false;
   if (already_here) return;
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016messages.proto\022\031org.umit.icm.mobile.pr"
-    "oto\"7\n\005Trace\022\013\n\003hop\030\001 \002(\005\022\n\n\002ip\030\002 \002(\t\022\025\n"
-    "\rpacketsTiming\030\003 \003(\005\"p\n\nTraceRoute\022\016\n\006ta"
-    "rget\030\001 \002(\t\022\014\n\004hops\030\002 \002(\005\022\022\n\npacketSize\030\003"
-    " \002(\005\0220\n\006traces\030\004 \003(\0132 .org.umit.icm.mobi"
-    "le.proto.Trace\"\260\001\n\tICMReport\022\020\n\010reportID"
-    "\030\001 \002(\t\022\017\n\007agentID\030\002 \002(\003\022\016\n\006testID\030\003 \002(\005\022"
-    "\020\n\010timeZone\030\004 \002(\005\022\017\n\007timeUTC\030\005 \002(\003\022\022\n\npa"
-    "ssedNode\030\006 \003(\t\0229\n\ntraceroute\030\007 \001(\0132%.org"
-    ".umit.icm.mobile.proto.TraceRoute\"\245\001\n\023We"
-    "bsiteReportDetail\022\022\n\nwebsiteURL\030\001 \002(\t\022\022\n"
-    "\nstatusCode\030\002 \002(\005\022\024\n\014responseTime\030\003 \001(\005\022"
-    "\021\n\tbandwidth\030\004 \001(\005\022\024\n\014redirectLink\030\005 \001(\t"
-    "\022\024\n\014htmlResponse\030\006 \001(\t\022\021\n\thtmlMedia\030\007 \001("
-    "\014\"\205\001\n\rWebsiteReport\0224\n\006header\030\001 \002(\0132$.or"
-    "g.umit.icm.mobile.proto.ICMReport\022>\n\006rep"
-    "ort\030\002 \002(\0132..org.umit.icm.mobile.proto.We"
-    "bsiteReportDetail\"u\n\023ServiceReportDetail"
-    "\022\023\n\013serviceName\030\001 \002(\t\022\022\n\nstatusCode\030\002 \002("
-    "\005\022\014\n\004port\030\003 \002(\005\022\024\n\014responseTime\030\004 \001(\001\022\021\n"
-    "\tbandwidth\030\005 \001(\001\"\205\001\n\rServiceReport\0224\n\006he"
-    "ader\030\001 \002(\0132$.org.umit.icm.mobile.proto.I"
-    "CMReport\022>\n\006report\030\002 \002(\0132..org.umit.icm."
-    "mobile.proto.ServiceReportDetail\" \n\rRequ"
-    "estHeader\022\017\n\007agentID\030\001 \002(\003\"H\n\016ResponseHe"
-    "ader\022\030\n\020currentVersionNo\030\001 \002(\005\022\034\n\024curren"
-    "tTestVersionNo\030\002 \002(\005\"\276\001\n\rRegisterAgent\022\021"
-    "\n\tversionNo\030\001 \002(\005\022\021\n\tagentType\030\002 \002(\t\022@\n\013"
-    "credentials\030\003 \002(\0132+.org.umit.icm.mobile."
-    "proto.LoginCredentials\0229\n\016agentPublicKey"
-    "\030\004 \002(\0132!.org.umit.icm.mobile.proto.RSAKe"
-    "y\022\n\n\002ip\030\005 \001(\t\"z\n\025RegisterAgentResponse\0229"
-    "\n\006header\030\001 \002(\0132).org.umit.icm.mobile.pro"
-    "to.ResponseHeader\022\017\n\007agentID\030\002 \002(\003\022\025\n\rpu"
-    "blicKeyHash\030\003 \002(\t\"\"\n\006RSAKey\022\013\n\003mod\030\001 \002(\t"
-    "\022\013\n\003exp\030\002 \002(\t\"$\n\017CheckAggregator\022\021\n\tagen"
-    "tType\030\001 \002(\t\"d\n\027CheckAggregatorResponse\0229"
-    "\n\006header\030\001 \002(\0132).org.umit.icm.mobile.pro"
-    "to.ResponseHeader\022\016\n\006status\030\002 \002(\t\"E\n\005Log"
-    "in\022\017\n\007agentID\030\001 \002(\003\022\021\n\tchallenge\030\002 \002(\t\022\014"
-    "\n\004port\030\003 \002(\003\022\n\n\002ip\030\004 \001(\t\"M\n\nLoginStep1\022\021"
-    "\n\tprocessID\030\001 \002(\003\022\031\n\021cipheredChallenge\030\002"
-    " \002(\t\022\021\n\tchallenge\030\003 \002(\t\":\n\nLoginStep2\022\021\n"
-    "\tprocessID\030\001 \002(\003\022\031\n\021cipheredChallenge\030\002 "
-    "\002(\t\"J\n\rLoginResponse\0229\n\006header\030\001 \002(\0132).o"
-    "rg.umit.icm.mobile.proto.ResponseHeader\""
-    "\031\n\006Logout\022\017\n\007agentID\030\001 \002(\003\" \n\016LogoutResp"
-    "onse\022\016\n\006status\030\001 \002(\t\"\034\n\013GetPeerList\022\r\n\005c"
-    "ount\030\001 \001(\005\"\231\001\n\tAgentData\022\017\n\007agentID\030\001 \002("
-    "\003\022\017\n\007agentIP\030\002 \002(\t\022\021\n\tagentPort\030\003 \002(\005\022\r\n"
-    "\005token\030\004 \002(\t\0224\n\tpublicKey\030\005 \002(\0132!.org.um"
-    "it.icm.mobile.proto.RSAKey\022\022\n\npeerStatus"
-    "\030\006 \002(\t\"\212\001\n\023GetPeerListResponse\0229\n\006header"
-    "\030\001 \002(\0132).org.umit.icm.mobile.proto.Respo"
-    "nseHeader\0228\n\nknownPeers\030\002 \003(\0132$.org.umit"
-    ".icm.mobile.proto.AgentData\"!\n\020GetSuperP"
-    "eerList\022\r\n\005count\030\001 \001(\005\"\224\001\n\030GetSuperPeerL"
-    "istResponse\0229\n\006header\030\001 \002(\0132).org.umit.i"
-    "cm.mobile.proto.ResponseHeader\022=\n\017knownS"
-    "uperPeers\030\002 \003(\0132$.org.umit.icm.mobile.pr"
-    "oto.AgentData\"/\n\010Location\022\021\n\tlongitude\030\001"
-    " \002(\001\022\020\n\010latitude\030\002 \002(\001\"\177\n\tGetEvents\0226\n\tl"
-    "ocations\030\001 \003(\0132#.org.umit.icm.mobile.pro"
-    "to.Location\022:\n\ragentLocation\030\002 \001(\0132#.org"
-    ".umit.icm.mobile.proto.Location\"\231\002\n\005Even"
-    "t\022\020\n\010testType\030\001 \002(\t\022\021\n\teventType\030\002 \002(\t\022\017"
-    "\n\007timeUTC\030\003 \002(\003\022\024\n\014sinceTimeUTC\030\004 \002(\003\0226\n"
-    "\tlocations\030\005 \003(\0132#.org.umit.icm.mobile.p"
-    "roto.Location\022E\n\rwebsiteReport\030\006 \001(\0132..o"
-    "rg.umit.icm.mobile.proto.WebsiteReportDe"
-    "tail\022E\n\rserviceReport\030\007 \001(\0132..org.umit.i"
-    "cm.mobile.proto.ServiceReportDetail\"\200\001\n\021"
-    "GetEventsResponse\0229\n\006header\030\001 \002(\0132).org."
-    "umit.icm.mobile.proto.ResponseHeader\0220\n\006"
-    "events\030\002 \003(\0132 .org.umit.icm.mobile.proto"
-    ".Event\"M\n\021SendWebsiteReport\0228\n\006report\030\001 "
-    "\002(\0132(.org.umit.icm.mobile.proto.WebsiteR"
-    "eport\"M\n\021SendServiceReport\0228\n\006report\030\001 \002"
-    "(\0132(.org.umit.icm.mobile.proto.ServiceRe"
-    "port\"O\n\022SendReportResponse\0229\n\006header\030\001 \002"
+    "\n\024proto/messages.proto\022\031org.umit.icm.mob"
+    "ile.proto\"7\n\005Trace\022\013\n\003hop\030\001 \002(\005\022\n\n\002ip\030\002 "
+    "\002(\t\022\025\n\rpacketsTiming\030\003 \003(\005\"p\n\nTraceRoute"
+    "\022\016\n\006target\030\001 \002(\t\022\014\n\004hops\030\002 \002(\005\022\022\n\npacket"
+    "Size\030\003 \002(\005\0220\n\006traces\030\004 \003(\0132 .org.umit.ic"
+    "m.mobile.proto.Trace\"\260\001\n\tICMReport\022\020\n\010re"
+    "portID\030\001 \002(\t\022\017\n\007agentID\030\002 \002(\t\022\016\n\006testID\030"
+    "\003 \002(\t\022\020\n\010timeZone\030\004 \002(\005\022\017\n\007timeUTC\030\005 \002(\003"
+    "\022\022\n\npassedNode\030\006 \003(\t\0229\n\ntraceroute\030\007 \001(\013"
+    "2%.org.umit.icm.mobile.proto.TraceRoute\""
+    "\245\001\n\023WebsiteReportDetail\022\022\n\nwebsiteURL\030\001 "
+    "\002(\t\022\022\n\nstatusCode\030\002 \002(\005\022\024\n\014responseTime\030"
+    "\003 \001(\005\022\021\n\tbandwidth\030\004 \001(\005\022\024\n\014redirectLink"
+    "\030\005 \001(\t\022\024\n\014htmlResponse\030\006 \001(\t\022\021\n\thtmlMedi"
+    "a\030\007 \001(\014\"\205\001\n\rWebsiteReport\0224\n\006header\030\001 \002("
+    "\0132$.org.umit.icm.mobile.proto.ICMReport\022"
+    ">\n\006report\030\002 \002(\0132..org.umit.icm.mobile.pr"
+    "oto.WebsiteReportDetail\"u\n\023ServiceReport"
+    "Detail\022\023\n\013serviceName\030\001 \002(\t\022\022\n\nstatusCod"
+    "e\030\002 \002(\005\022\014\n\004port\030\003 \002(\005\022\024\n\014responseTime\030\004 "
+    "\001(\001\022\021\n\tbandwidth\030\005 \001(\001\"\205\001\n\rServiceReport"
+    "\0224\n\006header\030\001 \002(\0132$.org.umit.icm.mobile.p"
+    "roto.ICMReport\022>\n\006report\030\002 \002(\0132..org.umi"
+    "t.icm.mobile.proto.ServiceReportDetail\" "
+    "\n\rRequestHeader\022\017\n\007agentID\030\001 \002(\t\"H\n\016Resp"
+    "onseHeader\022\030\n\020currentVersionNo\030\001 \002(\005\022\034\n\024"
+    "currentTestVersionNo\030\002 \002(\005\"\276\001\n\rRegisterA"
+    "gent\022\021\n\tversionNo\030\001 \002(\005\022\021\n\tagentType\030\002 \002"
+    "(\t\022@\n\013credentials\030\003 \002(\0132+.org.umit.icm.m"
+    "obile.proto.LoginCredentials\0229\n\016agentPub"
+    "licKey\030\004 \002(\0132!.org.umit.icm.mobile.proto"
+    ".RSAKey\022\n\n\002ip\030\005 \001(\t\"z\n\025RegisterAgentResp"
+    "onse\0229\n\006header\030\001 \002(\0132).org.umit.icm.mobi"
+    "le.proto.ResponseHeader\022\017\n\007agentID\030\002 \002(\t"
+    "\022\025\n\rpublicKeyHash\030\003 \002(\t\"\"\n\006RSAKey\022\013\n\003mod"
+    "\030\001 \002(\t\022\013\n\003exp\030\002 \002(\t\"$\n\017CheckAggregator\022\021"
+    "\n\tagentType\030\001 \002(\t\"d\n\027CheckAggregatorResp"
+    "onse\0229\n\006header\030\001 \002(\0132).org.umit.icm.mobi"
+    "le.proto.ResponseHeader\022\016\n\006status\030\002 \002(\t\""
+    "E\n\005Login\022\017\n\007agentID\030\001 \002(\t\022\021\n\tchallenge\030\002"
+    " \002(\t\022\014\n\004port\030\003 \002(\003\022\n\n\002ip\030\004 \001(\t\"M\n\nLoginS"
+    "tep1\022\021\n\tprocessID\030\001 \002(\t\022\031\n\021cipheredChall"
+    "enge\030\002 \002(\t\022\021\n\tchallenge\030\003 \002(\t\":\n\nLoginSt"
+    "ep2\022\021\n\tprocessID\030\001 \002(\t\022\031\n\021cipheredChalle"
+    "nge\030\002 \002(\t\"J\n\rLoginResponse\0229\n\006header\030\001 \002"
     "(\0132).org.umit.icm.mobile.proto.ResponseH"
-    "eader\"7\n\nNewVersion\022\026\n\016agentVersionNo\030\001 "
-    "\002(\005\022\021\n\tagentType\030\002 \002(\t\"\207\001\n\022NewVersionRes"
-    "ponse\0229\n\006header\030\001 \002(\0132).org.umit.icm.mob"
-    "ile.proto.ResponseHeader\022\023\n\013downloadURL\030"
-    "\002 \001(\t\022\016\n\006update\030\003 \001(\014\022\021\n\tversionNo\030\004 \002(\005"
-    "\"(\n\010NewTests\022\034\n\024currentTestVersionNo\030\001 \002"
-    "(\005\"\026\n\007Website\022\013\n\003url\030\001 \002(\t\"1\n\007Service\022\014\n"
-    "\004name\030\001 \002(\t\022\014\n\004port\030\002 \002(\005\022\n\n\002ip\030\003 \002(\t\"\254\001"
-    "\n\004Test\022\016\n\006testID\030\001 \002(\003\0223\n\007website\030\002 \001(\0132"
-    "\".org.umit.icm.mobile.proto.Website\0223\n\007s"
-    "ervice\030\003 \001(\0132\".org.umit.icm.mobile.proto"
-    ".Service\022\030\n\020executeAtTimeUTC\030\004 \001(\003\022\020\n\010te"
-    "stType\030\005 \002(\t\"\224\001\n\020NewTestsResponse\0229\n\006hea"
-    "der\030\001 \002(\0132).org.umit.icm.mobile.proto.Re"
-    "sponseHeader\022.\n\005tests\030\002 \003(\0132\037.org.umit.i"
-    "cm.mobile.proto.Test\022\025\n\rtestVersionNo\030\003 "
-    "\002(\005\"F\n\nAssignTask\0228\n\006header\030\001 \002(\0132(.org."
-    "umit.icm.mobile.proto.RequestHeader\"\177\n\022A"
-    "ssignTaskResponse\0229\n\006header\030\001 \002(\0132).org."
-    "umit.icm.mobile.proto.ResponseHeader\022.\n\005"
-    "tests\030\002 \003(\0132\037.org.umit.icm.mobile.proto."
-    "Test\"J\n\016UpgradeToSuper\0228\n\006header\030\001 \002(\0132("
-    ".org.umit.icm.mobile.proto.RequestHeader"
-    "\"\330\001\n\026UpgradeToSuperResponse\0229\n\006header\030\001 "
-    "\002(\0132).org.umit.icm.mobile.proto.Response"
-    "Header\022\020\n\010newToken\030\002 \002(\t\0228\n\rnewPrivateKe"
-    "y\030\003 \002(\0132!.org.umit.icm.mobile.proto.RSAK"
-    "ey\0227\n\014newPublicKey\030\004 \002(\0132!.org.umit.icm."
-    "mobile.proto.RSAKey\"\'\n\021WebsiteSuggestion"
-    "\022\022\n\nwebsiteURL\030\001 \002(\t\"T\n\021ServiceSuggestio"
-    "n\022\023\n\013serviceName\030\001 \002(\t\022\020\n\010hostName\030\002 \002(\t"
-    "\022\n\n\002ip\030\003 \002(\t\022\014\n\004port\030\004 \002(\003\"S\n\026TestSugges"
-    "tionResponse\0229\n\006header\030\001 \002(\0132).org.umit."
-    "icm.mobile.proto.ResponseHeader\"\207\001\n\020Auth"
-    "enticatePeer\022\021\n\tagentType\030\001 \002(\005\022\017\n\007agent"
-    "ID\030\002 \002(\003\022<\n\021cipheredPublicKey\030\003 \002(\0132!.or"
-    "g.umit.icm.mobile.proto.RSAKey\022\021\n\tagentP"
-    "ort\030\004 \001(\005\"g\n\030AuthenticatePeerResponse\022<\n"
-    "\021cipheredPublicKey\030\001 \002(\0132!.org.umit.icm."
-    "mobile.proto.RSAKey\022\r\n\005token\030\002 \002(\t\"$\n\023P2"
-    "PGetSuperPeerList\022\r\n\005count\030\001 \002(\005\"R\n\033P2PG"
-    "etSuperPeerListResponse\0223\n\005peers\030\001 \003(\0132$"
-    ".org.umit.icm.mobile.proto.AgentData\"\037\n\016"
-    "P2PGetPeerList\022\r\n\005count\030\001 \002(\005\"M\n\026P2PGetP"
-    "eerListResponse\0223\n\005peers\030\001 \003(\0132$.org.umi"
-    "t.icm.mobile.proto.AgentData\"F\n\013AgentUpd"
-    "ate\022\017\n\007version\030\001 \002(\t\022\023\n\013downloadURL\030\002 \002("
-    "\t\022\021\n\tcheckCode\030\003 \001(\005\"6\n\023AgentUpdateRespo"
-    "nse\022\017\n\007version\030\001 \002(\t\022\016\n\006result\030\002 \002(\t\"K\n\020"
-    "TestModuleUpdate\022\017\n\007version\030\001 \002(\t\022\023\n\013dow"
-    "nloadURL\030\002 \002(\t\022\021\n\tcheckCode\030\003 \001(\005\";\n\030Tes"
-    "tModuleUpdateResponse\022\017\n\007version\030\001 \002(\t\022\016"
-    "\n\006result\030\002 \002(\t\"T\n\021ForwardingMessage\022\023\n\013d"
-    "estination\030\001 \002(\003\022\022\n\nidentifier\030\002 \002(\t\022\026\n\016"
-    "encodedMessage\030\003 \002(\t\"G\n\031ForwardingMessag"
-    "eResponse\022\022\n\nidentifier\030\001 \002(\t\022\026\n\016encoded"
-    "Message\030\002 \002(\t\"6\n\020LoginCredentials\022\020\n\010use"
-    "rname\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\032\n\nGetNetl"
-    "ist\022\014\n\004list\030\001 \002(\005\"\201\001\n\013NetworkData\022\020\n\010sta"
-    "rt_ip\030\001 \002(\005\022\016\n\006end_ip\030\002 \002(\005\022\033\n\023nodes_cou"
-    "nt_network\030\003 \001(\005\0223\n\005nodes\030\004 \003(\0132$.org.um"
-    "it.icm.mobile.proto.AgentData\"Y\n\021BannedN"
-    "etworkData\022\020\n\010start_ip\030\001 \002(\005\022\016\n\006end_ip\030\002"
-    " \002(\005\022\023\n\013nodes_count\030\003 \001(\005\022\r\n\005flags\030\004 \002(\005"
-    "\"\211\001\n\022GetNetlistResponse\0229\n\006header\030\001 \002(\0132"
+    "eader\"\031\n\006Logout\022\017\n\007agentID\030\001 \002(\t\" \n\016Logo"
+    "utResponse\022\016\n\006status\030\001 \002(\t\"\034\n\013GetPeerLis"
+    "t\022\r\n\005count\030\001 \001(\005\"\231\001\n\tAgentData\022\017\n\007agentI"
+    "D\030\001 \002(\t\022\017\n\007agentIP\030\002 \002(\t\022\021\n\tagentPort\030\003 "
+    "\002(\005\022\r\n\005token\030\004 \002(\t\0224\n\tpublicKey\030\005 \002(\0132!."
+    "org.umit.icm.mobile.proto.RSAKey\022\022\n\npeer"
+    "Status\030\006 \002(\t\"\212\001\n\023GetPeerListResponse\0229\n\006"
+    "header\030\001 \002(\0132).org.umit.icm.mobile.proto"
+    ".ResponseHeader\0228\n\nknownPeers\030\002 \003(\0132$.or"
+    "g.umit.icm.mobile.proto.AgentData\"!\n\020Get"
+    "SuperPeerList\022\r\n\005count\030\001 \001(\005\"\224\001\n\030GetSupe"
+    "rPeerListResponse\0229\n\006header\030\001 \002(\0132).org."
+    "umit.icm.mobile.proto.ResponseHeader\022=\n\017"
+    "knownSuperPeers\030\002 \003(\0132$.org.umit.icm.mob"
+    "ile.proto.AgentData\"/\n\010Location\022\021\n\tlongi"
+    "tude\030\001 \002(\001\022\020\n\010latitude\030\002 \002(\001\"\177\n\tGetEvent"
+    "s\0226\n\tlocations\030\001 \003(\0132#.org.umit.icm.mobi"
+    "le.proto.Location\022:\n\ragentLocation\030\002 \001(\013"
+    "2#.org.umit.icm.mobile.proto.Location\"\231\002"
+    "\n\005Event\022\020\n\010testType\030\001 \002(\t\022\021\n\teventType\030\002"
+    " \002(\t\022\017\n\007timeUTC\030\003 \002(\003\022\024\n\014sinceTimeUTC\030\004 "
+    "\002(\003\0226\n\tlocations\030\005 \003(\0132#.org.umit.icm.mo"
+    "bile.proto.Location\022E\n\rwebsiteReport\030\006 \001"
+    "(\0132..org.umit.icm.mobile.proto.WebsiteRe"
+    "portDetail\022E\n\rserviceReport\030\007 \001(\0132..org."
+    "umit.icm.mobile.proto.ServiceReportDetai"
+    "l\"\200\001\n\021GetEventsResponse\0229\n\006header\030\001 \002(\0132"
     ").org.umit.icm.mobile.proto.ResponseHead"
-    "er\0228\n\010networks\030\002 \003(\0132&.org.umit.icm.mobi"
-    "le.proto.NetworkData\"\033\n\nGetBanlist\022\r\n\005co"
-    "unt\030\001 \002(\005\"w\n\022GetBanlistResponse\0229\n\006heade"
-    "r\030\001 \002(\0132).org.umit.icm.mobile.proto.Resp"
-    "onseHeader\022\023\n\013nodes_count\030\002 \002(\005\022\021\n\tagent"
-    "_ids\030\003 \003(\005\"\033\n\nGetBannets\022\r\n\005count\030\001 \002(\005\""
-    "\217\001\n\022GetBannetsResponse\0229\n\006header\030\001 \002(\0132)"
-    ".org.umit.icm.mobile.proto.ResponseHeade"
-    "r\022>\n\010networks\030\002 \003(\0132,.org.umit.icm.mobil"
-    "e.proto.BannedNetworkDataB\017B\rMessageProt"
-    "os", 6282);
+    "er\0220\n\006events\030\002 \003(\0132 .org.umit.icm.mobile"
+    ".proto.Event\"M\n\021SendWebsiteReport\0228\n\006rep"
+    "ort\030\001 \002(\0132(.org.umit.icm.mobile.proto.We"
+    "bsiteReport\"M\n\021SendServiceReport\0228\n\006repo"
+    "rt\030\001 \002(\0132(.org.umit.icm.mobile.proto.Ser"
+    "viceReport\"O\n\022SendReportResponse\0229\n\006head"
+    "er\030\001 \002(\0132).org.umit.icm.mobile.proto.Res"
+    "ponseHeader\"7\n\nNewVersion\022\026\n\016agentVersio"
+    "nNo\030\001 \002(\005\022\021\n\tagentType\030\002 \002(\t\"\207\001\n\022NewVers"
+    "ionResponse\0229\n\006header\030\001 \002(\0132).org.umit.i"
+    "cm.mobile.proto.ResponseHeader\022\023\n\013downlo"
+    "adURL\030\002 \001(\t\022\016\n\006update\030\003 \001(\014\022\021\n\tversionNo"
+    "\030\004 \002(\005\"(\n\010NewTests\022\034\n\024currentTestVersion"
+    "No\030\001 \002(\005\"\026\n\007Website\022\013\n\003url\030\001 \002(\t\"1\n\007Serv"
+    "ice\022\014\n\004name\030\001 \002(\t\022\014\n\004port\030\002 \002(\005\022\n\n\002ip\030\003 "
+    "\002(\t\"\254\001\n\004Test\022\016\n\006testID\030\001 \002(\t\0223\n\007website\030"
+    "\002 \001(\0132\".org.umit.icm.mobile.proto.Websit"
+    "e\0223\n\007service\030\003 \001(\0132\".org.umit.icm.mobile"
+    ".proto.Service\022\030\n\020executeAtTimeUTC\030\004 \001(\003"
+    "\022\020\n\010testType\030\005 \002(\005\"\224\001\n\020NewTestsResponse\022"
+    "9\n\006header\030\001 \002(\0132).org.umit.icm.mobile.pr"
+    "oto.ResponseHeader\022.\n\005tests\030\002 \003(\0132\037.org."
+    "umit.icm.mobile.proto.Test\022\025\n\rtestVersio"
+    "nNo\030\003 \002(\005\"F\n\nAssignTask\0228\n\006header\030\001 \002(\0132"
+    "(.org.umit.icm.mobile.proto.RequestHeade"
+    "r\"\177\n\022AssignTaskResponse\0229\n\006header\030\001 \002(\0132"
+    ").org.umit.icm.mobile.proto.ResponseHead"
+    "er\022.\n\005tests\030\002 \003(\0132\037.org.umit.icm.mobile."
+    "proto.Test\"J\n\016UpgradeToSuper\0228\n\006header\030\001"
+    " \002(\0132(.org.umit.icm.mobile.proto.Request"
+    "Header\"\330\001\n\026UpgradeToSuperResponse\0229\n\006hea"
+    "der\030\001 \002(\0132).org.umit.icm.mobile.proto.Re"
+    "sponseHeader\022\020\n\010newToken\030\002 \002(\t\0228\n\rnewPri"
+    "vateKey\030\003 \002(\0132!.org.umit.icm.mobile.prot"
+    "o.RSAKey\0227\n\014newPublicKey\030\004 \002(\0132!.org.umi"
+    "t.icm.mobile.proto.RSAKey\"\'\n\021WebsiteSugg"
+    "estion\022\022\n\nwebsiteURL\030\001 \002(\t\"T\n\021ServiceSug"
+    "gestion\022\023\n\013serviceName\030\001 \002(\t\022\020\n\010hostName"
+    "\030\002 \002(\t\022\n\n\002ip\030\003 \002(\t\022\014\n\004port\030\004 \002(\003\"S\n\026Test"
+    "SuggestionResponse\0229\n\006header\030\001 \002(\0132).org"
+    ".umit.icm.mobile.proto.ResponseHeader\"\207\001"
+    "\n\020AuthenticatePeer\022\021\n\tagentType\030\001 \002(\005\022\017\n"
+    "\007agentID\030\002 \002(\t\022<\n\021cipheredPublicKey\030\003 \002("
+    "\0132!.org.umit.icm.mobile.proto.RSAKey\022\021\n\t"
+    "agentPort\030\004 \001(\005\"g\n\030AuthenticatePeerRespo"
+    "nse\022<\n\021cipheredPublicKey\030\001 \002(\0132!.org.umi"
+    "t.icm.mobile.proto.RSAKey\022\r\n\005token\030\002 \002(\t"
+    "\"$\n\023P2PGetSuperPeerList\022\r\n\005count\030\001 \002(\005\"R"
+    "\n\033P2PGetSuperPeerListResponse\0223\n\005peers\030\001"
+    " \003(\0132$.org.umit.icm.mobile.proto.AgentDa"
+    "ta\"\037\n\016P2PGetPeerList\022\r\n\005count\030\001 \002(\005\"M\n\026P"
+    "2PGetPeerListResponse\0223\n\005peers\030\001 \003(\0132$.o"
+    "rg.umit.icm.mobile.proto.AgentData\"F\n\013Ag"
+    "entUpdate\022\017\n\007version\030\001 \002(\t\022\023\n\013downloadUR"
+    "L\030\002 \002(\t\022\021\n\tcheckCode\030\003 \001(\005\"6\n\023AgentUpdat"
+    "eResponse\022\017\n\007version\030\001 \002(\t\022\016\n\006result\030\002 \002"
+    "(\t\"K\n\020TestModuleUpdate\022\017\n\007version\030\001 \002(\t\022"
+    "\023\n\013downloadURL\030\002 \002(\t\022\021\n\tcheckCode\030\003 \001(\005\""
+    ";\n\030TestModuleUpdateResponse\022\017\n\007version\030\001"
+    " \002(\t\022\016\n\006result\030\002 \002(\t\"T\n\021ForwardingMessag"
+    "e\022\023\n\013destination\030\001 \002(\003\022\022\n\nidentifier\030\002 \002"
+    "(\t\022\026\n\016encodedMessage\030\003 \002(\t\"G\n\031Forwarding"
+    "MessageResponse\022\022\n\nidentifier\030\001 \002(\t\022\026\n\016e"
+    "ncodedMessage\030\002 \002(\t\"6\n\020LoginCredentials\022"
+    "\020\n\010username\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\032\n\nG"
+    "etNetlist\022\014\n\004list\030\001 \002(\005\"\201\001\n\013NetworkData\022"
+    "\020\n\010start_ip\030\001 \002(\005\022\016\n\006end_ip\030\002 \002(\005\022\033\n\023nod"
+    "es_count_network\030\003 \001(\005\0223\n\005nodes\030\004 \003(\0132$."
+    "org.umit.icm.mobile.proto.AgentData\"Y\n\021B"
+    "annedNetworkData\022\020\n\010start_ip\030\001 \002(\005\022\016\n\006en"
+    "d_ip\030\002 \002(\005\022\023\n\013nodes_count\030\003 \001(\005\022\r\n\005flags"
+    "\030\004 \002(\005\"\211\001\n\022GetNetlistResponse\0229\n\006header\030"
+    "\001 \002(\0132).org.umit.icm.mobile.proto.Respon"
+    "seHeader\0228\n\010networks\030\002 \003(\0132&.org.umit.ic"
+    "m.mobile.proto.NetworkData\"\033\n\nGetBanlist"
+    "\022\r\n\005count\030\001 \002(\005\"w\n\022GetBanlistResponse\0229\n"
+    "\006header\030\001 \002(\0132).org.umit.icm.mobile.prot"
+    "o.ResponseHeader\022\023\n\013nodes_count\030\002 \002(\005\022\021\n"
+    "\tagent_ids\030\003 \003(\t\"\033\n\nGetBannets\022\r\n\005count\030"
+    "\001 \002(\005\"\217\001\n\022GetBannetsResponse\0229\n\006header\030\001"
+    " \002(\0132).org.umit.icm.mobile.proto.Respons"
+    "eHeader\022>\n\010networks\030\002 \003(\0132,.org.umit.icm"
+    ".mobile.proto.BannedNetworkDataB\017B\rMessa"
+    "geProtos", 6288);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "messages.proto", &protobuf_RegisterTypes);
+    "proto/messages.proto", &protobuf_RegisterTypes);
   Trace::default_instance_ = new Trace();
   TraceRoute::default_instance_ = new TraceRoute();
   ICMReport::default_instance_ = new ICMReport();
@@ -1922,15 +1922,15 @@ void protobuf_AddDesc_messages_2eproto() {
   GetBanlistResponse::default_instance_->InitAsDefaultInstance();
   GetBannets::default_instance_->InitAsDefaultInstance();
   GetBannetsResponse::default_instance_->InitAsDefaultInstance();
-  ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_messages_2eproto);
+  ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_proto_2fmessages_2eproto);
 }
 
 // Force AddDescriptors() to be called at static initialization time.
-struct StaticDescriptorInitializer_messages_2eproto {
-  StaticDescriptorInitializer_messages_2eproto() {
-    protobuf_AddDesc_messages_2eproto();
+struct StaticDescriptorInitializer_proto_2fmessages_2eproto {
+  StaticDescriptorInitializer_proto_2fmessages_2eproto() {
+    protobuf_AddDesc_proto_2fmessages_2eproto();
   }
-} static_descriptor_initializer_messages_2eproto_;
+} static_descriptor_initializer_proto_2fmessages_2eproto_;
 
 
 // ===================================================================
@@ -1985,7 +1985,7 @@ const ::google::protobuf::Descriptor* Trace::descriptor() {
 }
 
 const Trace& Trace::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Trace* Trace::default_instance_ = NULL;
@@ -2300,7 +2300,7 @@ const ::google::protobuf::Descriptor* TraceRoute::descriptor() {
 }
 
 const TraceRoute& TraceRoute::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 TraceRoute* TraceRoute::default_instance_ = NULL;
@@ -2624,8 +2624,8 @@ ICMReport::ICMReport(const ICMReport& from)
 void ICMReport::SharedCtor() {
   _cached_size_ = 0;
   reportid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  agentid_ = GOOGLE_LONGLONG(0);
-  testid_ = 0;
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   timezone_ = 0;
   timeutc_ = GOOGLE_LONGLONG(0);
   traceroute_ = NULL;
@@ -2639,6 +2639,12 @@ ICMReport::~ICMReport() {
 void ICMReport::SharedDtor() {
   if (reportid_ != &::google::protobuf::internal::kEmptyString) {
     delete reportid_;
+  }
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
+  if (testid_ != &::google::protobuf::internal::kEmptyString) {
+    delete testid_;
   }
   if (this != default_instance_) {
     delete traceroute_;
@@ -2656,7 +2662,7 @@ const ::google::protobuf::Descriptor* ICMReport::descriptor() {
 }
 
 const ICMReport& ICMReport::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ICMReport* ICMReport::default_instance_ = NULL;
@@ -2672,8 +2678,16 @@ void ICMReport::Clear() {
         reportid_->clear();
       }
     }
-    agentid_ = GOOGLE_LONGLONG(0);
-    testid_ = 0;
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
+    if (has_testid()) {
+      if (testid_ != &::google::protobuf::internal::kEmptyString) {
+        testid_->clear();
+      }
+    }
     timezone_ = 0;
     timeutc_ = GOOGLE_LONGLONG(0);
     if (has_traceroute()) {
@@ -2703,35 +2717,37 @@ bool ICMReport::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_agentID;
+        if (input->ExpectTag(18)) goto parse_agentID;
         break;
       }
       
-      // required int64 agentID = 2;
+      // required string agentID = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_agentID:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_testID;
+        if (input->ExpectTag(26)) goto parse_testID;
         break;
       }
       
-      // required int32 testID = 3;
+      // required string testID = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_testID:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &testid_)));
-          set_has_testid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_testid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->testid().data(), this->testid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -2830,14 +2846,22 @@ void ICMReport::SerializeWithCachedSizes(
       1, this->reportid(), output);
   }
   
-  // required int64 agentID = 2;
+  // required string agentID = 2;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->agentid(), output);
   }
   
-  // required int32 testID = 3;
+  // required string testID = 3;
   if (has_testid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->testid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->testid(), output);
   }
   
   // required int32 timeZone = 4;
@@ -2883,14 +2907,24 @@ void ICMReport::SerializeWithCachedSizes(
         1, this->reportid(), target);
   }
   
-  // required int64 agentID = 2;
+  // required string agentID = 2;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->agentid(), target);
   }
   
-  // required int32 testID = 3;
+  // required string testID = 3;
   if (has_testid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->testid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->testid(), target);
   }
   
   // required int32 timeZone = 4;
@@ -2937,17 +2971,17 @@ int ICMReport::ByteSize() const {
           this->reportid());
     }
     
-    // required int64 agentID = 2;
+    // required string agentID = 2;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
-    // required int32 testID = 3;
+    // required string testID = 3;
     if (has_testid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->testid());
     }
     
@@ -3144,7 +3178,7 @@ const ::google::protobuf::Descriptor* WebsiteReportDetail::descriptor() {
 }
 
 const WebsiteReportDetail& WebsiteReportDetail::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 WebsiteReportDetail* WebsiteReportDetail::default_instance_ = NULL;
@@ -3633,7 +3667,7 @@ const ::google::protobuf::Descriptor* WebsiteReport::descriptor() {
 }
 
 const WebsiteReport& WebsiteReport::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 WebsiteReport* WebsiteReport::default_instance_ = NULL;
@@ -3902,7 +3936,7 @@ const ::google::protobuf::Descriptor* ServiceReportDetail::descriptor() {
 }
 
 const ServiceReportDetail& ServiceReportDetail::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ServiceReportDetail* ServiceReportDetail::default_instance_ = NULL;
@@ -4278,7 +4312,7 @@ const ::google::protobuf::Descriptor* ServiceReport::descriptor() {
 }
 
 const ServiceReport& ServiceReport::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ServiceReport* ServiceReport::default_instance_ = NULL;
@@ -4512,7 +4546,7 @@ RequestHeader::RequestHeader(const RequestHeader& from)
 
 void RequestHeader::SharedCtor() {
   _cached_size_ = 0;
-  agentid_ = GOOGLE_LONGLONG(0);
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4521,6 +4555,9 @@ RequestHeader::~RequestHeader() {
 }
 
 void RequestHeader::SharedDtor() {
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -4536,7 +4573,7 @@ const ::google::protobuf::Descriptor* RequestHeader::descriptor() {
 }
 
 const RequestHeader& RequestHeader::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 RequestHeader* RequestHeader::default_instance_ = NULL;
@@ -4547,7 +4584,11 @@ RequestHeader* RequestHeader::New() const {
 
 void RequestHeader::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    agentid_ = GOOGLE_LONGLONG(0);
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -4559,14 +4600,15 @@ bool RequestHeader::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 agentID = 1;
+      // required string agentID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -4592,9 +4634,13 @@ bool RequestHeader::MergePartialFromCodedStream(
 
 void RequestHeader::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->agentid(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -4605,9 +4651,14 @@ void RequestHeader::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* RequestHeader::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->agentid(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -4621,10 +4672,10 @@ int RequestHeader::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 agentID = 1;
+    // required string agentID = 1;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
@@ -4746,7 +4797,7 @@ const ::google::protobuf::Descriptor* ResponseHeader::descriptor() {
 }
 
 const ResponseHeader& ResponseHeader::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ResponseHeader* ResponseHeader::default_instance_ = NULL;
@@ -5010,7 +5061,7 @@ const ::google::protobuf::Descriptor* RegisterAgent::descriptor() {
 }
 
 const RegisterAgent& RegisterAgent::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 RegisterAgent* RegisterAgent::default_instance_ = NULL;
@@ -5390,7 +5441,7 @@ RegisterAgentResponse::RegisterAgentResponse(const RegisterAgentResponse& from)
 void RegisterAgentResponse::SharedCtor() {
   _cached_size_ = 0;
   header_ = NULL;
-  agentid_ = GOOGLE_LONGLONG(0);
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   publickeyhash_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -5400,6 +5451,9 @@ RegisterAgentResponse::~RegisterAgentResponse() {
 }
 
 void RegisterAgentResponse::SharedDtor() {
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
   if (publickeyhash_ != &::google::protobuf::internal::kEmptyString) {
     delete publickeyhash_;
   }
@@ -5419,7 +5473,7 @@ const ::google::protobuf::Descriptor* RegisterAgentResponse::descriptor() {
 }
 
 const RegisterAgentResponse& RegisterAgentResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 RegisterAgentResponse* RegisterAgentResponse::default_instance_ = NULL;
@@ -5433,7 +5487,11 @@ void RegisterAgentResponse::Clear() {
     if (has_header()) {
       if (header_ != NULL) header_->::org::umit::icm::mobile::proto::ResponseHeader::Clear();
     }
-    agentid_ = GOOGLE_LONGLONG(0);
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
     if (has_publickeyhash()) {
       if (publickeyhash_ != &::google::protobuf::internal::kEmptyString) {
         publickeyhash_->clear();
@@ -5459,19 +5517,20 @@ bool RegisterAgentResponse::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_agentID;
+        if (input->ExpectTag(18)) goto parse_agentID;
         break;
       }
       
-      // required int64 agentID = 2;
+      // required string agentID = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_agentID:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -5520,9 +5579,13 @@ void RegisterAgentResponse::SerializeWithCachedSizes(
       1, this->header(), output);
   }
   
-  // required int64 agentID = 2;
+  // required string agentID = 2;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->agentid(), output);
   }
   
   // required string publicKeyHash = 3;
@@ -5549,9 +5612,14 @@ void RegisterAgentResponse::SerializeWithCachedSizes(
         1, this->header(), target);
   }
   
-  // required int64 agentID = 2;
+  // required string agentID = 2;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->agentid(), target);
   }
   
   // required string publicKeyHash = 3;
@@ -5582,10 +5650,10 @@ int RegisterAgentResponse::ByteSize() const {
           this->header());
     }
     
-    // required int64 agentID = 2;
+    // required string agentID = 2;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
@@ -5731,7 +5799,7 @@ const ::google::protobuf::Descriptor* RSAKey::descriptor() {
 }
 
 const RSAKey& RSAKey::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 RSAKey* RSAKey::default_instance_ = NULL;
@@ -6008,7 +6076,7 @@ const ::google::protobuf::Descriptor* CheckAggregator::descriptor() {
 }
 
 const CheckAggregator& CheckAggregator::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 CheckAggregator* CheckAggregator::default_instance_ = NULL;
@@ -6237,7 +6305,7 @@ const ::google::protobuf::Descriptor* CheckAggregatorResponse::descriptor() {
 }
 
 const CheckAggregatorResponse& CheckAggregatorResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 CheckAggregatorResponse* CheckAggregatorResponse::default_instance_ = NULL;
@@ -6482,7 +6550,7 @@ Login::Login(const Login& from)
 
 void Login::SharedCtor() {
   _cached_size_ = 0;
-  agentid_ = GOOGLE_LONGLONG(0);
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   challenge_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   port_ = GOOGLE_LONGLONG(0);
   ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -6494,6 +6562,9 @@ Login::~Login() {
 }
 
 void Login::SharedDtor() {
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
   if (challenge_ != &::google::protobuf::internal::kEmptyString) {
     delete challenge_;
   }
@@ -6515,7 +6586,7 @@ const ::google::protobuf::Descriptor* Login::descriptor() {
 }
 
 const Login& Login::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Login* Login::default_instance_ = NULL;
@@ -6526,7 +6597,11 @@ Login* Login::New() const {
 
 void Login::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    agentid_ = GOOGLE_LONGLONG(0);
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
     if (has_challenge()) {
       if (challenge_ != &::google::protobuf::internal::kEmptyString) {
         challenge_->clear();
@@ -6549,14 +6624,15 @@ bool Login::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 agentID = 1;
+      // required string agentID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -6632,9 +6708,13 @@ bool Login::MergePartialFromCodedStream(
 
 void Login::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->agentid(), output);
   }
   
   // required string challenge = 2;
@@ -6668,9 +6748,14 @@ void Login::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Login::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->agentid(), target);
   }
   
   // required string challenge = 2;
@@ -6709,10 +6794,10 @@ int Login::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 agentID = 1;
+    // required string agentID = 1;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
@@ -6843,7 +6928,7 @@ LoginStep1::LoginStep1(const LoginStep1& from)
 
 void LoginStep1::SharedCtor() {
   _cached_size_ = 0;
-  processid_ = GOOGLE_LONGLONG(0);
+  processid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   cipheredchallenge_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   challenge_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -6854,6 +6939,9 @@ LoginStep1::~LoginStep1() {
 }
 
 void LoginStep1::SharedDtor() {
+  if (processid_ != &::google::protobuf::internal::kEmptyString) {
+    delete processid_;
+  }
   if (cipheredchallenge_ != &::google::protobuf::internal::kEmptyString) {
     delete cipheredchallenge_;
   }
@@ -6875,7 +6963,7 @@ const ::google::protobuf::Descriptor* LoginStep1::descriptor() {
 }
 
 const LoginStep1& LoginStep1::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 LoginStep1* LoginStep1::default_instance_ = NULL;
@@ -6886,7 +6974,11 @@ LoginStep1* LoginStep1::New() const {
 
 void LoginStep1::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    processid_ = GOOGLE_LONGLONG(0);
+    if (has_processid()) {
+      if (processid_ != &::google::protobuf::internal::kEmptyString) {
+        processid_->clear();
+      }
+    }
     if (has_cipheredchallenge()) {
       if (cipheredchallenge_ != &::google::protobuf::internal::kEmptyString) {
         cipheredchallenge_->clear();
@@ -6908,14 +7000,15 @@ bool LoginStep1::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 processID = 1;
+      // required string processID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &processid_)));
-          set_has_processid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_processid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->processid().data(), this->processid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -6975,9 +7068,13 @@ bool LoginStep1::MergePartialFromCodedStream(
 
 void LoginStep1::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 processID = 1;
+  // required string processID = 1;
   if (has_processid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->processid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->processid().data(), this->processid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->processid(), output);
   }
   
   // required string cipheredChallenge = 2;
@@ -7006,9 +7103,14 @@ void LoginStep1::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginStep1::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 processID = 1;
+  // required string processID = 1;
   if (has_processid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->processid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->processid().data(), this->processid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->processid(), target);
   }
   
   // required string cipheredChallenge = 2;
@@ -7042,10 +7144,10 @@ int LoginStep1::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 processID = 1;
+    // required string processID = 1;
     if (has_processid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->processid());
     }
     
@@ -7164,7 +7266,7 @@ LoginStep2::LoginStep2(const LoginStep2& from)
 
 void LoginStep2::SharedCtor() {
   _cached_size_ = 0;
-  processid_ = GOOGLE_LONGLONG(0);
+  processid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   cipheredchallenge_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -7174,6 +7276,9 @@ LoginStep2::~LoginStep2() {
 }
 
 void LoginStep2::SharedDtor() {
+  if (processid_ != &::google::protobuf::internal::kEmptyString) {
+    delete processid_;
+  }
   if (cipheredchallenge_ != &::google::protobuf::internal::kEmptyString) {
     delete cipheredchallenge_;
   }
@@ -7192,7 +7297,7 @@ const ::google::protobuf::Descriptor* LoginStep2::descriptor() {
 }
 
 const LoginStep2& LoginStep2::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 LoginStep2* LoginStep2::default_instance_ = NULL;
@@ -7203,7 +7308,11 @@ LoginStep2* LoginStep2::New() const {
 
 void LoginStep2::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    processid_ = GOOGLE_LONGLONG(0);
+    if (has_processid()) {
+      if (processid_ != &::google::protobuf::internal::kEmptyString) {
+        processid_->clear();
+      }
+    }
     if (has_cipheredchallenge()) {
       if (cipheredchallenge_ != &::google::protobuf::internal::kEmptyString) {
         cipheredchallenge_->clear();
@@ -7220,14 +7329,15 @@ bool LoginStep2::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 processID = 1;
+      // required string processID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &processid_)));
-          set_has_processid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_processid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->processid().data(), this->processid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -7270,9 +7380,13 @@ bool LoginStep2::MergePartialFromCodedStream(
 
 void LoginStep2::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 processID = 1;
+  // required string processID = 1;
   if (has_processid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->processid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->processid().data(), this->processid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->processid(), output);
   }
   
   // required string cipheredChallenge = 2;
@@ -7292,9 +7406,14 @@ void LoginStep2::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginStep2::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 processID = 1;
+  // required string processID = 1;
   if (has_processid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->processid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->processid().data(), this->processid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->processid(), target);
   }
   
   // required string cipheredChallenge = 2;
@@ -7318,10 +7437,10 @@ int LoginStep2::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 processID = 1;
+    // required string processID = 1;
     if (has_processid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->processid());
     }
     
@@ -7454,7 +7573,7 @@ const ::google::protobuf::Descriptor* LoginResponse::descriptor() {
 }
 
 const LoginResponse& LoginResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 LoginResponse* LoginResponse::default_instance_ = NULL;
@@ -7644,7 +7763,7 @@ Logout::Logout(const Logout& from)
 
 void Logout::SharedCtor() {
   _cached_size_ = 0;
-  agentid_ = GOOGLE_LONGLONG(0);
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -7653,6 +7772,9 @@ Logout::~Logout() {
 }
 
 void Logout::SharedDtor() {
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -7668,7 +7790,7 @@ const ::google::protobuf::Descriptor* Logout::descriptor() {
 }
 
 const Logout& Logout::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Logout* Logout::default_instance_ = NULL;
@@ -7679,7 +7801,11 @@ Logout* Logout::New() const {
 
 void Logout::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    agentid_ = GOOGLE_LONGLONG(0);
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -7691,14 +7817,15 @@ bool Logout::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 agentID = 1;
+      // required string agentID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -7724,9 +7851,13 @@ bool Logout::MergePartialFromCodedStream(
 
 void Logout::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->agentid(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -7737,9 +7868,14 @@ void Logout::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Logout::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->agentid(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -7753,10 +7889,10 @@ int Logout::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 agentID = 1;
+    // required string agentID = 1;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
@@ -7879,7 +8015,7 @@ const ::google::protobuf::Descriptor* LogoutResponse::descriptor() {
 }
 
 const LogoutResponse& LogoutResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 LogoutResponse* LogoutResponse::default_instance_ = NULL;
@@ -8101,7 +8237,7 @@ const ::google::protobuf::Descriptor* GetPeerList::descriptor() {
 }
 
 const GetPeerList& GetPeerList::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetPeerList* GetPeerList::default_instance_ = NULL;
@@ -8290,7 +8426,7 @@ AgentData::AgentData(const AgentData& from)
 
 void AgentData::SharedCtor() {
   _cached_size_ = 0;
-  agentid_ = GOOGLE_LONGLONG(0);
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   agentip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   agentport_ = 0;
   token_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -8304,6 +8440,9 @@ AgentData::~AgentData() {
 }
 
 void AgentData::SharedDtor() {
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
   if (agentip_ != &::google::protobuf::internal::kEmptyString) {
     delete agentip_;
   }
@@ -8329,7 +8468,7 @@ const ::google::protobuf::Descriptor* AgentData::descriptor() {
 }
 
 const AgentData& AgentData::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AgentData* AgentData::default_instance_ = NULL;
@@ -8340,7 +8479,11 @@ AgentData* AgentData::New() const {
 
 void AgentData::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    agentid_ = GOOGLE_LONGLONG(0);
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
     if (has_agentip()) {
       if (agentip_ != &::google::protobuf::internal::kEmptyString) {
         agentip_->clear();
@@ -8371,14 +8514,15 @@ bool AgentData::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 agentID = 1;
+      // required string agentID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -8485,9 +8629,13 @@ bool AgentData::MergePartialFromCodedStream(
 
 void AgentData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->agentid(), output);
   }
   
   // required string agentIP = 2;
@@ -8536,9 +8684,14 @@ void AgentData::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* AgentData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 agentID = 1;
+  // required string agentID = 1;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->agentid(), target);
   }
   
   // required string agentIP = 2;
@@ -8594,10 +8747,10 @@ int AgentData::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 agentID = 1;
+    // required string agentID = 1;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
@@ -8778,7 +8931,7 @@ const ::google::protobuf::Descriptor* GetPeerListResponse::descriptor() {
 }
 
 const GetPeerListResponse& GetPeerListResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetPeerListResponse* GetPeerListResponse::default_instance_ = NULL;
@@ -9034,7 +9187,7 @@ const ::google::protobuf::Descriptor* GetSuperPeerList::descriptor() {
 }
 
 const GetSuperPeerList& GetSuperPeerList::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetSuperPeerList* GetSuperPeerList::default_instance_ = NULL;
@@ -9244,7 +9397,7 @@ const ::google::protobuf::Descriptor* GetSuperPeerListResponse::descriptor() {
 }
 
 const GetSuperPeerListResponse& GetSuperPeerListResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetSuperPeerListResponse* GetSuperPeerListResponse::default_instance_ = NULL;
@@ -9502,7 +9655,7 @@ const ::google::protobuf::Descriptor* Location::descriptor() {
 }
 
 const Location& Location::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Location* Location::default_instance_ = NULL;
@@ -9747,7 +9900,7 @@ const ::google::protobuf::Descriptor* GetEvents::descriptor() {
 }
 
 const GetEvents& GetEvents::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetEvents* GetEvents::default_instance_ = NULL;
@@ -10024,7 +10177,7 @@ const ::google::protobuf::Descriptor* Event::descriptor() {
 }
 
 const Event& Event::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Event* Event::default_instance_ = NULL;
@@ -10507,7 +10660,7 @@ const ::google::protobuf::Descriptor* GetEventsResponse::descriptor() {
 }
 
 const GetEventsResponse& GetEventsResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetEventsResponse* GetEventsResponse::default_instance_ = NULL;
@@ -10765,7 +10918,7 @@ const ::google::protobuf::Descriptor* SendWebsiteReport::descriptor() {
 }
 
 const SendWebsiteReport& SendWebsiteReport::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 SendWebsiteReport* SendWebsiteReport::default_instance_ = NULL;
@@ -10981,7 +11134,7 @@ const ::google::protobuf::Descriptor* SendServiceReport::descriptor() {
 }
 
 const SendServiceReport& SendServiceReport::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 SendServiceReport* SendServiceReport::default_instance_ = NULL;
@@ -11197,7 +11350,7 @@ const ::google::protobuf::Descriptor* SendReportResponse::descriptor() {
 }
 
 const SendReportResponse& SendReportResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 SendReportResponse* SendReportResponse::default_instance_ = NULL;
@@ -11416,7 +11569,7 @@ const ::google::protobuf::Descriptor* NewVersion::descriptor() {
 }
 
 const NewVersion& NewVersion::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 NewVersion* NewVersion::default_instance_ = NULL;
@@ -11690,7 +11843,7 @@ const ::google::protobuf::Descriptor* NewVersionResponse::descriptor() {
 }
 
 const NewVersionResponse& NewVersionResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 NewVersionResponse* NewVersionResponse::default_instance_ = NULL;
@@ -12037,7 +12190,7 @@ const ::google::protobuf::Descriptor* NewTests::descriptor() {
 }
 
 const NewTests& NewTests::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 NewTests* NewTests::default_instance_ = NULL;
@@ -12248,7 +12401,7 @@ const ::google::protobuf::Descriptor* Website::descriptor() {
 }
 
 const Website& Website::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Website* Website::default_instance_ = NULL;
@@ -12480,7 +12633,7 @@ const ::google::protobuf::Descriptor* Service::descriptor() {
 }
 
 const Service& Service::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Service* Service::default_instance_ = NULL;
@@ -12774,11 +12927,11 @@ Test::Test(const Test& from)
 
 void Test::SharedCtor() {
   _cached_size_ = 0;
-  testid_ = GOOGLE_LONGLONG(0);
+  testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   website_ = NULL;
   service_ = NULL;
   executeattimeutc_ = GOOGLE_LONGLONG(0);
-  testtype_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  testtype_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -12787,8 +12940,8 @@ Test::~Test() {
 }
 
 void Test::SharedDtor() {
-  if (testtype_ != &::google::protobuf::internal::kEmptyString) {
-    delete testtype_;
+  if (testid_ != &::google::protobuf::internal::kEmptyString) {
+    delete testid_;
   }
   if (this != default_instance_) {
     delete website_;
@@ -12807,7 +12960,7 @@ const ::google::protobuf::Descriptor* Test::descriptor() {
 }
 
 const Test& Test::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 Test* Test::default_instance_ = NULL;
@@ -12818,7 +12971,11 @@ Test* Test::New() const {
 
 void Test::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    testid_ = GOOGLE_LONGLONG(0);
+    if (has_testid()) {
+      if (testid_ != &::google::protobuf::internal::kEmptyString) {
+        testid_->clear();
+      }
+    }
     if (has_website()) {
       if (website_ != NULL) website_->::org::umit::icm::mobile::proto::Website::Clear();
     }
@@ -12826,11 +12983,7 @@ void Test::Clear() {
       if (service_ != NULL) service_->::org::umit::icm::mobile::proto::Service::Clear();
     }
     executeattimeutc_ = GOOGLE_LONGLONG(0);
-    if (has_testtype()) {
-      if (testtype_ != &::google::protobuf::internal::kEmptyString) {
-        testtype_->clear();
-      }
-    }
+    testtype_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -12842,14 +12995,15 @@ bool Test::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 testID = 1;
+      // required string testID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &testid_)));
-          set_has_testid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_testid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->testid().data(), this->testid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -12897,20 +13051,19 @@ bool Test::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_testType;
+        if (input->ExpectTag(40)) goto parse_testType;
         break;
       }
       
-      // required string testType = 5;
+      // required int32 testType = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_testType:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_testtype()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->testtype().data(), this->testtype().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &testtype_)));
+          set_has_testtype();
         } else {
           goto handle_uninterpreted;
         }
@@ -12936,9 +13089,13 @@ bool Test::MergePartialFromCodedStream(
 
 void Test::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 testID = 1;
+  // required string testID = 1;
   if (has_testid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->testid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->testid(), output);
   }
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
@@ -12958,13 +13115,9 @@ void Test::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->executeattimeutc(), output);
   }
   
-  // required string testType = 5;
+  // required int32 testType = 5;
   if (has_testtype()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->testtype().data(), this->testtype().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      5, this->testtype(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->testtype(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -12975,9 +13128,14 @@ void Test::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Test::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 testID = 1;
+  // required string testID = 1;
   if (has_testid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->testid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->testid(), target);
   }
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
@@ -12999,14 +13157,9 @@ void Test::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->executeattimeutc(), target);
   }
   
-  // required string testType = 5;
+  // required int32 testType = 5;
   if (has_testtype()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->testtype().data(), this->testtype().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->testtype(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->testtype(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -13020,10 +13173,10 @@ int Test::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 testID = 1;
+    // required string testID = 1;
     if (has_testid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->testid());
     }
     
@@ -13048,10 +13201,10 @@ int Test::ByteSize() const {
           this->executeattimeutc());
     }
     
-    // required string testType = 5;
+    // required int32 testType = 5;
     if (has_testtype()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->testtype());
     }
     
@@ -13198,7 +13351,7 @@ const ::google::protobuf::Descriptor* NewTestsResponse::descriptor() {
 }
 
 const NewTestsResponse& NewTestsResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 NewTestsResponse* NewTestsResponse::default_instance_ = NULL;
@@ -13494,7 +13647,7 @@ const ::google::protobuf::Descriptor* AssignTask::descriptor() {
 }
 
 const AssignTask& AssignTask::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AssignTask* AssignTask::default_instance_ = NULL;
@@ -13711,7 +13864,7 @@ const ::google::protobuf::Descriptor* AssignTaskResponse::descriptor() {
 }
 
 const AssignTaskResponse& AssignTaskResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AssignTaskResponse* AssignTaskResponse::default_instance_ = NULL;
@@ -13969,7 +14122,7 @@ const ::google::protobuf::Descriptor* UpgradeToSuper::descriptor() {
 }
 
 const UpgradeToSuper& UpgradeToSuper::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 UpgradeToSuper* UpgradeToSuper::default_instance_ = NULL;
@@ -14198,7 +14351,7 @@ const ::google::protobuf::Descriptor* UpgradeToSuperResponse::descriptor() {
 }
 
 const UpgradeToSuperResponse& UpgradeToSuperResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 UpgradeToSuperResponse* UpgradeToSuperResponse::default_instance_ = NULL;
@@ -14555,7 +14708,7 @@ const ::google::protobuf::Descriptor* WebsiteSuggestion::descriptor() {
 }
 
 const WebsiteSuggestion& WebsiteSuggestion::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 WebsiteSuggestion* WebsiteSuggestion::default_instance_ = NULL;
@@ -14792,7 +14945,7 @@ const ::google::protobuf::Descriptor* ServiceSuggestion::descriptor() {
 }
 
 const ServiceSuggestion& ServiceSuggestion::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ServiceSuggestion* ServiceSuggestion::default_instance_ = NULL;
@@ -15158,7 +15311,7 @@ const ::google::protobuf::Descriptor* TestSuggestionResponse::descriptor() {
 }
 
 const TestSuggestionResponse& TestSuggestionResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 TestSuggestionResponse* TestSuggestionResponse::default_instance_ = NULL;
@@ -15353,7 +15506,7 @@ AuthenticatePeer::AuthenticatePeer(const AuthenticatePeer& from)
 void AuthenticatePeer::SharedCtor() {
   _cached_size_ = 0;
   agenttype_ = 0;
-  agentid_ = GOOGLE_LONGLONG(0);
+  agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   cipheredpublickey_ = NULL;
   agentport_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -15364,6 +15517,9 @@ AuthenticatePeer::~AuthenticatePeer() {
 }
 
 void AuthenticatePeer::SharedDtor() {
+  if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentid_;
+  }
   if (this != default_instance_) {
     delete cipheredpublickey_;
   }
@@ -15380,7 +15536,7 @@ const ::google::protobuf::Descriptor* AuthenticatePeer::descriptor() {
 }
 
 const AuthenticatePeer& AuthenticatePeer::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AuthenticatePeer* AuthenticatePeer::default_instance_ = NULL;
@@ -15392,7 +15548,11 @@ AuthenticatePeer* AuthenticatePeer::New() const {
 void AuthenticatePeer::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     agenttype_ = 0;
-    agentid_ = GOOGLE_LONGLONG(0);
+    if (has_agentid()) {
+      if (agentid_ != &::google::protobuf::internal::kEmptyString) {
+        agentid_->clear();
+      }
+    }
     if (has_cipheredpublickey()) {
       if (cipheredpublickey_ != NULL) cipheredpublickey_->::org::umit::icm::mobile::proto::RSAKey::Clear();
     }
@@ -15419,19 +15579,20 @@ bool AuthenticatePeer::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_agentID;
+        if (input->ExpectTag(18)) goto parse_agentID;
         break;
       }
       
-      // required int64 agentID = 2;
+      // required string agentID = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_agentID:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &agentid_)));
-          set_has_agentid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentid().data(), this->agentid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -15492,9 +15653,13 @@ void AuthenticatePeer::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->agenttype(), output);
   }
   
-  // required int64 agentID = 2;
+  // required string agentID = 2;
   if (has_agentid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->agentid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->agentid(), output);
   }
   
   // required .org.umit.icm.mobile.proto.RSAKey cipheredPublicKey = 3;
@@ -15521,9 +15686,14 @@ void AuthenticatePeer::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->agenttype(), target);
   }
   
-  // required int64 agentID = 2;
+  // required string agentID = 2;
   if (has_agentid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->agentid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentid().data(), this->agentid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->agentid(), target);
   }
   
   // required .org.umit.icm.mobile.proto.RSAKey cipheredPublicKey = 3;
@@ -15556,10 +15726,10 @@ int AuthenticatePeer::ByteSize() const {
           this->agenttype());
     }
     
-    // required int64 agentID = 2;
+    // required string agentID = 2;
     if (has_agentid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->agentid());
     }
     
@@ -15715,7 +15885,7 @@ const ::google::protobuf::Descriptor* AuthenticatePeerResponse::descriptor() {
 }
 
 const AuthenticatePeerResponse& AuthenticatePeerResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AuthenticatePeerResponse* AuthenticatePeerResponse::default_instance_ = NULL;
@@ -15981,7 +16151,7 @@ const ::google::protobuf::Descriptor* P2PGetSuperPeerList::descriptor() {
 }
 
 const P2PGetSuperPeerList& P2PGetSuperPeerList::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 P2PGetSuperPeerList* P2PGetSuperPeerList::default_instance_ = NULL;
@@ -16188,7 +16358,7 @@ const ::google::protobuf::Descriptor* P2PGetSuperPeerListResponse::descriptor() 
 }
 
 const P2PGetSuperPeerListResponse& P2PGetSuperPeerListResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 P2PGetSuperPeerListResponse* P2PGetSuperPeerListResponse::default_instance_ = NULL;
@@ -16394,7 +16564,7 @@ const ::google::protobuf::Descriptor* P2PGetPeerList::descriptor() {
 }
 
 const P2PGetPeerList& P2PGetPeerList::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 P2PGetPeerList* P2PGetPeerList::default_instance_ = NULL;
@@ -16601,7 +16771,7 @@ const ::google::protobuf::Descriptor* P2PGetPeerListResponse::descriptor() {
 }
 
 const P2PGetPeerListResponse& P2PGetPeerListResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 P2PGetPeerListResponse* P2PGetPeerListResponse::default_instance_ = NULL;
@@ -16817,7 +16987,7 @@ const ::google::protobuf::Descriptor* AgentUpdate::descriptor() {
 }
 
 const AgentUpdate& AgentUpdate::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AgentUpdate* AgentUpdate::default_instance_ = NULL;
@@ -17137,7 +17307,7 @@ const ::google::protobuf::Descriptor* AgentUpdateResponse::descriptor() {
 }
 
 const AgentUpdateResponse& AgentUpdateResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 AgentUpdateResponse* AgentUpdateResponse::default_instance_ = NULL;
@@ -17421,7 +17591,7 @@ const ::google::protobuf::Descriptor* TestModuleUpdate::descriptor() {
 }
 
 const TestModuleUpdate& TestModuleUpdate::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 TestModuleUpdate* TestModuleUpdate::default_instance_ = NULL;
@@ -17741,7 +17911,7 @@ const ::google::protobuf::Descriptor* TestModuleUpdateResponse::descriptor() {
 }
 
 const TestModuleUpdateResponse& TestModuleUpdateResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 TestModuleUpdateResponse* TestModuleUpdateResponse::default_instance_ = NULL;
@@ -18025,7 +18195,7 @@ const ::google::protobuf::Descriptor* ForwardingMessage::descriptor() {
 }
 
 const ForwardingMessage& ForwardingMessage::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ForwardingMessage* ForwardingMessage::default_instance_ = NULL;
@@ -18345,7 +18515,7 @@ const ::google::protobuf::Descriptor* ForwardingMessageResponse::descriptor() {
 }
 
 const ForwardingMessageResponse& ForwardingMessageResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 ForwardingMessageResponse* ForwardingMessageResponse::default_instance_ = NULL;
@@ -18627,7 +18797,7 @@ const ::google::protobuf::Descriptor* LoginCredentials::descriptor() {
 }
 
 const LoginCredentials& LoginCredentials::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 LoginCredentials* LoginCredentials::default_instance_ = NULL;
@@ -18901,7 +19071,7 @@ const ::google::protobuf::Descriptor* GetNetlist::descriptor() {
 }
 
 const GetNetlist& GetNetlist::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetNetlist* GetNetlist::default_instance_ = NULL;
@@ -19114,7 +19284,7 @@ const ::google::protobuf::Descriptor* NetworkData::descriptor() {
 }
 
 const NetworkData& NetworkData::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 NetworkData* NetworkData::default_instance_ = NULL;
@@ -19446,7 +19616,7 @@ const ::google::protobuf::Descriptor* BannedNetworkData::descriptor() {
 }
 
 const BannedNetworkData& BannedNetworkData::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 BannedNetworkData* BannedNetworkData::default_instance_ = NULL;
@@ -19771,7 +19941,7 @@ const ::google::protobuf::Descriptor* GetNetlistResponse::descriptor() {
 }
 
 const GetNetlistResponse& GetNetlistResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetNetlistResponse* GetNetlistResponse::default_instance_ = NULL;
@@ -20027,7 +20197,7 @@ const ::google::protobuf::Descriptor* GetBanlist::descriptor() {
 }
 
 const GetBanlist& GetBanlist::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetBanlist* GetBanlist::default_instance_ = NULL;
@@ -20240,7 +20410,7 @@ const ::google::protobuf::Descriptor* GetBanlistResponse::descriptor() {
 }
 
 const GetBanlistResponse& GetBanlistResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetBanlistResponse* GetBanlistResponse::default_instance_ = NULL;
@@ -20292,28 +20462,24 @@ bool GetBanlistResponse::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_agent_ids;
+        if (input->ExpectTag(26)) goto parse_agent_ids;
         break;
       }
       
-      // repeated int32 agent_ids = 3;
+      // repeated string agent_ids = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_agent_ids:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 24, input, this->mutable_agent_ids())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_agent_ids())));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_agent_ids()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agent_ids(0).data(), this->agent_ids(0).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_agent_ids;
+        if (input->ExpectTag(26)) goto parse_agent_ids;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -20347,9 +20513,12 @@ void GetBanlistResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->nodes_count(), output);
   }
   
-  // repeated int32 agent_ids = 3;
+  // repeated string agent_ids = 3;
   for (int i = 0; i < this->agent_ids_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->agent_ids(i).data(), this->agent_ids(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       3, this->agent_ids(i), output);
   }
   
@@ -20373,10 +20542,13 @@ void GetBanlistResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->nodes_count(), target);
   }
   
-  // repeated int32 agent_ids = 3;
+  // repeated string agent_ids = 3;
   for (int i = 0; i < this->agent_ids_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agent_ids(i).data(), this->agent_ids(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(3, this->agent_ids(i), target);
+      WriteStringToArray(3, this->agent_ids(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -20405,14 +20577,11 @@ int GetBanlistResponse::ByteSize() const {
     }
     
   }
-  // repeated int32 agent_ids = 3;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->agent_ids_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        Int32Size(this->agent_ids(i));
-    }
-    total_size += 1 * this->agent_ids_size() + data_size;
+  // repeated string agent_ids = 3;
+  total_size += 1 * this->agent_ids_size();
+  for (int i = 0; i < this->agent_ids_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->agent_ids(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -20539,7 +20708,7 @@ const ::google::protobuf::Descriptor* GetBannets::descriptor() {
 }
 
 const GetBannets& GetBannets::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetBannets* GetBannets::default_instance_ = NULL;
@@ -20750,7 +20919,7 @@ const ::google::protobuf::Descriptor* GetBannetsResponse::descriptor() {
 }
 
 const GetBannetsResponse& GetBannetsResponse::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+  if (default_instance_ == NULL) protobuf_AddDesc_proto_2fmessages_2eproto();  return *default_instance_;
 }
 
 GetBannetsResponse* GetBannetsResponse::default_instance_ = NULL;

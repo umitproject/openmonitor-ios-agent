@@ -40,8 +40,8 @@ message TraceRoute {
 
 message ICMReport {
 	required string reportID = 1;
-	required int64 agentID = 2;
-	required int32 testID = 3;
+	required string agentID = 2;
+	required string testID = 3;
 	required int32 timeZone = 4;
 	required int64 timeUTC = 5;
 	repeated string passedNode = 6;
@@ -80,7 +80,7 @@ message ServiceReport {
 
 // Request Header
 message RequestHeader {
-	required int64 agentID = 1;
+	required string agentID = 1;
 }
 
 // Response Header
@@ -104,7 +104,7 @@ message RegisterAgent {
 // must be encrypted with agent publicKey
 message RegisterAgentResponse {
 	required ResponseHeader header = 1;
-	required int64 agentID = 2;
+	required string agentID = 2;
 	required string publicKeyHash = 3;
 }
 
@@ -125,20 +125,20 @@ message CheckAggregatorResponse {
 // login/logout
 
 message Login {
-    required int64 agentID = 1;
+    required string agentID = 1;
     required string challenge = 2;
     required int64 port = 3;
     optional string ip = 4;
 }
 
 message LoginStep1 {
-    required int64 processID = 1;
+    required string processID = 1;
     required string cipheredChallenge = 2;
     required string challenge = 3;
 }
 
 message LoginStep2 {
-    required int64 processID = 1;
+    required string processID = 1;
     required string cipheredChallenge = 2;
 }
 
@@ -147,7 +147,7 @@ message LoginResponse {
 }
 
 message Logout {
-    required int64 agentID = 1;
+    required string agentID = 1;
 }
 
 message LogoutResponse {
@@ -161,7 +161,7 @@ message GetPeerList {
 }
 
 message AgentData {
-	required int64 agentID = 1;
+	required string agentID = 1;
 	required string agentIP = 2;
 	required int32 agentPort = 3;
 	required string token = 4;
@@ -256,11 +256,11 @@ message Service {
 }
 
 message Test {
-	required int64 testID = 1;
+	required string testID = 1;
 	optional Website website = 2;
 	optional Service service = 3;
 	optional int64 executeAtTimeUTC = 4;
-	required string testType = 5; // Identifier for the type of test taken (WEB or SERVICE for now)
+	required int32 testType = 5; // Identifier for the type of test taken (WEB or SERVICE for now)
 }
 
 message NewTestsResponse {
@@ -315,7 +315,7 @@ message TestSuggestionResponse {
 
 message AuthenticatePeer {
 	required int32 agentType = 1;	
-	required int64 agentID = 2;	
+	required string agentID = 2;	
 	required RSAKey cipheredPublicKey = 3;
 	optional int32 agentPort = 4;
 }
@@ -409,7 +409,7 @@ message GetBanlist {
 message GetBanlistResponse {
     required ResponseHeader header = 1;
     required int32 nodes_count = 2;
-    repeated int32 agent_ids = 3;
+    repeated string agent_ids = 3;
 }
 
 message GetBannets {

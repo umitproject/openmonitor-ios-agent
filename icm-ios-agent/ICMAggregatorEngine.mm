@@ -32,11 +32,11 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 - (ICMAggregatorEngine*)init
 {
     if (self = [super initWithHostName:AGGREGATOR_URL customHeaderFields:nil]) {
-        NSNumber * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
+        NSString * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
         if (agentid != nil) {
-            self.agentId = [agentid intValue];
+            self.agentId = agentid;
         } else {
-            self.agentId = -1;
+            self.agentId = @"beef";
         }
         crypto = [SecKeyWrapper sharedWrapper];
         [crypto prepareKeys];
@@ -114,8 +114,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::RegisterAgentResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
-        int aid = rar.agentid();
-        NSLog(@"register succeeded! got agent id: %d", aid);
+        std::string aid = rar.agentid();
+        //NSLog(@"register succeeded! got agent id: %d", aid);
         
         //DOFIXME! uncomment me!
         //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:aid] forKey:AGENT_ID_KEY];
@@ -133,7 +133,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 {
     // prepare msg
     org::umit::icm::mobile::proto::Login msg;
-    msg.set_agentid(self.agentId);
+    msg.set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     msg.set_port(5555);//TODO port
     msg.set_challenge("iOS agent challenge");
     
@@ -178,7 +178,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     //NSData* challengeData = [NSData dataFromBase64String:challengeNSStr];
     //challengeNSStr = [NSString stringWithUTF8String:(const char*)[challengeData bytes]];
     //NSLog(@"challenge: %@", challengeNSStr);
-    int64_t processID = prevResp.processid();
+    std::string processID = prevResp.processid();
     
     // prepare msg
     org::umit::icm::mobile::proto::LoginStep2 msg;
@@ -229,7 +229,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 {
     // prepare msg
     org::umit::icm::mobile::proto::Logout msg;
-    msg.set_agentid(self.agentId);
+    msg.set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     
     std::string msgStr = msg.SerializeAsString();
     NSData * encrypted = [crypto encryptData:[NSData dataWithBytes:msgStr.c_str() length:msgStr.size()]];
@@ -320,8 +320,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendWebsiteReport sendReport;
     org::umit::icm::mobile::proto::WebsiteReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(kWebsiteTest); // 1 for Website test, 2 for Service test, 3 for Throttling test
-    header->set_agentid(self.agentId);
+    header->set_testid(""); //TODO 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
     header->set_timeutc([site.lastcheck timeIntervalSince1970]);
@@ -370,8 +370,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(kServiceTest); // 1 for Website test, 2 for Service test, 3 for Throttling test
-    header->set_agentid(self.agentId);
+    header->set_testid(""); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
     header->set_timeutc([service.lastcheck timeIntervalSince1970]);

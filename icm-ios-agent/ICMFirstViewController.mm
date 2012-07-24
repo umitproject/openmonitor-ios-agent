@@ -176,8 +176,8 @@ int start_node()
     //if (engine.agentId < 0)
     //    [engine registerAgent];
     //fuck yeah!
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:267] forKey:AGENT_ID_KEY];
-    engine.agentId= 267;
+    [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:AGENT_ID_KEY];
+    engine.agentId= @"beef";
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
@@ -186,8 +186,8 @@ int start_node()
 
 - (IBAction)loginBtnTapped:(id)sender {
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:267] forKey:AGENT_ID_KEY];
-    engine.agentId= 267;
+    [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:AGENT_ID_KEY];
+    engine.agentId= @"beef";
     if ([firstNodeSwitch isOn]) {
         [engine loginStep1];
     } else {

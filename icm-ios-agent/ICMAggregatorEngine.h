@@ -60,10 +60,10 @@ typedef enum {
 @interface ICMAggregatorEngine : MKNetworkEngine
 {
     SecKeyWrapper * crypto;
-    int _agentId;
+    NSString* _agentId;
 }
 
-@property (nonatomic, assign) int agentId;
+@property (nonatomic, retain) NSString* agentId;
 
 + (ICMAggregatorEngine *)sharedEngine;
 
