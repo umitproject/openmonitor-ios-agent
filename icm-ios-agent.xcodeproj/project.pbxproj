@@ -125,6 +125,7 @@
 		B381E6FB157121C10034BD46 /* pinhead-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F7157121C10034BD46 /* pinhead-green@2x.png */; };
 		B381E6FC157121C10034BD46 /* pinhead-red.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F8157121C10034BD46 /* pinhead-red.png */; };
 		B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F9157121C10034BD46 /* pinhead-red@2x.png */; };
+		B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */; };
 		B3B0FA9F156F6A59005FD285 /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FA9D156F6A59005FD285 /* model.xcdatamodeld */; };
 		B3B0FAA2156F6FC1005FD285 /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA1156F6FC1005FD285 /* ICMWebsite.m */; };
 		B3B0FAA5156F6FC1005FD285 /* ICMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA4156F6FC1005FD285 /* ICMService.m */; };
@@ -574,6 +575,8 @@
 		B381E6F7157121C10034BD46 /* pinhead-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-green@2x.png"; sourceTree = "<group>"; };
 		B381E6F8157121C10034BD46 /* pinhead-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red.png"; sourceTree = "<group>"; };
 		B381E6F9157121C10034BD46 /* pinhead-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red@2x.png"; sourceTree = "<group>"; };
+		B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
+		B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		B3B0FA9E156F6A59005FD285 /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
 		B3B0FAA0156F6FC1005FD285 /* ICMWebsite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMWebsite.h; sourceTree = "<group>"; };
 		B3B0FAA1156F6FC1005FD285 /* ICMWebsite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsite.m; sourceTree = "<group>"; };
@@ -1370,6 +1373,8 @@
 				B3CF44301579043200B954FA /* ICMMapViewController.m */,
 				B33DFD541579DB89005CF9EE /* ICMAnnotation.h */,
 				B33DFD551579DB89005CF9EE /* ICMAnnotation.m */,
+				B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */,
+				B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */,
 				B345740E158C7CB000D70E6B /* ICMUpdater.h */,
 				B345740F158C7CB000D70E6B /* ICMUpdater.m */,
 				B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */,
@@ -1635,6 +1640,7 @@
 				B32211D715898C4E0054A059 /* wire_format_lite.cc in Sources */,
 				B3457410158C7CB000D70E6B /* ICMUpdater.m in Sources */,
 				B3071BA7159DEC9700E70E3C /* NSData+Conversion.m in Sources */,
+				B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

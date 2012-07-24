@@ -146,6 +146,7 @@ int start_node()
 - (void)viewDidUnload
 {
     startBtn = nil;
+    loginBtn = nil;
     firstNodeSwitch = nil;
     statusLabel = nil;
     dispatch_release(backgroundQueue);
@@ -180,9 +181,18 @@ int start_node()
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
-    //[engine checkNewTests];
-    //[engine loginStep1];
-    [engine logoutAgent];
+    [engine checkNewTests];
+}
+
+- (IBAction)loginBtnTapped:(id)sender {
+    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:267] forKey:AGENT_ID_KEY];
+    engine.agentId= 267;
+    if ([firstNodeSwitch isOn]) {
+        [engine loginStep1];
+    } else {
+        [engine logoutAgent];
+    }
 }
 
 @end
