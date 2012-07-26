@@ -205,9 +205,6 @@ int start_node()
 - (void)logInWithUsername:(NSString *)name password:(NSString*)pass
 {
     [self.navigationController popViewControllerAnimated:YES];
-    // bring up xAuth operation
-    // set delegate
-    // show progress indicator
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:AGENT_ID_KEY];
     engine.agentId= @"beef";

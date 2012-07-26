@@ -197,9 +197,7 @@
 {
     NSString *username = usernameTF.text;
     NSString *password = passwordTF.text;
-    //FIXME remove this before distribution
-    //NSLog(@"name:pass - %@:%@", username, password);
-    
+
     if (username && [username length] > 0 && password && [password length] > 0) {
         [self.delegate logInWithUsername:username password:password];
     } else {
@@ -209,7 +207,6 @@
 
 - (IBAction)cancelBtnPressed:(id)sender
 {
-    //[self dismissModalViewControllerAnimated:YES];
     [self.delegate cancelLogin];
 }
 
