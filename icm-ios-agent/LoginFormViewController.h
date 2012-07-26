@@ -19,6 +19,9 @@
 
 @property (weak) id <LoginFormViewControllerDelegate> delegate;
 
+- (IBAction)doneBtnPressed:(id)sender;
+- (IBAction)cancelBtnPressed:(id)sender;
+
 @end
 
 @protocol LoginFormViewControllerDelegate 

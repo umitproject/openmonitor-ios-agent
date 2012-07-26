@@ -164,6 +164,18 @@ int start_node()
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"loginform"])
+	{
+        NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
+        
+        LoginFormViewController *lfvc = segue.destinationViewController;
+        lfvc.delegate = self;
+	}
+}
+
+
 - (IBAction)startBtnTapped:(id)sender {
     /*
     dispatch_async(backgroundQueue, ^(void) {
@@ -185,6 +197,17 @@ int start_node()
 }
 
 - (IBAction)loginBtnTapped:(id)sender {
+    
+}
+
+#pragma mark -
+#pragma mark LoginFormViewControllerDelegate Methods
+- (void)logInWithUsername:(NSString *)name password:(NSString*)pass
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    // bring up xAuth operation
+    // set delegate
+    // show progress indicator
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:AGENT_ID_KEY];
     engine.agentId= @"beef";
@@ -193,6 +216,11 @@ int start_node()
     } else {
         [engine logoutAgent];
     }
+}
+
+- (void)cancelLogin
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

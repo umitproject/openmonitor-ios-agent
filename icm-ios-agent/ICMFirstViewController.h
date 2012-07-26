@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <dispatch/dispatch.h>
+#import "LoginFormViewController.h"
 
-@interface ICMFirstViewController : UIViewController {
+@interface ICMFirstViewController : UIViewController <LoginFormViewControllerDelegate> {
     __weak IBOutlet UIButton *startBtn;
     __weak IBOutlet UIButton *loginBtn;
     __weak IBOutlet UISwitch *firstNodeSwitch;
