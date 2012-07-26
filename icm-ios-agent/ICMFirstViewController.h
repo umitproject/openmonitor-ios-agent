@@ -23,7 +23,6 @@
 }
 
 - (IBAction)startBtnTapped:(id)sender;
-- (IBAction)loginBtnTapped:(id)sender;
 
 
 @end

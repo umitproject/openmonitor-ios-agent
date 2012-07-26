@@ -196,10 +196,6 @@ int start_node()
     [engine checkNewTests];
 }
 
-- (IBAction)loginBtnTapped:(id)sender {
-    
-}
-
 #pragma mark -
 #pragma mark LoginFormViewControllerDelegate Methods
 - (void)logInWithUsername:(NSString *)name password:(NSString*)pass
