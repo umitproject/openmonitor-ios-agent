@@ -91,7 +91,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 2;
+        return 4;
     }
     return 0;
 }
@@ -107,10 +107,14 @@
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         UILabel *startDtLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 25)];
-        if (indexPath.row == 0)
-            startDtLbl.text = @"URL:";
-        else {
-            startDtLbl.text = @"Password:";
+        if (indexPath.row == 0) {
+            startDtLbl.text = @"Name:";
+        } else if (indexPath.row == 1) {
+            startDtLbl.text = @"Host:";
+        } else if (indexPath.row == 2) {
+            startDtLbl.text = @"IP:";
+        } else if (indexPath.row == 3) {
+            startDtLbl.text = @"Port:";
         }
         
         startDtLbl.backgroundColor = [UIColor clearColor];
@@ -121,8 +125,14 @@
         UITextField *inputTF = [[UITextField alloc] initWithFrame:CGRectMake(120, 12, 250, 30)];
         [inputTF setFont:[UIFont fontWithName:@"Helvetica" size:16]];
         if (indexPath.row == 0) {
-            urlTF = inputTF;
-            [urlTF becomeFirstResponder];
+            nameTF = inputTF;
+            [nameTF becomeFirstResponder];
+        } else if (indexPath.row == 1) {
+            hostTF = inputTF;
+        } else if (indexPath.row == 2) {
+            ipTF = inputTF;
+        } else if (indexPath.row == 3) {
+            portTF = inputTF;
         }
         [cell.contentView addSubview:inputTF];
     }
@@ -180,8 +190,15 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    if (indexPath.row == 0)
-        [urlTF becomeFirstResponder];
+    if (indexPath.row == 0) {
+        [nameTF becomeFirstResponder];
+    } else if (indexPath.row == 1) {
+        [hostTF becomeFirstResponder];
+    } else if (indexPath.row == 2) {
+        [ipTF becomeFirstResponder];
+    } else if (indexPath.row == 3) {
+        [portTF becomeFirstResponder];
+    }
 }
 
 #pragma mark -
@@ -189,10 +206,13 @@
 
 - (IBAction)doneBtnPressed:(id)sender
 {
-    NSString *url = urlTF.text;
+    NSString *name = nameTF.text;
+    NSString *host = hostTF.text;
+    NSString *ip = ipTF.text;
+    NSString *port = portTF.text;
 
-    if (url && [url length] > 0) {
-        [self.delegate suggestServiceWithUrl:url];
+    if (name && [name length] > 0) {
+        [self.delegate suggestServiceWithName:name Host:host Ip:ip Port:[port intValue]];
     } else {
         //alert view
     }

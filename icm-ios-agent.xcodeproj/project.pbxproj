@@ -1360,10 +1360,6 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
-				B37BEAD515C6AD2A00729133 /* ServiceSuggestionViewController.h */,
-				B37BEAD615C6AD2A00729133 /* ServiceSuggestionViewController.m */,
-				B37BEAD115C6A98B00729133 /* WebsiteSuggestionViewController.h */,
-				B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */,
 				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
@@ -1385,6 +1381,10 @@
 				B33DFD551579DB89005CF9EE /* ICMAnnotation.m */,
 				B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */,
 				B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */,
+				B37BEAD115C6A98B00729133 /* WebsiteSuggestionViewController.h */,
+				B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */,
+				B37BEAD515C6AD2A00729133 /* ServiceSuggestionViewController.h */,
+				B37BEAD615C6AD2A00729133 /* ServiceSuggestionViewController.m */,
 				B345740E158C7CB000D70E6B /* ICMUpdater.h */,
 				B345740F158C7CB000D70E6B /* ICMUpdater.m */,
 				B314F9E4156E53DE0066DDBB /* ICMAggregatorEngine */,

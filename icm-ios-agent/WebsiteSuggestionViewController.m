@@ -49,7 +49,7 @@
     self.title = @"Website Suggestion";
     
     UILabel *footer = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    footer.text = @"Please input the suggested website URL.";
+    footer.text = @"Please input your suggested website URL.";
     
     footer.backgroundColor = [UIColor clearColor];
     footer.font = [UIFont systemFontOfSize:15];
@@ -91,7 +91,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 1;
+        return 2;
     }
     return 0;
 }
@@ -108,7 +108,10 @@
         
         UILabel *startDtLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 25)];
         if (indexPath.row == 0)
+            startDtLbl.text = @"Name:";
+        else {
             startDtLbl.text = @"URL:";
+        }
         
         startDtLbl.backgroundColor = [UIColor clearColor];
         startDtLbl.textAlignment = UITextAlignmentRight;
@@ -118,8 +121,11 @@
         UITextField *inputTF = [[UITextField alloc] initWithFrame:CGRectMake(120, 12, 250, 30)];
         [inputTF setFont:[UIFont fontWithName:@"Helvetica" size:16]];
         if (indexPath.row == 0) {
+            nameTF = inputTF;
+            [nameTF becomeFirstResponder];
+        } else {
+            //inputTF.secureTextEntry = true;
             urlTF = inputTF;
-            [urlTF becomeFirstResponder];
         }
         [cell.contentView addSubview:inputTF];
     }
@@ -178,7 +184,10 @@
      [detailViewController release];
      */
     if (indexPath.row == 0)
+        [nameTF becomeFirstResponder];
+    else {
         [urlTF becomeFirstResponder];
+    }
 }
 
 #pragma mark -
@@ -186,10 +195,11 @@
 
 - (IBAction)doneBtnPressed:(id)sender
 {
+    NSString *name = nameTF.text;
     NSString *url = urlTF.text;
 
     if (url && [url length] > 0) {
-        [self.delegate suggestWebsiteWithUrl:url];
+        [self.delegate suggestWebsiteWithName:name Url:url];
     } else {
         //alert view
     }

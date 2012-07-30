@@ -168,9 +168,20 @@ int start_node()
 {
 	if ([segue.identifier isEqualToString:@"loginform"])
 	{
-        NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
-        
+        //NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
         LoginFormViewController *lfvc = segue.destinationViewController;
+        lfvc.delegate = self;
+	}
+    else if ([segue.identifier isEqualToString:@"websitesuggest"])
+	{
+        //NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
+        WebsiteSuggestionViewController *lfvc = segue.destinationViewController;
+        lfvc.delegate = self;
+	}
+    else if ([segue.identifier isEqualToString:@"servicesuggest"])
+	{
+        //NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
+        ServiceSuggestionViewController *lfvc = segue.destinationViewController;
         lfvc.delegate = self;
 	}
 }
@@ -215,5 +226,30 @@ int start_node()
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark -
+#pragma mark WebsiteSuggestionViewControllerDelegate Methods
+
+- (void)suggestWebsiteWithName:(NSString*)name Url:(NSString*)url
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)cancel
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark ServiceSuggestionViewControllerDelegate Methods
+
+- (void)suggestServiceWithName:(NSString*)name Host:(NSString*)host Ip:(NSString*)ip Port:(int)port
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+/*
+- (void)cancel
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}*/
 
 @end

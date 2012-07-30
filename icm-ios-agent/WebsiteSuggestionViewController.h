@@ -13,6 +13,7 @@
 @interface WebsiteSuggestionViewController : UITableViewController {
     __weak id<WebsiteSuggestionViewControllerDelegate> delegate;
     
+    UITextField *nameTF;
     UITextField *urlTF;
 }
 
@@ -25,7 +26,7 @@
 
 @protocol WebsiteSuggestionViewControllerDelegate 
 
-- (void)suggestWebsiteWithUrl:(NSString*)url;
+- (void)suggestWebsiteWithName:(NSString*)name Url:(NSString*)url;
 - (void)cancel;
 
 @end

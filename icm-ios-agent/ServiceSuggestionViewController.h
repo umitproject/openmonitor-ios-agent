@@ -10,11 +10,21 @@
 
 @protocol ServiceSuggestionViewControllerDelegate;
 
+/*
+message ServiceSuggestion {
+	required string serviceName = 1;
+	required string hostName = 2;
+	required string ip = 3;
+	required int64 port = 4;
+}*/
+
 @interface ServiceSuggestionViewController : UITableViewController {
     __weak id<ServiceSuggestionViewControllerDelegate> delegate;
     
-    UITextField *urlTF;
-    UITextField *passwordTF;
+    UITextField *nameTF;
+    UITextField *hostTF;
+    UITextField *ipTF;
+    UITextField *portTF;
 }
 
 @property (weak) id <ServiceSuggestionViewControllerDelegate> delegate;
@@ -26,7 +36,7 @@
 
 @protocol ServiceSuggestionViewControllerDelegate 
 
-- (void)suggestServiceWithUrl:(NSString*)url;
+- (void)suggestServiceWithName:(NSString*)name Host:(NSString*)host Ip:(NSString*)ip Port:(int)port;
 - (void)cancel;
 
 @end
