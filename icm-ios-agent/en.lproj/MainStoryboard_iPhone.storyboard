@@ -150,13 +150,6 @@
                                     <action selector="startBtnTapped:" destination="2" eventType="touchUpInside" id="fyJ-s6-54b"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-- status --" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="h9t-xH-jxS">
-                                <rect key="frame" x="20" y="176" width="280" height="171"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hau-Dw-iWJ">
                                 <rect key="frame" x="20" y="128" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -172,6 +165,36 @@
                                     <segue destination="W1K-NA-BQO" kind="push" identifier="loginform" id="zzt-Cl-iIm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9G2-DB-6C5">
+                                <rect key="frame" x="20" y="176" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Suggest Website">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0xF-FI-5je" kind="push" identifier="websitesuggest" id="wmt-cy-T68"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FZJ-8l-UQM">
+                                <rect key="frame" x="20" y="224" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Suggest Service">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="foJ-bC-CjT" kind="push" identifier="servicesuggest" id="D3a-IB-IDa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -181,7 +204,6 @@
                         <outlet property="firstNodeSwitch" destination="JUV-HB-MgM" id="U02-rD-ARW"/>
                         <outlet property="loginBtn" destination="Hau-Dw-iWJ" id="01G-HD-9uk"/>
                         <outlet property="startBtn" destination="JO9-8B-K7n" id="9wB-1m-N5d"/>
-                        <outlet property="statusLabel" destination="h9t-xH-jxS" id="J4v-vQ-9tw"/>
                     </connections>
                 </viewController>
             </objects>
@@ -215,7 +237,67 @@
                     <navigationItem key="navigationItem" id="EaR-kZ-Aqg"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1568" y="463"/>
+            <point key="canvasLocation" x="1764" y="-107"/>
+        </scene>
+        <!--Website Suggestion View Controller-->
+        <scene sceneID="sts-AH-rzf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9p-8Y-lWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="0xF-FI-5je" customClass="WebsiteSuggestionViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="a80-f5-e3P">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tot-99-lgs">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0xF-FI-5je" id="Mjo-ty-hp9"/>
+                            <outlet property="delegate" destination="0xF-FI-5je" id="BVY-v4-NE6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="uGG-pP-k4M"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1764" y="463"/>
+        </scene>
+        <!--Service Suggestion View Controller-->
+        <scene sceneID="QAe-CX-b1U">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQr-Xi-J3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="foJ-bC-CjT" customClass="ServiceSuggestionViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="mDN-vs-zyh">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3f0-Fv-Cjh">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="foJ-bC-CjT" id="lt7-9D-qP8"/>
+                            <outlet property="delegate" destination="foJ-bC-CjT" id="VlR-XX-fZ7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tJS-YO-HXZ"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1764" y="1062"/>
         </scene>
         <!--Navigation Controller - First-->
         <scene sceneID="av6-pz-6Rs">
@@ -438,7 +520,6 @@
         <class className="ICMFirstViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMFirstViewController.h"/>
             <relationships>
-                <relationship kind="action" name="loginBtnTapped:"/>
                 <relationship kind="action" name="startBtnTapped:"/>
                 <relationship kind="outlet" name="firstNodeSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="loginBtn" candidateClass="UIButton"/>
@@ -484,6 +565,20 @@
         </class>
         <class className="LoginFormViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginFormViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelBtnPressed:"/>
+                <relationship kind="action" name="doneBtnPressed:"/>
+            </relationships>
+        </class>
+        <class className="ServiceSuggestionViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ServiceSuggestionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelBtnPressed:"/>
+                <relationship kind="action" name="doneBtnPressed:"/>
+            </relationships>
+        </class>
+        <class className="WebsiteSuggestionViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebsiteSuggestionViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancelBtnPressed:"/>
                 <relationship kind="action" name="doneBtnPressed:"/>

@@ -121,6 +121,8 @@
 		B379FB141563556B00EB9F1C /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB021563556B00EB9F1C /* timer.cpp */; };
 		B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB041563556B00EB9F1C /* udphandler.cpp */; };
 		B379FB191563560E00EB9F1C /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B379FB181563560E00EB9F1C /* boost.framework */; };
+		B37BEAD315C6A98B00729133 /* WebsiteSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */; };
+		B37BEAD715C6AD2A00729133 /* ServiceSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37BEAD615C6AD2A00729133 /* ServiceSuggestionViewController.m */; };
 		B381E6FA157121C10034BD46 /* pinhead-green.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F6157121C10034BD46 /* pinhead-green.png */; };
 		B381E6FB157121C10034BD46 /* pinhead-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F7157121C10034BD46 /* pinhead-green@2x.png */; };
 		B381E6FC157121C10034BD46 /* pinhead-red.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F8157121C10034BD46 /* pinhead-red.png */; };
@@ -571,6 +573,10 @@
 		B379FB041563556B00EB9F1C /* udphandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = udphandler.cpp; sourceTree = "<group>"; };
 		B379FB051563556B00EB9F1C /* udphandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = udphandler.hpp; sourceTree = "<group>"; };
 		B379FB181563560E00EB9F1C /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../boostoniphone/framework/boost.framework; sourceTree = "<group>"; };
+		B37BEAD115C6A98B00729133 /* WebsiteSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteSuggestionViewController.h; sourceTree = "<group>"; };
+		B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteSuggestionViewController.m; sourceTree = "<group>"; };
+		B37BEAD515C6AD2A00729133 /* ServiceSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSuggestionViewController.h; sourceTree = "<group>"; };
+		B37BEAD615C6AD2A00729133 /* ServiceSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSuggestionViewController.m; sourceTree = "<group>"; };
 		B381E6F6157121C10034BD46 /* pinhead-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-green.png"; sourceTree = "<group>"; };
 		B381E6F7157121C10034BD46 /* pinhead-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-green@2x.png"; sourceTree = "<group>"; };
 		B381E6F8157121C10034BD46 /* pinhead-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red.png"; sourceTree = "<group>"; };
@@ -1354,6 +1360,10 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
+				B37BEAD515C6AD2A00729133 /* ServiceSuggestionViewController.h */,
+				B37BEAD615C6AD2A00729133 /* ServiceSuggestionViewController.m */,
+				B37BEAD115C6A98B00729133 /* WebsiteSuggestionViewController.h */,
+				B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */,
 				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
@@ -1641,6 +1651,8 @@
 				B3457410158C7CB000D70E6B /* ICMUpdater.m in Sources */,
 				B3071BA7159DEC9700E70E3C /* NSData+Conversion.m in Sources */,
 				B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */,
+				B37BEAD315C6A98B00729133 /* WebsiteSuggestionViewController.m in Sources */,
+				B37BEAD715C6AD2A00729133 /* ServiceSuggestionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
