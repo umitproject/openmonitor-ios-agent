@@ -212,7 +212,7 @@
     NSString *port = portTF.text;
 
     if (name && [name length] > 0) {
-        [self.delegate suggestServiceWithName:name Host:host Ip:ip Port:[port intValue]];
+        [self.delegate suggestServiceWithName:name host:host ip:ip port:[port intValue]];
     } else {
         //alert view
     }

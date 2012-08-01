@@ -82,6 +82,8 @@ typedef enum {
 - (void)sendWebsiteReport:(ICMWebsite*)site;
 - (void)sendServiceReport:(ICMService*)service;
 - (void)checkNewTests;
+- (void)suggestWebsiteWithName:(NSString*)name url:(NSString*)url;
+- (void)suggestServiceWithName:(NSString*)name host:(NSString*)host ip:(NSString*)ip port:(int)port;
 
 @end
 

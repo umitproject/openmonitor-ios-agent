@@ -199,7 +199,7 @@
     NSString *url = urlTF.text;
 
     if (url && [url length] > 0) {
-        [self.delegate suggestWebsiteWithName:name Url:url];
+        [self.delegate suggestWebsiteWithName:name url:url];
     } else {
         //alert view
     }

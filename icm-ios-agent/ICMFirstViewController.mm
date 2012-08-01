@@ -230,9 +230,11 @@ int start_node()
 #pragma mark -
 #pragma mark WebsiteSuggestionViewControllerDelegate Methods
 
-- (void)suggestWebsiteWithName:(NSString*)name Url:(NSString*)url
+- (void)suggestWebsiteWithName:(NSString*)name url:(NSString*)url
 {
     [self.navigationController popViewControllerAnimated:YES];
+    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    [engine suggestWebsiteWithName:name url:url];
 }
 - (void)cancel
 {
@@ -242,9 +244,11 @@ int start_node()
 #pragma mark -
 #pragma mark ServiceSuggestionViewControllerDelegate Methods
 
-- (void)suggestServiceWithName:(NSString*)name Host:(NSString*)host Ip:(NSString*)ip Port:(int)port
+- (void)suggestServiceWithName:(NSString*)name host:(NSString*)host ip:(NSString*)ip port:(int)port
 {
     [self.navigationController popViewControllerAnimated:YES];
+    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    [engine suggestServiceWithName:name host:host ip:ip port:port];
 }
 /*
 - (void)cancel

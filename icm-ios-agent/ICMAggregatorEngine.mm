@@ -450,6 +450,85 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
+- (void)suggestWebsiteWithName:(NSString*)name url:(NSString*)url
+{
+    org::umit::icm::mobile::proto::WebsiteSuggestion suggestion;
+    suggestion.set_websiteurl([url cStringUsingEncoding:NSUTF8StringEncoding]);
+    
+    std::string geStr = suggestion.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_WEBSITE_SUGGESTION
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::TestSuggestionResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
+        NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
+- (void)suggestServiceWithName:(NSString*)name host:(NSString*)host ip:(NSString*)ip port:(int)port
+{
+    org::umit::icm::mobile::proto::ServiceSuggestion suggestion;
+    suggestion.set_servicename([name cStringUsingEncoding:NSUTF8StringEncoding]);
+    suggestion.set_hostname([host cStringUsingEncoding:NSUTF8StringEncoding]);
+    suggestion.set_ip([ip cStringUsingEncoding:NSUTF8StringEncoding]);
+    suggestion.set_port(port);
+    
+    std::string geStr = suggestion.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_SERVICE_SUGGESTION
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::TestSuggestionResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
+        NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
 #pragma mark -
 #pragma mark Utils
 

@@ -26,7 +26,7 @@
 
 @protocol WebsiteSuggestionViewControllerDelegate 
 
-- (void)suggestWebsiteWithName:(NSString*)name Url:(NSString*)url;
+- (void)suggestWebsiteWithName:(NSString*)name url:(NSString*)url;
 - (void)cancel;
 
 @end

@@ -36,7 +36,7 @@ message ServiceSuggestion {
 
 @protocol ServiceSuggestionViewControllerDelegate 
 
-- (void)suggestServiceWithName:(NSString*)name Host:(NSString*)host Ip:(NSString*)ip Port:(int)port;
+- (void)suggestServiceWithName:(NSString*)name host:(NSString*)host ip:(NSString*)ip port:(int)port;
 - (void)cancel;
 
 @end
