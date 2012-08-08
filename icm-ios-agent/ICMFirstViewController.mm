@@ -197,14 +197,14 @@ int start_node()
      */
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId < 0)
-    //    [engine registerAgent];
+        [engine registerAgent];
     //fuck yeah!
-    [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:AGENT_ID_KEY];
-    engine.agentId= @"beef";
+    //[[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:NSDEFAULT_AGENT_ID_KEY];
+    //engine.agentId= @"beef";
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
-    [engine checkNewTests];
+    //[engine checkNewTests];
 }
 
 #pragma mark -
@@ -213,7 +213,7 @@ int start_node()
 {
     [self.navigationController popViewControllerAnimated:YES];
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
-    [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:AGENT_ID_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:NSDEFAULT_AGENT_ID_KEY];
     engine.agentId= @"beef";
     if ([firstNodeSwitch isOn]) {
         [engine loginStep1];

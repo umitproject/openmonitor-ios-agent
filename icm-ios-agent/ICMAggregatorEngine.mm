@@ -32,7 +32,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 - (ICMAggregatorEngine*)init
 {
     if (self = [super initWithHostName:AGGREGATOR_URL customHeaderFields:nil]) {
-        NSString * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:AGENT_ID_KEY];
+        NSString * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_AGENT_ID_KEY];
         if (agentid != nil) {
             self.agentId = agentid;
         } else {
@@ -76,7 +76,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     org::umit::icm::mobile::proto::LoginCredentials* cred = ra.mutable_credentials();
     cred->set_username([@"test" UTF8String]);
-    cred->set_password([@"pass" UTF8String]);
+    cred->set_password([@"test" UTF8String]);
     
     NSString* pubKeyString = [[crypto getPublicKeyMod] hexadecimalString];
     NSLog(@"pubKeyString=%@", pubKeyString);
@@ -118,8 +118,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         //NSLog(@"register succeeded! got agent id: %d", aid);
         
         //DOFIXME! uncomment me!
-        //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:aid] forKey:AGENT_ID_KEY];
-        //self.agentId = aid;
+        self.agentId = [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding];
+        [[NSUserDefaults standardUserDefaults] setObject:self.agentId forKey:NSDEFAULT_AGENT_ID_KEY];
+        
         
     } onError:^(NSError *error) {
         

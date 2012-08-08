@@ -120,7 +120,6 @@
 		B379FB131563556B00EB9F1C /* rttable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB001563556B00EB9F1C /* rttable.cpp */; };
 		B379FB141563556B00EB9F1C /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB021563556B00EB9F1C /* timer.cpp */; };
 		B379FB151563556B00EB9F1C /* udphandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B379FB041563556B00EB9F1C /* udphandler.cpp */; };
-		B379FB191563560E00EB9F1C /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B379FB181563560E00EB9F1C /* boost.framework */; };
 		B37BEAD315C6A98B00729133 /* WebsiteSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */; };
 		B37BEAD715C6AD2A00729133 /* ServiceSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37BEAD615C6AD2A00729133 /* ServiceSuggestionViewController.m */; };
 		B381E6FA157121C10034BD46 /* pinhead-green.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F6157121C10034BD46 /* pinhead-green.png */; };
@@ -135,6 +134,7 @@
 		B3B0FAAD156F848F005FD285 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */; };
 		B3B0FAAE156F848F005FD285 /* ICMWebsiteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAC156F848F005FD285 /* ICMWebsiteTableViewController.m */; };
 		B3B0FAB4156F8922005FD285 /* NSStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAB3156F8921005FD285 /* NSStringHelper.m */; };
+		B3BFCC9015D29D49006B3E03 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3BFCC8F15D29D49006B3E03 /* boost.framework */; };
 		B3CF44291578FFF200B954FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF44281578FFF200B954FA /* MapKit.framework */; };
 		B3CF442B1578FFFC00B954FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF442A1578FFFB00B954FA /* CoreLocation.framework */; };
 		B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CF44301579043200B954FA /* ICMMapViewController.m */; };
@@ -418,7 +418,7 @@
 		B30EF6691563E742003A51F9 /* libevent_pthreads.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libevent_pthreads.pc; sourceTree = "<group>"; };
 		B30EF66A1563E742003A51F9 /* libssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libssl.pc; sourceTree = "<group>"; };
 		B30EF66B1563E742003A51F9 /* openssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openssl.pc; sourceTree = "<group>"; };
-		B310D4AC1580AA6D008F01BE /* messages.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = messages.proto; sourceTree = "<group>"; };
+		B310D4AC1580AA6D008F01BE /* messages.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = messages.proto; path = ../messages.proto; sourceTree = "<group>"; };
 		B314F9E5156E54410066DDBB /* ICMAggregatorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAggregatorEngine.h; sourceTree = "<group>"; };
 		B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMAggregatorEngine.mm; sourceTree = "<group>"; };
 		B314F9E9156E5A680066DDBB /* messages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = messages.pb.cc; sourceTree = "<group>"; };
@@ -572,7 +572,6 @@
 		B379FB031563556B00EB9F1C /* timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
 		B379FB041563556B00EB9F1C /* udphandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = udphandler.cpp; sourceTree = "<group>"; };
 		B379FB051563556B00EB9F1C /* udphandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = udphandler.hpp; sourceTree = "<group>"; };
-		B379FB181563560E00EB9F1C /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../boostoniphone/framework/boost.framework; sourceTree = "<group>"; };
 		B37BEAD115C6A98B00729133 /* WebsiteSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteSuggestionViewController.h; sourceTree = "<group>"; };
 		B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteSuggestionViewController.m; sourceTree = "<group>"; };
 		B37BEAD515C6AD2A00729133 /* ServiceSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSuggestionViewController.h; sourceTree = "<group>"; };
@@ -594,6 +593,7 @@
 		B3B0FAAC156F848F005FD285 /* ICMWebsiteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsiteTableViewController.m; sourceTree = "<group>"; };
 		B3B0FAB2156F8921005FD285 /* NSStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringHelper.h; sourceTree = "<group>"; };
 		B3B0FAB3156F8921005FD285 /* NSStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringHelper.m; sourceTree = "<group>"; };
+		B3BFCC8F15D29D49006B3E03 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = boostoniphone/boost.framework; sourceTree = "<group>"; };
 		B3CF44281578FFF200B954FA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B3CF442A1578FFFB00B954FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3CF442F1579043200B954FA /* ICMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMMapViewController.h; sourceTree = "<group>"; };
@@ -631,6 +631,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BFCC9015D29D49006B3E03 /* boost.framework in Frameworks */,
 				B32211DD15898E980054A059 /* libz.dylib in Frameworks */,
 				B3CF442B1578FFFC00B954FA /* CoreLocation.framework in Frameworks */,
 				B3CF44291578FFF200B954FA /* MapKit.framework in Frameworks */,
@@ -641,7 +642,6 @@
 				B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */,
 				B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */,
 				B3EF61411552B4A300D24661 /* CoreGraphics.framework in Frameworks */,
-				B379FB191563560E00EB9F1C /* boost.framework in Frameworks */,
 				B30EF66C1563E742003A51F9 /* libcrypto.a in Frameworks */,
 				B30EF66D1563E742003A51F9 /* libevent.a in Frameworks */,
 				B30EF66F1563E742003A51F9 /* libevent_core.a in Frameworks */,
@@ -1051,6 +1051,7 @@
 			children = (
 				B314F9EA156E5A680066DDBB /* messages.pb.h */,
 				B314F9E9156E5A680066DDBB /* messages.pb.cc */,
+				B310D4AC1580AA6D008F01BE /* messages.proto */,
 			);
 			path = protobuf;
 			sourceTree = "<group>";
@@ -1287,7 +1288,6 @@
 		B381E6F5157121920034BD46 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				B310D4AC1580AA6D008F01BE /* messages.proto */,
 				B35C488F157F456400F5045C /* privateKey.pem */,
 				B35C4890157F456400F5045C /* publicKey.pem */,
 				B381E6F6157121C10034BD46 /* pinhead-green.png */,
@@ -1342,13 +1342,13 @@
 			isa = PBXGroup;
 			children = (
 				B32211DC15898E980054A059 /* libz.dylib */,
+				B3BFCC8F15D29D49006B3E03 /* boost.framework */,
 				B3CF442A1578FFFB00B954FA /* CoreLocation.framework */,
 				B3CF44281578FFF200B954FA /* MapKit.framework */,
 				B3B0FAA7156F706B005FD285 /* CoreData.framework */,
 				B314FA1E156E75280066DDBB /* Security.framework */,
 				B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */,
 				B314FA1A156E750D0066DDBB /* CFNetwork.framework */,
-				B379FB181563560E00EB9F1C /* boost.framework */,
 				B3EF613C1552B4A300D24661 /* UIKit.framework */,
 				B3EF613E1552B4A300D24661 /* Foundation.framework */,
 				B3EF61401552B4A300D24661 /* CoreGraphics.framework */,
@@ -1767,12 +1767,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../boostoniphone/framework";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/boostoniphone";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/lib/**",
-					"$(SRCROOT)/../protobuf-ios/**",
+					"$(SRCROOT)/protobuf-ios/**",
 				);
 				INFOPLIST_FILE = "icm-ios-agent/icm-ios-agent-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1789,12 +1789,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../boostoniphone/framework";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/boostoniphone";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "icm-ios-agent/icm-ios-agent-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/lib/**",
-					"$(SRCROOT)/../protobuf-ios/**",
+					"$(SRCROOT)/protobuf-ios/**",
 				);
 				INFOPLIST_FILE = "icm-ios-agent/icm-ios-agent-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
