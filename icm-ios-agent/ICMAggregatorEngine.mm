@@ -47,7 +47,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 #pragma mark -
 #pragma mark REST API methods
 #pragma mark -
-
 #pragma mark Login methods
 
 - (void)registerAgent
@@ -264,6 +263,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
+#pragma mark -
+#pragma mark Report/Event methods
+
 - (void)getEvents
 {
     // prepare msg
@@ -414,6 +416,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
+#pragma mark -
+#pragma mark Tests methods
+
 - (void)checkNewTests
 {
     org::umit::icm::mobile::proto::NewTests newTests;
@@ -528,6 +533,110 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     }];
     
     [self enqueueOperation:op];
+}
+
+#pragma mark -
+#pragma mark Other methods
+
+- (void)getPeerList
+{
+    
+}
+- (void)getSuperPeerList
+{
+    
+}
+- (void)checkVersion
+{
+    org::umit::icm::mobile::proto::NewVersion pbmsg;
+    pbmsg.set_agentversionno(1);
+    pbmsg.set_agenttype("MOBILE");
+    
+    std::string geStr = pbmsg.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_VERSION
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::NewVersionResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
+        NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        if (rar.has_downloadurl())
+            NSLog(@"New version available");
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+- (void)checkAggregator
+{
+    org::umit::icm::mobile::proto::CheckAggregator pbmsg;
+    pbmsg.set_agenttype("MOBILE");
+    
+    std::string geStr = pbmsg.SerializeAsString();
+    NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
+    NSData * encrypted = [crypto encryptData:geData];
+    NSLog(@"encrypted: %@", encrypted);
+    NSString* finalMsgb64 = [encrypted base64EncodedString];
+    NSLog(@"finalMsgb64:%@", finalMsgb64);
+    
+    MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_AGGREGATOR
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      nil]
+                                          httpMethod:@"POST"];
+    
+    [op onCompletion:^(MKNetworkOperation *operation) {
+        
+        DLog(@"%@", operation);
+        NSString *resp = [operation responseString];
+        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSLog(@"decoded data: %@", respdata);
+        org::umit::icm::mobile::proto::CheckAggregatorResponse rar;
+        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
+        NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        std::string status = rar.status();
+        NSString* nsstatus = [NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding];
+        NSLog(@"Aggregator Status: %@", nsstatus);
+        
+    } onError:^(NSError *error) {
+        
+        DLog(@"%@", error);
+    }];
+    
+    [self enqueueOperation:op];
+}
+- (void)getNetList
+{
+    
+}
+- (void)getBanList
+{
+    
+}
+- (void)getBanNets
+{
+    
 }
 
 #pragma mark -
