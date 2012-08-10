@@ -39,13 +39,14 @@ message TraceRoute {
 }
 
 message ICMReport {
-	required string reportID = 1;
+	optional string reportID = 1;
 	required string agentID = 2;
-	required string testID = 3;
+	required int64 testID = 3;
 	required int32 timeZone = 4;
 	required int64 timeUTC = 5;
 	repeated string passedNode = 6;
 	optional TraceRoute traceroute = 7;
+	
 }
 
 message WebsiteReportDetail {

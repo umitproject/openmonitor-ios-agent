@@ -38,7 +38,7 @@
                                     target: self
                                     action: @selector(cancelBtnPressed:)];
     UIBarButtonItem *loginBtn =
-	[[UIBarButtonItem alloc] initWithTitle: @"Done"
+	[[UIBarButtonItem alloc] initWithTitle: @"Suggest"
                                      style: UIBarButtonItemStyleDone
                                     target: self
                                     action: @selector(doneBtnPressed:)];

@@ -44,7 +44,6 @@
 		B30EF68D1563E743003A51F9 /* libevent_pthreads.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF6691563E742003A51F9 /* libevent_pthreads.pc */; };
 		B30EF68E1563E743003A51F9 /* libssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66A1563E742003A51F9 /* libssl.pc */; };
 		B30EF68F1563E743003A51F9 /* openssl.pc in Resources */ = {isa = PBXBuildFile; fileRef = B30EF66B1563E742003A51F9 /* openssl.pc */; };
-		B310D4AD1580AA6D008F01BE /* messages.proto in Resources */ = {isa = PBXBuildFile; fileRef = B310D4AC1580AA6D008F01BE /* messages.proto */; };
 		B314F9E7156E54410066DDBB /* ICMAggregatorEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */; };
 		B314F9EB156E5A680066DDBB /* messages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B314F9E9156E5A680066DDBB /* messages.pb.cc */; };
 		B314F9F3156E5F680066DDBB /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = B314F9ED156E5F680066DDBB /* Base64Transcoder.c */; };
@@ -135,6 +134,15 @@
 		B3B0FAAE156F848F005FD285 /* ICMWebsiteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAC156F848F005FD285 /* ICMWebsiteTableViewController.m */; };
 		B3B0FAB4156F8922005FD285 /* NSStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAB3156F8921005FD285 /* NSStringHelper.m */; };
 		B3BFCC9015D29D49006B3E03 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3BFCC8F15D29D49006B3E03 /* boost.framework */; };
+		B3C98A8515D4B8C800D231D9 /* messages.proto in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8415D4B8C800D231D9 /* messages.proto */; };
+		B3C98A8C15D4CA7A00D231D9 /* service.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8615D4CA7A00D231D9 /* service.png */; };
+		B3C98A8E15D4CA7A00D231D9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8815D4CA7A00D231D9 /* settings.png */; };
+		B3C98A9015D4CA7A00D231D9 /* website.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8A15D4CA7A00D231D9 /* website.png */; };
+		B3C98A9715D4DA3F00D231D9 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9215D4DA3F00D231D9 /* map.png */; };
+		B3C98A9815D4DA3F00D231D9 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9315D4DA3F00D231D9 /* map@2x.png */; };
+		B3C98A9915D4DA3F00D231D9 /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9415D4DA3F00D231D9 /* service@2x.png */; };
+		B3C98A9A15D4DA3F00D231D9 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9515D4DA3F00D231D9 /* settings@2x.png */; };
+		B3C98A9B15D4DA3F00D231D9 /* website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9615D4DA3F00D231D9 /* website@2x.png */; };
 		B3CF44291578FFF200B954FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF44281578FFF200B954FA /* MapKit.framework */; };
 		B3CF442B1578FFFC00B954FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF442A1578FFFB00B954FA /* CoreLocation.framework */; };
 		B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CF44301579043200B954FA /* ICMMapViewController.m */; };
@@ -418,7 +426,6 @@
 		B30EF6691563E742003A51F9 /* libevent_pthreads.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libevent_pthreads.pc; sourceTree = "<group>"; };
 		B30EF66A1563E742003A51F9 /* libssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libssl.pc; sourceTree = "<group>"; };
 		B30EF66B1563E742003A51F9 /* openssl.pc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openssl.pc; sourceTree = "<group>"; };
-		B310D4AC1580AA6D008F01BE /* messages.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = messages.proto; path = ../messages.proto; sourceTree = "<group>"; };
 		B314F9E5156E54410066DDBB /* ICMAggregatorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAggregatorEngine.h; sourceTree = "<group>"; };
 		B314F9E6156E54410066DDBB /* ICMAggregatorEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMAggregatorEngine.mm; sourceTree = "<group>"; };
 		B314F9E9156E5A680066DDBB /* messages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = messages.pb.cc; sourceTree = "<group>"; };
@@ -594,6 +601,15 @@
 		B3B0FAB2156F8921005FD285 /* NSStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringHelper.h; sourceTree = "<group>"; };
 		B3B0FAB3156F8921005FD285 /* NSStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringHelper.m; sourceTree = "<group>"; };
 		B3BFCC8F15D29D49006B3E03 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = boostoniphone/boost.framework; sourceTree = "<group>"; };
+		B3C98A8415D4B8C800D231D9 /* messages.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = messages.proto; sourceTree = "<group>"; };
+		B3C98A8615D4CA7A00D231D9 /* service.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service.png; sourceTree = "<group>"; };
+		B3C98A8815D4CA7A00D231D9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		B3C98A8A15D4CA7A00D231D9 /* website.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = website.png; sourceTree = "<group>"; };
+		B3C98A9215D4DA3F00D231D9 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		B3C98A9315D4DA3F00D231D9 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
+		B3C98A9415D4DA3F00D231D9 /* service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@2x.png"; sourceTree = "<group>"; };
+		B3C98A9515D4DA3F00D231D9 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		B3C98A9615D4DA3F00D231D9 /* website@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "website@2x.png"; sourceTree = "<group>"; };
 		B3CF44281578FFF200B954FA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B3CF442A1578FFFB00B954FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3CF442F1579043200B954FA /* ICMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMMapViewController.h; sourceTree = "<group>"; };
@@ -1049,9 +1065,9 @@
 		B314F9E8156E5A680066DDBB /* protobuf */ = {
 			isa = PBXGroup;
 			children = (
+				B3C98A8415D4B8C800D231D9 /* messages.proto */,
 				B314F9EA156E5A680066DDBB /* messages.pb.h */,
 				B314F9E9156E5A680066DDBB /* messages.pb.cc */,
-				B310D4AC1580AA6D008F01BE /* messages.proto */,
 			);
 			path = protobuf;
 			sourceTree = "<group>";
@@ -1288,6 +1304,14 @@
 		B381E6F5157121920034BD46 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3C98A9215D4DA3F00D231D9 /* map.png */,
+				B3C98A9315D4DA3F00D231D9 /* map@2x.png */,
+				B3C98A8615D4CA7A00D231D9 /* service.png */,
+				B3C98A9415D4DA3F00D231D9 /* service@2x.png */,
+				B3C98A8815D4CA7A00D231D9 /* settings.png */,
+				B3C98A9515D4DA3F00D231D9 /* settings@2x.png */,
+				B3C98A8A15D4CA7A00D231D9 /* website.png */,
+				B3C98A9615D4DA3F00D231D9 /* website@2x.png */,
 				B35C488F157F456400F5045C /* privateKey.pem */,
 				B35C4890157F456400F5045C /* publicKey.pem */,
 				B381E6F6157121C10034BD46 /* pinhead-green.png */,
@@ -1535,8 +1559,16 @@
 				B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */,
 				B35C4891157F456400F5045C /* privateKey.pem in Resources */,
 				B35C4892157F456400F5045C /* publicKey.pem in Resources */,
-				B310D4AD1580AA6D008F01BE /* messages.proto in Resources */,
 				B32211BC15898C4E0054A059 /* descriptor.proto in Resources */,
+				B3C98A8515D4B8C800D231D9 /* messages.proto in Resources */,
+				B3C98A8C15D4CA7A00D231D9 /* service.png in Resources */,
+				B3C98A8E15D4CA7A00D231D9 /* settings.png in Resources */,
+				B3C98A9015D4CA7A00D231D9 /* website.png in Resources */,
+				B3C98A9715D4DA3F00D231D9 /* map.png in Resources */,
+				B3C98A9815D4DA3F00D231D9 /* map@2x.png in Resources */,
+				B3C98A9915D4DA3F00D231D9 /* service@2x.png in Resources */,
+				B3C98A9A15D4DA3F00D231D9 /* settings@2x.png in Resources */,
+				B3C98A9B15D4DA3F00D231D9 /* website@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

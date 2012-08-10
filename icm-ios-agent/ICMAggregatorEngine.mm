@@ -114,8 +114,11 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::RegisterAgentResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
         std::string aid = rar.agentid();
-        //NSLog(@"register succeeded! got agent id: %d", aid);
+        NSLog(@"register succeeded! got agent id: %@", [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding]);
+        //NSData* data = [NSData dataWithBytes:raStr.c_str() length:raStr.size()];
+        //NSString* nsid = [NSString stringWithCharacters:aid.c_str() length:aid.length()];
         
+        NSString* nsid = [NSString stringWithUTF8String:aid.c_str()];
         //DOFIXME! uncomment me!
         self.agentId = [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding];
         [[NSUserDefaults standardUserDefaults] setObject:self.agentId forKey:NSDEFAULT_AGENT_ID_KEY];
@@ -323,7 +326,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendWebsiteReport sendReport;
     org::umit::icm::mobile::proto::WebsiteReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(""); //TODO 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_testid(1); //TODO 1 for Website test, 2 for Service test, 3 for Throttling test
     header->set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
@@ -373,7 +376,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid(""); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_testid(2); // 1 for Website test, 2 for Service test, 3 for Throttling test
     header->set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     header->set_timezone(8);
     header->set_reportid([self generateUuidCString]);
