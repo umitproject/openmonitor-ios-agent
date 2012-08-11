@@ -1,5 +1,5 @@
 //
-//  ICMFirstViewController.h
+//  ICMSettingsViewController.h
 //  icm-ios-agent
 //
 //  Created by shinysky on 12-5-3.
@@ -12,7 +12,7 @@
 #import "WebsiteSuggestionViewController.h"
 #import "ServiceSuggestionViewController.h"
 
-@interface ICMFirstViewController : UIViewController <LoginFormViewControllerDelegate, WebsiteSuggestionViewControllerDelegate, ServiceSuggestionViewControllerDelegate> {
+@interface ICMSettingsViewController : UIViewController <LoginFormViewControllerDelegate, WebsiteSuggestionViewControllerDelegate, ServiceSuggestionViewControllerDelegate> {
     __weak IBOutlet UIButton *startBtn;
     __weak IBOutlet UIButton *loginBtn;
     __weak IBOutlet UISwitch *firstNodeSwitch;

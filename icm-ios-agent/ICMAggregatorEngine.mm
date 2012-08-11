@@ -13,6 +13,7 @@
 
 #include "messages.pb.h"
 #include "Base64Transcoder.h"
+#include <fstream>
 
 @implementation ICMAggregatorEngine
 
@@ -69,7 +70,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     // prepare msg
     org::umit::icm::mobile::proto::RegisterAgent ra;
-    ra.set_ip([@"162.111.1.18" UTF8String]);
+    ra.set_ip([@"192.168.1.18" UTF8String]);
     ra.set_agenttype([@"MOBILE" UTF8String]);
     ra.set_versionno(1);
     
@@ -96,7 +97,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     NSData * decrypted = [crypto decryptData:encrypted];
     NSString* decryptedStr = [NSString stringWithUTF8String:(const char*)[decrypted bytes]];
-    NSLog(@"decrypted: %d %@ %@\n\n", [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSUTF8StringEncoding] description]);
+    NSLog(@"decrypted: %d %d %@ %@\n\n", [decrypted length], [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSUTF8StringEncoding] description]);
     
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     NSLog(@"finalKeyb64:%@", finalKeyb64);
@@ -109,10 +110,23 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
+        resp = @"CgQIABAAEiQ0NzI5NTg2Mi0xYTAxLTQ2MDgtOTRmNC1iZDBmMGFkYmQ0ZTAarAFESzUxWkJ0SDJXMHBsRlNYWGs4UWdXaFBTdTRXcWlnYUluVzlnRy9wQWthSHlHRjBoOGF5Ti9ZMkVRVE5xaXRIUmNWUmNtaW4wSVVOU1JEVGdJZEh4eG15cCs3bGFVRFZYQy91MnlOT29VUWxpVXdwNlhlRWlZV3BEZGdzL25tMy9JWlJ2dTlLL1dwZ2w3aXlKSzlFaDlZa05udHlXSW44bGhSQVovSFI2ODQ9";
+        NSLog(@"resp=%@", resp);
         NSData* respdata = [NSData dataFromBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSString *plainText = [[NSString alloc] initWithData:respdata encoding:NSASCIIStringEncoding];
+        NSLog(@"plainText len: %d", [plainText length]);
+        NSLog(@"plainText: %@", plainText);
+        NSString* plainTextB64 = [[plainText dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
+        NSLog(@"plainTextB64: %@", plainTextB64);
+        std::ifstream input ((const char*)[respdata bytes], std::ios::in | std::ios::binary);
         org::umit::icm::mobile::proto::RegisterAgentResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromIstream(&input);
+        if (rar.has_agentid()) {
+            NSLog(@"RegisterAgentResponse has agent id.");
+        } else {
+            NSLog(@"RegisterAgentResponse has NO agent id.");
+        }
         std::string aid = rar.agentid();
         NSLog(@"register succeeded! got agent id: %@", [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding]);
         //NSData* data = [NSData dataWithBytes:raStr.c_str() length:raStr.size()];
@@ -217,6 +231,13 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::LoginResponse resp;
         resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        
+        if (resp.has_header()) {
+            NSLog(@"LoginResponse has header.");
+        } else {
+            NSLog(@"LoginResponse has NO header.");
+        }
+        
         org::umit::icm::mobile::proto::ResponseHeader header = resp.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         

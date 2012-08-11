@@ -111,7 +111,7 @@
         <scene sceneID="11">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
-                <viewController title="First" id="2" customClass="ICMFirstViewController" sceneMemberID="viewController">
+                <viewController title="First" id="2" customClass="ICMSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -500,8 +500,8 @@
         <class className="CoreDataTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
         </class>
-        <class className="ICMFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMFirstViewController.h"/>
+        <class className="ICMSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMSettingsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="startBtnTapped:"/>
                 <relationship kind="outlet" name="firstNodeSwitch" candidateClass="UISwitch"/>

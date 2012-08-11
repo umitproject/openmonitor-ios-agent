@@ -1,12 +1,12 @@
 //
-//  ICMFirstViewController.m
+//  ICMSettingsViewController.m
 //  icm-ios-agent
 //
 //  Created by shinysky on 12-5-3.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ICMFirstViewController.h"
+#import "ICMSettingsViewController.h"
 #import "ICMAggregatorEngine.h"
 #import "ICMUpdater.h"
 #import "ICMService.h"
@@ -129,11 +129,11 @@ int start_node()
     return 0;
 }
 
-@interface ICMFirstViewController ()
+@interface ICMSettingsViewController ()
 
 @end
 
-@implementation ICMFirstViewController
+@implementation ICMSettingsViewController
 
 - (void)viewDidLoad
 {

@@ -154,7 +154,7 @@
 		B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */; };
 		B3EF61501552B4A300D24661 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */; };
 		B3EF61531552B4A300D24661 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */; };
-		B3EF61561552B4A300D24661 /* ICMFirstViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */; };
+		B3EF61561552B4A300D24661 /* ICMSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */; };
 		B3EF61581552B4A300D24661 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61571552B4A300D24661 /* first.png */; };
 		B3EF615A1552B4A300D24661 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61591552B4A300D24661 /* first@2x.png */; };
 		B3EF615D1552B4A300D24661 /* ICMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */; };
@@ -626,8 +626,8 @@
 		B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICMAppDelegate.m; sourceTree = "<group>"; };
 		B3EF614F1552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B3EF61521552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		B3EF61541552B4A300D24661 /* ICMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMFirstViewController.h; sourceTree = "<group>"; };
-		B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMFirstViewController.mm; sourceTree = "<group>"; };
+		B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */ = {isa = PBXFileReference; path = ICMSettingsViewController.h; sourceTree = "<group>"; };
+		B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMSettingsViewController.mm; sourceTree = "<group>"; };
 		B3EF61571552B4A300D24661 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		B3EF61591552B4A300D24661 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMSecondViewController.h; sourceTree = "<group>"; };
@@ -1388,8 +1388,8 @@
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
 				B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */,
-				B3EF61541552B4A300D24661 /* ICMFirstViewController.h */,
-				B3EF61551552B4A300D24661 /* ICMFirstViewController.mm */,
+				B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */,
+				B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */,
 				B3356CA2156673D800AF8796 /* StartNode.cpp */,
 				B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */,
 				B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */,
@@ -1605,7 +1605,7 @@
 			files = (
 				B3EF61491552B4A300D24661 /* main.m in Sources */,
 				B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */,
-				B3EF61561552B4A300D24661 /* ICMFirstViewController.mm in Sources */,
+				B3EF61561552B4A300D24661 /* ICMSettingsViewController.mm in Sources */,
 				B3EF615D1552B4A300D24661 /* ICMSecondViewController.m in Sources */,
 				B379FB061563556B00EB9F1C /* advertise.cpp in Sources */,
 				B379FB071563556B00EB9F1C /* cage.cpp in Sources */,
