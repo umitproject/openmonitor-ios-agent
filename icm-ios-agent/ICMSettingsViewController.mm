@@ -196,11 +196,10 @@ int start_node()
     GOOGLE_PROTOBUF_VERIFY_VERSION;
      */
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
-    //if (engine.agentId < 0)
-        [engine registerAgent];
+    //if (engine.agentId == nil)
+        [engine registerAgentWithUsername:@"test" password:@"test"];
+    //[self logInWithUsername:@"test" password:@"test"];
     //fuck yeah!
-    //[[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:NSDEFAULT_AGENT_ID_KEY];
-    //engine.agentId= @"beef";
     //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
@@ -213,12 +212,11 @@ int start_node()
 {
     [self.navigationController popViewControllerAnimated:YES];
     ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
-    [[NSUserDefaults standardUserDefaults] setObject:@"beef" forKey:NSDEFAULT_AGENT_ID_KEY];
-    engine.agentId= @"beef";
-    if ([firstNodeSwitch isOn]) {
-        [engine loginStep1];
+    if (engine.agentId == nil) {
+        //FIXME name and pass
+        [engine registerAgentWithUsername:name password:name];
     } else {
-        [engine logoutAgent];
+        [engine loginStep1];
     }
 }
 

@@ -74,7 +74,7 @@ typedef enum {
 // All methods below return a unique connection identifier.
 // ======================================================================================================
 
-- (void)registerAgent; // registeragent
+- (void)registerAgentWithUsername:(NSString *)name password:(NSString*)pass; // registeragent
 - (void)loginStep1;
 - (void)logoutAgent;
 //- (void)loginStep2; // called by loginStep1(), should not be publicly visible

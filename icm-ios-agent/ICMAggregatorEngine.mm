@@ -51,7 +51,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 #pragma mark -
 #pragma mark Login methods
 
-- (void)registerAgent
+- (void)registerAgentWithUsername:(NSString *)name password:(NSString*)pass
 {
 	//return [self _sendRequestWithMethod:nil path:AGGR_REGISTER_AGENT queryParameters:nil body:nil 
     //                        requestType:MGTwitterPublicTimelineRequest 
@@ -76,13 +76,15 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     ra.set_versionno(1);
     
     org::umit::icm::mobile::proto::LoginCredentials* cred = ra.mutable_credentials();
-    cred->set_username([@"test" UTF8String]);
-    cred->set_password([@"test" UTF8String]);
+    cred->set_username([name UTF8String]);
+    cred->set_password([pass UTF8String]);
     
-    NSString* pubKeyString = [[crypto getPublicKeyMod] hexadecimalString];
-    NSLog(@"pubKeyString=%@", pubKeyString);
+    NSString* pubKeyModString = [[crypto getPublicKeyMod] hexadecimalString];
+    NSString* pubKeyExpString = [[crypto getPublicKeyExp] hexadecimalString];
+    NSLog(@"mod=%@", pubKeyModString);
+    NSLog(@"exp=%@", pubKeyExpString); //should be '0x010001' = 65537
     org::umit::icm::mobile::proto::RSAKey* rsaKey = ra.mutable_agentpublickey();
-    const char* pkcs = [pubKeyString UTF8String];
+    const char* pkcs = [pubKeyModString UTF8String];
     rsaKey->set_mod(pkcs);
     rsaKey->set_exp([RSAKEY_EXP UTF8String]);
     
@@ -131,6 +133,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSLog(@"saving agentid: %@", self.agentId);
         [[NSUserDefaults standardUserDefaults] setObject:self.agentId forKey:NSDEFAULT_AGENT_ID_KEY];
         
+        [self loginStep1];
+        
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
@@ -157,7 +161,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -177,17 +181,13 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 
 - (void)loginStep2:(NSString*)prevRespStr
 {
-    NSData* prevRespdata = [NSData dataFromBase64String: prevRespStr];
+    NSData* prevRespdata = [NSData dataWithBase64String:prevRespStr];
     NSLog(@"decoded data: %@", prevRespdata);
     org::umit::icm::mobile::proto::LoginStep1 prevResp;
     prevResp.ParseFromArray((const void*)[prevRespdata bytes], [prevRespdata length]);
     //TODO resp.cipheredchallenge() should be equal to the string we set in step 1
     std::string challenge = prevResp.challenge();
-    NSString* challengeNSStr = [NSString stringWithCString:challenge.c_str() encoding:NSUTF8StringEncoding];
-    NSLog(@"challenge base64: %@", challengeNSStr);
-    //NSData* challengeData = [NSData dataFromBase64String:challengeNSStr];
-    //challengeNSStr = [NSString stringWithUTF8String:(const char*)[challengeData bytes]];
-    //NSLog(@"challenge: %@", challengeNSStr);
+    NSLog(@"challenge base64: %s", challenge.c_str());
     std::string processID = prevResp.processid();
     
     // prepare msg
@@ -212,7 +212,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN2
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -220,7 +220,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *respStr = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: respStr];
+        NSData* respdata = [NSData dataWithBase64String: respStr];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::LoginResponse resp;
         resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -257,7 +257,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGOUT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -265,7 +265,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *respStr = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: respStr];
+        NSData* respdata = [NSData dataWithBase64String: respStr];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::LogoutResponse resp;
         resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -301,7 +301,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -309,7 +309,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::GetEventsResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -362,7 +362,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -370,7 +370,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::SendReportResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -410,7 +410,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -418,7 +418,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::SendReportResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -451,7 +451,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_TESTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -459,7 +459,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::NewTestsResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -488,7 +488,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_WEBSITE_SUGGESTION
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -496,7 +496,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::TestSuggestionResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -529,7 +529,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_SERVICE_SUGGESTION
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -537,7 +537,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::TestSuggestionResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -579,7 +579,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_VERSION
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -587,7 +587,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::NewVersionResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -618,7 +618,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_AGGREGATOR
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%d", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -626,7 +626,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataFromBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64String: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::CheckAggregatorResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
