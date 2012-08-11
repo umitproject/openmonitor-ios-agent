@@ -10,6 +10,7 @@
 #import "SecKeyWrapper.h"
 #import "CryptoCommon.h"
 #import "NSData+Conversion.h"
+#import "MF_Base64Additions.h"
 
 #include "messages.pb.h"
 #include "Base64Transcoder.h"
@@ -37,7 +38,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         if (agentid != nil) {
             self.agentId = agentid;
         } else {
-            self.agentId = @"beef";
+            self.agentId = nil;
         }
         crypto = [SecKeyWrapper sharedWrapper];
         [crypto prepareKeys];
@@ -86,21 +87,25 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     rsaKey->set_exp([RSAKEY_EXP UTF8String]);
     
     std::string raStr = ra.SerializeAsString();
-    //NSString* raNSStr = [NSString stringWithCString:raStr.c_str() encoding:NSASCIIStringEncoding];
-    //NSString* raNSStr = [NSString stringWithUTF8String:raStr.c_str()];
+    /*
+    org::umit::icm::mobile::proto::RegisterAgent ra2;
+    ra2.ParseFromString(raStr);
+    std::string ip2 = ra2.ip();
+    std::string agenttype2 = ra2.agenttype();
     
-    //NSLog(@"origin msg: %lu %d %@\n\n", raStr.length(), [raNSStr length], [[raNSStr dataUsingEncoding:NSUTF8StringEncoding] description]);
+    NSLog(@"%s %s", ip2.c_str(), agenttype2.c_str());*/
     
     NSData * encrypted = [crypto encryptData:[NSData dataWithBytes:raStr.c_str() length:raStr.size()]];
-    NSLog(@"encrypted: %d %@", [encrypted length], encrypted);
+    //NSLog(@"encrypted: %d %@", [encrypted length], encrypted);
     NSString* finalMsgb64 = [encrypted base64EncodedString];
     
+    /*
     NSData * decrypted = [crypto decryptData:encrypted];
-    NSString* decryptedStr = [NSString stringWithUTF8String:(const char*)[decrypted bytes]];
-    NSLog(@"decrypted: %d %d %@ %@\n\n", [decrypted length], [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSUTF8StringEncoding] description]);
+    NSString* decryptedStr = [[NSString alloc] initWithData:decrypted encoding:NSASCIIStringEncoding];
+    NSLog(@"decrypted: %d %d %@ %@\n\n", [decrypted length], [decryptedStr length], decryptedStr, [[decryptedStr dataUsingEncoding:NSUTF8StringEncoding] description]);*/
     
-    NSLog(@"finalMsgb64:%@", finalMsgb64);
-    NSLog(@"finalKeyb64:%@", finalKeyb64);
+    //NSLog(@"finalMsgb64:%@", finalMsgb64);
+    //NSLog(@"finalKeyb64:%@", finalKeyb64);
     
     MKNetworkOperation *op = [self operationWithPath:AGGR_REGISTER_AGENT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:                                     finalMsgb64, AGGR_MSG_KEY,                                           finalKeyb64, AGGR_KEY_KEY, nil]
@@ -110,33 +115,21 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        resp = @"CgQIABAAEiQ0NzI5NTg2Mi0xYTAxLTQ2MDgtOTRmNC1iZDBmMGFkYmQ0ZTAarAFESzUxWkJ0SDJXMHBsRlNYWGs4UWdXaFBTdTRXcWlnYUluVzlnRy9wQWthSHlHRjBoOGF5Ti9ZMkVRVE5xaXRIUmNWUmNtaW4wSVVOU1JEVGdJZEh4eG15cCs3bGFVRFZYQy91MnlOT29VUWxpVXdwNlhlRWlZV3BEZGdzL25tMy9JWlJ2dTlLL1dwZ2w3aXlKSzlFaDlZa05udHlXSW44bGhSQVovSFI2ODQ9";
-        NSLog(@"resp=%@", resp);
-        NSData* respdata = [NSData dataFromBase64String: resp];
-        NSLog(@"decoded data: %@", respdata);
-        NSString *plainText = [[NSString alloc] initWithData:respdata encoding:NSASCIIStringEncoding];
-        NSLog(@"plainText len: %d", [plainText length]);
-        NSLog(@"plainText: %@", plainText);
-        NSString* plainTextB64 = [[plainText dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
-        NSLog(@"plainTextB64: %@", plainTextB64);
-        std::ifstream input ((const char*)[respdata bytes], std::ios::in | std::ios::binary);
+        NSData* respdata = [MF_Base64Codec dataFromBase64String:resp];
+        //NSLog(@"respdata=%@", respdata);
+        respdata = [respdata subdataWithRange:NSMakeRange(0,[respdata length]-1)];
+        //NSLog(@"respdata=%@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        //NSLog(@"decrypted=%s", [decrypted bytes]);
+        
         org::umit::icm::mobile::proto::RegisterAgentResponse rar;
-        rar.ParseFromIstream(&input);
-        if (rar.has_agentid()) {
-            NSLog(@"RegisterAgentResponse has agent id.");
-        } else {
-            NSLog(@"RegisterAgentResponse has NO agent id.");
-        }
+        rar.ParsePartialFromArray([decrypted bytes], [decrypted length]);
         std::string aid = rar.agentid();
-        NSLog(@"register succeeded! got agent id: %@", [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding]);
-        //NSData* data = [NSData dataWithBytes:raStr.c_str() length:raStr.size()];
-        //NSString* nsid = [NSString stringWithCharacters:aid.c_str() length:aid.length()];
+        NSLog(@"register succeeded! got agent id: %s", aid.c_str());
         
-        NSString* nsid = [NSString stringWithUTF8String:aid.c_str()];
-        //DOFIXME! uncomment me!
         self.agentId = [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding];
+        NSLog(@"saving agentid: %@", self.agentId);
         [[NSUserDefaults standardUserDefaults] setObject:self.agentId forKey:NSDEFAULT_AGENT_ID_KEY];
-        
         
     } onError:^(NSError *error) {
         

@@ -60,6 +60,7 @@
 		B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1A156E750D0066DDBB /* CFNetwork.framework */; };
 		B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */; };
 		B314FA1F156E75290066DDBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1E156E75280066DDBB /* Security.framework */; };
+		B320C91515D62EF9000CA0D8 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B320C91415D62EF9000CA0D8 /* MF_Base64Additions.m */; };
 		B32211BA15898C4E0054A059 /* descriptor.cc in Sources */ = {isa = PBXBuildFile; fileRef = B322117815898C4E0054A059 /* descriptor.cc */; };
 		B32211BB15898C4E0054A059 /* descriptor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B322117A15898C4E0054A059 /* descriptor.pb.cc */; };
 		B32211BC15898C4E0054A059 /* descriptor.proto in Resources */ = {isa = PBXBuildFile; fileRef = B322117C15898C4E0054A059 /* descriptor.proto */; };
@@ -456,6 +457,8 @@
 		B314FA1A156E750D0066DDBB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B314FA1E156E75280066DDBB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B320C91315D62EF9000CA0D8 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
+		B320C91415D62EF9000CA0D8 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
 		B322117815898C4E0054A059 /* descriptor.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.cc; sourceTree = "<group>"; };
 		B322117915898C4E0054A059 /* descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptor.h; sourceTree = "<group>"; };
 		B322117A15898C4E0054A059 /* descriptor.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.pb.cc; sourceTree = "<group>"; };
@@ -626,7 +629,7 @@
 		B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICMAppDelegate.m; sourceTree = "<group>"; };
 		B3EF614F1552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B3EF61521552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */ = {isa = PBXFileReference; path = ICMSettingsViewController.h; sourceTree = "<group>"; };
+		B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMSettingsViewController.h; sourceTree = "<group>"; };
 		B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMSettingsViewController.mm; sourceTree = "<group>"; };
 		B3EF61571552B4A300D24661 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		B3EF61591552B4A300D24661 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
@@ -1237,6 +1240,8 @@
 		B35C4888157F41D200F5045C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B320C91315D62EF9000CA0D8 /* MF_Base64Additions.h */,
+				B320C91415D62EF9000CA0D8 /* MF_Base64Additions.m */,
 				B35C4889157F421D00F5045C /* Exception.h */,
 				B35C488A157F421D00F5045C /* Exception.m */,
 				B35C488B157F421D00F5045C /* Global.h */,
@@ -1685,6 +1690,7 @@
 				B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */,
 				B37BEAD315C6A98B00729133 /* WebsiteSuggestionViewController.m in Sources */,
 				B37BEAD715C6AD2A00729133 /* ServiceSuggestionViewController.m in Sources */,
+				B320C91515D62EF9000CA0D8 /* MF_Base64Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
