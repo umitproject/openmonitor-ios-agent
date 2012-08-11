@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366378157.511924"
+         timestampString = "366383689.199752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "392"
-         endingLineNumber = "392"
+         startingLineNumber = "391"
+         endingLineNumber = "391"
          landmarkName = "-sendServiceReport:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366378157.511924"
+         timestampString = "366379185.52068"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "192"
-         endingLineNumber = "192"
+         startingLineNumber = "191"
+         endingLineNumber = "191"
          landmarkName = "-loginStep2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366378157.511924"
+         timestampString = "366379185.52068"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
          landmarkName = "-loginStep2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -216,11 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366378157.511924"
+         timestampString = "366383689.199752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "274"
-         endingLineNumber = "274"
+         startingLineNumber = "271"
+         endingLineNumber = "271"
          landmarkName = "-logoutAgent"
          landmarkType = "5">
       </FileBreakpoint>
@@ -242,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366378157.511924"
+         timestampString = "366383689.199752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "237"
-         endingLineNumber = "237"
+         startingLineNumber = "234"
+         endingLineNumber = "234"
          landmarkName = "-loginStep2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -326,6 +326,32 @@
          startingLineNumber = "198"
          endingLineNumber = "198"
          landmarkName = "-startBtnTapped:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
+         timestampString = "366383689.199752"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "480"
+         endingLineNumber = "480"
+         landmarkName = "-checkNewTests"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
+         timestampString = "366386122.723799"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

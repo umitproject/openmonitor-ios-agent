@@ -14,8 +14,8 @@
 
 //#define AGGREGATOR_URL @"icm-dev.appspot.com"
 //#define AGGREGATOR_URL @"aggregator:8000"
-#define AGGREGATOR_URL @"162.105.30.237:8000"
-//#define AGGREGATOR_URL @"east1.openmonitor.org"
+//#define AGGREGATOR_URL @"162.105.30.237:8000"
+#define AGGREGATOR_URL @"east1.openmonitor.org"
 
 #define AGGR_REGISTER_AGENT @"api/registeragent/"
 #define AGGR_LOGIN @"api/loginagent/"

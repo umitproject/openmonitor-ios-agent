@@ -195,10 +195,10 @@ int start_node()
     
     GOOGLE_PROTOBUF_VERIFY_VERSION;
      */
-    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    //ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId == nil)
-        [engine registerAgentWithUsername:@"test" password:@"test"];
-    //[self logInWithUsername:@"test" password:@"test"];
+    //    [engine registerAgentWithUsername:@"test" password:@"test"];
+    [self logInWithUsername:@"test" password:@"test"];
     //fuck yeah!
     //[engine getEvents];
     //[engine sendWebsiteReport];

@@ -72,7 +72,7 @@
 
 - (UIImage *)statusImageForManagedObject:(NSManagedObject *)managedObject
 {
-    return [UIImage imageNamed:@"pinhead-green"];
+    return [UIImage imageNamed:@"pinhead-red"];
 }
 
 - (void)configureCell:(UITableViewCell *)cell forManagedObject:(NSManagedObject *)managedObject

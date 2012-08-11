@@ -182,7 +182,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 - (void)loginStep2:(NSString*)prevRespStr
 {
     NSData* prevRespdata = [NSData dataWithBase64String:prevRespStr];
-    NSLog(@"decoded data: %@", prevRespdata);
     org::umit::icm::mobile::proto::LoginStep1 prevResp;
     prevResp.ParseFromArray((const void*)[prevRespdata bytes], [prevRespdata length]);
     //TODO resp.cipheredchallenge() should be equal to the string we set in step 1
@@ -194,9 +193,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::LoginStep2 msg;
     msg.set_processid(processID);
     // cipheredchallenge
-    //NSData* ccData = [crypto getSignatureBytes:challengeData];
     NSData* ccData = [crypto getSignatureBytes:[NSData dataWithBytes:challenge.c_str() length:challenge.size()]];
-    //NSData* ccData = [crypto encryptData:[NSData dataWithBytes:challenge.c_str() length:challenge.size()]];
     NSString* ccStr = [ccData base64EncodedString];
     NSLog(@"challenge signed b64: %@", ccStr);
     
@@ -204,8 +201,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     std::string msgStr = msg.SerializeAsString();
     NSData* msgData = [NSData dataWithBytes:msgStr.c_str() length:msgStr.size()];
-    //NSData * encrypted = [crypto encryptData:msgData];
-    //NSLog(@"encrypted: %@", encrypted);
     NSString* finalMsgb64 = [msgData base64EncodedString];
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     
@@ -233,6 +228,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         org::umit::icm::mobile::proto::ResponseHeader header = resp.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        
+        [self checkNewTests];
         
     } onError:^(NSError *error) {
         
@@ -272,6 +269,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         std::string status = resp.status();
         NSString* statusStr = [NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding];
         NSLog(@"Logout Status: %@", statusStr);
+        
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
@@ -288,8 +286,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     // prepare msg
     org::umit::icm::mobile::proto::GetEvents ge;
     org::umit::icm::mobile::proto::Location* loc = ge.add_locations();
-    loc->set_latitude(34);
-    loc->set_longitude(108);
+    loc->set_latitude(41);
+    loc->set_longitude(29);
     
     std::string geStr = ge.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
@@ -314,6 +312,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::GetEventsResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
         int es = rar.events_size();
+        NSLog(@"got %d events", es);
         for (int i = 0; i < es; i++) {
             org::umit::icm::mobile::proto::Event e = rar.events(i);
             std::string ttStr = e.testtype();
@@ -464,6 +463,22 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::NewTestsResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
         NSLog(@"Got NewTestsResponse: curtestversiono=%d", rar.testversionno());
+        
+        int es = rar.tests_size();
+        NSLog(@"got %d tests", es);
+        for (int i = 0; i < es; i++) {
+            org::umit::icm::mobile::proto::Test e = rar.tests(i);
+            std::string testid = e.testid();
+            //std::string ttStr = e.testtype();
+            //std::string etStr = e.eventtype();
+            __int64_t t = e.executeattimeutc();
+            int tt = e.testtype();
+            
+            //NSString* ttNSStr = [NSString stringWithCString:ttStr.c_str() encoding:NSUTF8StringEncoding];
+            //NSString* etNSStr = [NSString stringWithCString:etStr.c_str() encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"got test: %lld %d %s", t, tt, testid.c_str());
+        }
         
     } onError:^(NSError *error) {
         

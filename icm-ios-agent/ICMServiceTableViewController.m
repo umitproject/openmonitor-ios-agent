@@ -111,6 +111,16 @@
     }
 }
 
+- (UIImage *)statusImageForManagedObject:(NSManagedObject *)managedObject
+{
+    ICMWebsite* website = (ICMWebsite*)managedObject;
+    if ([website.status intValue] == kStatusNormal
+        || [website.status intValue] == kStatusContentChanged) {
+        return [UIImage imageNamed:@"pinhead-green"];
+    }
+    return [UIImage imageNamed:@"pinhead-red"];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject atIndex:(NSIndexPath *)indexPath
 {
     //do customizing here

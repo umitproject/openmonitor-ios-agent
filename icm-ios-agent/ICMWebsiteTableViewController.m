@@ -147,6 +147,15 @@
     return nil;
 }
 
+- (UIImage *)statusImageForManagedObject:(NSManagedObject *)managedObject
+{
+    ICMWebsite* website = (ICMWebsite*)managedObject;
+    if ([website.status intValue] == 200) {
+        return [UIImage imageNamed:@"pinhead-green"];
+    }
+    return [UIImage imageNamed:@"pinhead-red"];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForManagedObject:(NSManagedObject *)managedObject atIndex:(NSIndexPath *)indexPath
 {
     //do customizing here
