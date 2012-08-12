@@ -43,45 +43,6 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "362063146.090108"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
-         landmarkName = "-dispatchRefreshingRequestForWebsite:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "362063146.090108"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
-         landmarkName = "-dispatchRefreshingRequestForWebsite:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "362063146.090108"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
-         landmarkName = "-dispatchRefreshingRequestForService:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -92,19 +53,6 @@
          startingLineNumber = "147"
          endingLineNumber = "147"
          landmarkName = "-onUpdateServiceTimer"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMUpdater.m"
-         timestampString = "362063146.090108"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "209"
-         endingLineNumber = "209"
-         landmarkName = "-socketDidDisconnect:withError:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -346,12 +294,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366386122.723799"
+         timestampString = "366435859.352691"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "-init"
+         startingLineNumber = "519"
+         endingLineNumber = "519"
+         landmarkName = "-suggestWebsiteWithName:url:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
+         timestampString = "366435985.131931"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "377"
+         endingLineNumber = "377"
+         landmarkName = "-sendWebsiteReport:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

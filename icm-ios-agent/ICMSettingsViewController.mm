@@ -198,7 +198,7 @@ int start_node()
     //ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId == nil)
     //    [engine registerAgentWithUsername:@"test" password:@"test"];
-    [self logInWithUsername:@"test" password:@"test"];
+    //[self logInWithUsername:@"test" password:@"test"];
     //fuck yeah!
     //[engine getEvents];
     //[engine sendWebsiteReport];

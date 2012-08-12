@@ -22,7 +22,7 @@ static ICMUpdater * sharedUpdater = nil;
     @synchronized(self)
     {
         if (sharedUpdater == nil)
-            sharedUpdater = [[self alloc] initWithTimeInterval:60];
+            sharedUpdater = [[self alloc] initWithTimeInterval:10*60];
     }
     return (sharedUpdater);
 }
