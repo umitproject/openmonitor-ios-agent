@@ -147,6 +147,8 @@
 		B3CF44291578FFF200B954FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF44281578FFF200B954FA /* MapKit.framework */; };
 		B3CF442B1578FFFC00B954FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF442A1578FFFB00B954FA /* CoreLocation.framework */; };
 		B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CF44301579043200B954FA /* ICMMapViewController.m */; };
+		B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */; };
+		B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */; };
 		B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613C1552B4A300D24661 /* UIKit.framework */; };
 		B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613E1552B4A300D24661 /* Foundation.framework */; };
 		B3EF61411552B4A300D24661 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF61401552B4A300D24661 /* CoreGraphics.framework */; };
@@ -617,6 +619,10 @@
 		B3CF442A1578FFFB00B954FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3CF442F1579043200B954FA /* ICMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMMapViewController.h; sourceTree = "<group>"; };
 		B3CF44301579043200B954FA /* ICMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMMapViewController.m; sourceTree = "<group>"; };
+		B3D00BE815D8F349002B205C /* NSData+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSData+CDBase64.h"; sourceTree = "<group>"; };
+		B3D00BE915D8F349002B205C /* NSString+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSString+CDBase64.h"; sourceTree = "<group>"; };
+		B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CDBase64.m"; sourceTree = "<group>"; };
+		B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDBase64.m"; sourceTree = "<group>"; };
 		B3EF61381552B4A300D24661 /* icm-ios-agent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "icm-ios-agent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EF613C1552B4A300D24661 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3EF613E1552B4A300D24661 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1240,6 +1246,10 @@
 		B35C4888157F41D200F5045C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B3D00BE815D8F349002B205C /* NSData+CDBase64.h */,
+				B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */,
+				B3D00BE915D8F349002B205C /* NSString+CDBase64.h */,
+				B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */,
 				B320C91315D62EF9000CA0D8 /* MF_Base64Additions.h */,
 				B320C91415D62EF9000CA0D8 /* MF_Base64Additions.m */,
 				B35C4889157F421D00F5045C /* Exception.h */,
@@ -1691,6 +1701,8 @@
 				B37BEAD315C6A98B00729133 /* WebsiteSuggestionViewController.m in Sources */,
 				B37BEAD715C6AD2A00729133 /* ServiceSuggestionViewController.m in Sources */,
 				B320C91515D62EF9000CA0D8 /* MF_Base64Additions.m in Sources */,
+				B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */,
+				B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

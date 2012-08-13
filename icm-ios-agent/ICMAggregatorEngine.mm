@@ -10,7 +10,8 @@
 #import "SecKeyWrapper.h"
 #import "CryptoCommon.h"
 #import "NSData+Conversion.h"
-#import "MF_Base64Additions.h"
+//#import "MF_Base64Additions.h"
+#import "NSData+CDBase64.h"
 
 #include "messages.pb.h"
 #include "Base64Transcoder.h"
@@ -117,10 +118,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [MF_Base64Codec dataFromBase64String:resp];
-        //NSLog(@"respdata=%@", respdata);
-        respdata = [respdata subdataWithRange:NSMakeRange(0,[respdata length]-1)];
-        //NSLog(@"respdata=%@", respdata);
+        
+        NSData* respdata = [NSData dataWithBase64EncodedString:resp];
+        
+        //respdata = [respdata subdataWithRange:NSMakeRange(0,[respdata length]-1)];
         NSData * decrypted = [crypto decryptData:respdata];
         //NSLog(@"decrypted=%s", [decrypted bytes]);
         
@@ -181,7 +182,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 
 - (void)loginStep2:(NSString*)prevRespStr
 {
-    NSData* prevRespdata = [NSData dataWithBase64String:prevRespStr];
+    NSData* prevRespdata = [NSData dataWithBase64EncodedString:prevRespStr];
+
     org::umit::icm::mobile::proto::LoginStep1 prevResp;
     prevResp.ParseFromArray((const void*)[prevRespdata bytes], [prevRespdata length]);
     //TODO resp.cipheredchallenge() should be equal to the string we set in step 1
@@ -215,7 +217,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *respStr = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: respStr];
+        NSData* respdata = [NSData dataWithBase64EncodedString: respStr];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::LoginResponse resp;
         resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -262,7 +264,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *respStr = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: respStr];
+        NSData* respdata = [NSData dataWithBase64EncodedString: respStr];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::LogoutResponse resp;
         resp.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -307,7 +309,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::GetEventsResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -369,7 +371,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::SendReportResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -417,7 +419,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::SendReportResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -438,7 +440,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 - (void)checkNewTests
 {
     org::umit::icm::mobile::proto::NewTests newTests;
-    newTests.set_currenttestversionno(1);//TODO
+    newTests.set_currenttestversionno(0);//TODO
     
     std::string geStr = newTests.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
@@ -458,10 +460,12 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        NSLog(@"decrypted data: %@", decrypted);
         org::umit::icm::mobile::proto::NewTestsResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
         NSLog(@"Got NewTestsResponse: curtestversiono=%d", rar.testversionno());
         
         int es = rar.tests_size();
@@ -469,15 +473,23 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         for (int i = 0; i < es; i++) {
             org::umit::icm::mobile::proto::Test e = rar.tests(i);
             std::string testid = e.testid();
-            //std::string ttStr = e.testtype();
-            //std::string etStr = e.eventtype();
-            __int64_t t = e.executeattimeutc();
-            int tt = e.testtype();
+            __int64_t timeutc = e.executeattimeutc();
+            int testtype = e.testtype();
+            if (testtype == 1) {
+                // WEB
+                org::umit::icm::mobile::proto::Website site = e.website();
+                std::string url = site.url();
+                NSLog(@"web %s", url.c_str());
+            } else {
+                // SERVICE
+                org::umit::icm::mobile::proto::Service service = e.service();
+                std::string name = service.name();
+                std::string ip = service.ip();
+                int port = service.port();
+                NSLog(@"service %s %s %d", name.c_str(), ip.c_str(), port);
+            }
             
-            //NSString* ttNSStr = [NSString stringWithCString:ttStr.c_str() encoding:NSUTF8StringEncoding];
-            //NSString* etNSStr = [NSString stringWithCString:etStr.c_str() encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"got test: %lld %d %s", t, tt, testid.c_str());
+            NSLog(@"got test: %lld %d %s", timeutc, testtype, testid.c_str());
         }
         
     } onError:^(NSError *error) {
@@ -511,7 +523,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::TestSuggestionResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -552,7 +564,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::TestSuggestionResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -602,7 +614,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::NewVersionResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
@@ -641,7 +653,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        NSData* respdata = [NSData dataWithBase64String: resp];
+        NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
         org::umit::icm::mobile::proto::CheckAggregatorResponse rar;
         rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);

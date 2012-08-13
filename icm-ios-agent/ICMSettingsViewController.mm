@@ -193,14 +193,14 @@ int start_node()
         start_node();
     });
     
-    GOOGLE_PROTOBUF_VERIFY_VERSION;
-     */
-    //ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    GOOGLE_PROTOBUF_VERIFY_VERSION; */
+    
+    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId == nil)
     //    [engine registerAgentWithUsername:@"test" password:@"test"];
     //[self logInWithUsername:@"test" password:@"test"];
     //fuck yeah!
-    //[engine getEvents];
+    [engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
     //[engine checkNewTests];
