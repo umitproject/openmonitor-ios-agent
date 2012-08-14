@@ -61,6 +61,8 @@ class AgentData;
 class GetPeerListResponse;
 class GetSuperPeerList;
 class GetSuperPeerListResponse;
+class GetLocation;
+class GetLocationResponse;
 class Location;
 class GetEvents;
 class Event;
@@ -1241,6 +1243,13 @@ class RegisterAgent : public ::google::protobuf::Message {
   inline ::std::string* mutable_ip();
   inline ::std::string* release_ip();
   
+  // optional bool superPeer = 6;
+  inline bool has_superpeer() const;
+  inline void clear_superpeer();
+  static const int kSuperPeerFieldNumber = 6;
+  inline bool superpeer() const;
+  inline void set_superpeer(bool value);
+  
   // @@protoc_insertion_point(class_scope:org.umit.icm.mobile.proto.RegisterAgent)
  private:
   inline void set_has_versionno();
@@ -1253,17 +1262,20 @@ class RegisterAgent : public ::google::protobuf::Message {
   inline void clear_has_agentpublickey();
   inline void set_has_ip();
   inline void clear_has_ip();
+  inline void set_has_superpeer();
+  inline void clear_has_superpeer();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::std::string* agenttype_;
   ::org::umit::icm::mobile::proto::LoginCredentials* credentials_;
+  ::google::protobuf::int32 versionno_;
+  bool superpeer_;
   ::org::umit::icm::mobile::proto::RSAKey* agentpublickey_;
   ::std::string* ip_;
-  ::google::protobuf::int32 versionno_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
@@ -2649,17 +2661,31 @@ class GetSuperPeerList : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 count() const;
   inline void set_count(::google::protobuf::int32 value);
   
+  // optional string location = 2;
+  inline bool has_location() const;
+  inline void clear_location();
+  static const int kLocationFieldNumber = 2;
+  inline const ::std::string& location() const;
+  inline void set_location(const ::std::string& value);
+  inline void set_location(const char* value);
+  inline void set_location(const char* value, size_t size);
+  inline ::std::string* mutable_location();
+  inline ::std::string* release_location();
+  
   // @@protoc_insertion_point(class_scope:org.umit.icm.mobile.proto.GetSuperPeerList)
  private:
   inline void set_has_count();
   inline void clear_has_count();
+  inline void set_has_location();
+  inline void clear_has_location();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
+  ::std::string* location_;
   ::google::protobuf::int32 count_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   friend void  protobuf_AddDesc_messages_2eproto();
   friend void protobuf_AssignDesc_messages_2eproto();
@@ -2763,6 +2789,178 @@ class GetSuperPeerListResponse : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static GetSuperPeerListResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetLocation : public ::google::protobuf::Message {
+ public:
+  GetLocation();
+  virtual ~GetLocation();
+  
+  GetLocation(const GetLocation& from);
+  
+  inline GetLocation& operator=(const GetLocation& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetLocation& default_instance();
+  
+  void Swap(GetLocation* other);
+  
+  // implements Message ----------------------------------------------
+  
+  GetLocation* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetLocation& from);
+  void MergeFrom(const GetLocation& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // required string agentIP = 1;
+  inline bool has_agentip() const;
+  inline void clear_agentip();
+  static const int kAgentIPFieldNumber = 1;
+  inline const ::std::string& agentip() const;
+  inline void set_agentip(const ::std::string& value);
+  inline void set_agentip(const char* value);
+  inline void set_agentip(const char* value, size_t size);
+  inline ::std::string* mutable_agentip();
+  inline ::std::string* release_agentip();
+  
+  // @@protoc_insertion_point(class_scope:org.umit.icm.mobile.proto.GetLocation)
+ private:
+  inline void set_has_agentip();
+  inline void clear_has_agentip();
+  
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  
+  ::std::string* agentip_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+  
+  void InitAsDefaultInstance();
+  static GetLocation* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GetLocationResponse : public ::google::protobuf::Message {
+ public:
+  GetLocationResponse();
+  virtual ~GetLocationResponse();
+  
+  GetLocationResponse(const GetLocationResponse& from);
+  
+  inline GetLocationResponse& operator=(const GetLocationResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetLocationResponse& default_instance();
+  
+  void Swap(GetLocationResponse* other);
+  
+  // implements Message ----------------------------------------------
+  
+  GetLocationResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GetLocationResponse& from);
+  void MergeFrom(const GetLocationResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // required string location = 1;
+  inline bool has_location() const;
+  inline void clear_location();
+  static const int kLocationFieldNumber = 1;
+  inline const ::std::string& location() const;
+  inline void set_location(const ::std::string& value);
+  inline void set_location(const char* value);
+  inline void set_location(const char* value, size_t size);
+  inline ::std::string* mutable_location();
+  inline ::std::string* release_location();
+  
+  // @@protoc_insertion_point(class_scope:org.umit.icm.mobile.proto.GetLocationResponse)
+ private:
+  inline void set_has_location();
+  inline void clear_has_location();
+  
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  
+  ::std::string* location_;
+  
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  friend void  protobuf_AddDesc_messages_2eproto();
+  friend void protobuf_AssignDesc_messages_2eproto();
+  friend void protobuf_ShutdownFile_messages_2eproto();
+  
+  void InitAsDefaultInstance();
+  static GetLocationResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -4003,16 +4201,12 @@ class Test : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required string testID = 1;
+  // required int64 testID = 1;
   inline bool has_testid() const;
   inline void clear_testid();
   static const int kTestIDFieldNumber = 1;
-  inline const ::std::string& testid() const;
-  inline void set_testid(const ::std::string& value);
-  inline void set_testid(const char* value);
-  inline void set_testid(const char* value, size_t size);
-  inline ::std::string* mutable_testid();
-  inline ::std::string* release_testid();
+  inline ::google::protobuf::int64 testid() const;
+  inline void set_testid(::google::protobuf::int64 value);
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
   inline bool has_website() const;
@@ -4059,7 +4253,7 @@ class Test : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::std::string* testid_;
+  ::google::protobuf::int64 testid_;
   ::org::umit::icm::mobile::proto::Website* website_;
   ::org::umit::icm::mobile::proto::Service* service_;
   ::google::protobuf::int64 executeattimeutc_;
@@ -8296,6 +8490,28 @@ inline ::std::string* RegisterAgent::release_ip() {
   }
 }
 
+// optional bool superPeer = 6;
+inline bool RegisterAgent::has_superpeer() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void RegisterAgent::set_has_superpeer() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void RegisterAgent::clear_has_superpeer() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void RegisterAgent::clear_superpeer() {
+  superpeer_ = false;
+  clear_has_superpeer();
+}
+inline bool RegisterAgent::superpeer() const {
+  return superpeer_;
+}
+inline void RegisterAgent::set_superpeer(bool value) {
+  set_has_superpeer();
+  superpeer_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // RegisterAgentResponse
@@ -9770,6 +9986,64 @@ inline void GetSuperPeerList::set_count(::google::protobuf::int32 value) {
   count_ = value;
 }
 
+// optional string location = 2;
+inline bool GetSuperPeerList::has_location() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GetSuperPeerList::set_has_location() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GetSuperPeerList::clear_has_location() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GetSuperPeerList::clear_location() {
+  if (location_ != &::google::protobuf::internal::kEmptyString) {
+    location_->clear();
+  }
+  clear_has_location();
+}
+inline const ::std::string& GetSuperPeerList::location() const {
+  return *location_;
+}
+inline void GetSuperPeerList::set_location(const ::std::string& value) {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  location_->assign(value);
+}
+inline void GetSuperPeerList::set_location(const char* value) {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  location_->assign(value);
+}
+inline void GetSuperPeerList::set_location(const char* value, size_t size) {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  location_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GetSuperPeerList::mutable_location() {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  return location_;
+}
+inline ::std::string* GetSuperPeerList::release_location() {
+  clear_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = location_;
+    location_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+
 // -------------------------------------------------------------------
 
 // GetSuperPeerListResponse
@@ -9826,6 +10100,130 @@ GetSuperPeerListResponse::knownsuperpeers() const {
 inline ::google::protobuf::RepeatedPtrField< ::org::umit::icm::mobile::proto::AgentData >*
 GetSuperPeerListResponse::mutable_knownsuperpeers() {
   return &knownsuperpeers_;
+}
+
+// -------------------------------------------------------------------
+
+// GetLocation
+
+// required string agentIP = 1;
+inline bool GetLocation::has_agentip() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GetLocation::set_has_agentip() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GetLocation::clear_has_agentip() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GetLocation::clear_agentip() {
+  if (agentip_ != &::google::protobuf::internal::kEmptyString) {
+    agentip_->clear();
+  }
+  clear_has_agentip();
+}
+inline const ::std::string& GetLocation::agentip() const {
+  return *agentip_;
+}
+inline void GetLocation::set_agentip(const ::std::string& value) {
+  set_has_agentip();
+  if (agentip_ == &::google::protobuf::internal::kEmptyString) {
+    agentip_ = new ::std::string;
+  }
+  agentip_->assign(value);
+}
+inline void GetLocation::set_agentip(const char* value) {
+  set_has_agentip();
+  if (agentip_ == &::google::protobuf::internal::kEmptyString) {
+    agentip_ = new ::std::string;
+  }
+  agentip_->assign(value);
+}
+inline void GetLocation::set_agentip(const char* value, size_t size) {
+  set_has_agentip();
+  if (agentip_ == &::google::protobuf::internal::kEmptyString) {
+    agentip_ = new ::std::string;
+  }
+  agentip_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GetLocation::mutable_agentip() {
+  set_has_agentip();
+  if (agentip_ == &::google::protobuf::internal::kEmptyString) {
+    agentip_ = new ::std::string;
+  }
+  return agentip_;
+}
+inline ::std::string* GetLocation::release_agentip() {
+  clear_has_agentip();
+  if (agentip_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = agentip_;
+    agentip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+
+// -------------------------------------------------------------------
+
+// GetLocationResponse
+
+// required string location = 1;
+inline bool GetLocationResponse::has_location() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GetLocationResponse::set_has_location() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GetLocationResponse::clear_has_location() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GetLocationResponse::clear_location() {
+  if (location_ != &::google::protobuf::internal::kEmptyString) {
+    location_->clear();
+  }
+  clear_has_location();
+}
+inline const ::std::string& GetLocationResponse::location() const {
+  return *location_;
+}
+inline void GetLocationResponse::set_location(const ::std::string& value) {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  location_->assign(value);
+}
+inline void GetLocationResponse::set_location(const char* value) {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  location_->assign(value);
+}
+inline void GetLocationResponse::set_location(const char* value, size_t size) {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  location_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GetLocationResponse::mutable_location() {
+  set_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    location_ = new ::std::string;
+  }
+  return location_;
+}
+inline ::std::string* GetLocationResponse::release_location() {
+  clear_has_location();
+  if (location_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = location_;
+    location_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
 
 // -------------------------------------------------------------------
@@ -10827,7 +11225,7 @@ inline ::std::string* Service::release_ip() {
 
 // Test
 
-// required string testID = 1;
+// required int64 testID = 1;
 inline bool Test::has_testid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -10838,51 +11236,15 @@ inline void Test::clear_has_testid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void Test::clear_testid() {
-  if (testid_ != &::google::protobuf::internal::kEmptyString) {
-    testid_->clear();
-  }
+  testid_ = GOOGLE_LONGLONG(0);
   clear_has_testid();
 }
-inline const ::std::string& Test::testid() const {
-  return *testid_;
-}
-inline void Test::set_testid(const ::std::string& value) {
-  set_has_testid();
-  if (testid_ == &::google::protobuf::internal::kEmptyString) {
-    testid_ = new ::std::string;
-  }
-  testid_->assign(value);
-}
-inline void Test::set_testid(const char* value) {
-  set_has_testid();
-  if (testid_ == &::google::protobuf::internal::kEmptyString) {
-    testid_ = new ::std::string;
-  }
-  testid_->assign(value);
-}
-inline void Test::set_testid(const char* value, size_t size) {
-  set_has_testid();
-  if (testid_ == &::google::protobuf::internal::kEmptyString) {
-    testid_ = new ::std::string;
-  }
-  testid_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Test::mutable_testid() {
-  set_has_testid();
-  if (testid_ == &::google::protobuf::internal::kEmptyString) {
-    testid_ = new ::std::string;
-  }
+inline ::google::protobuf::int64 Test::testid() const {
   return testid_;
 }
-inline ::std::string* Test::release_testid() {
-  clear_has_testid();
-  if (testid_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = testid_;
-    testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
+inline void Test::set_testid(::google::protobuf::int64 value) {
+  set_has_testid();
+  testid_ = value;
 }
 
 // optional .org.umit.icm.mobile.proto.Website website = 2;

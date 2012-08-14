@@ -200,10 +200,10 @@ int start_node()
     //    [engine registerAgentWithUsername:@"test" password:@"test"];
     //[self logInWithUsername:@"test" password:@"test"];
     //fuck yeah!
-    [engine getEvents];
+    //[engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
-    //[engine checkNewTests];
+    [engine checkNewTests];
 }
 
 #pragma mark -

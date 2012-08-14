@@ -288,8 +288,20 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     // prepare msg
     org::umit::icm::mobile::proto::GetEvents ge;
     org::umit::icm::mobile::proto::Location* loc = ge.add_locations();
-    loc->set_latitude(41);
-    loc->set_longitude(29);
+    loc->set_latitude(41.05918);
+    loc->set_longitude(28.95015);//41.05918, 28.95015
+    
+    loc = ge.add_locations();
+    loc->set_latitude(41.00918);
+    loc->set_longitude(28.90015);
+    
+    loc = ge.add_locations();
+    loc->set_latitude(41.10918);
+    loc->set_longitude(28.99015);
+    
+    loc = ge.mutable_agentlocation();
+    loc->set_latitude(41.05918);
+    loc->set_longitude(28.95015);
     
     std::string geStr = ge.SerializeAsString();
     NSData* geData = [NSData dataWithBytes:geStr.c_str() length:geStr.size()];
@@ -311,8 +323,19 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSString *resp = [operation responseString];
         NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        NSLog(@"decrypted data: %@", decrypted);
         org::umit::icm::mobile::proto::GetEventsResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
+        
+        if (rar.has_header()) {
+            NSLog(@"GetEventsResponse has header.");
+        } else {
+            NSLog(@"GetEventsResponse has NO header.");
+        }
+        org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
+        NSLog(@"GetEventsResponse: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        
         int es = rar.events_size();
         NSLog(@"got %d events", es);
         for (int i = 0; i < es; i++) {
@@ -346,6 +369,15 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     header->set_timezone(8);
     //header->set_reportid([self generateUuidCString]);
     header->set_timeutc([site.lastcheck timeIntervalSince1970]);
+    header->add_passednode([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
+    org::umit::icm::mobile::proto::TraceRoute* route = header->mutable_traceroute();
+    route->set_target("152.168.1.1");
+    route->set_hops(1);
+    route->set_packetsize(1);
+    org::umit::icm::mobile::proto::Trace* trace = route->add_traces();
+    trace->set_hop(1);
+    trace->set_ip("152.168.1.1");
+    trace->add_packetstiming(2);
     org::umit::icm::mobile::proto::WebsiteReportDetail* detail = report->mutable_report();
     detail->set_websiteurl([site.url cStringUsingEncoding:NSASCIIStringEncoding]);
     if ([site.status intValue] == 200) {
@@ -360,7 +392,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     NSString* finalMsgb64 = [encrypted base64EncodedString];
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     
-    MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
+    MKNetworkOperation *op = [self operationWithPath:AGGR_SEND_WEBSITE_REPORT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
                                                       [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
@@ -373,8 +405,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSString *resp = [operation responseString];
         NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        NSLog(@"decrypted data: %@", decrypted);
         org::umit::icm::mobile::proto::SendReportResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
         org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
@@ -391,11 +425,20 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();
     org::umit::icm::mobile::proto::ICMReport* header = report->mutable_header();
-    header->set_testid([service.uid intValue]); // 1 for Website test, 2 for Service test, 3 for Throttling test
+    header->set_testid([service.uid intValue]); //TODO 1 for Website test, 2 for Service test, 3 for Throttling test
     header->set_agentid([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
     header->set_timezone(8);
     //header->set_reportid([self generateUuidCString]);
     header->set_timeutc([service.lastcheck timeIntervalSince1970]);
+    header->add_passednode([self.agentId cStringUsingEncoding:NSUTF8StringEncoding]);
+    org::umit::icm::mobile::proto::TraceRoute* route = header->mutable_traceroute();
+    route->set_target("112.168.1.1");
+    route->set_hops(1);
+    route->set_packetsize(1);
+    org::umit::icm::mobile::proto::Trace* trace = route->add_traces();
+    trace->set_hop(1);
+    trace->set_ip("112.168.1.1");
+    trace->add_packetstiming(2);
     org::umit::icm::mobile::proto::ServiceReportDetail* detail = report->mutable_report();
     detail->set_servicename([service.name cStringUsingEncoding:NSASCIIStringEncoding]);
     detail->set_port([service.port intValue]);
@@ -408,7 +451,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     NSString* finalMsgb64 = [encrypted base64EncodedString];
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     
-    MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
+    MKNetworkOperation *op = [self operationWithPath:AGGR_SEND_SERVICE_REPORT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
                                                       [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
@@ -421,8 +464,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSString *resp = [operation responseString];
         NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        NSLog(@"decrypted data: %@", decrypted);
         org::umit::icm::mobile::proto::SendReportResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
         org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
@@ -472,15 +517,15 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSLog(@"got %d tests", es);
         for (int i = 0; i < es; i++) {
             org::umit::icm::mobile::proto::Test e = rar.tests(i);
-            std::string testid = e.testid();
+            __int64_t testid = e.testid();
             __int64_t timeutc = e.executeattimeutc();
             int testtype = e.testtype();
-            if (testtype == 1) {
+            if (testtype == kWebsiteTest) {
                 // WEB
                 org::umit::icm::mobile::proto::Website site = e.website();
                 std::string url = site.url();
                 NSLog(@"web %s", url.c_str());
-            } else {
+            } else if (testtype == kServiceTest) {
                 // SERVICE
                 org::umit::icm::mobile::proto::Service service = e.service();
                 std::string name = service.name();
@@ -489,7 +534,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
                 NSLog(@"service %s %s %d", name.c_str(), ip.c_str(), port);
             }
             
-            NSLog(@"got test: %lld %d %s", timeutc, testtype, testid.c_str());
+            NSLog(@"got test: %lld %d %lld", timeutc, testtype, testid);
         }
         
     } onError:^(NSError *error) {

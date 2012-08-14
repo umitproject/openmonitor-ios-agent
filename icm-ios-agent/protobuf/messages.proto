@@ -100,6 +100,7 @@ message RegisterAgent {
 	required LoginCredentials credentials = 3;
 	required RSAKey agentPublicKey = 4;
 	optional string ip = 5;
+	optional bool superPeer = 6;
 }
 
 // must be encrypted with agent publicKey
@@ -179,11 +180,22 @@ message GetPeerListResponse {
 
 message GetSuperPeerList {
 	optional int32 count = 1;
+	optional string location = 2;
 }
 
 message GetSuperPeerListResponse {
 	required ResponseHeader header = 1;
 	repeated AgentData knownSuperPeers = 2;
+}
+
+// GEOIP messages
+
+message GetLocation {
+	required string agentIP = 1;
+}
+ 
+message GetLocationResponse {
+ 	required string location = 1;
 }
 
 // get_events
@@ -257,7 +269,7 @@ message Service {
 }
 
 message Test {
-	required string testID = 1;
+	required int64 testID = 1;
 	optional Website website = 2;
 	optional Service service = 3;
 	optional int64 executeAtTimeUTC = 4;

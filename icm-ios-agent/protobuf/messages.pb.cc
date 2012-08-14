@@ -96,6 +96,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* GetSuperPeerListResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GetSuperPeerListResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetLocation_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetLocation_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GetLocationResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GetLocationResponse_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Location_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Location_reflection_ = NULL;
@@ -392,12 +398,13 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ResponseHeader));
   RegisterAgent_descriptor_ = file->message_type(9);
-  static const int RegisterAgent_offsets_[5] = {
+  static const int RegisterAgent_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterAgent, versionno_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterAgent, agenttype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterAgent, credentials_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterAgent, agentpublickey_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterAgent, ip_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterAgent, superpeer_),
   };
   RegisterAgent_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -622,8 +629,9 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetPeerListResponse));
   GetSuperPeerList_descriptor_ = file->message_type(23);
-  static const int GetSuperPeerList_offsets_[1] = {
+  static const int GetSuperPeerList_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSuperPeerList, count_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetSuperPeerList, location_),
   };
   GetSuperPeerList_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -652,7 +660,37 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetSuperPeerListResponse));
-  Location_descriptor_ = file->message_type(25);
+  GetLocation_descriptor_ = file->message_type(25);
+  static const int GetLocation_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetLocation, agentip_),
+  };
+  GetLocation_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GetLocation_descriptor_,
+      GetLocation::default_instance_,
+      GetLocation_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetLocation, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetLocation, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GetLocation));
+  GetLocationResponse_descriptor_ = file->message_type(26);
+  static const int GetLocationResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetLocationResponse, location_),
+  };
+  GetLocationResponse_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GetLocationResponse_descriptor_,
+      GetLocationResponse::default_instance_,
+      GetLocationResponse_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetLocationResponse, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetLocationResponse, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GetLocationResponse));
+  Location_descriptor_ = file->message_type(27);
   static const int Location_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Location, longitude_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Location, latitude_),
@@ -668,7 +706,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Location));
-  GetEvents_descriptor_ = file->message_type(26);
+  GetEvents_descriptor_ = file->message_type(28);
   static const int GetEvents_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEvents, locations_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEvents, agentlocation_),
@@ -684,7 +722,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetEvents));
-  Event_descriptor_ = file->message_type(27);
+  Event_descriptor_ = file->message_type(29);
   static const int Event_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, testtype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, eventtype_),
@@ -705,7 +743,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Event));
-  GetEventsResponse_descriptor_ = file->message_type(28);
+  GetEventsResponse_descriptor_ = file->message_type(30);
   static const int GetEventsResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEventsResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetEventsResponse, events_),
@@ -721,7 +759,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetEventsResponse));
-  SendWebsiteReport_descriptor_ = file->message_type(29);
+  SendWebsiteReport_descriptor_ = file->message_type(31);
   static const int SendWebsiteReport_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SendWebsiteReport, report_),
   };
@@ -736,7 +774,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SendWebsiteReport));
-  SendServiceReport_descriptor_ = file->message_type(30);
+  SendServiceReport_descriptor_ = file->message_type(32);
   static const int SendServiceReport_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SendServiceReport, report_),
   };
@@ -751,7 +789,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SendServiceReport));
-  SendReportResponse_descriptor_ = file->message_type(31);
+  SendReportResponse_descriptor_ = file->message_type(33);
   static const int SendReportResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SendReportResponse, header_),
   };
@@ -766,7 +804,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SendReportResponse));
-  NewVersion_descriptor_ = file->message_type(32);
+  NewVersion_descriptor_ = file->message_type(34);
   static const int NewVersion_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewVersion, agentversionno_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewVersion, agenttype_),
@@ -782,7 +820,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(NewVersion));
-  NewVersionResponse_descriptor_ = file->message_type(33);
+  NewVersionResponse_descriptor_ = file->message_type(35);
   static const int NewVersionResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewVersionResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewVersionResponse, downloadurl_),
@@ -800,7 +838,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(NewVersionResponse));
-  NewTests_descriptor_ = file->message_type(34);
+  NewTests_descriptor_ = file->message_type(36);
   static const int NewTests_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewTests, currenttestversionno_),
   };
@@ -815,7 +853,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(NewTests));
-  Website_descriptor_ = file->message_type(35);
+  Website_descriptor_ = file->message_type(37);
   static const int Website_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Website, url_),
   };
@@ -830,7 +868,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Website));
-  Service_descriptor_ = file->message_type(36);
+  Service_descriptor_ = file->message_type(38);
   static const int Service_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Service, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Service, port_),
@@ -847,7 +885,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Service));
-  Test_descriptor_ = file->message_type(37);
+  Test_descriptor_ = file->message_type(39);
   static const int Test_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Test, testid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Test, website_),
@@ -866,7 +904,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Test));
-  NewTestsResponse_descriptor_ = file->message_type(38);
+  NewTestsResponse_descriptor_ = file->message_type(40);
   static const int NewTestsResponse_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewTestsResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NewTestsResponse, tests_),
@@ -883,7 +921,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(NewTestsResponse));
-  AssignTask_descriptor_ = file->message_type(39);
+  AssignTask_descriptor_ = file->message_type(41);
   static const int AssignTask_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AssignTask, header_),
   };
@@ -898,7 +936,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AssignTask));
-  AssignTaskResponse_descriptor_ = file->message_type(40);
+  AssignTaskResponse_descriptor_ = file->message_type(42);
   static const int AssignTaskResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AssignTaskResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AssignTaskResponse, tests_),
@@ -914,7 +952,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AssignTaskResponse));
-  UpgradeToSuper_descriptor_ = file->message_type(41);
+  UpgradeToSuper_descriptor_ = file->message_type(43);
   static const int UpgradeToSuper_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UpgradeToSuper, header_),
   };
@@ -929,7 +967,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UpgradeToSuper));
-  UpgradeToSuperResponse_descriptor_ = file->message_type(42);
+  UpgradeToSuperResponse_descriptor_ = file->message_type(44);
   static const int UpgradeToSuperResponse_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UpgradeToSuperResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UpgradeToSuperResponse, newtoken_),
@@ -947,7 +985,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UpgradeToSuperResponse));
-  WebsiteSuggestion_descriptor_ = file->message_type(43);
+  WebsiteSuggestion_descriptor_ = file->message_type(45);
   static const int WebsiteSuggestion_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WebsiteSuggestion, websiteurl_),
   };
@@ -962,7 +1000,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WebsiteSuggestion));
-  ServiceSuggestion_descriptor_ = file->message_type(44);
+  ServiceSuggestion_descriptor_ = file->message_type(46);
   static const int ServiceSuggestion_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceSuggestion, servicename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ServiceSuggestion, hostname_),
@@ -980,7 +1018,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ServiceSuggestion));
-  TestSuggestionResponse_descriptor_ = file->message_type(45);
+  TestSuggestionResponse_descriptor_ = file->message_type(47);
   static const int TestSuggestionResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestSuggestionResponse, header_),
   };
@@ -995,7 +1033,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TestSuggestionResponse));
-  AuthenticatePeer_descriptor_ = file->message_type(46);
+  AuthenticatePeer_descriptor_ = file->message_type(48);
   static const int AuthenticatePeer_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticatePeer, agenttype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticatePeer, agentid_),
@@ -1013,7 +1051,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AuthenticatePeer));
-  AuthenticatePeerResponse_descriptor_ = file->message_type(47);
+  AuthenticatePeerResponse_descriptor_ = file->message_type(49);
   static const int AuthenticatePeerResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticatePeerResponse, cipheredpublickey_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticatePeerResponse, token_),
@@ -1029,7 +1067,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AuthenticatePeerResponse));
-  P2PGetSuperPeerList_descriptor_ = file->message_type(48);
+  P2PGetSuperPeerList_descriptor_ = file->message_type(50);
   static const int P2PGetSuperPeerList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(P2PGetSuperPeerList, count_),
   };
@@ -1044,7 +1082,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(P2PGetSuperPeerList));
-  P2PGetSuperPeerListResponse_descriptor_ = file->message_type(49);
+  P2PGetSuperPeerListResponse_descriptor_ = file->message_type(51);
   static const int P2PGetSuperPeerListResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(P2PGetSuperPeerListResponse, peers_),
   };
@@ -1059,7 +1097,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(P2PGetSuperPeerListResponse));
-  P2PGetPeerList_descriptor_ = file->message_type(50);
+  P2PGetPeerList_descriptor_ = file->message_type(52);
   static const int P2PGetPeerList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(P2PGetPeerList, count_),
   };
@@ -1074,7 +1112,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(P2PGetPeerList));
-  P2PGetPeerListResponse_descriptor_ = file->message_type(51);
+  P2PGetPeerListResponse_descriptor_ = file->message_type(53);
   static const int P2PGetPeerListResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(P2PGetPeerListResponse, peers_),
   };
@@ -1089,7 +1127,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(P2PGetPeerListResponse));
-  AgentUpdate_descriptor_ = file->message_type(52);
+  AgentUpdate_descriptor_ = file->message_type(54);
   static const int AgentUpdate_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AgentUpdate, version_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AgentUpdate, downloadurl_),
@@ -1106,7 +1144,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AgentUpdate));
-  AgentUpdateResponse_descriptor_ = file->message_type(53);
+  AgentUpdateResponse_descriptor_ = file->message_type(55);
   static const int AgentUpdateResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AgentUpdateResponse, version_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AgentUpdateResponse, result_),
@@ -1122,7 +1160,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AgentUpdateResponse));
-  TestModuleUpdate_descriptor_ = file->message_type(54);
+  TestModuleUpdate_descriptor_ = file->message_type(56);
   static const int TestModuleUpdate_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestModuleUpdate, version_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestModuleUpdate, downloadurl_),
@@ -1139,7 +1177,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TestModuleUpdate));
-  TestModuleUpdateResponse_descriptor_ = file->message_type(55);
+  TestModuleUpdateResponse_descriptor_ = file->message_type(57);
   static const int TestModuleUpdateResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestModuleUpdateResponse, version_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestModuleUpdateResponse, result_),
@@ -1155,7 +1193,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TestModuleUpdateResponse));
-  ForwardingMessage_descriptor_ = file->message_type(56);
+  ForwardingMessage_descriptor_ = file->message_type(58);
   static const int ForwardingMessage_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ForwardingMessage, destination_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ForwardingMessage, identifier_),
@@ -1172,7 +1210,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ForwardingMessage));
-  ForwardingMessageResponse_descriptor_ = file->message_type(57);
+  ForwardingMessageResponse_descriptor_ = file->message_type(59);
   static const int ForwardingMessageResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ForwardingMessageResponse, identifier_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ForwardingMessageResponse, encodedmessage_),
@@ -1188,7 +1226,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ForwardingMessageResponse));
-  LoginCredentials_descriptor_ = file->message_type(58);
+  LoginCredentials_descriptor_ = file->message_type(60);
   static const int LoginCredentials_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginCredentials, username_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginCredentials, password_),
@@ -1204,7 +1242,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginCredentials));
-  GetNetlist_descriptor_ = file->message_type(59);
+  GetNetlist_descriptor_ = file->message_type(61);
   static const int GetNetlist_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetNetlist, list_),
   };
@@ -1219,7 +1257,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetNetlist));
-  NetworkData_descriptor_ = file->message_type(60);
+  NetworkData_descriptor_ = file->message_type(62);
   static const int NetworkData_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkData, start_ip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NetworkData, end_ip_),
@@ -1237,7 +1275,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(NetworkData));
-  BannedNetworkData_descriptor_ = file->message_type(61);
+  BannedNetworkData_descriptor_ = file->message_type(63);
   static const int BannedNetworkData_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BannedNetworkData, start_ip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BannedNetworkData, end_ip_),
@@ -1255,7 +1293,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BannedNetworkData));
-  GetNetlistResponse_descriptor_ = file->message_type(62);
+  GetNetlistResponse_descriptor_ = file->message_type(64);
   static const int GetNetlistResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetNetlistResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetNetlistResponse, networks_),
@@ -1271,7 +1309,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetNetlistResponse));
-  GetBanlist_descriptor_ = file->message_type(63);
+  GetBanlist_descriptor_ = file->message_type(65);
   static const int GetBanlist_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetBanlist, count_),
   };
@@ -1286,7 +1324,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetBanlist));
-  GetBanlistResponse_descriptor_ = file->message_type(64);
+  GetBanlistResponse_descriptor_ = file->message_type(66);
   static const int GetBanlistResponse_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetBanlistResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetBanlistResponse, nodes_count_),
@@ -1303,7 +1341,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetBanlistResponse));
-  GetBannets_descriptor_ = file->message_type(65);
+  GetBannets_descriptor_ = file->message_type(67);
   static const int GetBannets_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetBannets, count_),
   };
@@ -1318,7 +1356,7 @@ void protobuf_AssignDesc_messages_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(GetBannets));
-  GetBannetsResponse_descriptor_ = file->message_type(66);
+  GetBannetsResponse_descriptor_ = file->message_type(68);
   static const int GetBannetsResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetBannetsResponse, header_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GetBannetsResponse, networks_),
@@ -1396,6 +1434,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     GetSuperPeerList_descriptor_, &GetSuperPeerList::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     GetSuperPeerListResponse_descriptor_, &GetSuperPeerListResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GetLocation_descriptor_, &GetLocation::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GetLocationResponse_descriptor_, &GetLocationResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Location_descriptor_, &Location::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -1535,6 +1577,10 @@ void protobuf_ShutdownFile_messages_2eproto() {
   delete GetSuperPeerList_reflection_;
   delete GetSuperPeerListResponse::default_instance_;
   delete GetSuperPeerListResponse_reflection_;
+  delete GetLocation::default_instance_;
+  delete GetLocation_reflection_;
+  delete GetLocationResponse::default_instance_;
+  delete GetLocationResponse_reflection_;
   delete Location::default_instance_;
   delete Location_reflection_;
   delete GetEvents::default_instance_;
@@ -1654,138 +1700,140 @@ void protobuf_AddDesc_messages_2eproto() {
     "mobile.proto.ServiceReportDetail\" \n\rRequ"
     "estHeader\022\017\n\007agentID\030\001 \002(\t\"H\n\016ResponseHe"
     "ader\022\030\n\020currentVersionNo\030\001 \002(\005\022\034\n\024curren"
-    "tTestVersionNo\030\002 \002(\005\"\276\001\n\rRegisterAgent\022\021"
+    "tTestVersionNo\030\002 \002(\005\"\321\001\n\rRegisterAgent\022\021"
     "\n\tversionNo\030\001 \002(\005\022\021\n\tagentType\030\002 \002(\t\022@\n\013"
     "credentials\030\003 \002(\0132+.org.umit.icm.mobile."
     "proto.LoginCredentials\0229\n\016agentPublicKey"
     "\030\004 \002(\0132!.org.umit.icm.mobile.proto.RSAKe"
-    "y\022\n\n\002ip\030\005 \001(\t\"z\n\025RegisterAgentResponse\0229"
-    "\n\006header\030\001 \002(\0132).org.umit.icm.mobile.pro"
-    "to.ResponseHeader\022\017\n\007agentID\030\002 \002(\t\022\025\n\rpu"
-    "blicKeyHash\030\003 \002(\t\"\"\n\006RSAKey\022\013\n\003mod\030\001 \002(\t"
-    "\022\013\n\003exp\030\002 \002(\t\"$\n\017CheckAggregator\022\021\n\tagen"
-    "tType\030\001 \002(\t\"d\n\027CheckAggregatorResponse\0229"
-    "\n\006header\030\001 \002(\0132).org.umit.icm.mobile.pro"
-    "to.ResponseHeader\022\016\n\006status\030\002 \002(\t\"E\n\005Log"
-    "in\022\017\n\007agentID\030\001 \002(\t\022\021\n\tchallenge\030\002 \002(\t\022\014"
-    "\n\004port\030\003 \002(\003\022\n\n\002ip\030\004 \001(\t\"M\n\nLoginStep1\022\021"
-    "\n\tprocessID\030\001 \002(\t\022\031\n\021cipheredChallenge\030\002"
-    " \002(\t\022\021\n\tchallenge\030\003 \002(\t\":\n\nLoginStep2\022\021\n"
-    "\tprocessID\030\001 \002(\t\022\031\n\021cipheredChallenge\030\002 "
-    "\002(\t\"J\n\rLoginResponse\0229\n\006header\030\001 \002(\0132).o"
-    "rg.umit.icm.mobile.proto.ResponseHeader\""
-    "\031\n\006Logout\022\017\n\007agentID\030\001 \002(\t\" \n\016LogoutResp"
-    "onse\022\016\n\006status\030\001 \002(\t\"\034\n\013GetPeerList\022\r\n\005c"
-    "ount\030\001 \001(\005\"\231\001\n\tAgentData\022\017\n\007agentID\030\001 \002("
-    "\t\022\017\n\007agentIP\030\002 \002(\t\022\021\n\tagentPort\030\003 \002(\005\022\r\n"
-    "\005token\030\004 \002(\t\0224\n\tpublicKey\030\005 \002(\0132!.org.um"
-    "it.icm.mobile.proto.RSAKey\022\022\n\npeerStatus"
-    "\030\006 \002(\t\"\212\001\n\023GetPeerListResponse\0229\n\006header"
-    "\030\001 \002(\0132).org.umit.icm.mobile.proto.Respo"
-    "nseHeader\0228\n\nknownPeers\030\002 \003(\0132$.org.umit"
-    ".icm.mobile.proto.AgentData\"!\n\020GetSuperP"
-    "eerList\022\r\n\005count\030\001 \001(\005\"\224\001\n\030GetSuperPeerL"
-    "istResponse\0229\n\006header\030\001 \002(\0132).org.umit.i"
-    "cm.mobile.proto.ResponseHeader\022=\n\017knownS"
-    "uperPeers\030\002 \003(\0132$.org.umit.icm.mobile.pr"
-    "oto.AgentData\"/\n\010Location\022\021\n\tlongitude\030\001"
-    " \002(\001\022\020\n\010latitude\030\002 \002(\001\"\177\n\tGetEvents\0226\n\tl"
-    "ocations\030\001 \003(\0132#.org.umit.icm.mobile.pro"
-    "to.Location\022:\n\ragentLocation\030\002 \001(\0132#.org"
-    ".umit.icm.mobile.proto.Location\"\231\002\n\005Even"
-    "t\022\020\n\010testType\030\001 \002(\t\022\021\n\teventType\030\002 \002(\t\022\017"
-    "\n\007timeUTC\030\003 \002(\003\022\024\n\014sinceTimeUTC\030\004 \002(\003\0226\n"
-    "\tlocations\030\005 \003(\0132#.org.umit.icm.mobile.p"
-    "roto.Location\022E\n\rwebsiteReport\030\006 \001(\0132..o"
-    "rg.umit.icm.mobile.proto.WebsiteReportDe"
-    "tail\022E\n\rserviceReport\030\007 \001(\0132..org.umit.i"
-    "cm.mobile.proto.ServiceReportDetail\"\200\001\n\021"
-    "GetEventsResponse\0229\n\006header\030\001 \002(\0132).org."
-    "umit.icm.mobile.proto.ResponseHeader\0220\n\006"
-    "events\030\002 \003(\0132 .org.umit.icm.mobile.proto"
-    ".Event\"M\n\021SendWebsiteReport\0228\n\006report\030\001 "
-    "\002(\0132(.org.umit.icm.mobile.proto.WebsiteR"
-    "eport\"M\n\021SendServiceReport\0228\n\006report\030\001 \002"
-    "(\0132(.org.umit.icm.mobile.proto.ServiceRe"
-    "port\"O\n\022SendReportResponse\0229\n\006header\030\001 \002"
-    "(\0132).org.umit.icm.mobile.proto.ResponseH"
-    "eader\"7\n\nNewVersion\022\026\n\016agentVersionNo\030\001 "
-    "\002(\005\022\021\n\tagentType\030\002 \002(\t\"\207\001\n\022NewVersionRes"
-    "ponse\0229\n\006header\030\001 \002(\0132).org.umit.icm.mob"
-    "ile.proto.ResponseHeader\022\023\n\013downloadURL\030"
-    "\002 \001(\t\022\016\n\006update\030\003 \001(\014\022\021\n\tversionNo\030\004 \002(\005"
-    "\"(\n\010NewTests\022\034\n\024currentTestVersionNo\030\001 \002"
-    "(\005\"\026\n\007Website\022\013\n\003url\030\001 \002(\t\"1\n\007Service\022\014\n"
-    "\004name\030\001 \002(\t\022\014\n\004port\030\002 \002(\005\022\n\n\002ip\030\003 \002(\t\"\254\001"
-    "\n\004Test\022\016\n\006testID\030\001 \002(\t\0223\n\007website\030\002 \001(\0132"
-    "\".org.umit.icm.mobile.proto.Website\0223\n\007s"
-    "ervice\030\003 \001(\0132\".org.umit.icm.mobile.proto"
-    ".Service\022\030\n\020executeAtTimeUTC\030\004 \001(\003\022\020\n\010te"
-    "stType\030\005 \002(\005\"\224\001\n\020NewTestsResponse\0229\n\006hea"
-    "der\030\001 \002(\0132).org.umit.icm.mobile.proto.Re"
-    "sponseHeader\022.\n\005tests\030\002 \003(\0132\037.org.umit.i"
-    "cm.mobile.proto.Test\022\025\n\rtestVersionNo\030\003 "
-    "\002(\005\"F\n\nAssignTask\0228\n\006header\030\001 \002(\0132(.org."
-    "umit.icm.mobile.proto.RequestHeader\"\177\n\022A"
-    "ssignTaskResponse\0229\n\006header\030\001 \002(\0132).org."
-    "umit.icm.mobile.proto.ResponseHeader\022.\n\005"
-    "tests\030\002 \003(\0132\037.org.umit.icm.mobile.proto."
-    "Test\"J\n\016UpgradeToSuper\0228\n\006header\030\001 \002(\0132("
-    ".org.umit.icm.mobile.proto.RequestHeader"
-    "\"\330\001\n\026UpgradeToSuperResponse\0229\n\006header\030\001 "
-    "\002(\0132).org.umit.icm.mobile.proto.Response"
-    "Header\022\020\n\010newToken\030\002 \002(\t\0228\n\rnewPrivateKe"
-    "y\030\003 \002(\0132!.org.umit.icm.mobile.proto.RSAK"
-    "ey\0227\n\014newPublicKey\030\004 \002(\0132!.org.umit.icm."
-    "mobile.proto.RSAKey\"\'\n\021WebsiteSuggestion"
-    "\022\022\n\nwebsiteURL\030\001 \002(\t\"T\n\021ServiceSuggestio"
-    "n\022\023\n\013serviceName\030\001 \002(\t\022\020\n\010hostName\030\002 \002(\t"
-    "\022\n\n\002ip\030\003 \002(\t\022\014\n\004port\030\004 \002(\003\"S\n\026TestSugges"
-    "tionResponse\0229\n\006header\030\001 \002(\0132).org.umit."
-    "icm.mobile.proto.ResponseHeader\"\207\001\n\020Auth"
-    "enticatePeer\022\021\n\tagentType\030\001 \002(\005\022\017\n\007agent"
-    "ID\030\002 \002(\t\022<\n\021cipheredPublicKey\030\003 \002(\0132!.or"
-    "g.umit.icm.mobile.proto.RSAKey\022\021\n\tagentP"
-    "ort\030\004 \001(\005\"g\n\030AuthenticatePeerResponse\022<\n"
-    "\021cipheredPublicKey\030\001 \002(\0132!.org.umit.icm."
-    "mobile.proto.RSAKey\022\r\n\005token\030\002 \002(\t\"$\n\023P2"
-    "PGetSuperPeerList\022\r\n\005count\030\001 \002(\005\"R\n\033P2PG"
-    "etSuperPeerListResponse\0223\n\005peers\030\001 \003(\0132$"
-    ".org.umit.icm.mobile.proto.AgentData\"\037\n\016"
-    "P2PGetPeerList\022\r\n\005count\030\001 \002(\005\"M\n\026P2PGetP"
-    "eerListResponse\0223\n\005peers\030\001 \003(\0132$.org.umi"
-    "t.icm.mobile.proto.AgentData\"F\n\013AgentUpd"
-    "ate\022\017\n\007version\030\001 \002(\t\022\023\n\013downloadURL\030\002 \002("
-    "\t\022\021\n\tcheckCode\030\003 \001(\005\"6\n\023AgentUpdateRespo"
-    "nse\022\017\n\007version\030\001 \002(\t\022\016\n\006result\030\002 \002(\t\"K\n\020"
-    "TestModuleUpdate\022\017\n\007version\030\001 \002(\t\022\023\n\013dow"
-    "nloadURL\030\002 \002(\t\022\021\n\tcheckCode\030\003 \001(\005\";\n\030Tes"
-    "tModuleUpdateResponse\022\017\n\007version\030\001 \002(\t\022\016"
-    "\n\006result\030\002 \002(\t\"T\n\021ForwardingMessage\022\023\n\013d"
-    "estination\030\001 \002(\003\022\022\n\nidentifier\030\002 \002(\t\022\026\n\016"
-    "encodedMessage\030\003 \002(\t\"G\n\031ForwardingMessag"
-    "eResponse\022\022\n\nidentifier\030\001 \002(\t\022\026\n\016encoded"
-    "Message\030\002 \002(\t\"6\n\020LoginCredentials\022\020\n\010use"
-    "rname\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\032\n\nGetNetl"
-    "ist\022\014\n\004list\030\001 \002(\005\"\201\001\n\013NetworkData\022\020\n\010sta"
-    "rt_ip\030\001 \002(\005\022\016\n\006end_ip\030\002 \002(\005\022\033\n\023nodes_cou"
-    "nt_network\030\003 \001(\005\0223\n\005nodes\030\004 \003(\0132$.org.um"
-    "it.icm.mobile.proto.AgentData\"Y\n\021BannedN"
-    "etworkData\022\020\n\010start_ip\030\001 \002(\005\022\016\n\006end_ip\030\002"
-    " \002(\005\022\023\n\013nodes_count\030\003 \001(\005\022\r\n\005flags\030\004 \002(\005"
-    "\"\211\001\n\022GetNetlistResponse\0229\n\006header\030\001 \002(\0132"
+    "y\022\n\n\002ip\030\005 \001(\t\022\021\n\tsuperPeer\030\006 \001(\010\"z\n\025Regi"
+    "sterAgentResponse\0229\n\006header\030\001 \002(\0132).org."
+    "umit.icm.mobile.proto.ResponseHeader\022\017\n\007"
+    "agentID\030\002 \002(\t\022\025\n\rpublicKeyHash\030\003 \002(\t\"\"\n\006"
+    "RSAKey\022\013\n\003mod\030\001 \002(\t\022\013\n\003exp\030\002 \002(\t\"$\n\017Chec"
+    "kAggregator\022\021\n\tagentType\030\001 \002(\t\"d\n\027CheckA"
+    "ggregatorResponse\0229\n\006header\030\001 \002(\0132).org."
+    "umit.icm.mobile.proto.ResponseHeader\022\016\n\006"
+    "status\030\002 \002(\t\"E\n\005Login\022\017\n\007agentID\030\001 \002(\t\022\021"
+    "\n\tchallenge\030\002 \002(\t\022\014\n\004port\030\003 \002(\003\022\n\n\002ip\030\004 "
+    "\001(\t\"M\n\nLoginStep1\022\021\n\tprocessID\030\001 \002(\t\022\031\n\021"
+    "cipheredChallenge\030\002 \002(\t\022\021\n\tchallenge\030\003 \002"
+    "(\t\":\n\nLoginStep2\022\021\n\tprocessID\030\001 \002(\t\022\031\n\021c"
+    "ipheredChallenge\030\002 \002(\t\"J\n\rLoginResponse\022"
+    "9\n\006header\030\001 \002(\0132).org.umit.icm.mobile.pr"
+    "oto.ResponseHeader\"\031\n\006Logout\022\017\n\007agentID\030"
+    "\001 \002(\t\" \n\016LogoutResponse\022\016\n\006status\030\001 \002(\t\""
+    "\034\n\013GetPeerList\022\r\n\005count\030\001 \001(\005\"\231\001\n\tAgentD"
+    "ata\022\017\n\007agentID\030\001 \002(\t\022\017\n\007agentIP\030\002 \002(\t\022\021\n"
+    "\tagentPort\030\003 \002(\005\022\r\n\005token\030\004 \002(\t\0224\n\tpubli"
+    "cKey\030\005 \002(\0132!.org.umit.icm.mobile.proto.R"
+    "SAKey\022\022\n\npeerStatus\030\006 \002(\t\"\212\001\n\023GetPeerLis"
+    "tResponse\0229\n\006header\030\001 \002(\0132).org.umit.icm"
+    ".mobile.proto.ResponseHeader\0228\n\nknownPee"
+    "rs\030\002 \003(\0132$.org.umit.icm.mobile.proto.Age"
+    "ntData\"3\n\020GetSuperPeerList\022\r\n\005count\030\001 \001("
+    "\005\022\020\n\010location\030\002 \001(\t\"\224\001\n\030GetSuperPeerList"
+    "Response\0229\n\006header\030\001 \002(\0132).org.umit.icm."
+    "mobile.proto.ResponseHeader\022=\n\017knownSupe"
+    "rPeers\030\002 \003(\0132$.org.umit.icm.mobile.proto"
+    ".AgentData\"\036\n\013GetLocation\022\017\n\007agentIP\030\001 \002"
+    "(\t\"\'\n\023GetLocationResponse\022\020\n\010location\030\001 "
+    "\002(\t\"/\n\010Location\022\021\n\tlongitude\030\001 \002(\001\022\020\n\010la"
+    "titude\030\002 \002(\001\"\177\n\tGetEvents\0226\n\tlocations\030\001"
+    " \003(\0132#.org.umit.icm.mobile.proto.Locatio"
+    "n\022:\n\ragentLocation\030\002 \001(\0132#.org.umit.icm."
+    "mobile.proto.Location\"\231\002\n\005Event\022\020\n\010testT"
+    "ype\030\001 \002(\t\022\021\n\teventType\030\002 \002(\t\022\017\n\007timeUTC\030"
+    "\003 \002(\003\022\024\n\014sinceTimeUTC\030\004 \002(\003\0226\n\tlocations"
+    "\030\005 \003(\0132#.org.umit.icm.mobile.proto.Locat"
+    "ion\022E\n\rwebsiteReport\030\006 \001(\0132..org.umit.ic"
+    "m.mobile.proto.WebsiteReportDetail\022E\n\rse"
+    "rviceReport\030\007 \001(\0132..org.umit.icm.mobile."
+    "proto.ServiceReportDetail\"\200\001\n\021GetEventsR"
+    "esponse\0229\n\006header\030\001 \002(\0132).org.umit.icm.m"
+    "obile.proto.ResponseHeader\0220\n\006events\030\002 \003"
+    "(\0132 .org.umit.icm.mobile.proto.Event\"M\n\021"
+    "SendWebsiteReport\0228\n\006report\030\001 \002(\0132(.org."
+    "umit.icm.mobile.proto.WebsiteReport\"M\n\021S"
+    "endServiceReport\0228\n\006report\030\001 \002(\0132(.org.u"
+    "mit.icm.mobile.proto.ServiceReport\"O\n\022Se"
+    "ndReportResponse\0229\n\006header\030\001 \002(\0132).org.u"
+    "mit.icm.mobile.proto.ResponseHeader\"7\n\nN"
+    "ewVersion\022\026\n\016agentVersionNo\030\001 \002(\005\022\021\n\tage"
+    "ntType\030\002 \002(\t\"\207\001\n\022NewVersionResponse\0229\n\006h"
+    "eader\030\001 \002(\0132).org.umit.icm.mobile.proto."
+    "ResponseHeader\022\023\n\013downloadURL\030\002 \001(\t\022\016\n\006u"
+    "pdate\030\003 \001(\014\022\021\n\tversionNo\030\004 \002(\005\"(\n\010NewTes"
+    "ts\022\034\n\024currentTestVersionNo\030\001 \002(\005\"\026\n\007Webs"
+    "ite\022\013\n\003url\030\001 \002(\t\"1\n\007Service\022\014\n\004name\030\001 \002("
+    "\t\022\014\n\004port\030\002 \002(\005\022\n\n\002ip\030\003 \002(\t\"\254\001\n\004Test\022\016\n\006"
+    "testID\030\001 \002(\003\0223\n\007website\030\002 \001(\0132\".org.umit"
+    ".icm.mobile.proto.Website\0223\n\007service\030\003 \001"
+    "(\0132\".org.umit.icm.mobile.proto.Service\022\030"
+    "\n\020executeAtTimeUTC\030\004 \001(\003\022\020\n\010testType\030\005 \002"
+    "(\005\"\224\001\n\020NewTestsResponse\0229\n\006header\030\001 \002(\0132"
     ").org.umit.icm.mobile.proto.ResponseHead"
-    "er\0228\n\010networks\030\002 \003(\0132&.org.umit.icm.mobi"
-    "le.proto.NetworkData\"\033\n\nGetBanlist\022\r\n\005co"
-    "unt\030\001 \002(\005\"w\n\022GetBanlistResponse\0229\n\006heade"
-    "r\030\001 \002(\0132).org.umit.icm.mobile.proto.Resp"
-    "onseHeader\022\023\n\013nodes_count\030\002 \002(\005\022\021\n\tagent"
-    "_ids\030\003 \003(\t\"\033\n\nGetBannets\022\r\n\005count\030\001 \002(\005\""
-    "\217\001\n\022GetBannetsResponse\0229\n\006header\030\001 \002(\0132)"
-    ".org.umit.icm.mobile.proto.ResponseHeade"
-    "r\022>\n\010networks\030\002 \003(\0132,.org.umit.icm.mobil"
-    "e.proto.BannedNetworkDataB\017B\rMessageProt"
-    "os", 6282);
+    "er\022.\n\005tests\030\002 \003(\0132\037.org.umit.icm.mobile."
+    "proto.Test\022\025\n\rtestVersionNo\030\003 \002(\005\"F\n\nAss"
+    "ignTask\0228\n\006header\030\001 \002(\0132(.org.umit.icm.m"
+    "obile.proto.RequestHeader\"\177\n\022AssignTaskR"
+    "esponse\0229\n\006header\030\001 \002(\0132).org.umit.icm.m"
+    "obile.proto.ResponseHeader\022.\n\005tests\030\002 \003("
+    "\0132\037.org.umit.icm.mobile.proto.Test\"J\n\016Up"
+    "gradeToSuper\0228\n\006header\030\001 \002(\0132(.org.umit."
+    "icm.mobile.proto.RequestHeader\"\330\001\n\026Upgra"
+    "deToSuperResponse\0229\n\006header\030\001 \002(\0132).org."
+    "umit.icm.mobile.proto.ResponseHeader\022\020\n\010"
+    "newToken\030\002 \002(\t\0228\n\rnewPrivateKey\030\003 \002(\0132!."
+    "org.umit.icm.mobile.proto.RSAKey\0227\n\014newP"
+    "ublicKey\030\004 \002(\0132!.org.umit.icm.mobile.pro"
+    "to.RSAKey\"\'\n\021WebsiteSuggestion\022\022\n\nwebsit"
+    "eURL\030\001 \002(\t\"T\n\021ServiceSuggestion\022\023\n\013servi"
+    "ceName\030\001 \002(\t\022\020\n\010hostName\030\002 \002(\t\022\n\n\002ip\030\003 \002"
+    "(\t\022\014\n\004port\030\004 \002(\003\"S\n\026TestSuggestionRespon"
+    "se\0229\n\006header\030\001 \002(\0132).org.umit.icm.mobile"
+    ".proto.ResponseHeader\"\207\001\n\020AuthenticatePe"
+    "er\022\021\n\tagentType\030\001 \002(\005\022\017\n\007agentID\030\002 \002(\t\022<"
+    "\n\021cipheredPublicKey\030\003 \002(\0132!.org.umit.icm"
+    ".mobile.proto.RSAKey\022\021\n\tagentPort\030\004 \001(\005\""
+    "g\n\030AuthenticatePeerResponse\022<\n\021cipheredP"
+    "ublicKey\030\001 \002(\0132!.org.umit.icm.mobile.pro"
+    "to.RSAKey\022\r\n\005token\030\002 \002(\t\"$\n\023P2PGetSuperP"
+    "eerList\022\r\n\005count\030\001 \002(\005\"R\n\033P2PGetSuperPee"
+    "rListResponse\0223\n\005peers\030\001 \003(\0132$.org.umit."
+    "icm.mobile.proto.AgentData\"\037\n\016P2PGetPeer"
+    "List\022\r\n\005count\030\001 \002(\005\"M\n\026P2PGetPeerListRes"
+    "ponse\0223\n\005peers\030\001 \003(\0132$.org.umit.icm.mobi"
+    "le.proto.AgentData\"F\n\013AgentUpdate\022\017\n\007ver"
+    "sion\030\001 \002(\t\022\023\n\013downloadURL\030\002 \002(\t\022\021\n\tcheck"
+    "Code\030\003 \001(\005\"6\n\023AgentUpdateResponse\022\017\n\007ver"
+    "sion\030\001 \002(\t\022\016\n\006result\030\002 \002(\t\"K\n\020TestModule"
+    "Update\022\017\n\007version\030\001 \002(\t\022\023\n\013downloadURL\030\002"
+    " \002(\t\022\021\n\tcheckCode\030\003 \001(\005\";\n\030TestModuleUpd"
+    "ateResponse\022\017\n\007version\030\001 \002(\t\022\016\n\006result\030\002"
+    " \002(\t\"T\n\021ForwardingMessage\022\023\n\013destination"
+    "\030\001 \002(\003\022\022\n\nidentifier\030\002 \002(\t\022\026\n\016encodedMes"
+    "sage\030\003 \002(\t\"G\n\031ForwardingMessageResponse\022"
+    "\022\n\nidentifier\030\001 \002(\t\022\026\n\016encodedMessage\030\002 "
+    "\002(\t\"6\n\020LoginCredentials\022\020\n\010username\030\001 \002("
+    "\t\022\020\n\010password\030\002 \002(\t\"\032\n\nGetNetlist\022\014\n\004lis"
+    "t\030\001 \002(\005\"\201\001\n\013NetworkData\022\020\n\010start_ip\030\001 \002("
+    "\005\022\016\n\006end_ip\030\002 \002(\005\022\033\n\023nodes_count_network"
+    "\030\003 \001(\005\0223\n\005nodes\030\004 \003(\0132$.org.umit.icm.mob"
+    "ile.proto.AgentData\"Y\n\021BannedNetworkData"
+    "\022\020\n\010start_ip\030\001 \002(\005\022\016\n\006end_ip\030\002 \002(\005\022\023\n\013no"
+    "des_count\030\003 \001(\005\022\r\n\005flags\030\004 \002(\005\"\211\001\n\022GetNe"
+    "tlistResponse\0229\n\006header\030\001 \002(\0132).org.umit"
+    ".icm.mobile.proto.ResponseHeader\0228\n\010netw"
+    "orks\030\002 \003(\0132&.org.umit.icm.mobile.proto.N"
+    "etworkData\"\033\n\nGetBanlist\022\r\n\005count\030\001 \002(\005\""
+    "w\n\022GetBanlistResponse\0229\n\006header\030\001 \002(\0132)."
+    "org.umit.icm.mobile.proto.ResponseHeader"
+    "\022\023\n\013nodes_count\030\002 \002(\005\022\021\n\tagent_ids\030\003 \003(\t"
+    "\"\033\n\nGetBannets\022\r\n\005count\030\001 \002(\005\"\217\001\n\022GetBan"
+    "netsResponse\0229\n\006header\030\001 \002(\0132).org.umit."
+    "icm.mobile.proto.ResponseHeader\022>\n\010netwo"
+    "rks\030\002 \003(\0132,.org.umit.icm.mobile.proto.Ba"
+    "nnedNetworkDataB\017B\rMessageProtos", 6392);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "messages.proto", &protobuf_RegisterTypes);
   Trace::default_instance_ = new Trace();
@@ -1813,6 +1861,8 @@ void protobuf_AddDesc_messages_2eproto() {
   GetPeerListResponse::default_instance_ = new GetPeerListResponse();
   GetSuperPeerList::default_instance_ = new GetSuperPeerList();
   GetSuperPeerListResponse::default_instance_ = new GetSuperPeerListResponse();
+  GetLocation::default_instance_ = new GetLocation();
+  GetLocationResponse::default_instance_ = new GetLocationResponse();
   Location::default_instance_ = new Location();
   GetEvents::default_instance_ = new GetEvents();
   Event::default_instance_ = new Event();
@@ -1880,6 +1930,8 @@ void protobuf_AddDesc_messages_2eproto() {
   GetPeerListResponse::default_instance_->InitAsDefaultInstance();
   GetSuperPeerList::default_instance_->InitAsDefaultInstance();
   GetSuperPeerListResponse::default_instance_->InitAsDefaultInstance();
+  GetLocation::default_instance_->InitAsDefaultInstance();
+  GetLocationResponse::default_instance_->InitAsDefaultInstance();
   Location::default_instance_->InitAsDefaultInstance();
   GetEvents::default_instance_->InitAsDefaultInstance();
   Event::default_instance_->InitAsDefaultInstance();
@@ -4988,6 +5040,7 @@ const int RegisterAgent::kAgentTypeFieldNumber;
 const int RegisterAgent::kCredentialsFieldNumber;
 const int RegisterAgent::kAgentPublicKeyFieldNumber;
 const int RegisterAgent::kIpFieldNumber;
+const int RegisterAgent::kSuperPeerFieldNumber;
 #endif  // !_MSC_VER
 
 RegisterAgent::RegisterAgent()
@@ -5013,6 +5066,7 @@ void RegisterAgent::SharedCtor() {
   credentials_ = NULL;
   agentpublickey_ = NULL;
   ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  superpeer_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -5072,6 +5126,7 @@ void RegisterAgent::Clear() {
         ip_->clear();
       }
     }
+    superpeer_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -5156,6 +5211,22 @@ bool RegisterAgent::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(48)) goto parse_superPeer;
+        break;
+      }
+      
+      // optional bool superPeer = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_superPeer:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &superpeer_)));
+          set_has_superpeer();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -5213,6 +5284,11 @@ void RegisterAgent::SerializeWithCachedSizes(
       5, this->ip(), output);
   }
   
+  // optional bool superPeer = 6;
+  if (has_superpeer()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->superpeer(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -5258,6 +5334,11 @@ void RegisterAgent::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         5, this->ip(), target);
+  }
+  
+  // optional bool superPeer = 6;
+  if (has_superpeer()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->superpeer(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -5306,6 +5387,11 @@ int RegisterAgent::ByteSize() const {
           this->ip());
     }
     
+    // optional bool superPeer = 6;
+    if (has_superpeer()) {
+      total_size += 1 + 1;
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -5348,6 +5434,9 @@ void RegisterAgent::MergeFrom(const RegisterAgent& from) {
     if (from.has_ip()) {
       set_ip(from.ip());
     }
+    if (from.has_superpeer()) {
+      set_superpeer(from.superpeer());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -5383,6 +5472,7 @@ void RegisterAgent::Swap(RegisterAgent* other) {
     std::swap(credentials_, other->credentials_);
     std::swap(agentpublickey_, other->agentpublickey_);
     std::swap(ip_, other->ip_);
+    std::swap(superpeer_, other->superpeer_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -9128,6 +9218,7 @@ void GetPeerListResponse::Swap(GetPeerListResponse* other) {
 
 #ifndef _MSC_VER
 const int GetSuperPeerList::kCountFieldNumber;
+const int GetSuperPeerList::kLocationFieldNumber;
 #endif  // !_MSC_VER
 
 GetSuperPeerList::GetSuperPeerList()
@@ -9147,6 +9238,7 @@ GetSuperPeerList::GetSuperPeerList(const GetSuperPeerList& from)
 void GetSuperPeerList::SharedCtor() {
   _cached_size_ = 0;
   count_ = 0;
+  location_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -9155,6 +9247,9 @@ GetSuperPeerList::~GetSuperPeerList() {
 }
 
 void GetSuperPeerList::SharedDtor() {
+  if (location_ != &::google::protobuf::internal::kEmptyString) {
+    delete location_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -9182,6 +9277,11 @@ GetSuperPeerList* GetSuperPeerList::New() const {
 void GetSuperPeerList::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     count_ = 0;
+    if (has_location()) {
+      if (location_ != &::google::protobuf::internal::kEmptyString) {
+        location_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -9201,6 +9301,23 @@ bool GetSuperPeerList::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &count_)));
           set_has_count();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_location;
+        break;
+      }
+      
+      // optional string location = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_location:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_location()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->location().data(), this->location().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -9231,6 +9348,15 @@ void GetSuperPeerList::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->count(), output);
   }
   
+  // optional string location = 2;
+  if (has_location()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->location().data(), this->location().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->location(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -9242,6 +9368,16 @@ void GetSuperPeerList::SerializeWithCachedSizes(
   // optional int32 count = 1;
   if (has_count()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->count(), target);
+  }
+  
+  // optional string location = 2;
+  if (has_location()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->location().data(), this->location().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->location(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -9260,6 +9396,13 @@ int GetSuperPeerList::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->count());
+    }
+    
+    // optional string location = 2;
+    if (has_location()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->location());
     }
     
   }
@@ -9292,6 +9435,9 @@ void GetSuperPeerList::MergeFrom(const GetSuperPeerList& from) {
     if (from.has_count()) {
       set_count(from.count());
     }
+    if (from.has_location()) {
+      set_location(from.location());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -9316,6 +9462,7 @@ bool GetSuperPeerList::IsInitialized() const {
 void GetSuperPeerList::Swap(GetSuperPeerList* other) {
   if (other != this) {
     std::swap(count_, other->count_);
+    std::swap(location_, other->location_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -9586,6 +9733,456 @@ void GetSuperPeerListResponse::Swap(GetSuperPeerListResponse* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = GetSuperPeerListResponse_descriptor_;
   metadata.reflection = GetSuperPeerListResponse_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GetLocation::kAgentIPFieldNumber;
+#endif  // !_MSC_VER
+
+GetLocation::GetLocation()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void GetLocation::InitAsDefaultInstance() {
+}
+
+GetLocation::GetLocation(const GetLocation& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void GetLocation::SharedCtor() {
+  _cached_size_ = 0;
+  agentip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GetLocation::~GetLocation() {
+  SharedDtor();
+}
+
+void GetLocation::SharedDtor() {
+  if (agentip_ != &::google::protobuf::internal::kEmptyString) {
+    delete agentip_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void GetLocation::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetLocation::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetLocation_descriptor_;
+}
+
+const GetLocation& GetLocation::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+}
+
+GetLocation* GetLocation::default_instance_ = NULL;
+
+GetLocation* GetLocation::New() const {
+  return new GetLocation;
+}
+
+void GetLocation::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_agentip()) {
+      if (agentip_ != &::google::protobuf::internal::kEmptyString) {
+        agentip_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GetLocation::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string agentIP = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_agentip()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->agentip().data(), this->agentip().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void GetLocation::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required string agentIP = 1;
+  if (has_agentip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentip().data(), this->agentip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->agentip(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* GetLocation::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required string agentIP = 1;
+  if (has_agentip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->agentip().data(), this->agentip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->agentip(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int GetLocation::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string agentIP = 1;
+    if (has_agentip()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->agentip());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetLocation::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GetLocation* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GetLocation*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetLocation::MergeFrom(const GetLocation& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_agentip()) {
+      set_agentip(from.agentip());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GetLocation::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetLocation::CopyFrom(const GetLocation& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetLocation::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  
+  return true;
+}
+
+void GetLocation::Swap(GetLocation* other) {
+  if (other != this) {
+    std::swap(agentip_, other->agentip_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GetLocation::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetLocation_descriptor_;
+  metadata.reflection = GetLocation_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GetLocationResponse::kLocationFieldNumber;
+#endif  // !_MSC_VER
+
+GetLocationResponse::GetLocationResponse()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void GetLocationResponse::InitAsDefaultInstance() {
+}
+
+GetLocationResponse::GetLocationResponse(const GetLocationResponse& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void GetLocationResponse::SharedCtor() {
+  _cached_size_ = 0;
+  location_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GetLocationResponse::~GetLocationResponse() {
+  SharedDtor();
+}
+
+void GetLocationResponse::SharedDtor() {
+  if (location_ != &::google::protobuf::internal::kEmptyString) {
+    delete location_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void GetLocationResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GetLocationResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GetLocationResponse_descriptor_;
+}
+
+const GetLocationResponse& GetLocationResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_messages_2eproto();  return *default_instance_;
+}
+
+GetLocationResponse* GetLocationResponse::default_instance_ = NULL;
+
+GetLocationResponse* GetLocationResponse::New() const {
+  return new GetLocationResponse;
+}
+
+void GetLocationResponse::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_location()) {
+      if (location_ != &::google::protobuf::internal::kEmptyString) {
+        location_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GetLocationResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string location = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_location()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->location().data(), this->location().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void GetLocationResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required string location = 1;
+  if (has_location()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->location().data(), this->location().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->location(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* GetLocationResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required string location = 1;
+  if (has_location()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->location().data(), this->location().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->location(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int GetLocationResponse::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string location = 1;
+    if (has_location()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->location());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GetLocationResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GetLocationResponse* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GetLocationResponse*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GetLocationResponse::MergeFrom(const GetLocationResponse& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_location()) {
+      set_location(from.location());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GetLocationResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetLocationResponse::CopyFrom(const GetLocationResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetLocationResponse::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  
+  return true;
+}
+
+void GetLocationResponse::Swap(GetLocationResponse* other) {
+  if (other != this) {
+    std::swap(location_, other->location_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GetLocationResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GetLocationResponse_descriptor_;
+  metadata.reflection = GetLocationResponse_reflection_;
   return metadata;
 }
 
@@ -12910,7 +13507,7 @@ Test::Test(const Test& from)
 
 void Test::SharedCtor() {
   _cached_size_ = 0;
-  testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  testid_ = GOOGLE_LONGLONG(0);
   website_ = NULL;
   service_ = NULL;
   executeattimeutc_ = GOOGLE_LONGLONG(0);
@@ -12923,9 +13520,6 @@ Test::~Test() {
 }
 
 void Test::SharedDtor() {
-  if (testid_ != &::google::protobuf::internal::kEmptyString) {
-    delete testid_;
-  }
   if (this != default_instance_) {
     delete website_;
     delete service_;
@@ -12954,11 +13548,7 @@ Test* Test::New() const {
 
 void Test::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_testid()) {
-      if (testid_ != &::google::protobuf::internal::kEmptyString) {
-        testid_->clear();
-      }
-    }
+    testid_ = GOOGLE_LONGLONG(0);
     if (has_website()) {
       if (website_ != NULL) website_->::org::umit::icm::mobile::proto::Website::Clear();
     }
@@ -12978,15 +13568,14 @@ bool Test::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string testID = 1;
+      // required int64 testID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_testid()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->testid().data(), this->testid().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &testid_)));
+          set_has_testid();
         } else {
           goto handle_uninterpreted;
         }
@@ -13072,13 +13661,9 @@ bool Test::MergePartialFromCodedStream(
 
 void Test::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required string testID = 1;
+  // required int64 testID = 1;
   if (has_testid()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->testid().data(), this->testid().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->testid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->testid(), output);
   }
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
@@ -13111,14 +13696,9 @@ void Test::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Test::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required string testID = 1;
+  // required int64 testID = 1;
   if (has_testid()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->testid().data(), this->testid().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->testid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->testid(), target);
   }
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
@@ -13156,10 +13736,10 @@ int Test::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string testID = 1;
+    // required int64 testID = 1;
     if (has_testid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
           this->testid());
     }
     
