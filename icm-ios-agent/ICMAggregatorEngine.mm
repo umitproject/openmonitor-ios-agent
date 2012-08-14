@@ -570,8 +570,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSString *resp = [operation responseString];
         NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        NSLog(@"decrypted data: %@", decrypted);
         org::umit::icm::mobile::proto::TestSuggestionResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
         org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
@@ -611,8 +613,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         NSString *resp = [operation responseString];
         NSData* respdata = [NSData dataWithBase64EncodedString: resp];
         NSLog(@"decoded data: %@", respdata);
+        NSData * decrypted = [crypto decryptData:respdata];
+        NSLog(@"decrypted data: %@", decrypted);
         org::umit::icm::mobile::proto::TestSuggestionResponse rar;
-        rar.ParseFromArray((const void*)[respdata bytes], [respdata length]);
+        rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
         org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
