@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Open Monitor iOS Agent</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Auto Login</string>
+			<key>Key</key>
+			<string>autoLogin</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Host</string>
+			<key>Key</key>
+			<string>aggregatorHost</string>
+			<key>DefaultValue</key>
+			<string>east1.openmonitor.org</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Update Interval</string>
+			<key>Key</key>
+			<string>updateInterval</string>
+			<key>DefaultValue</key>
+			<integer>300</integer>
+			<key>Titles</key>
+			<array>
+				<string>1 min</string>
+				<string>3 min</string>
+				<string>5 min</string>
+				<string>10 min</string>
+				<string>30 min</string>
+				<string>1 hour</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>60</integer>
+				<integer>180</integer>
+				<integer>300</integer>
+				<integer>600</integer>
+				<integer>1800</integer>
+				<integer>3600</integer>
+			</array>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

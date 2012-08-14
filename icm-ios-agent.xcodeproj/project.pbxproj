@@ -126,6 +126,11 @@
 		B381E6FB157121C10034BD46 /* pinhead-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F7157121C10034BD46 /* pinhead-green@2x.png */; };
 		B381E6FC157121C10034BD46 /* pinhead-red.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F8157121C10034BD46 /* pinhead-red.png */; };
 		B381E6FD157121C10034BD46 /* pinhead-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B381E6F9157121C10034BD46 /* pinhead-red@2x.png */; };
+		B3902D0D15DA887400EB1D83 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B3902D0C15DA887400EB1D83 /* Settings.bundle */; };
+		B391B2F515DA908E009D71A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F415DA908E009D71A7 /* Icon@2x.png */; };
+		B391B2F715DA90A2009D71A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F615DA90A1009D71A7 /* Icon.png */; };
+		B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F815DA90D8009D71A7 /* Icon-Small.png */; };
+		B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */; };
 		B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */; };
 		B3B0FA9F156F6A59005FD285 /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FA9D156F6A59005FD285 /* model.xcdatamodeld */; };
 		B3B0FAA2156F6FC1005FD285 /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAA1156F6FC1005FD285 /* ICMWebsite.m */; };
@@ -592,6 +597,11 @@
 		B381E6F7157121C10034BD46 /* pinhead-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-green@2x.png"; sourceTree = "<group>"; };
 		B381E6F8157121C10034BD46 /* pinhead-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red.png"; sourceTree = "<group>"; };
 		B381E6F9157121C10034BD46 /* pinhead-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinhead-red@2x.png"; sourceTree = "<group>"; };
+		B3902D0C15DA887400EB1D83 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		B391B2F415DA908E009D71A7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		B391B2F615DA90A1009D71A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		B391B2F815DA90D8009D71A7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "../Icon-Small.png"; sourceTree = "<group>"; };
+		B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "../Icon-Small@2x.png"; sourceTree = "<group>"; };
 		B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		B3B0FA9E156F6A59005FD285 /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
@@ -619,8 +629,8 @@
 		B3CF442A1578FFFB00B954FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3CF442F1579043200B954FA /* ICMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMMapViewController.h; sourceTree = "<group>"; };
 		B3CF44301579043200B954FA /* ICMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMMapViewController.m; sourceTree = "<group>"; };
-		B3D00BE815D8F349002B205C /* NSData+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSData+CDBase64.h"; sourceTree = "<group>"; };
-		B3D00BE915D8F349002B205C /* NSString+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSString+CDBase64.h"; sourceTree = "<group>"; };
+		B3D00BE815D8F349002B205C /* NSData+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CDBase64.h"; sourceTree = "<group>"; };
+		B3D00BE915D8F349002B205C /* NSString+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CDBase64.h"; sourceTree = "<group>"; };
 		B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CDBase64.m"; sourceTree = "<group>"; };
 		B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDBase64.m"; sourceTree = "<group>"; };
 		B3EF61381552B4A300D24661 /* icm-ios-agent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "icm-ios-agent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1319,6 +1329,10 @@
 		B381E6F5157121920034BD46 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				B391B2F815DA90D8009D71A7 /* Icon-Small.png */,
+				B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */,
+				B391B2F615DA90A1009D71A7 /* Icon.png */,
+				B391B2F415DA908E009D71A7 /* Icon@2x.png */,
 				B3C98A9215D4DA3F00D231D9 /* map.png */,
 				B3C98A9315D4DA3F00D231D9 /* map@2x.png */,
 				B3C98A8615D4CA7A00D231D9 /* service.png */,
@@ -1356,6 +1370,7 @@
 		B3EF612D1552B4A200D24661 = {
 			isa = PBXGroup;
 			children = (
+				B3902D0C15DA887400EB1D83 /* Settings.bundle */,
 				B3EF61421552B4A300D24661 /* icm-ios-agent */,
 				B3EF616E1552B4A300D24661 /* icm-ios-agentTests */,
 				B3718EC8157258E100E6B2AE /* CocoaAsyncSocket */,
@@ -1584,6 +1599,11 @@
 				B3C98A9915D4DA3F00D231D9 /* service@2x.png in Resources */,
 				B3C98A9A15D4DA3F00D231D9 /* settings@2x.png in Resources */,
 				B3C98A9B15D4DA3F00D231D9 /* website@2x.png in Resources */,
+				B3902D0D15DA887400EB1D83 /* Settings.bundle in Resources */,
+				B391B2F515DA908E009D71A7 /* Icon@2x.png in Resources */,
+				B391B2F715DA90A2009D71A7 /* Icon.png in Resources */,
+				B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */,
+				B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
