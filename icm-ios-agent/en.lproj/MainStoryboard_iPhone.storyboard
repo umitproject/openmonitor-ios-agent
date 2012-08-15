@@ -463,10 +463,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Kzz-wm-05X" kind="relationship" relationship="viewControllers" id="xtB-37-KyK"/>
                         <segue destination="XpY-IU-5Mo" kind="relationship" relationship="viewControllers" id="XOY-7X-5Be"/>
                         <segue destination="kSe-4G-NUy" kind="relationship" relationship="viewControllers" id="fjL-4N-A9b"/>
                         <segue destination="puw-jg-HlP" kind="relationship" relationship="viewControllers" id="2hk-Jd-JRS"/>
+                        <segue destination="Kzz-wm-05X" kind="relationship" relationship="viewControllers" id="xtB-37-KyK"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -552,7 +552,6 @@
                 <relationship kind="action" name="logoutBtnTapped:"/>
                 <relationship kind="action" name="startBtnTapped:"/>
                 <relationship kind="outlet" name="firstNodeSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="loginBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="logoutBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="startBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
