@@ -8,6 +8,7 @@
 
 #import "ICMUpdater.h"
 
+#define NSDEFAULT_UPDATE_INTERVAL_KEY @"updateInterval"
 
 @implementation ICMUpdater
 
@@ -21,8 +22,10 @@ static ICMUpdater * sharedUpdater = nil;
 {
     @synchronized(self)
     {
-        if (sharedUpdater == nil)
-            sharedUpdater = [[self alloc] initWithTimeInterval:10*60];
+        if (sharedUpdater == nil) {
+            NSNumber * interval = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_UPDATE_INTERVAL_KEY];
+            sharedUpdater = [[self alloc] initWithTimeInterval:[interval intValue]];
+        }
     }
     return (sharedUpdater);
 }

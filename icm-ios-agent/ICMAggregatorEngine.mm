@@ -35,7 +35,17 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 
 - (ICMAggregatorEngine*)init
 {
-    if (self = [super initWithHostName:AGGREGATOR_URL customHeaderFields:nil]) {
+    NSString * host = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_AGGR_HOST_KEY];
+    if ([host length] < 4) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" 
+                                                        message:@"Invalid aggregator host! Please input a valid host in Settings."
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    if (self = [super initWithHostName:host customHeaderFields:nil]) {
         NSString * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_AGENT_ID_KEY];
         if (agentid != nil) {
             self.agentId = agentid;
@@ -284,6 +294,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         std::string status = resp.status();
         NSString* statusStr = [NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding];
         NSLog(@"Logout Status: %@", statusStr);
+        self.agentId = nil;
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:NSDEFAULT_AGENT_ID_KEY];
         [self.delegate agentLoggedOutWithError:nil];
         
     } onError:^(NSError *error) {

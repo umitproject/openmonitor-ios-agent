@@ -40,7 +40,9 @@
 #define AGGR_KEY_KEY @"key"
 #define AGGR_AGENT_ID_KEY @"agentID"
 #define RSAKEY_EXP @"65537"
-#define NSDEFAULT_AGENT_ID_KEY @"AgentID"
+
+#define NSDEFAULT_AGGR_HOST_KEY @"aggregatorHost"
+#define NSDEFAULT_AGENT_ID_KEY @"agentID"
 
 typedef enum {
     kStatusNormal=1,

@@ -31,7 +31,6 @@
 
 - (void) performLoginIfRequired {
     
-    
     if (![engine isLoggedIn]) {
         NSLog(@"Not logged in");
         UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
