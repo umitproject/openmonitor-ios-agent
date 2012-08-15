@@ -605,9 +605,22 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggest Website" 
+                                                        message:@"Website suggestion added successfully! Make sure you subscribe to receive the site status once it is tested."
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggest Website" 
+                                                        message:error.localizedDescription
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }];
     
     [self enqueueOperation:op];
@@ -647,10 +660,22 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         rar.ParseFromArray((const void*)[decrypted bytes], [decrypted length]);
         org::umit::icm::mobile::proto::ResponseHeader header = rar.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggest Service" 
+                                                        message:@"Service suggestion added successfully! Make sure you subscribe to receive the service status once it is tested."
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
         
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggest Service" 
+                                                        message:error.localizedDescription
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }];
     
     [self enqueueOperation:op];
