@@ -146,7 +146,7 @@ int start_node()
 - (void)viewDidUnload
 {
     startBtn = nil;
-    loginBtn = nil;
+    logoutBtn = nil;
     firstNodeSwitch = nil;
     statusLabel = nil;
     dispatch_release(backgroundQueue);
@@ -196,6 +196,11 @@ int start_node()
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
     [engine checkNewTests];
+}
+
+- (IBAction)logoutBtnTapped:(id)sender
+{
+    [engine logoutAgent];
 }
 
 #pragma mark -

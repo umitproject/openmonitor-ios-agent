@@ -142,6 +142,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutBtnTapped:" destination="2" eventType="touchUpInside" id="14U-z1-iA7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9G2-DB-6C5">
                                 <rect key="frame" x="20" y="129" width="280" height="40"/>
@@ -178,7 +181,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="OeI-Jh-qqj"/>
                     <connections>
-                        <outlet property="loginBtn" destination="Hau-Dw-iWJ" id="01G-HD-9uk"/>
                         <outlet property="startBtn" destination="JO9-8B-K7n" id="9wB-1m-N5d"/>
                     </connections>
                 </viewController>
@@ -431,6 +433,23 @@
             </objects>
             <point key="canvasLocation" x="2260" y="-107"/>
         </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="QiZ-Uz-rqD">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8DY-NE-UcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="loginNVC" definesPresentationContext="YES" id="SDp-2t-yuT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="DYO-pz-pYN"/>
+                    <navigationItem key="navigationItem" id="LMx-7S-bDq"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="efi-9T-goH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="afE-TE-sd2" kind="relationship" relationship="rootViewController" id="f7T-2Y-zC6"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="653" y="-1858"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="15">
             <objects>
@@ -457,7 +476,7 @@
         <scene sceneID="2QJ-Mg-38g">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SM3-HN-INB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="afE-TE-sd2" customClass="LoginFormViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="loginform" id="afE-TE-sd2" customClass="LoginFormViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="r5A-kV-5LU">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -482,22 +501,6 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1119" y="-1858"/>
-        </scene>
-        <!--Navigation Controller - Login-->
-        <scene sceneID="Ol1-hI-KMj">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xNm-FM-Z8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="loginFormNVC" title="Login" definesPresentationContext="YES" id="R60-Q1-LB9" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="tXW-m0-NXZ"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PKo-n1-qxX">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="afE-TE-sd2" kind="relationship" relationship="rootViewController" id="mdL-4u-Mtu"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="653" y="-1858"/>
         </scene>
     </scenes>
     <resources>
@@ -546,9 +549,11 @@
         <class className="ICMSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logoutBtnTapped:"/>
                 <relationship kind="action" name="startBtnTapped:"/>
                 <relationship kind="outlet" name="firstNodeSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="loginBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoutBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="startBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
             </relationships>

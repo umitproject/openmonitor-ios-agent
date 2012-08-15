@@ -14,7 +14,7 @@
 
 @interface ICMSettingsViewController : UIViewController <WebsiteSuggestionViewControllerDelegate, ServiceSuggestionViewControllerDelegate> {
     __weak IBOutlet UIButton *startBtn;
-    __weak IBOutlet UIButton *loginBtn;
+    __weak IBOutlet UIButton *logoutBtn;
     __weak IBOutlet UISwitch *firstNodeSwitch;
     __weak IBOutlet UILabel *statusLabel;
     
@@ -27,6 +27,7 @@
 }
 
 - (IBAction)startBtnTapped:(id)sender;
+- (IBAction)logoutBtnTapped:(id)sender;
 
 
 @end

@@ -20,6 +20,7 @@
 @implementation ICMAggregatorEngine
 
 @synthesize agentId = _agentId;
+@synthesize delegate;
 
 static ICMAggregatorEngine * __sharedEngine = nil;
 
@@ -147,6 +148,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        [self.delegate agentLoggedInWithError:error];
     }];
     
     [self enqueueOperation:op];
@@ -183,6 +185,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        [self.delegate agentLoggedInWithError:error];
     }];
     
     [self enqueueOperation:op];
@@ -239,11 +242,13 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::ResponseHeader header = resp.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
+        [self.delegate agentLoggedInWithError:nil];
         [self checkNewTests];
         
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        [self.delegate agentLoggedInWithError:error];
     }];
     
     [self enqueueOperation:op];
@@ -279,10 +284,13 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         std::string status = resp.status();
         NSString* statusStr = [NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding];
         NSLog(@"Logout Status: %@", statusStr);
+        [self.delegate agentLoggedOutWithError:nil];
         
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        [self.delegate agentLoggedOutWithError:error];
+        
     }];
     
     [self enqueueOperation:op];

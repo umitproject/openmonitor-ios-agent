@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706893.293776"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "435"
-         endingLineNumber = "435"
+         startingLineNumber = "443"
+         endingLineNumber = "443"
          landmarkName = "-sendServiceReport:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "201"
-         endingLineNumber = "201"
+         startingLineNumber = "204"
+         endingLineNumber = "204"
          landmarkName = "-loginStep2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
          landmarkName = "-loginStep2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "281"
-         endingLineNumber = "281"
+         startingLineNumber = "286"
+         endingLineNumber = "286"
          landmarkName = "-logoutAgent"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "244"
-         endingLineNumber = "244"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
          landmarkName = "-loginStep2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "141"
-         endingLineNumber = "141"
+         startingLineNumber = "142"
+         endingLineNumber = "142"
          landmarkName = "-registerAgentWithUsername:password:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -216,11 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
+         startingLineNumber = "134"
+         endingLineNumber = "134"
          landmarkName = "-registerAgentWithUsername:password:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -229,11 +229,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706591.0412"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "-registerAgentWithUsername:password:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -242,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706893.293776"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "585"
-         endingLineNumber = "585"
+         startingLineNumber = "593"
+         endingLineNumber = "593"
          landmarkName = "-suggestWebsiteWithName:url:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -255,11 +255,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706893.293776"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "421"
-         endingLineNumber = "421"
+         startingLineNumber = "429"
+         endingLineNumber = "429"
          landmarkName = "-sendWebsiteReport:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -268,11 +268,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366693288.766647"
+         timestampString = "366706893.293776"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "520"
-         endingLineNumber = "520"
+         startingLineNumber = "528"
+         endingLineNumber = "528"
          landmarkName = "-checkNewTests"
          landmarkType = "5">
       </FileBreakpoint>
@@ -312,32 +312,6 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "37"
          endingLineNumber = "37"
-         landmarkName = "-performLoginIfRequired"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMRootViewController.m"
-         timestampString = "366701983.388842"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMRootViewController.m"
-         timestampString = "366701773.426389"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
          landmarkName = "-performLoginIfRequired"
          landmarkType = "5">
       </FileBreakpoint>

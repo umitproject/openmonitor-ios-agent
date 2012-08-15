@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "LoginFormViewController.h"
 
-@interface ICMRootViewController : UITabBarController <LoginFormViewControllerDelegate>
+@interface ICMRootViewController : UITabBarController <LoginFormViewControllerDelegate, ICMAggregatorEngineDelegate>
+{
+    ICMAggregatorEngine* engine;
+}
 
 @end

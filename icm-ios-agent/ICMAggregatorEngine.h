@@ -61,9 +61,12 @@ typedef enum {
 {
     SecKeyWrapper * crypto;
     NSString* _agentId;
+    
+    __weak id<ICMAggregatorEngineDelegate> delegate;
 }
 
 @property (nonatomic, retain) NSString* agentId;
+@property (weak) id <ICMAggregatorEngineDelegate> delegate;
 
 + (ICMAggregatorEngine *)sharedEngine;
 
@@ -100,6 +103,7 @@ typedef enum {
 
 @protocol ICMAggregatorEngineDelegate
 
-- (void)agentRegistered:(NSString*)response withError:(NSError*)error;
+- (void)agentLoggedInWithError:(NSError*)error;
+- (void)agentLoggedOutWithError:(NSError*)error;
 
 @end
