@@ -69,11 +69,12 @@ typedef enum {
 
 #pragma mark REST API methods
 
-// ======================================================================================================
+// ===========================================================
 // ICM Aggregator REST API methods
 // All methods below return a unique connection identifier.
-// ======================================================================================================
+// ===========================================================
 
+- (bool)isLoggedIn;
 - (void)registerAgentWithUsername:(NSString *)name password:(NSString*)pass; // registeragent
 - (void)loginStep1;
 - (void)logoutAgent;

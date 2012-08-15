@@ -7,6 +7,7 @@
 //
 
 #import "ICMAppDelegate.h"
+#import "ICMAggregatorEngine.h"
 
 @implementation ICMAppDelegate
 
@@ -64,6 +65,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Set the application defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *keys = [NSArray arrayWithObjects:@"autoLogin", @"aggregatorHost", @"updateInterval", nil];
+    NSArray *objects = [NSArray arrayWithObjects:[NSNumber numberWithBool:YES], @"east1.openmonitor.org", [NSNumber numberWithInteger:300], nil];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjects:objects 
+                                                           forKeys:keys];
+    [defaults registerDefaults:appDefaults];
+    [defaults synchronize];
+    
     // Override point for customization after application launch.
     [[self updater] startTimers];//FIXME
     

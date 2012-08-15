@@ -60,6 +60,7 @@
 		B314FA1B156E750E0066DDBB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1A156E750D0066DDBB /* CFNetwork.framework */; };
 		B314FA1D156E751D0066DDBB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */; };
 		B314FA1F156E75290066DDBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B314FA1E156E75280066DDBB /* Security.framework */; };
+		B319A32D15DB526700C3B927 /* ICMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319A32C15DB526700C3B927 /* ICMRootViewController.m */; };
 		B320C91515D62EF9000CA0D8 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B320C91415D62EF9000CA0D8 /* MF_Base64Additions.m */; };
 		B32211BA15898C4E0054A059 /* descriptor.cc in Sources */ = {isa = PBXBuildFile; fileRef = B322117815898C4E0054A059 /* descriptor.cc */; };
 		B32211BB15898C4E0054A059 /* descriptor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B322117A15898C4E0054A059 /* descriptor.pb.cc */; };
@@ -464,6 +465,8 @@
 		B314FA1A156E750D0066DDBB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B314FA1C156E751D0066DDBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B314FA1E156E75280066DDBB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B319A32B15DB526700C3B927 /* ICMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMRootViewController.h; sourceTree = "<group>"; };
+		B319A32C15DB526700C3B927 /* ICMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMRootViewController.m; sourceTree = "<group>"; };
 		B320C91315D62EF9000CA0D8 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		B320C91415D62EF9000CA0D8 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
 		B322117815898C4E0054A059 /* descriptor.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.cc; sourceTree = "<group>"; };
@@ -1414,10 +1417,14 @@
 		B3EF61421552B4A300D24661 /* icm-ios-agent */ = {
 			isa = PBXGroup;
 			children = (
-				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
-				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
 				B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */,
+				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
+				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
+				B319A32B15DB526700C3B927 /* ICMRootViewController.h */,
+				B319A32C15DB526700C3B927 /* ICMRootViewController.m */,
+				B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */,
+				B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */,
 				B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */,
 				B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */,
 				B3356CA2156673D800AF8796 /* StartNode.cpp */,
@@ -1433,8 +1440,6 @@
 				B3CF44301579043200B954FA /* ICMMapViewController.m */,
 				B33DFD541579DB89005CF9EE /* ICMAnnotation.h */,
 				B33DFD551579DB89005CF9EE /* ICMAnnotation.m */,
-				B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */,
-				B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */,
 				B37BEAD115C6A98B00729133 /* WebsiteSuggestionViewController.h */,
 				B37BEAD215C6A98B00729133 /* WebsiteSuggestionViewController.m */,
 				B37BEAD515C6AD2A00729133 /* ServiceSuggestionViewController.h */,
@@ -1723,6 +1728,7 @@
 				B320C91515D62EF9000CA0D8 /* MF_Base64Additions.m in Sources */,
 				B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */,
 				B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */,
+				B319A32D15DB526700C3B927 /* ICMRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

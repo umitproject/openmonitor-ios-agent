@@ -47,6 +47,14 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     return self;
 }
 
+- (bool)isLoggedIn
+{
+    if (self.agentId != nil) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark -
 #pragma mark REST API methods
 #pragma mark -

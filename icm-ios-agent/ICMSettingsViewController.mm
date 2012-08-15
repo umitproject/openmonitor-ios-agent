@@ -7,7 +7,6 @@
 //
 
 #import "ICMSettingsViewController.h"
-#import "ICMAggregatorEngine.h"
 #import "ICMUpdater.h"
 #import "ICMService.h"
 
@@ -140,7 +139,8 @@ int start_node()
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     first_port = cur_port = 10000;
-    backgroundQueue = dispatch_queue_create("org.umitproject.icm.bgqueue", NULL); 
+    backgroundQueue = dispatch_queue_create("org.umitproject.icm.bgqueue", NULL);
+    engine = [ICMAggregatorEngine sharedEngine];
 }
 
 - (void)viewDidUnload
@@ -166,13 +166,7 @@ int start_node()
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"loginform"])
-	{
-        //NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
-        LoginFormViewController *lfvc = segue.destinationViewController;
-        lfvc.delegate = self;
-	}
-    else if ([segue.identifier isEqualToString:@"websitesuggest"])
+	if ([segue.identifier isEqualToString:@"websitesuggest"])
 	{
         //NSLog(@"Setting ICMFirstVC as a delegate of LoginFormVC");
         WebsiteSuggestionViewController *lfvc = segue.destinationViewController;
@@ -186,7 +180,6 @@ int start_node()
 	}
 }
 
-
 - (IBAction)startBtnTapped:(id)sender {
     /*
     dispatch_async(backgroundQueue, ^(void) {
@@ -195,7 +188,6 @@ int start_node()
     
     GOOGLE_PROTOBUF_VERIFY_VERSION; */
     
-    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     //if (engine.agentId == nil)
     //    [engine registerAgentWithUsername:@"test" password:@"test"];
     //[self logInWithUsername:@"test" password:@"test"];
@@ -207,31 +199,11 @@ int start_node()
 }
 
 #pragma mark -
-#pragma mark LoginFormViewControllerDelegate Methods
-- (void)logInWithUsername:(NSString *)name password:(NSString*)pass
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
-    if (engine.agentId == nil) {
-        //FIXME name and pass
-        [engine registerAgentWithUsername:name password:name];
-    } else {
-        [engine loginStep1];
-    }
-}
-
-- (void)cancelLogin
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark -
 #pragma mark WebsiteSuggestionViewControllerDelegate Methods
 
 - (void)suggestWebsiteWithName:(NSString*)name url:(NSString*)url
 {
     [self.navigationController popViewControllerAnimated:YES];
-    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     [engine suggestWebsiteWithName:name url:url];
 }
 - (void)cancel
@@ -245,7 +217,6 @@ int start_node()
 - (void)suggestServiceWithName:(NSString*)name host:(NSString*)host ip:(NSString*)ip port:(int)port
 {
     [self.navigationController popViewControllerAnimated:YES];
-    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
     [engine suggestServiceWithName:name host:host ip:ip port:port];
 }
 /*

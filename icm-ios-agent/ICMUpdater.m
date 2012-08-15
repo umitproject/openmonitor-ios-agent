@@ -129,6 +129,11 @@ static ICMUpdater * sharedUpdater = nil;
         return;
     }
     
+    if (![self.aggregatorEngine isLoggedIn]) {
+        NSLog(@"Not logged in, canceling...");
+        return;
+    }
+    
     for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
         NSLog(@"website: %@", site.name);
         [self dispatchRefreshingRequestForWebsite:site];
@@ -141,6 +146,11 @@ static ICMUpdater * sharedUpdater = nil;
     
     if (![ICMUpdater connected]) {
         NSLog(@"Not connected, canceling...");
+        return;
+    }
+    
+    if (![self.aggregatorEngine isLoggedIn]) {
+        NSLog(@"Not logged in, canceling...");
         return;
     }
     

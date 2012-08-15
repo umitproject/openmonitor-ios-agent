@@ -135,16 +135,13 @@
                                 <rect key="frame" x="20" y="81" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Logout">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="W1K-NA-BQO" kind="push" identifier="loginform" id="zzt-Cl-iIm"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9G2-DB-6C5">
                                 <rect key="frame" x="20" y="129" width="280" height="40"/>
@@ -179,7 +176,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="first" id="7"/>
                     <navigationItem key="navigationItem" title="Settings" id="OeI-Jh-qqj"/>
                     <connections>
                         <outlet property="loginBtn" destination="Hau-Dw-iWJ" id="01G-HD-9uk"/>
@@ -188,36 +184,6 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1126" y="463"/>
-        </scene>
-        <!--Login Form View Controller-->
-        <scene sceneID="FNv-xf-Jvr">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DnU-ZX-dug" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="W1K-NA-BQO" customClass="LoginFormViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Hgk-tn-BTX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Plh-Nx-7V5">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="W1K-NA-BQO" id="0Xx-oO-DI6"/>
-                            <outlet property="delegate" destination="W1K-NA-BQO" id="dPH-YK-ArK"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="EaR-kZ-Aqg"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="1764" y="-107"/>
         </scene>
         <!--Website Suggestion View Controller-->
         <scene sceneID="sts-AH-rzf">
@@ -247,7 +213,7 @@
                     <navigationItem key="navigationItem" id="uGG-pP-k4M"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1764" y="463"/>
+            <point key="canvasLocation" x="1764" y="-107"/>
         </scene>
         <!--Service Suggestion View Controller-->
         <scene sceneID="QAe-CX-b1U">
@@ -277,7 +243,7 @@
                     <navigationItem key="navigationItem" id="tJS-YO-HXZ"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1764" y="1062"/>
+            <point key="canvasLocation" x="1764" y="463"/>
         </scene>
         <!--Navigation Controller - Settings-->
         <scene sceneID="av6-pz-6Rs">
@@ -463,13 +429,13 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="653" y="1062"/>
+            <point key="canvasLocation" x="2260" y="-107"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root View Controller-->
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
-                <tabBarController id="4" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbarVC" id="4" customClass="ICMRootViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Dit-qt-Tb1"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
@@ -479,17 +445,62 @@
                     </tabBar>
                     <connections>
                         <segue destination="Kzz-wm-05X" kind="relationship" relationship="viewControllers" id="xtB-37-KyK"/>
-                        <segue destination="puw-jg-HlP" kind="relationship" relationship="viewControllers" id="2hk-Jd-JRS"/>
                         <segue destination="XpY-IU-5Mo" kind="relationship" relationship="viewControllers" id="XOY-7X-5Be"/>
                         <segue destination="kSe-4G-NUy" kind="relationship" relationship="viewControllers" id="fjL-4N-A9b"/>
+                        <segue destination="puw-jg-HlP" kind="relationship" relationship="viewControllers" id="2hk-Jd-JRS"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="16" y="-686"/>
+        </scene>
+        <!--Login Form View Controller-->
+        <scene sceneID="2QJ-Mg-38g">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SM3-HN-INB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="afE-TE-sd2" customClass="LoginFormViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="r5A-kV-5LU">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mns-pm-urR">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="afE-TE-sd2" id="MPs-Qt-ZQB"/>
+                            <outlet property="delegate" destination="afE-TE-sd2" id="RhN-YF-Eex"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="6Kp-Wc-wFH"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1119" y="-1858"/>
+        </scene>
+        <!--Navigation Controller - Login-->
+        <scene sceneID="Ol1-hI-KMj">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xNm-FM-Z8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="loginFormNVC" title="Login" definesPresentationContext="YES" id="R60-Q1-LB9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tXW-m0-NXZ"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PKo-n1-qxX">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="afE-TE-sd2" kind="relationship" relationship="rootViewController" id="mdL-4u-Mtu"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="653" y="-1858"/>
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="16" height="16"/>
         <image name="map.png" width="30" height="30"/>
         <image name="second" width="16" height="16"/>
         <image name="service.png" width="30" height="30"/>
@@ -507,6 +518,9 @@
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="refreshBtn" candidateClass="UIBarButtonItem"/>
             </relationships>
+        </class>
+        <class className="ICMRootViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMRootViewController.h"/>
         </class>
         <class className="ICMSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMSecondViewController.h"/>
@@ -549,8 +563,8 @@
         <class className="LoginFormViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginFormViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelBtnPressed:"/>
                 <relationship kind="action" name="doneBtnPressed:"/>
+                <relationship kind="action" name="registerBtnPressed:"/>
             </relationships>
         </class>
         <class className="ServiceSuggestionViewController" superclassName="UITableViewController">

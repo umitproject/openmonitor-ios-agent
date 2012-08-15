@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <dispatch/dispatch.h>
-#import "LoginFormViewController.h"
 #import "WebsiteSuggestionViewController.h"
 #import "ServiceSuggestionViewController.h"
+#import "ICMAggregatorEngine.h"
 
-@interface ICMSettingsViewController : UIViewController <LoginFormViewControllerDelegate, WebsiteSuggestionViewControllerDelegate, ServiceSuggestionViewControllerDelegate> {
+@interface ICMSettingsViewController : UIViewController <WebsiteSuggestionViewControllerDelegate, ServiceSuggestionViewControllerDelegate> {
     __weak IBOutlet UIButton *startBtn;
     __weak IBOutlet UIButton *loginBtn;
     __weak IBOutlet UISwitch *firstNodeSwitch;
@@ -22,6 +22,8 @@
     
     int first_port;
     int cur_port;
+    
+    ICMAggregatorEngine* engine;
 }
 
 - (IBAction)startBtnTapped:(id)sender;

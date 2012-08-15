@@ -32,11 +32,11 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    UIBarButtonItem *cancelButton =
-	[[UIBarButtonItem alloc] initWithTitle: @"Cancel"
+    UIBarButtonItem *registerButton =
+	[[UIBarButtonItem alloc] initWithTitle: @"Register"
                                      style: UIBarButtonItemStylePlain
                                     target: self
-                                    action: @selector(cancelBtnPressed:)];
+                                    action: @selector(registerBtnPressed:)];
     UIBarButtonItem *loginBtn =
 	[[UIBarButtonItem alloc] initWithTitle: @"Login"
                                      style: UIBarButtonItemStyleDone
@@ -44,7 +44,7 @@
                                     action: @selector(doneBtnPressed:)];
     //loginBtn.tintColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:1];
 
-    self.navigationItem.leftBarButtonItem = cancelButton;
+    self.navigationItem.leftBarButtonItem = registerButton;
     self.navigationItem.rightBarButtonItem = loginBtn;
     self.title = @"Login";
     
@@ -205,10 +205,13 @@
     }
 }
 
-- (IBAction)cancelBtnPressed:(id)sender
+- (IBAction)registerBtnPressed:(id)sender
 {
-    [self.delegate cancelLogin];
+    // Get user preference
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* host = [defaults stringForKey:@"aggregatorHost"];
+    NSString* launchUrl = [NSString stringWithFormat:@"http://%@/accounts/register", host];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:launchUrl]];
 }
-
 
 @end

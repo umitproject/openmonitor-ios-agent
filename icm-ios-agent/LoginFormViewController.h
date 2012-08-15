@@ -20,13 +20,12 @@
 @property (weak) id <LoginFormViewControllerDelegate> delegate;
 
 - (IBAction)doneBtnPressed:(id)sender;
-- (IBAction)cancelBtnPressed:(id)sender;
+- (IBAction)registerBtnPressed:(id)sender;
 
 @end
 
 @protocol LoginFormViewControllerDelegate 
 
 - (void)logInWithUsername:(NSString *)name password:(NSString*)pass;
-- (void)cancelLogin;
 
 @end
