@@ -1680,7 +1680,7 @@ void protobuf_AddDesc_messages_2eproto() {
     "rget\030\001 \002(\t\022\014\n\004hops\030\002 \002(\005\022\022\n\npacketSize\030\003"
     " \002(\005\0220\n\006traces\030\004 \003(\0132 .org.umit.icm.mobi"
     "le.proto.Trace\"\260\001\n\tICMReport\022\020\n\010reportID"
-    "\030\001 \001(\t\022\017\n\007agentID\030\002 \002(\t\022\016\n\006testID\030\003 \002(\003\022"
+    "\030\001 \001(\t\022\017\n\007agentID\030\002 \002(\t\022\016\n\006testID\030\003 \002(\t\022"
     "\020\n\010timeZone\030\004 \002(\005\022\017\n\007timeUTC\030\005 \002(\003\022\022\n\npa"
     "ssedNode\030\006 \003(\t\0229\n\ntraceroute\030\007 \001(\0132%.org"
     ".umit.icm.mobile.proto.TraceRoute\"\245\001\n\023We"
@@ -1766,7 +1766,7 @@ void protobuf_AddDesc_messages_2eproto() {
     "ts\022\034\n\024currentTestVersionNo\030\001 \002(\005\"\026\n\007Webs"
     "ite\022\013\n\003url\030\001 \002(\t\"1\n\007Service\022\014\n\004name\030\001 \002("
     "\t\022\014\n\004port\030\002 \002(\005\022\n\n\002ip\030\003 \002(\t\"\254\001\n\004Test\022\016\n\006"
-    "testID\030\001 \002(\003\0223\n\007website\030\002 \001(\0132\".org.umit"
+    "testID\030\001 \002(\t\0223\n\007website\030\002 \001(\0132\".org.umit"
     ".icm.mobile.proto.Website\0223\n\007service\030\003 \001"
     "(\0132\".org.umit.icm.mobile.proto.Service\022\030"
     "\n\020executeAtTimeUTC\030\004 \001(\003\022\020\n\010testType\030\005 \002"
@@ -2677,7 +2677,7 @@ void ICMReport::SharedCtor() {
   _cached_size_ = 0;
   reportid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   agentid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  testid_ = GOOGLE_LONGLONG(0);
+  testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   timezone_ = 0;
   timeutc_ = GOOGLE_LONGLONG(0);
   traceroute_ = NULL;
@@ -2694,6 +2694,9 @@ void ICMReport::SharedDtor() {
   }
   if (agentid_ != &::google::protobuf::internal::kEmptyString) {
     delete agentid_;
+  }
+  if (testid_ != &::google::protobuf::internal::kEmptyString) {
+    delete testid_;
   }
   if (this != default_instance_) {
     delete traceroute_;
@@ -2732,7 +2735,11 @@ void ICMReport::Clear() {
         agentid_->clear();
       }
     }
-    testid_ = GOOGLE_LONGLONG(0);
+    if (has_testid()) {
+      if (testid_ != &::google::protobuf::internal::kEmptyString) {
+        testid_->clear();
+      }
+    }
     timezone_ = 0;
     timeutc_ = GOOGLE_LONGLONG(0);
     if (has_traceroute()) {
@@ -2779,19 +2786,20 @@ bool ICMReport::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_testID;
+        if (input->ExpectTag(26)) goto parse_testID;
         break;
       }
       
-      // required int64 testID = 3;
+      // required string testID = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_testID:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &testid_)));
-          set_has_testid();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_testid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->testid().data(), this->testid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -2899,9 +2907,13 @@ void ICMReport::SerializeWithCachedSizes(
       2, this->agentid(), output);
   }
   
-  // required int64 testID = 3;
+  // required string testID = 3;
   if (has_testid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->testid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->testid(), output);
   }
   
   // required int32 timeZone = 4;
@@ -2957,9 +2969,14 @@ void ICMReport::SerializeWithCachedSizes(
         2, this->agentid(), target);
   }
   
-  // required int64 testID = 3;
+  // required string testID = 3;
   if (has_testid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->testid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->testid(), target);
   }
   
   // required int32 timeZone = 4;
@@ -3013,10 +3030,10 @@ int ICMReport::ByteSize() const {
           this->agentid());
     }
     
-    // required int64 testID = 3;
+    // required string testID = 3;
     if (has_testid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->testid());
     }
     
@@ -13507,7 +13524,7 @@ Test::Test(const Test& from)
 
 void Test::SharedCtor() {
   _cached_size_ = 0;
-  testid_ = GOOGLE_LONGLONG(0);
+  testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   website_ = NULL;
   service_ = NULL;
   executeattimeutc_ = GOOGLE_LONGLONG(0);
@@ -13520,6 +13537,9 @@ Test::~Test() {
 }
 
 void Test::SharedDtor() {
+  if (testid_ != &::google::protobuf::internal::kEmptyString) {
+    delete testid_;
+  }
   if (this != default_instance_) {
     delete website_;
     delete service_;
@@ -13548,7 +13568,11 @@ Test* Test::New() const {
 
 void Test::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    testid_ = GOOGLE_LONGLONG(0);
+    if (has_testid()) {
+      if (testid_ != &::google::protobuf::internal::kEmptyString) {
+        testid_->clear();
+      }
+    }
     if (has_website()) {
       if (website_ != NULL) website_->::org::umit::icm::mobile::proto::Website::Clear();
     }
@@ -13568,14 +13592,15 @@ bool Test::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 testID = 1;
+      // required string testID = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &testid_)));
-          set_has_testid();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_testid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->testid().data(), this->testid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -13661,9 +13686,13 @@ bool Test::MergePartialFromCodedStream(
 
 void Test::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int64 testID = 1;
+  // required string testID = 1;
   if (has_testid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->testid(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->testid(), output);
   }
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
@@ -13696,9 +13725,14 @@ void Test::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Test::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int64 testID = 1;
+  // required string testID = 1;
   if (has_testid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->testid(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->testid().data(), this->testid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->testid(), target);
   }
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
@@ -13736,10 +13770,10 @@ int Test::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int64 testID = 1;
+    // required string testID = 1;
     if (has_testid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->testid());
     }
     

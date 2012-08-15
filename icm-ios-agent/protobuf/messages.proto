@@ -41,7 +41,7 @@ message TraceRoute {
 message ICMReport {
 	optional string reportID = 1;
 	required string agentID = 2;
-	required int64 testID = 3;
+	required string testID = 3;
 	required int32 timeZone = 4;
 	required int64 timeUTC = 5;
 	repeated string passedNode = 6;
@@ -269,7 +269,7 @@ message Service {
 }
 
 message Test {
-	required int64 testID = 1;
+	required string testID = 1;
 	optional Website website = 2;
 	optional Service service = 3;
 	optional int64 executeAtTimeUTC = 4;

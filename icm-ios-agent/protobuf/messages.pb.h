@@ -412,12 +412,16 @@ class ICMReport : public ::google::protobuf::Message {
   inline ::std::string* mutable_agentid();
   inline ::std::string* release_agentid();
   
-  // required int64 testID = 3;
+  // required string testID = 3;
   inline bool has_testid() const;
   inline void clear_testid();
   static const int kTestIDFieldNumber = 3;
-  inline ::google::protobuf::int64 testid() const;
-  inline void set_testid(::google::protobuf::int64 value);
+  inline const ::std::string& testid() const;
+  inline void set_testid(const ::std::string& value);
+  inline void set_testid(const char* value);
+  inline void set_testid(const char* value, size_t size);
+  inline ::std::string* mutable_testid();
+  inline ::std::string* release_testid();
   
   // required int32 timeZone = 4;
   inline bool has_timezone() const;
@@ -476,7 +480,7 @@ class ICMReport : public ::google::protobuf::Message {
   
   ::std::string* reportid_;
   ::std::string* agentid_;
-  ::google::protobuf::int64 testid_;
+  ::std::string* testid_;
   ::google::protobuf::int64 timeutc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> passednode_;
   ::org::umit::icm::mobile::proto::TraceRoute* traceroute_;
@@ -4201,12 +4205,16 @@ class Test : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required int64 testID = 1;
+  // required string testID = 1;
   inline bool has_testid() const;
   inline void clear_testid();
   static const int kTestIDFieldNumber = 1;
-  inline ::google::protobuf::int64 testid() const;
-  inline void set_testid(::google::protobuf::int64 value);
+  inline const ::std::string& testid() const;
+  inline void set_testid(const ::std::string& value);
+  inline void set_testid(const char* value);
+  inline void set_testid(const char* value, size_t size);
+  inline ::std::string* mutable_testid();
+  inline ::std::string* release_testid();
   
   // optional .org.umit.icm.mobile.proto.Website website = 2;
   inline bool has_website() const;
@@ -4253,7 +4261,7 @@ class Test : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::google::protobuf::int64 testid_;
+  ::std::string* testid_;
   ::org::umit::icm::mobile::proto::Website* website_;
   ::org::umit::icm::mobile::proto::Service* service_;
   ::google::protobuf::int64 executeattimeutc_;
@@ -7465,7 +7473,7 @@ inline ::std::string* ICMReport::release_agentid() {
   }
 }
 
-// required int64 testID = 3;
+// required string testID = 3;
 inline bool ICMReport::has_testid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -7476,15 +7484,51 @@ inline void ICMReport::clear_has_testid() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void ICMReport::clear_testid() {
-  testid_ = GOOGLE_LONGLONG(0);
+  if (testid_ != &::google::protobuf::internal::kEmptyString) {
+    testid_->clear();
+  }
   clear_has_testid();
 }
-inline ::google::protobuf::int64 ICMReport::testid() const {
+inline const ::std::string& ICMReport::testid() const {
+  return *testid_;
+}
+inline void ICMReport::set_testid(const ::std::string& value) {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
+  testid_->assign(value);
+}
+inline void ICMReport::set_testid(const char* value) {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
+  testid_->assign(value);
+}
+inline void ICMReport::set_testid(const char* value, size_t size) {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
+  testid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ICMReport::mutable_testid() {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
   return testid_;
 }
-inline void ICMReport::set_testid(::google::protobuf::int64 value) {
-  set_has_testid();
-  testid_ = value;
+inline ::std::string* ICMReport::release_testid() {
+  clear_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = testid_;
+    testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
 
 // required int32 timeZone = 4;
@@ -11225,7 +11269,7 @@ inline ::std::string* Service::release_ip() {
 
 // Test
 
-// required int64 testID = 1;
+// required string testID = 1;
 inline bool Test::has_testid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -11236,15 +11280,51 @@ inline void Test::clear_has_testid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void Test::clear_testid() {
-  testid_ = GOOGLE_LONGLONG(0);
+  if (testid_ != &::google::protobuf::internal::kEmptyString) {
+    testid_->clear();
+  }
   clear_has_testid();
 }
-inline ::google::protobuf::int64 Test::testid() const {
+inline const ::std::string& Test::testid() const {
+  return *testid_;
+}
+inline void Test::set_testid(const ::std::string& value) {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
+  testid_->assign(value);
+}
+inline void Test::set_testid(const char* value) {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
+  testid_->assign(value);
+}
+inline void Test::set_testid(const char* value, size_t size) {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
+  testid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Test::mutable_testid() {
+  set_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    testid_ = new ::std::string;
+  }
   return testid_;
 }
-inline void Test::set_testid(::google::protobuf::int64 value) {
-  set_has_testid();
-  testid_ = value;
+inline ::std::string* Test::release_testid() {
+  clear_has_testid();
+  if (testid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = testid_;
+    testid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
 
 // optional .org.umit.icm.mobile.proto.Website website = 2;

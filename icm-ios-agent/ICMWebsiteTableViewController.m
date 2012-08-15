@@ -88,40 +88,40 @@
         
         ICMWebsite* site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                                       inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.google.com" name:@"Google" enabled:true uid:1001];
+        [site initWithUrl:@"http://www.google.com" name:@"Google" enabled:true uid:@"1001"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.facebook.com" name:@"Facebook" enabled:true uid:1002];
+        [site initWithUrl:@"http://www.facebook.com" name:@"Facebook" enabled:true uid:@"1002"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.youtube.com" name:@"YouTube" enabled:true uid:1003];
+        [site initWithUrl:@"http://www.youtube.com" name:@"YouTube" enabled:true uid:@"1003"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.twitter.com" name:@"Twitter" enabled:true uid:1004];
+        [site initWithUrl:@"http://www.twitter.com" name:@"Twitter" enabled:true uid:@"1004"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.yahoo.com" name:@"Yahoo" enabled:true uid:1005];
+        [site initWithUrl:@"http://www.yahoo.com" name:@"Yahoo" enabled:true uid:@"1005"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.cnn.com" name:@"CNN" enabled:true uid:1006];
+        [site initWithUrl:@"http://www.cnn.com" name:@"CNN" enabled:true uid:@"1006"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.bbc.com" name:@"BBC" enabled:true uid:1007];
+        [site initWithUrl:@"http://www.bbc.com" name:@"BBC" enabled:true uid:@"1007"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://mail.google.com" name:@"GMail" enabled:true uid:1008];
+        [site initWithUrl:@"http://mail.google.com" name:@"GMail" enabled:true uid:@"1008"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.umitproject.org" name:@"Umit Project" enabled:true uid:1009];
+        [site initWithUrl:@"http://www.umitproject.org" name:@"Umit Project" enabled:true uid:@"1009"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.flickr.com" name:@"Flickr" enabled:true uid:1010];
+        [site initWithUrl:@"http://www.flickr.com" name:@"Flickr" enabled:true uid:@"1010"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.hotmail.com" name:@"Hotmail" enabled:true uid:1011];
+        [site initWithUrl:@"http://www.hotmail.com" name:@"Hotmail" enabled:true uid:@"1011"];
         site = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
                                              inManagedObjectContext:managedObjectContext];
-        [site initWithUrl:@"http://www.awebsitenotexist.com/" name:@"Shadow" enabled:true uid:1012];
+        [site initWithUrl:@"http://www.awebsitenotexist.com/" name:@"Shadow" enabled:true uid:@"1012"];
         
         [ICMAppDelegate SaveContext];
     }

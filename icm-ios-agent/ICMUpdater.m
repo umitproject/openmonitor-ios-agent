@@ -126,6 +126,7 @@ static ICMUpdater * sharedUpdater = nil;
 - (void)onUpdateWebsiteTimer
 {
     NSLog(@"onUpdateTimer triggered, update Website now...");
+    [self refetchData];
     
     if (![ICMUpdater connected]) {
         NSLog(@"Not connected, canceling...");
@@ -146,6 +147,7 @@ static ICMUpdater * sharedUpdater = nil;
 - (void)onUpdateServiceTimer
 {
     NSLog(@"onUpdateTimer triggered, update Service now...");
+    [self refetchData];
     
     if (![ICMUpdater connected]) {
         NSLog(@"Not connected, canceling...");

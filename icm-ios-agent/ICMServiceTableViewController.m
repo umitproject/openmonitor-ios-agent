@@ -78,34 +78,34 @@
         
         ICMService* service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                                       inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"203.135.62.113" port:443 name:@"HTTPS" enabled:YES uid:2001];
+        [service initWithHost:@"203.135.62.113" port:443 name:@"HTTPS" enabled:YES uid:@"2001"];
         
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"www.google.com" port:80 name:@"HTTP" enabled:YES uid:2002];
+        [service initWithHost:@"www.google.com" port:80 name:@"HTTP" enabled:YES uid:@"2002"];
         
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"ftp.secureftp-test.com" port:21 name:@"FTP" enabled:YES uid:2003];
+        [service initWithHost:@"ftp.secureftp-test.com" port:21 name:@"FTP" enabled:YES uid:@"2003"];
         
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"pop.gmail.com" port:995 name:@"POP3" enabled:YES uid:2004];
+        [service initWithHost:@"pop.gmail.com" port:995 name:@"POP3" enabled:YES uid:@"2004"];
         
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"imap.gmail.com" port:993 name:@"IMAP" enabled:YES uid:2005];
+        [service initWithHost:@"imap.gmail.com" port:993 name:@"IMAP" enabled:YES uid:@"2005"];
         
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"messenger.hotmail.com" port:1863 name:@"MSN" enabled:YES uid:2006];
+        [service initWithHost:@"messenger.hotmail.com" port:1863 name:@"MSN" enabled:YES uid:@"2006"];
         
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                              inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"talk.google.com" port:5222 name:@"GTalk" enabled:YES uid:2007];
+        [service initWithHost:@"talk.google.com" port:5222 name:@"GTalk" enabled:YES uid:@"2007"];
         service = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
                                                 inManagedObjectContext:managedObjectContext];
-        [service initWithHost:@"localhost" port:5222 name:@"Localhost" enabled:YES uid:2008];
+        [service initWithHost:@"localhost" port:5222 name:@"Localhost" enabled:YES uid:@"2008"];
         
         [ICMAppDelegate SaveContext];
     }
