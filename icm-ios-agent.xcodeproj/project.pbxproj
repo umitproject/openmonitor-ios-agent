@@ -58,7 +58,6 @@
 		B32211D715898C4E0054A059 /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = B32211B715898C4E0054A059 /* wire_format_lite.cc */; };
 		B32211DD15898E980054A059 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B32211DC15898E980054A059 /* libz.dylib */; };
 		B3240773157CB99A0080CFF0 /* SecKeyWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3356CA2156673D800AF8796 /* StartNode.cpp */; };
 		B33DFD561579DB89005CF9EE /* ICMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DFD551579DB89005CF9EE /* ICMAnnotation.m */; };
 		B3457410158C7CB000D70E6B /* ICMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = B345740F158C7CB000D70E6B /* ICMUpdater.m */; };
 		B35C4886157F418300F5045C /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C4883157F418300F5045C /* Crypto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -110,7 +109,7 @@
 		B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */; };
 		B3EF61501552B4A300D24661 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */; };
 		B3EF61531552B4A300D24661 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */; };
-		B3EF61561552B4A300D24661 /* ICMSettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */; };
+		B3EF61561552B4A300D24661 /* ICMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMSettingsViewController.m */; };
 		B3EF61581552B4A300D24661 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61571552B4A300D24661 /* first.png */; };
 		B3EF615A1552B4A300D24661 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61591552B4A300D24661 /* first@2x.png */; };
 		B3EF615D1552B4A300D24661 /* ICMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */; };
@@ -239,7 +238,6 @@
 		B3240770157CB99A0080CFF0 /* CryptoCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoCommon.h; sourceTree = "<group>"; };
 		B3240771157CB99A0080CFF0 /* SecKeyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecKeyWrapper.h; sourceTree = "<group>"; };
 		B3240772157CB99A0080CFF0 /* SecKeyWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecKeyWrapper.m; sourceTree = "<group>"; };
-		B3356CA2156673D800AF8796 /* StartNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartNode.cpp; sourceTree = "<group>"; };
 		B33DFD541579DB89005CF9EE /* ICMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMAnnotation.h; sourceTree = "<group>"; };
 		B33DFD551579DB89005CF9EE /* ICMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMAnnotation.m; sourceTree = "<group>"; };
 		B345740E158C7CB000D70E6B /* ICMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMUpdater.h; sourceTree = "<group>"; };
@@ -315,7 +313,7 @@
 		B3EF614F1552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B3EF61521552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMSettingsViewController.h; sourceTree = "<group>"; };
-		B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ICMSettingsViewController.mm; sourceTree = "<group>"; };
+		B3EF61551552B4A300D24661 /* ICMSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICMSettingsViewController.m; sourceTree = "<group>"; };
 		B3EF61571552B4A300D24661 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		B3EF61591552B4A300D24661 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMSecondViewController.h; sourceTree = "<group>"; };
@@ -668,8 +666,7 @@
 				B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */,
 				B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */,
 				B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */,
-				B3EF61551552B4A300D24661 /* ICMSettingsViewController.mm */,
-				B3356CA2156673D800AF8796 /* StartNode.cpp */,
+				B3EF61551552B4A300D24661 /* ICMSettingsViewController.m */,
 				B3EF615B1552B4A300D24661 /* ICMSecondViewController.h */,
 				B3EF615C1552B4A300D24661 /* ICMSecondViewController.m */,
 				B3B0FAA9156F848E005FD285 /* CoreDataTableViewController.h */,
@@ -864,9 +861,8 @@
 			files = (
 				B3EF61491552B4A300D24661 /* main.m in Sources */,
 				B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */,
-				B3EF61561552B4A300D24661 /* ICMSettingsViewController.mm in Sources */,
+				B3EF61561552B4A300D24661 /* ICMSettingsViewController.m in Sources */,
 				B3EF615D1552B4A300D24661 /* ICMSecondViewController.m in Sources */,
-				B3356CA3156673D800AF8796 /* StartNode.cpp in Sources */,
 				B314F9E7156E54410066DDBB /* ICMAggregatorEngine.mm in Sources */,
 				B314F9EB156E5A680066DDBB /* messages.pb.cc in Sources */,
 				B314F9F3156E5F680066DDBB /* Base64Transcoder.c in Sources */,
