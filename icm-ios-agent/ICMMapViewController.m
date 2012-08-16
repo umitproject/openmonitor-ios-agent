@@ -8,6 +8,7 @@
 
 #import "ICMMapViewController.h"
 #import "ICMAnnotation.h"
+#import "ICMAggregatorEngine.h"
 
 @interface ICMMapViewController ()
 
@@ -101,6 +102,8 @@
 
 - (IBAction)refreshBtnTapped:(id)sender {
     [self plotCrimePositions];
+    ICMAggregatorEngine* engine = [ICMAggregatorEngine sharedEngine];
+    [engine getEvents];
 }
 
 @end
