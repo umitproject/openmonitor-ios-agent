@@ -63,6 +63,7 @@ typedef enum {
 {
     SecKeyWrapper * crypto;
     NSString* _agentId;
+    NSManagedObjectContext *managedObjectContext;
     
     __weak id<ICMAggregatorEngineDelegate> delegate;
 }

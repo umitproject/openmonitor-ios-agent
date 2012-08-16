@@ -74,10 +74,10 @@
     //    [engine registerAgentWithUsername:@"test" password:@"test"];
     //[self logInWithUsername:@"test" password:@"test"];
     //fuck yeah!
-    //[engine getEvents];
+    [engine getEvents];
     //[engine sendWebsiteReport];
     //[engine sendServiceReport];
-    [engine checkNewTests];
+    //[engine checkNewTests];
 }
 
 - (IBAction)logoutBtnTapped:(id)sender

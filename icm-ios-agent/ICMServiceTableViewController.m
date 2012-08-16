@@ -18,7 +18,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     
     if ((self = [super initWithCoder:aDecoder])) {
-        self.managedObjectContext = [ICMAppDelegate GetContext];;
+        self.managedObjectContext = [ICMAppDelegate GetContext];
 		self.titleKey = @"name";
 		self.subtitleKey = nil;
 		//self.searchKey = nil;//@"text";

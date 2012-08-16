@@ -10,12 +10,9 @@
 #import "SecKeyWrapper.h"
 #import "CryptoCommon.h"
 #import "NSData+Conversion.h"
-//#import "MF_Base64Additions.h"
 #import "NSData+CDBase64.h"
 
 #include "messages.pb.h"
-#include "Base64Transcoder.h"
-#include <fstream>
 
 @implementation ICMAggregatorEngine
 
@@ -54,6 +51,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         }
         crypto = [SecKeyWrapper sharedWrapper];
         [crypto prepareKeys];
+        managedObjectContext = [ICMAppDelegate GetContext];
     }
     return self;
 }
@@ -73,15 +71,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
 
 - (void)registerAgentWithUsername:(NSString *)name password:(NSString*)pass
 {
-	//return [self _sendRequestWithMethod:nil path:AGGR_REGISTER_AGENT queryParameters:nil body:nil 
-    //                        requestType:MGTwitterPublicTimelineRequest 
-    //                       responseType:MGTwitterStatuses];
-    
     // prepare key
     NSData* aeskey = [crypto getSymmetricKeyBytes];
-    //NSString* t = [NSString stringWithUTF8String:(const char *)[aeskey bytes]];
     NSLog(@"aes key: %@", aeskey);
-    //NSLog(@"aes key str: %@", t);
     NSString* aeskeyb64 = [aeskey base64EncodedString];
     NSLog(@"aes key b64 str: %@", aeskeyb64);
     NSData* aeskyb64data = [aeskeyb64 dataUsingEncoding:NSUTF8StringEncoding];
@@ -109,13 +101,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     rsaKey->set_exp([RSAKEY_EXP UTF8String]);
     
     std::string raStr = ra.SerializeAsString();
-    /*
-    org::umit::icm::mobile::proto::RegisterAgent ra2;
-    ra2.ParseFromString(raStr);
-    std::string ip2 = ra2.ip();
-    std::string agenttype2 = ra2.agenttype();
-    
-    NSLog(@"%s %s", ip2.c_str(), agenttype2.c_str());*/
     
     NSData * encrypted = [crypto encryptData:[NSData dataWithBytes:raStr.c_str() length:raStr.size()]];
     //NSLog(@"encrypted: %d %@", [encrypted length], encrypted);
@@ -137,10 +122,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         DLog(@"%@", operation);
         NSString *resp = [operation responseString];
-        
         NSData* respdata = [NSData dataWithBase64EncodedString:resp];
-        
-        //respdata = [respdata subdataWithRange:NSMakeRange(0,[respdata length]-1)];
         NSData * decrypted = [crypto decryptData:respdata];
         //NSLog(@"decrypted=%s", [decrypted bytes]);
         
@@ -174,8 +156,6 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     
     std::string msgStr = msg.SerializeAsString();
     NSData* msgData = [NSData dataWithBytes:msgStr.c_str() length:msgStr.size()];
-    //NSData * encrypted = [crypto encryptData:msgData];
-    //NSLog(@"encrypted: %@", encrypted);
     NSString* finalMsgb64 = [msgData base64EncodedString];
     NSLog(@"finalMsgb64:%@", finalMsgb64);
     
@@ -553,6 +533,12 @@ static ICMAggregatorEngine * __sharedEngine = nil;
                 org::umit::icm::mobile::proto::Website site = e.website();
                 std::string url = site.url();
                 NSLog(@"web %s", url.c_str());
+                ICMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
+                                                                 inManagedObjectContext:managedObjectContext];
+                [icmsite initWithUrl:[NSString stringWithCString:url.c_str() encoding:NSUTF8StringEncoding]
+                                name:[NSString stringWithCString:url.c_str() encoding:NSUTF8StringEncoding]
+                             enabled:true
+                                 uid:[NSString stringWithCString:testid.c_str() encoding:NSUTF8StringEncoding]];
             } else if (testtype == kServiceTest) {
                 // SERVICE
                 org::umit::icm::mobile::proto::Service service = e.service();
@@ -560,10 +546,19 @@ static ICMAggregatorEngine * __sharedEngine = nil;
                 std::string ip = service.ip();
                 int port = service.port();
                 NSLog(@"service %s %s %d", name.c_str(), ip.c_str(), port);
+                ICMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
+                                                                    inManagedObjectContext:managedObjectContext];
+                [icmservice initWithHost:[NSString stringWithCString:ip.c_str() encoding:NSUTF8StringEncoding]
+                                    port:port
+                                    name:[NSString stringWithCString:name.c_str() encoding:NSUTF8StringEncoding]
+                                 enabled:YES
+                                     uid:[NSString stringWithCString:testid.c_str() encoding:NSUTF8StringEncoding]];
             }
             
             NSLog(@"got test: %lld %d %s", timeutc, testtype, testid.c_str());
         }
+        [ICMAppDelegate SaveContext];
+        //TODO save the test version
         
     } onError:^(NSError *error) {
         
