@@ -154,19 +154,6 @@
          timestampString = "366973462.511704"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "207"
-         endingLineNumber = "207"
-         landmarkName = "-loginStep2:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366973462.511704"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
          startingLineNumber = "279"
          endingLineNumber = "279"
          landmarkName = "-logoutAgent"
@@ -183,45 +170,6 @@
          startingLineNumber = "169"
          endingLineNumber = "169"
          landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366973462.511704"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "241"
-         endingLineNumber = "241"
-         landmarkName = "-loginStep2:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366973462.511704"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
-         landmarkName = "-registerAgentWithUsername:password:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/ICMAggregatorEngine.mm"
-         timestampString = "366973462.511704"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
-         landmarkName = "-registerAgentWithUsername:password:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -332,19 +280,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "icm-ios-agent/LoginFormViewController.m"
-         timestampString = "366702320.380971"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "icm-ios-agent/ICMUpdater.m"
          timestampString = "366711332.134458"
          startingColumnNumber = "9223372036854775807"
@@ -352,6 +287,19 @@
          startingLineNumber = "136"
          endingLineNumber = "136"
          landmarkName = "-onUpdateWebsiteTimer"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "icm-ios-agent/ICMUpdater.m"
+         timestampString = "366991412.032936"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "238"
+         endingLineNumber = "238"
+         landmarkName = "-upsertWebsiteWithUrl:name:uid:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

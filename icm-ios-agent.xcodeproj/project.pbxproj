@@ -78,8 +78,10 @@
 		B391B2F715DA90A2009D71A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F615DA90A1009D71A7 /* Icon.png */; };
 		B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F815DA90D8009D71A7 /* Icon-Small.png */; };
 		B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */; };
+		B3965A0215DFD1BD00966123 /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0015DFD1BD00966123 /* model.xcdatamodeld */; };
+		B3965A0515DFD4A400966123 /* ICMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0415DFD4A400966123 /* ICMService.m */; };
+		B3965A0815DFD4A500966123 /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0715DFD4A500966123 /* ICMWebsite.m */; };
 		B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */; };
-		B3B0FA9F156F6A59005FD285 /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FA9D156F6A59005FD285 /* model.xcdatamodeld */; };
 		B3B0FAA8156F706B005FD285 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B0FAA7156F706B005FD285 /* CoreData.framework */; };
 		B3B0FAAD156F848F005FD285 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */; };
 		B3B0FAAE156F848F005FD285 /* ICMWebsiteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAC156F848F005FD285 /* ICMWebsiteTableViewController.m */; };
@@ -99,8 +101,6 @@
 		B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */; };
 		B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */; };
 		B3D1AD3515DF366A006A63C1 /* open_monitor_200.png in Resources */ = {isa = PBXBuildFile; fileRef = B3D1AD3415DF366A006A63C1 /* open_monitor_200.png */; };
-		B3D451E915DB8E2600FB5F9F /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D451E815DB8E2600FB5F9F /* ICMWebsite.m */; };
-		B3D451EC15DB8E2700FB5F9F /* ICMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D451EB15DB8E2700FB5F9F /* ICMService.m */; };
 		B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613C1552B4A300D24661 /* UIKit.framework */; };
 		B3EF613F1552B4A300D24661 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613E1552B4A300D24661 /* Foundation.framework */; };
 		B3EF61411552B4A300D24661 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF61401552B4A300D24661 /* CoreGraphics.framework */; };
@@ -268,9 +268,13 @@
 		B391B2F615DA90A1009D71A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		B391B2F815DA90D8009D71A7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "../Icon-Small.png"; sourceTree = "<group>"; };
 		B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "../Icon-Small@2x.png"; sourceTree = "<group>"; };
+		B3965A0115DFD1BD00966123 /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
+		B3965A0315DFD4A400966123 /* ICMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMService.h; sourceTree = "<group>"; };
+		B3965A0415DFD4A400966123 /* ICMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMService.m; sourceTree = "<group>"; };
+		B3965A0615DFD4A500966123 /* ICMWebsite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMWebsite.h; sourceTree = "<group>"; };
+		B3965A0715DFD4A500966123 /* ICMWebsite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsite.m; sourceTree = "<group>"; };
 		B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
-		B3B0FA9E156F6A59005FD285 /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
 		B3B0FAA7156F706B005FD285 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B3B0FAA9156F848E005FD285 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
@@ -295,10 +299,6 @@
 		B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CDBase64.m"; sourceTree = "<group>"; };
 		B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDBase64.m"; sourceTree = "<group>"; };
 		B3D1AD3415DF366A006A63C1 /* open_monitor_200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_monitor_200.png; sourceTree = "<group>"; };
-		B3D451E715DB8E2600FB5F9F /* ICMWebsite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMWebsite.h; sourceTree = "<group>"; };
-		B3D451E815DB8E2600FB5F9F /* ICMWebsite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsite.m; sourceTree = "<group>"; };
-		B3D451EA15DB8E2600FB5F9F /* ICMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMService.h; sourceTree = "<group>"; };
-		B3D451EB15DB8E2700FB5F9F /* ICMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMService.m; sourceTree = "<group>"; };
 		B3EF61381552B4A300D24661 /* icm-ios-agent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "icm-ios-agent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EF613C1552B4A300D24661 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3EF613E1552B4A300D24661 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -602,11 +602,11 @@
 		B3B0FAA6156F6FC7005FD285 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B3B0FA9D156F6A59005FD285 /* model.xcdatamodeld */,
-				B3D451EA15DB8E2600FB5F9F /* ICMService.h */,
-				B3D451EB15DB8E2700FB5F9F /* ICMService.m */,
-				B3D451E715DB8E2600FB5F9F /* ICMWebsite.h */,
-				B3D451E815DB8E2600FB5F9F /* ICMWebsite.m */,
+				B3965A0015DFD1BD00966123 /* model.xcdatamodeld */,
+				B3965A0615DFD4A500966123 /* ICMWebsite.h */,
+				B3965A0715DFD4A500966123 /* ICMWebsite.m */,
+				B3965A0315DFD4A400966123 /* ICMService.h */,
+				B3965A0415DFD4A400966123 /* ICMService.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -875,7 +875,6 @@
 				B314FA17156E73770066DDBB /* MKNetworkEngine.m in Sources */,
 				B314FA18156E73770066DDBB /* MKNetworkOperation.m in Sources */,
 				B314FA19156E73770066DDBB /* Reachability.m in Sources */,
-				B3B0FA9F156F6A59005FD285 /* model.xcdatamodeld in Sources */,
 				B3B0FAAD156F848F005FD285 /* CoreDataTableViewController.m in Sources */,
 				B3B0FAAE156F848F005FD285 /* ICMWebsiteTableViewController.m in Sources */,
 				B3B0FAB4156F8922005FD285 /* NSStringHelper.m in Sources */,
@@ -925,8 +924,9 @@
 				B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */,
 				B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */,
 				B319A32D15DB526700C3B927 /* ICMRootViewController.m in Sources */,
-				B3D451E915DB8E2600FB5F9F /* ICMWebsite.m in Sources */,
-				B3D451EC15DB8E2700FB5F9F /* ICMService.m in Sources */,
+				B3965A0215DFD1BD00966123 /* model.xcdatamodeld in Sources */,
+				B3965A0515DFD4A400966123 /* ICMService.m in Sources */,
+				B3965A0815DFD4A500966123 /* ICMWebsite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,12 +1148,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B3B0FA9D156F6A59005FD285 /* model.xcdatamodeld */ = {
+		B3965A0015DFD1BD00966123 /* model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B3B0FA9E156F6A59005FD285 /* model.xcdatamodel */,
+				B3965A0115DFD1BD00966123 /* model.xcdatamodel */,
 			);
-			currentVersion = B3B0FA9E156F6A59005FD285 /* model.xcdatamodel */;
+			currentVersion = B3965A0115DFD1BD00966123 /* model.xcdatamodel */;
 			path = model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

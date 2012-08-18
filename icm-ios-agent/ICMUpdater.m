@@ -234,6 +234,7 @@ static ICMUpdater * sharedUpdater = nil;
 
 - (void)upsertWebsiteWithUrl:(NSString*)url name:(NSString*)name uid:(NSString*)uid
 {
+    [self refetchData];
     for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
         if ([site.uid isEqualToString:uid]) {
             return;
@@ -250,6 +251,7 @@ static ICMUpdater * sharedUpdater = nil;
 
 - (void)upsertServiceWithHost:(NSString*)host port:(int)port name:(NSString*)name uid:(NSString*)uid
 {
+    [self refetchData];
     for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
         if ([service.uid isEqualToString:uid]) {
             return;
