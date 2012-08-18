@@ -49,7 +49,7 @@
     self.title = @"Login";
     
     UILabel *footer = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    footer.text = @"Please provide your Open Monitor username and password.";
+    footer.text = @"Please provide your Open Monitor username and password. If you don't have one, tap on the Register button to get one.";
     
     footer.backgroundColor = [UIColor clearColor];
     footer.font = [UIFont systemFontOfSize:15];

@@ -98,6 +98,7 @@
 		B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CF44301579043200B954FA /* ICMMapViewController.m */; };
 		B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */; };
 		B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */; };
+		B3D1AD3515DF366A006A63C1 /* open_monitor_200.png in Resources */ = {isa = PBXBuildFile; fileRef = B3D1AD3415DF366A006A63C1 /* open_monitor_200.png */; };
 		B3D451E915DB8E2600FB5F9F /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D451E815DB8E2600FB5F9F /* ICMWebsite.m */; };
 		B3D451EC15DB8E2700FB5F9F /* ICMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D451EB15DB8E2700FB5F9F /* ICMService.m */; };
 		B3EF613D1552B4A300D24661 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EF613C1552B4A300D24661 /* UIKit.framework */; };
@@ -293,6 +294,7 @@
 		B3D00BE915D8F349002B205C /* NSString+CDBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CDBase64.h"; sourceTree = "<group>"; };
 		B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CDBase64.m"; sourceTree = "<group>"; };
 		B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDBase64.m"; sourceTree = "<group>"; };
+		B3D1AD3415DF366A006A63C1 /* open_monitor_200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_monitor_200.png; sourceTree = "<group>"; };
 		B3D451E715DB8E2600FB5F9F /* ICMWebsite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMWebsite.h; sourceTree = "<group>"; };
 		B3D451E815DB8E2600FB5F9F /* ICMWebsite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsite.m; sourceTree = "<group>"; };
 		B3D451EA15DB8E2600FB5F9F /* ICMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMService.h; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 		B381E6F5157121920034BD46 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3D1AD3415DF366A006A63C1 /* open_monitor_200.png */,
 				B391B2F815DA90D8009D71A7 /* Icon-Small.png */,
 				B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */,
 				B391B2F615DA90A1009D71A7 /* Icon.png */,
@@ -820,6 +823,7 @@
 				B391B2F715DA90A2009D71A7 /* Icon.png in Resources */,
 				B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */,
 				B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */,
+				B3D1AD3515DF366A006A63C1 /* open_monitor_200.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
