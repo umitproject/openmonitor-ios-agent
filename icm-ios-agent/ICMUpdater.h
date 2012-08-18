@@ -46,4 +46,7 @@
 - (void)fireWebsiteTimer;
 - (void)fireServiceTimer;
 
+- (void)upsertWebsiteWithUrl:(NSString*)url name:(NSString*)name uid:(NSString*)uid;
+- (void)upsertServiceWithHost:(NSString*)host port:(int)port name:(NSString*)name uid:(NSString*)uid;
+
 @end

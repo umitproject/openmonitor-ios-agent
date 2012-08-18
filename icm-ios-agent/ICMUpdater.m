@@ -230,6 +230,42 @@ static ICMUpdater * sharedUpdater = nil;
 }
 
 #pragma mark -
+#pragma mark upsert
+
+- (void)upsertWebsiteWithUrl:(NSString*)url name:(NSString*)name uid:(NSString*)uid
+{
+    for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
+        if ([site.uid isEqualToString:uid]) {
+            return;
+        }
+    }
+    ICMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
+                                                        inManagedObjectContext:managedObjectContext];
+    [icmsite initWithUrl:url
+                    name:name
+                 enabled:true
+                     uid:uid];
+    [ICMAppDelegate SaveContext];
+}
+
+- (void)upsertServiceWithHost:(NSString*)host port:(int)port name:(NSString*)name uid:(NSString*)uid
+{
+    for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
+        if ([service.uid isEqualToString:uid]) {
+            return;
+        }
+    }
+    ICMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
+                                                           inManagedObjectContext:managedObjectContext];
+    [icmservice initWithHost:host
+                        port:port
+                        name:name
+                     enabled:YES
+                         uid:uid];
+    [ICMAppDelegate SaveContext];
+}
+
+#pragma mark -
 #pragma mark Fetched results controller
 
 - (NSFetchedResultsController *)websiteFetchedResultsController {

@@ -11,6 +11,7 @@
 #import "CryptoCommon.h"
 #import "NSData+Conversion.h"
 #import "NSData+CDBase64.h"
+#import "ICMUpdater.h"
 
 #include "messages.pb.h"
 
@@ -115,7 +116,9 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     //NSLog(@"finalKeyb64:%@", finalKeyb64);
     
     MKNetworkOperation *op = [self operationWithPath:AGGR_REGISTER_AGENT
-                                              params:[NSDictionary dictionaryWithObjectsAndKeys:                                     finalMsgb64, AGGR_MSG_KEY,                                           finalKeyb64, AGGR_KEY_KEY, nil]
+                                              params:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                      finalMsgb64, AGGR_MSG_KEY,
+                                                      finalKeyb64, AGGR_KEY_KEY, nil]
                                           httpMethod:@"POST"];
     
     [op onCompletion:^(MKNetworkOperation *operation) {
@@ -162,7 +165,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -210,7 +213,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGIN2
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -259,7 +262,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_LOGOUT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -321,7 +324,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_GET_EVENTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -403,7 +406,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_SEND_WEBSITE_REPORT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -462,7 +465,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_SEND_SERVICE_REPORT
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -505,7 +508,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_TESTS
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -523,6 +526,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         
         int es = rar.tests_size();
         NSLog(@"got %d tests", es);
+        ICMUpdater* updater = [ICMUpdater sharedUpdater];
         for (int i = 0; i < es; i++) {
             org::umit::icm::mobile::proto::Test e = rar.tests(i);
             std::string testid = e.testid();
@@ -533,12 +537,11 @@ static ICMAggregatorEngine * __sharedEngine = nil;
                 org::umit::icm::mobile::proto::Website site = e.website();
                 std::string url = site.url();
                 NSLog(@"web %s", url.c_str());
-                ICMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
-                                                                 inManagedObjectContext:managedObjectContext];
-                [icmsite initWithUrl:[NSString stringWithCString:url.c_str() encoding:NSUTF8StringEncoding]
-                                name:[NSString stringWithCString:url.c_str() encoding:NSUTF8StringEncoding]
-                             enabled:true
-                                 uid:[NSString stringWithCString:testid.c_str() encoding:NSUTF8StringEncoding]];
+                
+                [updater upsertWebsiteWithUrl:[NSString stringWithCString:url.c_str() encoding:NSUTF8StringEncoding]
+                                         name:[NSString stringWithCString:url.c_str() encoding:NSUTF8StringEncoding]
+                                          uid:[NSString stringWithCString:testid.c_str() encoding:NSUTF8StringEncoding]];
+                
             } else if (testtype == kServiceTest) {
                 // SERVICE
                 org::umit::icm::mobile::proto::Service service = e.service();
@@ -546,13 +549,10 @@ static ICMAggregatorEngine * __sharedEngine = nil;
                 std::string ip = service.ip();
                 int port = service.port();
                 NSLog(@"service %s %s %d", name.c_str(), ip.c_str(), port);
-                ICMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
-                                                                    inManagedObjectContext:managedObjectContext];
-                [icmservice initWithHost:[NSString stringWithCString:ip.c_str() encoding:NSUTF8StringEncoding]
-                                    port:port
-                                    name:[NSString stringWithCString:name.c_str() encoding:NSUTF8StringEncoding]
-                                 enabled:YES
-                                     uid:[NSString stringWithCString:testid.c_str() encoding:NSUTF8StringEncoding]];
+                [updater upsertServiceWithHost:[NSString stringWithCString:ip.c_str() encoding:NSUTF8StringEncoding]
+                                          port:port
+                                          name:[NSString stringWithCString:name.c_str() encoding:NSUTF8StringEncoding]
+                                           uid:[NSString stringWithCString:testid.c_str() encoding:NSUTF8StringEncoding]];
             }
             
             NSLog(@"got test: %lld %d %s", timeutc, testtype, testid.c_str());
@@ -583,7 +583,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_WEBSITE_SUGGESTION
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -639,7 +639,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_SERVICE_SUGGESTION
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -703,7 +703,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_VERSION
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
@@ -742,7 +742,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     MKNetworkOperation *op = [self operationWithPath:AGGR_CHECK_AGGREGATOR
                                               params:[NSDictionary dictionaryWithObjectsAndKeys:
                                                       finalMsgb64, AGGR_MSG_KEY,
-                                                      [NSString stringWithFormat:@"%@", self.agentId], AGGR_AGENT_ID_KEY,
+                                                      self.agentId, AGGR_AGENT_ID_KEY,
                                                       nil]
                                           httpMethod:@"POST"];
     
