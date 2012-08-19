@@ -78,7 +78,6 @@
 		B391B2F715DA90A2009D71A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F615DA90A1009D71A7 /* Icon.png */; };
 		B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F815DA90D8009D71A7 /* Icon-Small.png */; };
 		B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */; };
-		B3965A0215DFD1BD00966123 /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0015DFD1BD00966123 /* model.xcdatamodeld */; };
 		B3965A0515DFD4A400966123 /* ICMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0415DFD4A400966123 /* ICMService.m */; };
 		B3965A0815DFD4A500966123 /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0715DFD4A500966123 /* ICMWebsite.m */; };
 		B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */; };
@@ -95,6 +94,7 @@
 		B3C98A9915D4DA3F00D231D9 /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9415D4DA3F00D231D9 /* service@2x.png */; };
 		B3C98A9A15D4DA3F00D231D9 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9515D4DA3F00D231D9 /* settings@2x.png */; };
 		B3C98A9B15D4DA3F00D231D9 /* website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9615D4DA3F00D231D9 /* website@2x.png */; };
+		B3C99F2A15E09F250063C74F /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0015DFD1BD00966123 /* model.xcdatamodeld */; };
 		B3CF44291578FFF200B954FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF44281578FFF200B954FA /* MapKit.framework */; };
 		B3CF442B1578FFFC00B954FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF442A1578FFFB00B954FA /* CoreLocation.framework */; };
 		B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CF44301579043200B954FA /* ICMMapViewController.m */; };
@@ -924,9 +924,9 @@
 				B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */,
 				B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */,
 				B319A32D15DB526700C3B927 /* ICMRootViewController.m in Sources */,
-				B3965A0215DFD1BD00966123 /* model.xcdatamodeld in Sources */,
 				B3965A0515DFD4A400966123 /* ICMService.m in Sources */,
 				B3965A0815DFD4A500966123 /* ICMWebsite.m in Sources */,
+				B3C99F2A15E09F250063C74F /* model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,6 +1156,7 @@
 			currentVersion = B3965A0115DFD1BD00966123 /* model.xcdatamodel */;
 			path = model.xcdatamodeld;
 			sourceTree = "<group>";
+			usesTabs = 0;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
