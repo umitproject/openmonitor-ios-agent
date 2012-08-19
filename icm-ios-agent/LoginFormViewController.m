@@ -122,6 +122,8 @@
         [inputTF setFont:[UIFont fontWithName:@"Helvetica" size:16]];
         if (indexPath.row == 0) {
             usernameTF = inputTF;
+            usernameTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            usernameTF.autocorrectionType = UITextAutocorrectionTypeNo;
             [usernameTF becomeFirstResponder];
         } else {
             inputTF.secureTextEntry = true;
