@@ -44,12 +44,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     }
     
     if (self = [super initWithHostName:host customHeaderFields:nil]) {
-        NSString * agentid = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_AGENT_ID_KEY];
-        if (agentid != nil) {
-            self.agentId = agentid;
-        } else {
-            self.agentId = nil;
-        }
+        self.agentId = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_AGENT_ID_KEY];
         crypto = [SecKeyWrapper sharedWrapper];
         [crypto prepareKeys];
         managedObjectContext = [ICMAppDelegate GetContext];
@@ -57,12 +52,14 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     return self;
 }
 
+- (bool)isRegistered
+{
+    return (self.agentId != nil);
+}
+
 - (bool)isLoggedIn
 {
-    if (self.agentId != nil) {
-        return YES;
-    }
-    return NO;
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_LOGIN_STATUS_KEY] boolValue];
 }
 
 #pragma mark -
@@ -235,12 +232,15 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         org::umit::icm::mobile::proto::ResponseHeader header = resp.header();
         NSLog(@"Got report response: curversionno=%d curtestversiono=%d", header.currentversionno(), header.currenttestversionno());
         
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:NSDEFAULT_LOGIN_STATUS_KEY];
+        
         [self.delegate agentLoggedInWithError:nil];
         [self checkNewTests];
         
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:NSDEFAULT_LOGIN_STATUS_KEY];
         [self.delegate agentLoggedInWithError:error];
     }];
     
@@ -277,13 +277,14 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         std::string status = resp.status();
         NSString* statusStr = [NSString stringWithCString:status.c_str() encoding:NSUTF8StringEncoding];
         NSLog(@"Logout Status: %@", statusStr);
-        self.agentId = nil;
-        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:NSDEFAULT_AGENT_ID_KEY];
+
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:NSDEFAULT_LOGIN_STATUS_KEY];
         [self.delegate agentLoggedOutWithError:nil];
         
     } onError:^(NSError *error) {
         
         DLog(@"%@", error);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:NSDEFAULT_LOGIN_STATUS_KEY];
         [self.delegate agentLoggedOutWithError:error];
         
     }];

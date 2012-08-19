@@ -83,9 +83,8 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-    } else {
-        [self performLoginIfRequired];
     }
+    [self performLoginIfRequired];
 }
 
 @end

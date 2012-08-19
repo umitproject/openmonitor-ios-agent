@@ -43,6 +43,7 @@
 
 #define NSDEFAULT_AGGR_HOST_KEY @"aggregatorHost"
 #define NSDEFAULT_AGENT_ID_KEY @"agentID"
+#define NSDEFAULT_LOGIN_STATUS_KEY @"isLoggedIn"
 
 typedef enum {
     kStatusNormal=1,
@@ -80,6 +81,7 @@ typedef enum {
 // All methods below return a unique connection identifier.
 // ===========================================================
 
+- (bool)isRegistered;
 - (bool)isLoggedIn;
 - (void)registerAgentWithUsername:(NSString *)name password:(NSString*)pass; // registeragent
 - (void)loginStep1;
