@@ -134,6 +134,8 @@ static ICMAggregatorEngine * __sharedEngine = nil;
         self.agentId = [NSString stringWithCString:aid.c_str() encoding:NSUTF8StringEncoding];
         NSLog(@"saving agentid: %@", self.agentId);
         [[NSUserDefaults standardUserDefaults] setObject:self.agentId forKey:NSDEFAULT_AGENT_ID_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:name forKey:NSDEFAULT_USERNAME_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:pass forKey:NSDEFAULT_PASSWORD_KEY];
         
         [self loginStep1];
         

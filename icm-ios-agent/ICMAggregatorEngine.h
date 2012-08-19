@@ -44,6 +44,8 @@
 #define NSDEFAULT_AGGR_HOST_KEY @"aggregatorHost"
 #define NSDEFAULT_AGENT_ID_KEY @"agentID"
 #define NSDEFAULT_LOGIN_STATUS_KEY @"isLoggedIn"
+#define NSDEFAULT_USERNAME_KEY @"username"
+#define NSDEFAULT_PASSWORD_KEY @"password"
 
 typedef enum {
     kStatusNormal=1,

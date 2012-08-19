@@ -50,11 +50,15 @@
 - (void)logInWithUsername:(NSString *)name password:(NSString*)pass
 {
     engine.delegate = self;
-    if (engine.agentId == nil) {
-        //FIXME name and pass
-        [engine registerAgentWithUsername:name password:name];
-    } else {
+    
+    NSString * username = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_USERNAME_KEY];
+    NSString * password = [[NSUserDefaults standardUserDefaults] objectForKey:NSDEFAULT_PASSWORD_KEY];
+    if ([name isEqualToString:username]
+        && [pass isEqualToString:password]
+        && engine.agentId != nil) {
         [engine loginStep1];
+    } else {
+        [engine registerAgentWithUsername:name password:name];
     }
 }
 
