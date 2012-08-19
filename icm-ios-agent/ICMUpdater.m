@@ -68,21 +68,23 @@ static ICMUpdater * sharedUpdater = nil;
 
 - (void)refetchData
 {
-    self.websiteFetchedResultsController = nil;
-    self.serviceFetchedResultsController = nil;
-    NSError *error = nil;
-    if (![[self websiteFetchedResultsController] performFetch:&error]
-        || ![[self serviceFetchedResultsController] performFetch:&error]
-        //|| ![[self pageFetchedResultsController] performFetch:&error]
-        ) {
-		/*
-		 Replace this implementation with code to handle the error appropriately.
-		 
-		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-		 */
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		//abort();
-	}
+    @synchronized(self) {
+        self.websiteFetchedResultsController = nil;
+        self.serviceFetchedResultsController = nil;
+        NSError *error = nil;
+        if (![[self websiteFetchedResultsController] performFetch:&error]
+            || ![[self serviceFetchedResultsController] performFetch:&error]
+            //|| ![[self pageFetchedResultsController] performFetch:&error]
+            ) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            //abort();
+        }
+    }
 }
 
 -(void) startTimers
@@ -235,36 +237,40 @@ static ICMUpdater * sharedUpdater = nil;
 - (void)upsertWebsiteWithUrl:(NSString*)url name:(NSString*)name uid:(NSString*)uid
 {
     [self refetchData];
-    for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
-        if ([site.uid isEqualToString:uid]) {
-            return;
+    @synchronized(self) {
+        for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
+            if ([site.uid isEqualToString:uid]) {
+                return;
+            }
         }
+        ICMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
+                                                            inManagedObjectContext:managedObjectContext];
+        [icmsite initWithUrl:url
+                        name:name
+                     enabled:true
+                         uid:uid];
+        [ICMAppDelegate SaveContext];
     }
-    ICMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
-                                                        inManagedObjectContext:managedObjectContext];
-    [icmsite initWithUrl:url
-                    name:name
-                 enabled:true
-                     uid:uid];
-    [ICMAppDelegate SaveContext];
 }
 
 - (void)upsertServiceWithHost:(NSString*)host port:(int)port name:(NSString*)name uid:(NSString*)uid
 {
     [self refetchData];
-    for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
-        if ([service.uid isEqualToString:uid]) {
-            return;
+    @synchronized(self) {
+        for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
+            if ([service.uid isEqualToString:uid]) {
+                return;
+            }
         }
+        ICMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
+                                                               inManagedObjectContext:managedObjectContext];
+        [icmservice initWithHost:host
+                            port:port
+                            name:name
+                         enabled:YES
+                             uid:uid];
+        [ICMAppDelegate SaveContext];
     }
-    ICMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
-                                                           inManagedObjectContext:managedObjectContext];
-    [icmservice initWithHost:host
-                        port:port
-                        name:name
-                     enabled:YES
-                         uid:uid];
-    [ICMAppDelegate SaveContext];
 }
 
 #pragma mark -
