@@ -122,10 +122,14 @@
         [inputTF setFont:[UIFont fontWithName:@"Helvetica" size:16]];
         if (indexPath.row == 0) {
             nameTF = inputTF;
+            nameTF.autocorrectionType = UITextAutocorrectionTypeNo;
             [nameTF becomeFirstResponder];
         } else {
             //inputTF.secureTextEntry = true;
             urlTF = inputTF;
+            urlTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            urlTF.autocorrectionType = UITextAutocorrectionTypeNo;
+            urlTF.keyboardType = UIKeyboardTypeURL;
         }
         [cell.contentView addSubview:inputTF];
     }

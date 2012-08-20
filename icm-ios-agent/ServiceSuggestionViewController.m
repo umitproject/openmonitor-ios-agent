@@ -126,13 +126,23 @@
         [inputTF setFont:[UIFont fontWithName:@"Helvetica" size:16]];
         if (indexPath.row == 0) {
             nameTF = inputTF;
+            nameTF.autocorrectionType = UITextAutocorrectionTypeNo;
             [nameTF becomeFirstResponder];
         } else if (indexPath.row == 1) {
             hostTF = inputTF;
+            hostTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            hostTF.autocorrectionType = UITextAutocorrectionTypeNo;
+            hostTF.keyboardType = UIKeyboardTypeURL;
         } else if (indexPath.row == 2) {
             ipTF = inputTF;
+            ipTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            ipTF.autocorrectionType = UITextAutocorrectionTypeNo;
+            ipTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         } else if (indexPath.row == 3) {
             portTF = inputTF;
+            portTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            portTF.autocorrectionType = UITextAutocorrectionTypeNo;
+            portTF.keyboardType = UIKeyboardTypeNumberPad;
         }
         [cell.contentView addSubview:inputTF];
     }
