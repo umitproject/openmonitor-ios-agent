@@ -68,7 +68,7 @@
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *keys = [NSArray arrayWithObjects:@"autoLogin", @"aggregatorHost", @"updateInterval", nil];
-    NSArray *objects = [NSArray arrayWithObjects:[NSNumber numberWithBool:YES], @"east1.openmonitor.org", [NSNumber numberWithInteger:300], nil];
+    NSArray *objects = [NSArray arrayWithObjects:[NSNumber numberWithBool:YES], @"east1.openmonitor.org", [NSNumber numberWithInteger:600], nil];
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjects:objects 
                                                            forKeys:keys];
     [defaults registerDefaults:appDefaults];
