@@ -8,7 +8,7 @@
 
 #import "ICMSettingsViewController.h"
 #import "ICMUpdater.h"
-#import "ICMService.h"
+#import "OMService.h"
 
 @interface ICMSettingsViewController ()
 

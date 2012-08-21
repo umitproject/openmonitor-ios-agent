@@ -7,7 +7,7 @@
 //
 #import "QuartzCore/QuartzCore.h"
 #import "ICMWebsiteTableViewController.h"
-#import "ICMWebsite.h"
+#import "OMWebsite.h"
 #import "ICMAppDelegate.h"
 #import "ICMUpdater.h"
 
@@ -59,7 +59,7 @@
 - (void)performFetchAndReload
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    request.entity = [NSEntityDescription entityForName:@"ICMWebsite" inManagedObjectContext:self.managedObjectContext];
+    request.entity = [NSEntityDescription entityForName:@"OMWebsite" inManagedObjectContext:self.managedObjectContext];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                                      ascending:YES
                                                                                       selector:nil]];
@@ -85,7 +85,7 @@
 
 - (UIImage *)thumbnailImageForManagedObject:(NSManagedObject *)managedObject withIndexPath:(NSIndexPath*)indexPath
 {
-    ICMWebsite* site = (ICMWebsite*)managedObject;
+    OMWebsite* site = (OMWebsite*)managedObject;
     NSString * imageUrlString = [NSString stringWithFormat:@"%@/favicon.ico", site.url];
     if (imageUrlString && [imageUrlString length] > 0) {
         UIImage *image = [self.imageCache objectForKey:imageUrlString];
@@ -105,7 +105,7 @@
 
 - (UIImage *)statusImageForManagedObject:(NSManagedObject *)managedObject
 {
-    ICMWebsite* website = (ICMWebsite*)managedObject;
+    OMWebsite* website = (OMWebsite*)managedObject;
     if ([website.status intValue] == 200) {
         return [UIImage imageNamed:@"pinhead-green"];
     }
@@ -133,7 +133,7 @@
         cell.detailTextLabel.textColor = [UIColor darkTextColor];
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
-        ICMWebsite* site = (ICMWebsite*)managedObject;
+        OMWebsite* site = (OMWebsite*)managedObject;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"URL: %@\nStatus: %@\nDate: %@", site.url, site.status, [site.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
@@ -167,7 +167,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ICMWebsite *site = (ICMWebsite *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    OMWebsite *site = (OMWebsite *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"selected site with url %@", site.url);
     
     //The user is selecting the cell which is currently expanded
@@ -264,7 +264,7 @@
             UITableViewCell * cell = [self tableView:self.tableView cellForManagedObject:managedObject atIndex:indexPath];
             if (!cell.accessoryView) // avoid the app icon download if the app already has an icon
             {
-                ICMWebsite* site = (ICMWebsite*)managedObject;
+                OMWebsite* site = (OMWebsite*)managedObject;
                 NSString * imageUrlString = [NSString stringWithFormat:@"%@/favicon.ico", site.url];
                 //NSLog(@"thumb url: %@", imageUrlString);
                 if (imageUrlString && [imageUrlString length] > 0) {

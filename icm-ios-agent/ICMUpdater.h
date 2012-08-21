@@ -10,8 +10,8 @@
 #import "Reachability.h"
 #import "GCDAsyncSocket.h"
 #import "ICMAggregatorEngine.h"
-#import "ICMWebsite.h"
-#import "ICMService.h"
+#import "OMWebsite.h"
+#import "OMService.h"
 
 @interface ICMUpdater : MKNetworkEngine <GCDAsyncSocketDelegate>
 {

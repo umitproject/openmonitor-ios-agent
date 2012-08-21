@@ -140,7 +140,7 @@ static ICMUpdater * sharedUpdater = nil;
         return;
     }
     
-    for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
+    for (OMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
         NSLog(@"website: %@", site.name);
         [self dispatchRefreshingRequestForWebsite:site];
     }
@@ -161,13 +161,13 @@ static ICMUpdater * sharedUpdater = nil;
         return;
     }
     
-    for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
+    for (OMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
         NSLog(@"service: %@", service.name);
         [self dispatchRefreshingRequestForService:service];
     }
 }
 
-- (void)dispatchRefreshingRequestForWebsite:(ICMWebsite*)site
+- (void)dispatchRefreshingRequestForWebsite:(OMWebsite*)site
 {
     @synchronized(self.aggregatorEngine)
     {
@@ -193,7 +193,7 @@ static ICMUpdater * sharedUpdater = nil;
     }
 }
 
-- (void)dispatchRefreshingRequestForService:(ICMService*)service
+- (void)dispatchRefreshingRequestForService:(OMService*)service
 {
     @synchronized(self.aggregatorEngine)
     {
@@ -214,7 +214,7 @@ static ICMUpdater * sharedUpdater = nil;
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"Cool, I'm connected! That was easy.");
-    ICMService* service = (ICMService*)sock.userData;
+    OMService* service = (OMService*)sock.userData;
     service.status = [NSNumber numberWithInt:kStatusNormal];
     service.lastcheck = [NSDate date];
     [ICMAppDelegate SaveContext];
@@ -224,7 +224,7 @@ static ICMUpdater * sharedUpdater = nil;
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
     NSLog(@"Geez, not connected");
-    ICMService* service = (ICMService*)sock.userData;
+    OMService* service = (OMService*)sock.userData;
     service.status = [NSNumber numberWithInt:kStatusDown];
     service.lastcheck = [NSDate date];
     [ICMAppDelegate SaveContext];
@@ -238,12 +238,12 @@ static ICMUpdater * sharedUpdater = nil;
 {
     [self refetchData];
     @synchronized(self) {
-        for (ICMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
+        for (OMWebsite* site in [self.websiteFetchedResultsController fetchedObjects]) {
             if ([site.uid isEqualToString:uid]) {
                 return;
             }
         }
-        ICMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"ICMWebsite"
+        OMWebsite* icmsite = [NSEntityDescription insertNewObjectForEntityForName:@"OMWebsite"
                                                             inManagedObjectContext:managedObjectContext];
         [icmsite initWithUrl:url
                         name:name
@@ -257,12 +257,12 @@ static ICMUpdater * sharedUpdater = nil;
 {
     [self refetchData];
     @synchronized(self) {
-        for (ICMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
+        for (OMService* service in [self.serviceFetchedResultsController fetchedObjects]) {
             if ([service.uid isEqualToString:uid]) {
                 return;
             }
         }
-        ICMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"ICMService"
+        OMService* icmservice = [NSEntityDescription insertNewObjectForEntityForName:@"OMService"
                                                                inManagedObjectContext:managedObjectContext];
         [icmservice initWithHost:host
                             port:port
@@ -282,7 +282,7 @@ static ICMUpdater * sharedUpdater = nil;
         // Create the fetch request for the entity.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ICMWebsite" inManagedObjectContext:managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OMWebsite" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.
@@ -316,7 +316,7 @@ static ICMUpdater * sharedUpdater = nil;
         // Create the fetch request for the entity.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ICMService" inManagedObjectContext:managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OMService" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.

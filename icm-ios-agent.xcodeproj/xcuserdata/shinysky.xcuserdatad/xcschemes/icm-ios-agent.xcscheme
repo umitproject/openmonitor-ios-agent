@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B3EF61371552B4A300D24661"
-               BuildableName = "icm-ios-agent.app"
+               BuildableName = "Open Monitor.app"
                BlueprintName = "icm-ios-agent"
                ReferencedContainer = "container:icm-ios-agent.xcodeproj">
             </BuildableReference>
@@ -42,7 +42,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B3EF61371552B4A300D24661"
-            BuildableName = "icm-ios-agent.app"
+            BuildableName = "Open Monitor.app"
             BlueprintName = "icm-ios-agent"
             ReferencedContainer = "container:icm-ios-agent.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B3EF61371552B4A300D24661"
-            BuildableName = "icm-ios-agent.app"
+            BuildableName = "Open Monitor.app"
             BlueprintName = "icm-ios-agent"
             ReferencedContainer = "container:icm-ios-agent.xcodeproj">
          </BuildableReference>
@@ -74,11 +74,6 @@
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "DYLD_INSERT_LIBRARIES"
-            value = "/usr/lib/libgmalloc.dylib"
-            isEnabled = "YES">
-         </AdditionalOption>
          <AdditionalOption
             key = "MallocStackLogging"
             value = ""
@@ -101,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B3EF61371552B4A300D24661"
-            BuildableName = "icm-ios-agent.app"
+            BuildableName = "Open Monitor.app"
             BlueprintName = "icm-ios-agent"
             ReferencedContainer = "container:icm-ios-agent.xcodeproj">
          </BuildableReference>

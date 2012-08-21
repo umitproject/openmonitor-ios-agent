@@ -1,22 +1,22 @@
 //
-//  ICMWebsite.m
+//  OMWebsite.m
 //  icm-ios-agent
 //
-//  Created by shinysky on 12-8-15.
+//  Created by shinysky on 12-8-21.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ICMWebsite.h"
+#import "OMWebsite.h"
 
 
-@implementation ICMWebsite
+@implementation OMWebsite
 
-@dynamic enabled;
-@dynamic lastcheck;
-@dynamic name;
-@dynamic status;
-@dynamic uid;
 @dynamic url;
+@dynamic uid;
+@dynamic status;
+@dynamic name;
+@dynamic lastcheck;
+@dynamic enabled;
 
 -(void) initWithUrl:(NSString*)u name:(NSString*)n enabled:(BOOL)e uid:(NSString*)i
 {

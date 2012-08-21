@@ -138,7 +138,7 @@
     if (managedObjectModel_ != nil) {
         return managedObjectModel_;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"model" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"OMModel" withExtension:@"momd"];
     managedObjectModel_ = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
     return managedObjectModel_;
 }

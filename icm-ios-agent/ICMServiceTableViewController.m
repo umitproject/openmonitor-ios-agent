@@ -7,7 +7,7 @@
 //
 #import "QuartzCore/QuartzCore.h"
 #import "ICMServiceTableViewController.h"
-#import "ICMService.h"
+#import "OMService.h"
 #import "ICMAppDelegate.h"
 #import "ICMUpdater.h"
 
@@ -49,7 +49,7 @@
 - (void)performFetchAndReload
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    request.entity = [NSEntityDescription entityForName:@"ICMService" inManagedObjectContext:self.managedObjectContext];
+    request.entity = [NSEntityDescription entityForName:@"OMService" inManagedObjectContext:self.managedObjectContext];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                                      ascending:YES
                                                                                       selector:nil]];
@@ -75,7 +75,7 @@
 
 - (UIImage *)statusImageForManagedObject:(NSManagedObject *)managedObject
 {
-    ICMWebsite* website = (ICMWebsite*)managedObject;
+    OMWebsite* website = (OMWebsite*)managedObject;
     if ([website.status intValue] == kStatusNormal
         || [website.status intValue] == kStatusContentChanged) {
         return [UIImage imageNamed:@"pinhead-green"];
@@ -99,12 +99,13 @@
         
         //cell.contentView.backgroundColor = [UIColor blackColor];
     }
-    if (self.titleKey) cell.textLabel.text = [managedObject valueForKey:self.titleKey];
+    OMService* service = (OMService*)managedObject;
+    if (self.titleKey)
+        cell.textLabel.text = service.host;
     if (selectedIndex == indexPath.row) {
         cell.detailTextLabel.textColor = [UIColor darkTextColor];
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 4;
-        ICMService* service = (ICMService*)managedObject;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Host: %@\nPort: %d\nStatus: %@\nDate: %@", service.host, [service.port intValue], service.status, [service.lastcheck descriptionWithLocale:[NSLocale currentLocale]]];
     } else {
         cell.detailTextLabel.text = nil;
@@ -118,7 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ICMService *service = (ICMService *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    OMService *service = (OMService *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"selected service with host: %@", service.host);
     
     //The user is selecting the cell which is currently expanded

@@ -373,7 +373,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
-- (void)sendWebsiteReport:(ICMWebsite*)site
+- (void)sendWebsiteReport:(OMWebsite*)site
 {
     org::umit::icm::mobile::proto::SendWebsiteReport sendReport;
     org::umit::icm::mobile::proto::WebsiteReport* report = sendReport.mutable_report();
@@ -434,7 +434,7 @@ static ICMAggregatorEngine * __sharedEngine = nil;
     [self enqueueOperation:op];
 }
 
-- (void)sendServiceReport:(ICMService*)service
+- (void)sendServiceReport:(OMService*)service
 {
     org::umit::icm::mobile::proto::SendServiceReport sendReport;
     org::umit::icm::mobile::proto::ServiceReport* report = sendReport.mutable_report();

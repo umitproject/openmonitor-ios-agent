@@ -78,13 +78,15 @@
 		B391B2F715DA90A2009D71A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F615DA90A1009D71A7 /* Icon.png */; };
 		B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F815DA90D8009D71A7 /* Icon-Small.png */; };
 		B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */; };
-		B3965A0515DFD4A400966123 /* ICMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0415DFD4A400966123 /* ICMService.m */; };
-		B3965A0815DFD4A500966123 /* ICMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0715DFD4A500966123 /* ICMWebsite.m */; };
 		B399882C15BD6CD200C3FF97 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */; };
 		B3B0FAA8156F706B005FD285 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B0FAA7156F706B005FD285 /* CoreData.framework */; };
 		B3B0FAAD156F848F005FD285 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAA156F848E005FD285 /* CoreDataTableViewController.m */; };
 		B3B0FAAE156F848F005FD285 /* ICMWebsiteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAAC156F848F005FD285 /* ICMWebsiteTableViewController.m */; };
 		B3B0FAB4156F8922005FD285 /* NSStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B0FAB3156F8921005FD285 /* NSStringHelper.m */; };
+		B3C06A7015E35E16002A21B6 /* OMModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3C06A6E15E35E16002A21B6 /* OMModel.xcdatamodeld */; };
+		B3C06A7415E35ED6002A21B6 /* OMWebsite.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C06A7315E35ED6002A21B6 /* OMWebsite.m */; };
+		B3C06A7715E35ED6002A21B6 /* OMService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C06A7615E35ED6002A21B6 /* OMService.m */; };
+		B3C06A7A15E364A5002A21B6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C06A7815E364A5002A21B6 /* MainStoryboard_iPad.storyboard */; };
 		B3C98A8515D4B8C800D231D9 /* messages.proto in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8415D4B8C800D231D9 /* messages.proto */; };
 		B3C98A8C15D4CA7A00D231D9 /* service.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8615D4CA7A00D231D9 /* service.png */; };
 		B3C98A8E15D4CA7A00D231D9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A8815D4CA7A00D231D9 /* settings.png */; };
@@ -94,7 +96,6 @@
 		B3C98A9915D4DA3F00D231D9 /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9415D4DA3F00D231D9 /* service@2x.png */; };
 		B3C98A9A15D4DA3F00D231D9 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9515D4DA3F00D231D9 /* settings@2x.png */; };
 		B3C98A9B15D4DA3F00D231D9 /* website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C98A9615D4DA3F00D231D9 /* website@2x.png */; };
-		B3C99F2A15E09F250063C74F /* model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3965A0015DFD1BD00966123 /* model.xcdatamodeld */; };
 		B3CF44291578FFF200B954FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF44281578FFF200B954FA /* MapKit.framework */; };
 		B3CF442B1578FFFC00B954FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CF442A1578FFFB00B954FA /* CoreLocation.framework */; };
 		B3CF44311579043200B954FA /* ICMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CF44301579043200B954FA /* ICMMapViewController.m */; };
@@ -108,7 +109,6 @@
 		B3EF61491552B4A300D24661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61481552B4A300D24661 /* main.m */; };
 		B3EF614D1552B4A300D24661 /* ICMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */; };
 		B3EF61501552B4A300D24661 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */; };
-		B3EF61531552B4A300D24661 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */; };
 		B3EF61561552B4A300D24661 /* ICMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF61551552B4A300D24661 /* ICMSettingsViewController.m */; };
 		B3EF61581552B4A300D24661 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61571552B4A300D24661 /* first.png */; };
 		B3EF615A1552B4A300D24661 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3EF61591552B4A300D24661 /* first@2x.png */; };
@@ -268,11 +268,6 @@
 		B391B2F615DA90A1009D71A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		B391B2F815DA90D8009D71A7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "../Icon-Small.png"; sourceTree = "<group>"; };
 		B391B2F915DA90D8009D71A7 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "../Icon-Small@2x.png"; sourceTree = "<group>"; };
-		B3965A0115DFD1BD00966123 /* model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = model.xcdatamodel; sourceTree = "<group>"; };
-		B3965A0315DFD4A400966123 /* ICMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMService.h; sourceTree = "<group>"; };
-		B3965A0415DFD4A400966123 /* ICMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMService.m; sourceTree = "<group>"; };
-		B3965A0615DFD4A500966123 /* ICMWebsite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMWebsite.h; sourceTree = "<group>"; };
-		B3965A0715DFD4A500966123 /* ICMWebsite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsite.m; sourceTree = "<group>"; };
 		B399882A15BD6CD200C3FF97 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		B399882B15BD6CD200C3FF97 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		B3B0FAA7156F706B005FD285 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -281,6 +276,12 @@
 		B3B0FAAC156F848F005FD285 /* ICMWebsiteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMWebsiteTableViewController.m; sourceTree = "<group>"; };
 		B3B0FAB2156F8921005FD285 /* NSStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringHelper.h; sourceTree = "<group>"; };
 		B3B0FAB3156F8921005FD285 /* NSStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringHelper.m; sourceTree = "<group>"; };
+		B3C06A6F15E35E16002A21B6 /* OMModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OMModel.xcdatamodel; sourceTree = "<group>"; };
+		B3C06A7215E35ED6002A21B6 /* OMWebsite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMWebsite.h; sourceTree = "<group>"; };
+		B3C06A7315E35ED6002A21B6 /* OMWebsite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMWebsite.m; sourceTree = "<group>"; };
+		B3C06A7515E35ED6002A21B6 /* OMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMService.h; sourceTree = "<group>"; };
+		B3C06A7615E35ED6002A21B6 /* OMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMService.m; sourceTree = "<group>"; };
+		B3C06A7915E364A5002A21B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B3C98A8415D4B8C800D231D9 /* messages.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = messages.proto; sourceTree = "<group>"; };
 		B3C98A8615D4CA7A00D231D9 /* service.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service.png; sourceTree = "<group>"; };
 		B3C98A8815D4CA7A00D231D9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -299,7 +300,7 @@
 		B3D00BEA15D8F349002B205C /* NSData+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CDBase64.m"; sourceTree = "<group>"; };
 		B3D00BEB15D8F349002B205C /* NSString+CDBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDBase64.m"; sourceTree = "<group>"; };
 		B3D1AD3415DF366A006A63C1 /* open_monitor_200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_monitor_200.png; sourceTree = "<group>"; };
-		B3EF61381552B4A300D24661 /* icm-ios-agent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "icm-ios-agent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3EF61381552B4A300D24661 /* Open Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EF613C1552B4A300D24661 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3EF613E1552B4A300D24661 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3EF61401552B4A300D24661 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -310,7 +311,6 @@
 		B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMAppDelegate.h; sourceTree = "<group>"; };
 		B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICMAppDelegate.m; sourceTree = "<group>"; };
 		B3EF614F1552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		B3EF61521552B4A300D24661 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B3EF61541552B4A300D24661 /* ICMSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICMSettingsViewController.h; sourceTree = "<group>"; };
 		B3EF61551552B4A300D24661 /* ICMSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICMSettingsViewController.m; sourceTree = "<group>"; };
 		B3EF61571552B4A300D24661 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
@@ -602,11 +602,11 @@
 		B3B0FAA6156F6FC7005FD285 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B3965A0015DFD1BD00966123 /* model.xcdatamodeld */,
-				B3965A0615DFD4A500966123 /* ICMWebsite.h */,
-				B3965A0715DFD4A500966123 /* ICMWebsite.m */,
-				B3965A0315DFD4A400966123 /* ICMService.h */,
-				B3965A0415DFD4A400966123 /* ICMService.m */,
+				B3C06A7215E35ED6002A21B6 /* OMWebsite.h */,
+				B3C06A7315E35ED6002A21B6 /* OMWebsite.m */,
+				B3C06A7515E35ED6002A21B6 /* OMService.h */,
+				B3C06A7615E35ED6002A21B6 /* OMService.m */,
+				B3C06A6E15E35E16002A21B6 /* OMModel.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -628,7 +628,7 @@
 		B3EF61391552B4A300D24661 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3EF61381552B4A300D24661 /* icm-ios-agent.app */,
+				B3EF61381552B4A300D24661 /* Open Monitor.app */,
 				B3EF61671552B4A300D24661 /* icm-ios-agentTests.octest */,
 			);
 			name = Products;
@@ -656,7 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				B3EF614E1552B4A300D24661 /* MainStoryboard_iPhone.storyboard */,
-				B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */,
+				B3C06A7815E364A5002A21B6 /* MainStoryboard_iPad.storyboard */,
 				B3EF614B1552B4A300D24661 /* ICMAppDelegate.h */,
 				B3EF614C1552B4A300D24661 /* ICMAppDelegate.m */,
 				B319A32B15DB526700C3B927 /* ICMRootViewController.h */,
@@ -741,7 +741,7 @@
 			);
 			name = "icm-ios-agent";
 			productName = "icm-ios-agent";
-			productReference = B3EF61381552B4A300D24661 /* icm-ios-agent.app */;
+			productReference = B3EF61381552B4A300D24661 /* Open Monitor.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B3EF61661552B4A300D24661 /* icm-ios-agentTests */ = {
@@ -797,7 +797,6 @@
 			files = (
 				B3EF61471552B4A300D24661 /* InfoPlist.strings in Resources */,
 				B3EF61501552B4A300D24661 /* MainStoryboard_iPhone.storyboard in Resources */,
-				B3EF61531552B4A300D24661 /* MainStoryboard_iPad.storyboard in Resources */,
 				B3EF61581552B4A300D24661 /* first.png in Resources */,
 				B3EF615A1552B4A300D24661 /* first@2x.png in Resources */,
 				B3EF615F1552B4A300D24661 /* second.png in Resources */,
@@ -824,6 +823,7 @@
 				B391B2FA15DA90D8009D71A7 /* Icon-Small.png in Resources */,
 				B391B2FB15DA90D8009D71A7 /* Icon-Small@2x.png in Resources */,
 				B3D1AD3515DF366A006A63C1 /* open_monitor_200.png in Resources */,
+				B3C06A7A15E364A5002A21B6 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,9 +924,9 @@
 				B3D00BEC15D8F349002B205C /* NSData+CDBase64.m in Sources */,
 				B3D00BED15D8F349002B205C /* NSString+CDBase64.m in Sources */,
 				B319A32D15DB526700C3B927 /* ICMRootViewController.m in Sources */,
-				B3965A0515DFD4A400966123 /* ICMService.m in Sources */,
-				B3965A0815DFD4A500966123 /* ICMWebsite.m in Sources */,
-				B3C99F2A15E09F250063C74F /* model.xcdatamodeld in Sources */,
+				B3C06A7015E35E16002A21B6 /* OMModel.xcdatamodeld in Sources */,
+				B3C06A7415E35ED6002A21B6 /* OMWebsite.m in Sources */,
+				B3C06A7715E35ED6002A21B6 /* OMService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +949,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B3C06A7815E364A5002A21B6 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3C06A7915E364A5002A21B6 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
 		B3EF61451552B4A300D24661 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -963,14 +971,6 @@
 				B3EF614F1552B4A300D24661 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		B3EF61511552B4A300D24661 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3EF61521552B4A300D24661 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		B3EF61711552B4A300D24661 /* InfoPlist.strings */ = {
@@ -1040,6 +1040,7 @@
 		B3EF617A1552B4A300D24661 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/boostoniphone";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1054,7 +1055,7 @@
 					"\"$(SRCROOT)/lib/armv7/lib\"",
 				);
 				OTHER_LDFLAGS = "-v";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open Monitor";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1062,6 +1063,7 @@
 		B3EF617B1552B4A300D24661 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/boostoniphone";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1076,7 +1078,7 @@
 					"\"$(SRCROOT)/lib/armv7/lib\"",
 				);
 				OTHER_LDFLAGS = "-v";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open Monitor";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1148,15 +1150,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B3965A0015DFD1BD00966123 /* model.xcdatamodeld */ = {
+		B3C06A6E15E35E16002A21B6 /* OMModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B3965A0115DFD1BD00966123 /* model.xcdatamodel */,
+				B3C06A6F15E35E16002A21B6 /* OMModel.xcdatamodel */,
 			);
-			currentVersion = B3965A0115DFD1BD00966123 /* model.xcdatamodel */;
-			path = model.xcdatamodeld;
+			currentVersion = B3C06A6F15E35E16002A21B6 /* OMModel.xcdatamodel */;
+			path = OMModel.xcdatamodeld;
 			sourceTree = "<group>";
-			usesTabs = 0;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "SecKeyWrapper.h"
-#import "ICMWebsite.h"
-#import "ICMService.h"
+#import "OMWebsite.h"
+#import "OMService.h"
 
 //#define AGGREGATOR_URL @"icm-dev.appspot.com"
 //#define AGGREGATOR_URL @"aggregator:8000"
@@ -90,8 +90,8 @@ typedef enum {
 - (void)logoutAgent;
 //- (void)loginStep2; // called by loginStep1(), should not be publicly visible
 - (void)getEvents;
-- (void)sendWebsiteReport:(ICMWebsite*)site;
-- (void)sendServiceReport:(ICMService*)service;
+- (void)sendWebsiteReport:(OMWebsite*)site;
+- (void)sendServiceReport:(OMService*)service;
 - (void)checkNewTests;
 - (void)suggestWebsiteWithName:(NSString*)name url:(NSString*)url;
 - (void)suggestServiceWithName:(NSString*)name host:(NSString*)host ip:(NSString*)ip port:(int)port;
