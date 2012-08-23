@@ -278,14 +278,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
     
     DLog(@"Stripped Public Key Bytes:\n%@",[strippedPublicKeyData description]);
     
-    [publicKey setObject:strippedPublicKeyData forKey:(id)kSecValueData];
-    [publicKey setObject:(id) kSecAttrKeyClassPublic forKey:(id)kSecAttrKeyClass];
-    [publicKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnPersistentRef];
-    
-    OSStatus secStatus = SecItemAdd((CFDictionaryRef)publicKey, (CFTypeRef *)&aggregatorPublicKeyRef);
-    
-    if ((secStatus != noErr) && (secStatus != errSecDuplicateItem))
-        [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."];
+    aggregatorPublicKeyRef = [self addPeerPublicKey:tag keyBits:strippedPublicKeyData];
 }
 
 #pragma -
@@ -1012,7 +1005,6 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
     *iterator = itr + num_bytes;
     return ret;
 }
-
 
 - (void)dealloc {
     [publicTag release];
